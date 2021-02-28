@@ -8,15 +8,15 @@ NETWORK =
 
 GET_NETWORK_TIME = function()
     return readInteger(Global_(1312603+11))
-end,
+end;
 
 NETWORK_GET_LOCAL_HANDLE = function(Index,ScriptName)
     return get.Long(getAddress(ScriptName))+(8*Index) 
- end,
+ end;
 
 NETWORK_GET_NUM_CONNECTED_PLAYERS = function()
     return get.Int(TOTAL_PLAYER);
-end,
+end;
 
 NETWORK_SESSION_IS_PRIVATE = function()
     local IsPublic = get.Bool(IS_SESSION_PUBLIC)
@@ -25,11 +25,11 @@ NETWORK_SESSION_IS_PRIVATE = function()
     elseif IsPublic == 0 then
         return false
     end
-end,
+end;
 
 NETWORK_IS_HOST = function()
     return get.Global(int,1630317+1+PLAYER_ID()* 595+10)
-end,
+end;
 NETWORK_IS_IN_TRANSITION = function()
     local JoinStatus = get.Int(JOIN_STATUS)
     local CheckScriptTransition = SCRIPT.DOES_SCRIPT_EXIST('fm_maintain_transition_players')
@@ -41,7 +41,7 @@ NETWORK_IS_IN_TRANSITION = function()
         IsTransition = false;
     end
     return IsTransition
-end,
+end;
 }
 
 
@@ -52,51 +52,51 @@ set =
 
 int = function (Address,Value)
     writeInteger(Address,Value)
-end,
+end;
 
 float = function (Address,Value)
     writeFloat(Address,Value)
-end,
+end;
 
 string = function (Address,Value)
     writeString(Address,Value)
-end,
+end;
 
 long = function (Address,Value)
     writeQword(Address,Value)
-end,
+end;
 
 short = function (Address,Value)
     writeSmallInteger(Address,Value)
-end,
+end;
 
 bool = function (Address,Value)
     writeBytes(Address,Value)
-end,
+end;
 
 byte = function (Address,Value)
     writeBytes(Address,Value)
-end,
+end;
 
 double = function (Address,Value)
     writeDouble(Address,Value)
-end,
+end;
 
 ListV = function(Name,value)
     getAddressList().getMemoryRecordByDescription(Name).Value=value
-end,
+end;
 
 AddressV = function(Name,LogA)
     getAddressList().getMemoryRecordByDescription(Name).Address=LogA
-end,
+end;
 
 ListA = function(Name,boolean)
     getAddressList().getMemoryRecordByDescription(Name).Active=boolean
-end,
+end;
 
 type = function(Name,Types)
     getAddressList().getMemoryRecordByDescription(Name).Type=Types
-end,
+end;
 
 global = function (Type,Index,Value)
    if Type==int then writeInteger(GA(Index),Value)
@@ -108,7 +108,7 @@ global = function (Type,Index,Value)
     elseif Type==short then writeSmallInteger(GA(Index),Value)
     else return ShowMessage("NULL")
     end
-end,
+end;
 
 locals = function(Type,ScriptName,Index,Value)
     if Type == int then
@@ -120,7 +120,7 @@ locals = function(Type,ScriptName,Index,Value)
     elseif Type == str then
         writeString(NETWORK.NETWORK_GET_LOCAL_HANDLE(Index,ScriptName.."_ptr"),Value)
     end
-end,
+end;
 }
 
 get =
@@ -128,60 +128,60 @@ get =
 {
 Ptr = function (Pointer)
     return readPointer(Pointer)
-end,
+end;
 
 Int = function (Address)
     return readInteger(Address)
-end,
+end;
 
 Float = function (Address)
     return readFloat(Address)
-end,
+end;
 
 String = function (Address)
     return readString(Address)
-end,
+end;
 
 Long = function (Address)
     return readQword(Address)
-end,
+end;
 
 Short = function (Address)
     return readSmallInteger(Address)
-end,
+end;
 
 Bool = function (Address)
     return readBytes(Address)
-end,
+end;
 
 Byte = function (Address)
     return readBytes(Address)
-end,
+end;
 
 Double = function (Address)
     return readDouble(Address)
-end,
+end;
 
 Memory = function(Location)
     return getAddressSafe(Location)
-end,
+end;
 
 TListV = function(Name)
     return AddressList.getMemoryRecordByDescription(Name).Value 
-end,
+end;
 
 TListA = function(Name)
     local ActStatus = AddressList.getMemoryRecordByDescription(Name).Active
     return ActStatus
-end,
+end;
 
 TAddr = function(Name)
     return AddressList.getMemoryRecordByDescription(Name).Address
-end,
+end;
 
 TypeA = function(Name)
     return AddressList.getMemoryRecordByDescription(Name).Type
-end,
+end;
 
 Global = function (Type,Index)
     
@@ -192,9 +192,10 @@ if Type==int then return readInteger(GA(Index))
     elseif Type==long then return readQword(GA(Index))
     elseif Type==double then return readDouble(GA(Index))
     elseif Type==short then return readSmallInteger(GA(Index))
+    elseif Type==addr then return getAddressSafe(GA(Index))
     else return ShowMessage("NULL") 
   end
-end,
+end;
 
 Locals = function(Type,Index,ScriptName)
     if Type == int then
@@ -206,7 +207,7 @@ Locals = function(Type,Index,ScriptName)
     elseif Type == str then
         return readString(LA(Index,ScriptName))
     end
-end,
+end;
 };
 
 
@@ -223,20 +224,20 @@ end,
 
 CPHbitset =
 {
-	Kosatka               = 0x000003,
-	Velum                 = 0x000009,
-	PatrolBoat            = 0x000021,
-	LongfinBoat           = 0x000041,
-	Alkonost              = 0x000085,
-	StealthAnnihilator    = 0x000091,
-	DemolitionCharges     = 0x000100,
-	CuttingTorch          = 0x000200,
-	PlasmaCutter          = 0x000400,
-	FingerprintCloner     = 0x000800,
-	WeaponMissionFinished = 0x001000,
-	DisruptionOne         = 0x002000,
-	DisruptionTwo         = 0x004000,
-	DisruptionThree       = 0x008000,
+	Kosatka               = 0x000003;
+	Velum                 = 0x000009;
+	PatrolBoat            = 0x000021;
+	LongfinBoat           = 0x000041;
+	Alkonost              = 0x000085;
+	StealthAnnihilator    = 0x000091;
+	DemolitionCharges     = 0x000100;
+	CuttingTorch          = 0x000200;
+	PlasmaCutter          = 0x000400;
+	FingerprintCloner     = 0x000800;
+	WeaponMissionFinished = 0x001000;
+	DisruptionOne         = 0x002000;
+	DisruptionTwo         = 0x004000;
+	DisruptionThree       = 0x008000;
 };
 
 MPX = get.Global(int,1312763)
@@ -257,13 +258,24 @@ MPX = tostring(get.Global(int,1312763))
 MPx = tostring('MP'..MPX..'_')
 CPHeist =
 {
-    {'MP'..MPX..'_H4LOOT_CASH_I_SCOPED',0}, --6559764
+    {'MP'..MPX..'_H4LOOT_CASH_I',139329}, --[139329]
+    {'MP'..MPX..'_H4LOOT_CASH_I_SCOPED',139329}, --[139329]
+    {'MP'..MPX..'_H4LOOT_CASH_C',0}, --28
     {'MP'..MPX..'_H4LOOT_CASH_C_SCOPED',0}, --28
-    {'MP'..MPX..'_H4LOOT_WEED_I_SCOPED',0}, --42656
-    {'MP'..MPX..'_H4LOOT_COKE_I_SCOPED',0}, --720971
-    {'MP'..MPX..'_H4LOOT_GOLD_I_SCOPED',-1},
-    {'MP'..MPX..'_H4LOOT_GOLD_C_SCOPED',-1}, --131
-    {'MP'..MPX..'_H4LOOT_PAINT_SCOPED',-1}, --48
+    {'MP'..MPX..'_H4LOOT_WEED_I',278658}, --[278658]
+    {'MP'..MPX..'_H4LOOT_WEED_I_SCOPED',278658}, --[278658]
+    {'MP'..MPX..'_H4LOOT_WEED_C',0}, --42656
+    {'MP'..MPX..'_H4LOOT_WEED_C_SCOPED',0}, --42656
+    {'MP'..MPX..'_H4LOOT_COKE_I',557316}, --[557316] --16777215
+    {'MP'..MPX..'_H4LOOT_COKE_I_SCOPED',557316}, --[557316] --16777215
+    {'MP'..MPX..'_H4LOOT_COKE_C',720971}, --720971 --16777215
+    {'MP'..MPX..'_H4LOOT_COKE_C_SCOPED',720971}, --720971 --16777215
+    {'MP'..MPX..'_H4LOOT_GOLD_I_SCOPED',1114632}, --[1114632]
+    {'MP'..MPX..'_H4LOOT_GOLD_I',1114632},
+    {'MP'..MPX..'_H4LOOT_GOLD_C_SCOPED',255}, --131
+    {'MP'..MPX..'_H4LOOT_GOLD_C',255}, --131
+    {'MP'..MPX..'_H4LOOT_PAINT_SCOPED',96}, --48
+    {'MP'..MPX..'_H4LOOT_PAINT',96}, --48
     {'MP'..MPX..'_H4CNF_BS_ENTR',63},
     {'MP'..MPX..'_H4CNF_BS_ABIL',63},
     {'MP'..MPX..'_H4CNF_WEP_DISRP',3},

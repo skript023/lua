@@ -20,6 +20,8 @@ DATA_RID =
 	{"Animon2",150572443},
 	{"DE-ELGHI",85572123},
 	{"16Cal_ViN",178348899},
+	{"16Cal_ViN",178348899},
+	{"PutraGanjo2",184335063},
 	{"MAMAK_BOGENG",179673804},
 	{"Vaaleryn",149710162},
 	{"DevonNoLimit",117859114},
@@ -202,6 +204,7 @@ CT =
 	{"Set Player to PV","Set Player To PV"},
 	{"Gender 1","All Slot Gender Change"},
 	{"Max Popularity Nightclub","Max Popularity Nightclub"},
+	{"Restart PC Submarine","Restart PC Submarine"},
 	{"Bundir","Suicide"},
 	{"Empty Lobby","Empty Lobby"},
 }
@@ -559,6 +562,25 @@ NULL_ARRAY =
 {
 	{"NULL"}
 }
+
+
+ReportStat = {
+	{'MPPLY_EXPLOITS',1};
+	{'MPPLY_GRIEFING',1};
+	{'MPPLY_GAME_EXPLOITS',1};
+	{'MPPLY_VC_ANNOYINGME',1};
+	{'MPPLY_VC_HATE',1};
+	{'MPPLY_TC_ANNOYINGME',1};
+	{'MPPLY_TC_HATE',1};
+	{'MPPLY_OFFENSIVE_LANGUAGE',1};
+	{'MPPLY_OFFENSIVE_TAGPLATE',1};
+	{'MPPLY_OFFENSIVE_UGC',1};
+	{'MPPLY_BAD_CREW_NAME',1};
+	{'MPPLY_BAD_CREW_MOTTO',1};
+	{'MPPLY_BAD_CREW_STATUS',1};
+	{'MPPLY_BAD_CREW_EMBLEM',1};
+  }
+
 ---------------------------------------------------CASINO HEIST--------------------------------------------------------
 
 bitset0 =

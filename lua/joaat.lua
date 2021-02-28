@@ -30,7 +30,9 @@ end
 
 
 --[[private static int joaat_to_lower(char c) {
-return (c >= 'A' && c <= 'Z') ? c + ('a' - 'A') : c;]]
+return (c >= 'A' && c <= 'Z') ? c + ('a' - 'A') : c;
+shifting : x = x * 2 ^ y
+]]
 
 --using joaat_t = std::uint32_t;
 	--inline constexpr char joaat_to_lower(char c)
@@ -271,4 +273,16 @@ end
     hash = hash + (hash << 15)
     hash = hash & 0xFFFFFFFF
     return hash
+]]
+
+--[[
+    local MethLocation = get.Global(int,1590682+1+(iVar0[selected_player]*883)+274+183+1+(0*12))
+  local WeedLocation = get.Global(int,1590682+1+(iVar0[selected_player]*883)+274+183+1+(1*12))
+  local CokeLocation = get.Global(int,1590682+1+(iVar0[selected_player]*883)+274+183+1+(2*12))
+  local CashLocation = get.Global(int,1590682+1+(iVar0[selected_player]*883)+274+183+1+(3*12))
+  local DocLocation = get.Global(int,1590682+1+(iVar0[selected_player]*883)+274+183+1+(4*12))
+  PlayerMoney.Text = string.format('Bank: $ %s | Cash: $ %s | Organization:%s',ListBanked,ListCash,ListOrgName)
+  PlayerDynamicIP.Text = string.format('IP : %s.%s.%s.%s:%s',IPR4,IPR3,IPR2,IPR1,PPort)
+  PlayerStaticIP.Text  = string.format('IP Lan : %s.%s.%s.%s:%s',IPRL4,IPRL3,IPRL2,IPRL1,PPort)
+  Player_Board_Status.Text = string.format('Board:%s | Key:%s | Duggan:%s',board_status,security_pass,duggan_level)
 ]]

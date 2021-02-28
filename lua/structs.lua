@@ -1097,11 +1097,11 @@ function MemoryReader()
 end
 
 function ProcessCheck2()
-  if not get.Ptr('WorldPTR') or get.Int("WorldPTR")==nil then 
+  if get.Int("WorldPTR")==nil or get.Global(int,262145) == nil then 
     closeCE() 
     Process = false
+    return caFree
   end
-  return caFrees
 end
 
 function returningValue()
@@ -1141,22 +1141,17 @@ function returningValue()
 end
 
 function ReportCheck()
-  local start = function()
+  local sync = Asynchronous(function()
     local Scanner = MainTab.PatternScan
-    local cheating = STATS.STAT_GET_INT("MPPLY_EXPLOITS")
-    SYSTEM.WAIT(5000)
-    if cheating >=1 then
-      Scanner.Text = string.format('Reported By : %sx',cheating)
-    elseif cheating == 0 then
-      Scanner.Text = string.format('No Report : %s',cheating)
-    elseif cheating == nil then
-      Scanner.Text = string.format('Total Report : %s','No Data')
-    end
-  end
-  ExecuteThread(start);
+      for k,v in pairs(ReportStat) do
+        Async()
+        cheating = STATS.STAT_GET_INT(v[1])
+        Scanner.Text = string.format('%s : %s',v[1],cheating)
+      end
+  end)
+  AsyncStart(sync,1000)
 end
 
-ReportCheck()
   --[[local ListHP = get.Float(PListHP[index])
   local ListArmor = get.Float(PListArmor[index])
   local ListAmmo = get.Int(PCurAmmo[index])
@@ -1220,7 +1215,7 @@ function PlayerCord()
   Player.DateAndTime.Text = os.date();
 
   if (pPosX ~= nil) and (pPosY ~= nil) and (pPosZ ~= nil) then
-  PlayerListCoordinates.Text = string.format('X :%.6f  |  Y :%.6f  |  Z :%.6f ',pPosX,pPosY,pPosZ)
+  PlayerListCoordinates.Text = string.format('X :%.5f  |  Y :%.5f  |  Z :%.5f ',pPosX,pPosY,pPosZ)
   end
 
   if TotalPlayer == TotalPlayer+1 then NotificationPopUpMapRockstar("Alert",[[~a~~s~Player Join Session]]) end
@@ -1262,20 +1257,23 @@ function PlayerCord()
   elseif GetCurrentSession() == 13 then MainTab.SessionID.Text = string.format('Session: %s| Private: %s','Spectator Box',Public) 
   end
 
+  if get.Int("WorldPTR")==nil then 
+    closeCE() 
+  end
 end
 ReadTimer = createTimer(nil, true)
 ReadTimer.Interval = 30  --0.5 seconds
 ReadTimer.OnTimer = PlayerCord
 
-THREAD.func_1(ProcessCheck2,true,2500)
-THREAD.func_1(returningValue,true,2000)
+THREAD.FUNC_1(ProcessCheck2,true,2000)
 
 function PlayerList()
   local indexing = VSpawn.CEListView1.Items
   indexing.Clear()
   for key,tabel in ipairs(CPLAYER_INDEX) do
     local GET_PLAYER_INDEX = indexing.Add()
-    local host = get.Global(int,1630317+1+(Plev_arr[key]*595)+10)
+    local host = get.Global(int,1630317+1+(iVar0[key]*595)+10)
+    local TransitionStatus = get.Global(int,2425869+1+iVar0[key]*443+198)
     local PLG  = get.Short(PLGod[key])
     local RID = get.Long(tabel[2])
     local SCID = tostring(RID)
@@ -1289,10 +1287,11 @@ function PlayerList()
     if PLG == nil then PLG = 0 end
     if PLG >= 16385 and NAME ~= nil and PLG ~=nil then PLG = "[G]" else PLG = "" end
     if host == 1 and NAME ~= nil then host = "[H]" else host = "" end
+    if TransitionStatus ~= 1 and NAME ~= nil then TransitionStatus = "[T]" else TransitionStatus = "" end
     if ID == "nil" then ID = "" end
     if RID == nil then SCID = "" end
     if NAME == nil then id = "" end
-    GET_PLAYER_INDEX.Caption = string.format('%s%s%s%s%s',id,ID,host,PLG,ped_id)
+    GET_PLAYER_INDEX.Caption = string.format('%s%s%s%s%s%s',id,ID,host,PLG,ped_id,TransitionStatus)
     GET_PLAYER_INDEX.SubItems.text = SCID
   end
 end
@@ -1309,22 +1308,7 @@ function UpdatePlayerList(sender)
   PlayerList()
 end
 
-function TotalEXPIndex(id)
-  local CurrentLevel = get.Global(int,1590682+1+Plev_arr[id]*883+211+6)
-  local CurrentEXP = get.Global(int,1590682+1+Plev_arr[id]*883+211+1)
-  for i = 1,#level_data do
-        local RealLevel = CurrentLevel+1
-        local NeedEXP =  level_data[RealLevel] - CurrentEXP
-        if CurrentEXP >= level_data[i] and CurrentEXP <= level_data[i+1] then
-          ActualLevel = i
-        end
-        LevelStatus = string.format([[%s/%s Actual Level:[%s] 
-Needed EXP : %s]],CurrentEXP,level_data[RealLevel],ActualLevel,NeedEXP)
-    end
-    return LevelStatus
-end
-
-Plev_arr = {0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32}
+iVar0 = {0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32}
 function Player_List_Info()
   local EntityState = VSpawn_PGod 
   local CurrentVehicles = VSpawn_PVehicle 
@@ -1342,14 +1326,14 @@ function Player_List_Info()
   local Player_Selected_Gunman = VSpawn_HeistGunman
   local Player_Board_Status = VSpawn_HeistBitset
 
-  selected_approach = get.Global(int,1701666+1+Plev_arr[selected_player]*68+22)
-  selected_target = get.Global(int,1701666+1+Plev_arr[selected_player]*68+18+7)
-  selected_hacker = get.Global(int,1701666+1+Plev_arr[selected_player]*68+18+14)
-  selected_driver = get.Global(int,1701666+1+Plev_arr[selected_player]*68+18+12)
-  selected_gunman = get.Global(int,1701666+1+Plev_arr[selected_player]*68+18+10)
-  board_status = get.Global(int,1701666+1+Plev_arr[selected_player]*68+18+1)
-  security_pass = get.Global(int,1701666+1+Plev_arr[selected_player]*68+18+15)
-  duggan_level = get.Global(int,1701666+1+Plev_arr[selected_player]*68+18+8)
+  selected_approach = get.Global(int,1701666+1+iVar0[selected_player]*68+22)
+  selected_target = get.Global(int,1701666+1+iVar0[selected_player]*68+18+7)
+  selected_hacker = get.Global(int,1701666+1+iVar0[selected_player]*68+18+14)
+  selected_driver = get.Global(int,1701666+1+iVar0[selected_player]*68+18+12)
+  selected_gunman = get.Global(int,1701666+1+iVar0[selected_player]*68+18+10)
+  board_status = get.Global(int,1701666+1+iVar0[selected_player]*68+18+1)
+  security_pass = get.Global(int,1701666+1+iVar0[selected_player]*68+18+15)
+  duggan_level = get.Global(int,1701666+1+iVar0[selected_player]*68+18+8)
 
   local IPR1 = readBytes(IPs1[selected_player])
   local IPR2 = readBytes(IPs2[selected_player])
@@ -1366,53 +1350,132 @@ function Player_List_Info()
   local CurVeh= get.Int(PCurVeh[selected_player])
   local PPort  = get.Short(ListLPort[selected_player])
   local ListHost = get.Int(PHost[selected_player])
-  local Pradars = get.Global(int,2425869+1+Plev_arr[selected_player]*443+204)
-  local PReveal = get.Global(int,2425869+1+Plev_arr[selected_player]*443+207)
-  local ListLevels = get.Global(int,1590682+1+Plev_arr[selected_player]*883+211+6)
-  local ListTotalMoney = get.Global(int,1590682+1+Plev_arr[selected_player]*883+211+56)
-  local ListCash = get.Global(int,1590682+1+Plev_arr[selected_player]*883+211+3)
-  local ListOrgName = get.Global(str,1630317+1+(Plev_arr[selected_player]*595)+11+104)
+  local Pradars = get.Global(int,2425869+1+iVar0[selected_player]*443+204)
+  local PReveal = get.Global(int,2425869+1+iVar0[selected_player]*443+207)
+  local ListLevels = get.Global(int,1590682+1+iVar0[selected_player]*883+211+6)
+  local ListTotalMoney = get.Global(int,1590682+1+iVar0[selected_player]*883+211+56)
+  local ListCash = get.Global(int,1590682+1+iVar0[selected_player]*883+211+3)
+  local ListOrgName = get.Global(str,1630317+1+(iVar0[selected_player]*595)+11+104)
   local CurWep = get.String(PCurWep[selected_player])
-  local PTotalEXP = get.Global(int,1590682+1+Plev_arr[selected_player]*883+211+1)
-  local PGlobalEXP = get.Global(int,1590682+1+Plev_arr[selected_player]*883+211+5)
+  local PTotalEXP = get.Global(int,1590682+1+iVar0[selected_player]*883+211+1)
+  local PGlobalEXP = get.Global(int,1590682+1+iVar0[selected_player]*883+211+5)
   local ListWanted = get.Int(PWanted[selected_player])
-  local IsHost = get.Global(int,1630317+1+Plev_arr[selected_player]* 595+10)
+  local IsHost = get.Global(int,1630317+1+iVar0[selected_player]* 595+10)
   local ListBanked = ListTotalMoney - ListCash
   local HP = get.Float(PListHP[selected_player])
   local Armor = get.Float(PListArmor[selected_player])
   local Ragdoll = get.Byte(PRagdoll[selected_player])
   local SCID = get.Long(RID_LIST[selected_player])
-  local biset0 = get.Global(int,1701666+1+Plev_arr[selected_player]*68+18)
+  local biset0 = get.Global(int,1701666+1+iVar0[selected_player]*68+18)
   local Max_HP = get.Float(PLisMAXtHP[selected_player])
-  local BunkerLocation = get.Global(int,1590682+1+(Plev_arr[selected_player]*883)+274+183+1+(5*12))
+  local BunkerLocation = get.Global(int,1590682+1+(iVar0[selected_player]*883)+274+183+1+(5*12))
   local CurrentVehicle = get.String(PVehName[selected_player])
   local CurrentVehicleM = get.String(PVehMaker[selected_player])
   local PlayerName = get.String(CPLAYER_NAME[selected_player])
   local CurLevelStatus = TotalEXPIndex(selected_player)
-  local KDRatio = get.Global(float,1590682+1+Plev_arr[selected_player]*883+211+26)
-  local TotalKill = get.Global(int,1590682+1+Plev_arr[selected_player]*883+211+28)
-  local TotalDeath = get.Global(int,1590682+1+Plev_arr[selected_player]*883+211+29)
-  local RaceWon = get.Global(int,1590682+1+Plev_arr[selected_player]*883+211+15)
-  local RaceLost = get.Global(int,1590682+1+Plev_arr[selected_player]*883+211+16)
-  local DMWin = get.Global(int,1590682+1+Plev_arr[selected_player]*883+211+20)
-  local DMlost = get.Global(int,1590682+1+Plev_arr[selected_player]*883+211+21)
-  local JoinStatus = get.Global(int,2425869+Plev_arr[selected_player]*443+1)
-  local TransitionStatus = get.Global(int,2425869+1+Plev_arr[selected_player]*443+198)
+  local KDRatio = get.Global(float,1590682+1+iVar0[selected_player]*883+211+26)
+  local TotalKill = get.Global(int,1590682+1+iVar0[selected_player]*883+211+28)
+  local TotalDeath = get.Global(int,1590682+1+iVar0[selected_player]*883+211+29)
+  local RaceWon = get.Global(int,1590682+1+iVar0[selected_player]*883+211+15)
+  local RaceLost = get.Global(int,1590682+1+iVar0[selected_player]*883+211+16)
+  local DMWin = get.Global(int,1590682+1+iVar0[selected_player]*883+211+20)
+  local DMlost = get.Global(int,1590682+1+iVar0[selected_player]*883+211+21)
+  local JoinStatus = get.Global(int,2425869+iVar0[selected_player]*443+1)
+  local TransitionStatus = get.Global(int,2425869+1+iVar0[selected_player]*443+198)
+  local SecondaryLootPaint = get.Global(int,1706028+1+iVar0[selected_player]*53+10+23)
+  local SecondaryLootCashI = get.Global(int,1706028+1+iVar0[selected_player]*53+10+10)
+  local SecondaryLootWeed = get.Global(int,1706028+1+iVar0[selected_player]*53+10+11)
+  local SecondaryLootCoke = get.Global(int,1706028+1+iVar0[selected_player]*53+10+12)
+  local SecondaryLootGoldI = get.Global(int,1706028+1+iVar0[selected_player]*53+10+13)
+  local SecondaryLootCashC = get.Global(int,1706028+1+iVar0[selected_player]*53+10+18)
+  local SecondaryLootWeedC = get.Global(int,1706028+1+iVar0[selected_player]*53+10+19)
+  local SecondaryLootCokeC = get.Global(int,1706028+1+iVar0[selected_player]*53+10+20)
+  local SecondaryLootGoldC = get.Global(int,1706028+1+iVar0[selected_player]*53+10+21)
+  local PrimaryLoot = get.Global(int,1706028+1+iVar0[selected_player]*53+10+4)
+  local ValueLootCash = get.Global(int,1706028+1+iVar0[selected_player]*53+5+10+19)
+  local ValueLootWeed = get.Global(int,1706028+1+iVar0[selected_player]*53+5+10+20)
+  local ValueLootCoke = get.Global(int,1706028+1+iVar0[selected_player]*53+5+10+21)
+  local ValueLootGold = get.Global(int,1706028+1+iVar0[selected_player]*53+5+10+22)
+  local ValueLootPaint = get.Global(int,1706028+1+iVar0[selected_player]*53+5+10+23)
+  local CayoWeapon = get.Global(int,1706028+1+iVar0[selected_player]*53+5+35)
+  local Grapple = get.Global(int,1706028+1+(iVar0[selected_player]*53)+5+3)
+  local Uniform = get.Global(int,1706028+1+(iVar0[selected_player]*53)+5+4)
+  local Boltcut = get.Global(int,1706028+1+(iVar0[selected_player]*53)+5+5)
+  local DisruptWep = get.Global(int,1706028+1+iVar0[selected_player]*53+10+1)
+  local DisruptArm = get.Global(int,1706028+1+iVar0[selected_player]*53+10+2)
+  local DisruptHel = get.Global(int,1706028+1+iVar0[selected_player]*53+10+3)
+  local Entrance = get.Global(int,1706028+1+iVar0[selected_player]*53+5+2)
+  local MissionStatus = get.Global(int,1706028+1+iVar0[selected_player]*53+2)
+  local MissionProgress = get.Global(int,1706028+1+iVar0[selected_player]*53+1)
+  local TotalPOI = get.Global(int,1706028+1+iVar0[selected_player]*53+5)
+  local PrimaryTarget = "NULL"
+  local TotalLootCash = LootIsLandCash(selected_player)
+  local TotalLootWeed = LootIsLandWeed(selected_player)
+  local TotalLootCoke = LootIsLandCoke(selected_player)
+  local TotalLootGold = LootIsLandGold(selected_player)
+  local CompoundLootCash = LootCompoundCash(selected_player)
+  local CompoundLootWeed = LootCompoundWeed(selected_player)
+  local CompoundLootCoke = LootCompoundCoke(selected_player)
+  local CompoundLootGold = LootCompoundGold(selected_player)
   
+  if MissionStatus == 65535 then
+    MissionStatus = "ID ["..MissionStatus.."] Complete"
+  else
+    MissionStatus = "ID ["..MissionStatus.."] Incomplete"
+  end
+
+  if DisruptWep == 1 and DisruptArm == 1 and DisruptHel == 1 then
+    DisruptWep,DisruptArm,DisruptHel = "Level 1","Level 1","Level 1"
+  elseif DisruptWep == 2 and DisruptArm == 2 and DisruptHel == 2 then
+    DisruptWep,DisruptArm,DisruptHel = "Level 2","Level 2","Level 2"
+  elseif DisruptWep == 3 and DisruptArm == 3 and DisruptHel == 3 then
+    DisruptWep,DisruptArm,DisruptHel = "Level 3","Level 3","Level 3"
+  else
+    DisruptWep,DisruptArm,DisruptHel = "None","None","None"
+  end
+
+  switch(CayoWeapon,{
+    [0] = function()
+      CayoWeapon = "Not Selected"
+    end,
+    [1] = function()
+      CayoWeapon = "Aggressor"
+    end,
+    [2] = function()
+      CayoWeapon = "Conspirator"
+    end,
+    [3] = function()
+      CayoWeapon = "Crackshot"
+    end,
+    [4] = function()
+      CayoWeapon = "Saboteur"
+    end,
+    [5] = function()
+      CayoWeapon = "Marksman"
+    end,
+  })
+
+  switch(PrimaryLoot,{
+    [0] = function()
+      PrimaryTarget = "Tequila"
+    end,
+    [1] = function()
+      PrimaryTarget = "Ruby Necklace"
+    end,
+    [2] = function()
+      PrimaryTarget = "Bearer Bonds"
+    end,
+    [3] = function()
+      PrimaryTarget = "Pink Diamond"
+    end,
+    [4] = function()
+      PrimaryTarget = "Madrazo Files"
+    end,
+    [5] = function()
+      PrimaryTarget = "Sapphire Panther"
+    end,
+  })
   
-  --[[
-    local MethLocation = get.Global(int,1590682+1+(Plev_arr[selected_player]*883)+274+183+1+(0*12))
-  local WeedLocation = get.Global(int,1590682+1+(Plev_arr[selected_player]*883)+274+183+1+(1*12))
-  local CokeLocation = get.Global(int,1590682+1+(Plev_arr[selected_player]*883)+274+183+1+(2*12))
-  local CashLocation = get.Global(int,1590682+1+(Plev_arr[selected_player]*883)+274+183+1+(3*12))
-  local DocLocation = get.Global(int,1590682+1+(Plev_arr[selected_player]*883)+274+183+1+(4*12))
-  PlayerMoney.Text = string.format('Bank: $ %s | Cash: $ %s | Organization:%s',ListBanked,ListCash,ListOrgName)
-  PlayerDynamicIP.Text = string.format('IP : %s.%s.%s.%s:%s',IPR4,IPR3,IPR2,IPR1,PPort)
-  PlayerStaticIP.Text  = string.format('IP Lan : %s.%s.%s.%s:%s',IPRL4,IPRL3,IPRL2,IPRL1,PPort)
-  Player_Board_Status.Text = string.format('Board:%s | Key:%s | Duggan:%s',board_status,security_pass,duggan_level)
-]]
-
-
   if CurrentVehicle == nil then
     CurrentVehicle = "Not In Vehicle"
   end
@@ -1423,47 +1486,47 @@ function Player_List_Info()
   for i=0,4,1 do
     for k,v in pairs(tbl_BusinessLocations) do
       for k2,v2 in pairs(v) do
-        if get.Global(int,1590682+1+(Plev_arr[selected_player]*883)+274+183+1+(i*12))==1 and v2[1]==1 then
+        if get.Global(int,1590682+1+(iVar0[selected_player]*883)+274+183+1+(i*12))==1 and v2[1]==1 then
           MethLocation = "["..v2[1].."] "..v2[2]
-        elseif get.Global(int,1590682+1+(Plev_arr[selected_player]*883)+274+183+1+(i*12))==6 and v2[1]==6 then
+        elseif get.Global(int,1590682+1+(iVar0[selected_player]*883)+274+183+1+(i*12))==6 and v2[1]==6 then
           MethLocation = "["..v2[1].."] "..v2[2]
-        elseif get.Global(int,1590682+1+(Plev_arr[selected_player]*883)+274+183+1+(i*12))==11 and v2[1]==11 then
+        elseif get.Global(int,1590682+1+(iVar0[selected_player]*883)+274+183+1+(i*12))==11 and v2[1]==11 then
           MethLocation = "["..v2[1].."] "..v2[2]
-        elseif get.Global(int,1590682+1+(Plev_arr[selected_player]*883)+274+183+1+(i*12))==16 and v2[1]==16 then
+        elseif get.Global(int,1590682+1+(iVar0[selected_player]*883)+274+183+1+(i*12))==16 and v2[1]==16 then
           MethLocation = "["..v2[1].."] "..v2[2]
-        elseif get.Global(int,1590682+1+(Plev_arr[selected_player]*883)+274+183+1+(i*12))==2 and v2[1]==2 then
+        elseif get.Global(int,1590682+1+(iVar0[selected_player]*883)+274+183+1+(i*12))==2 and v2[1]==2 then
           WeedLocation = "["..v2[1].."] "..v2[2]
-        elseif get.Global(int,1590682+1+(Plev_arr[selected_player]*883)+274+183+1+(i*12))==7 and v2[1]==7 then
+        elseif get.Global(int,1590682+1+(iVar0[selected_player]*883)+274+183+1+(i*12))==7 and v2[1]==7 then
           WeedLocation = "["..v2[1].."] "..v2[2]
-        elseif get.Global(int,1590682+1+(Plev_arr[selected_player]*883)+274+183+1+(i*12))==12 and v2[1]==12 then
+        elseif get.Global(int,1590682+1+(iVar0[selected_player]*883)+274+183+1+(i*12))==12 and v2[1]==12 then
           WeedLocation = "["..v2[1].."] "..v2[2]
-        elseif get.Global(int,1590682+1+(Plev_arr[selected_player]*883)+274+183+1+(i*12))==17 and v2[1]==17 then
+        elseif get.Global(int,1590682+1+(iVar0[selected_player]*883)+274+183+1+(i*12))==17 and v2[1]==17 then
           WeedLocation = "["..v2[1].."] "..v2[2]
-        elseif get.Global(int,1590682+1+(Plev_arr[selected_player]*883)+274+183+1+(i*12))==3 and v2[1]==3 then
+        elseif get.Global(int,1590682+1+(iVar0[selected_player]*883)+274+183+1+(i*12))==3 and v2[1]==3 then
           CokeLocation = "["..v2[1].."] "..v2[2]
-        elseif get.Global(int,1590682+1+(Plev_arr[selected_player]*883)+274+183+1+(i*12))==8 and v2[1]==8 then
+        elseif get.Global(int,1590682+1+(iVar0[selected_player]*883)+274+183+1+(i*12))==8 and v2[1]==8 then
           CokeLocation = "["..v2[1].."] "..v2[2]
-        elseif get.Global(int,1590682+1+(Plev_arr[selected_player]*883)+274+183+1+(i*12))==13 and v2[1]==13 then
+        elseif get.Global(int,1590682+1+(iVar0[selected_player]*883)+274+183+1+(i*12))==13 and v2[1]==13 then
           CokeLocation = "["..v2[1].."] "..v2[2]
-        elseif get.Global(int,1590682+1+(Plev_arr[selected_player]*883)+274+183+1+(i*12))==18 and v2[1]==18 then
+        elseif get.Global(int,1590682+1+(iVar0[selected_player]*883)+274+183+1+(i*12))==18 and v2[1]==18 then
           CokeLocation = "["..v2[1].."] "..v2[2]
-        elseif get.Global(int,1590682+1+(Plev_arr[selected_player]*883)+274+183+1+(i*12))==4 and v2[1]==4 then
+        elseif get.Global(int,1590682+1+(iVar0[selected_player]*883)+274+183+1+(i*12))==4 and v2[1]==4 then
           CashLocation = "["..v2[1].."] "..v2[2]
-        elseif get.Global(int,1590682+1+(Plev_arr[selected_player]*883)+274+183+1+(i*12))==9 and v2[1]==9 then
+        elseif get.Global(int,1590682+1+(iVar0[selected_player]*883)+274+183+1+(i*12))==9 and v2[1]==9 then
           CashLocation = "["..v2[1].."] "..v2[2]
-        elseif get.Global(int,1590682+1+(Plev_arr[selected_player]*883)+274+183+1+(i*12))==14 and v2[1]==14 then
+        elseif get.Global(int,1590682+1+(iVar0[selected_player]*883)+274+183+1+(i*12))==14 and v2[1]==14 then
           CashLocation = "["..v2[1].."] "..v2[2]
-        elseif get.Global(int,1590682+1+(Plev_arr[selected_player]*883)+274+183+1+(i*12))==19 and v2[1]==19 then
+        elseif get.Global(int,1590682+1+(iVar0[selected_player]*883)+274+183+1+(i*12))==19 and v2[1]==19 then
           CashLocation = "["..v2[1].."] "..v2[2]
-        elseif get.Global(int,1590682+1+(Plev_arr[selected_player]*883)+274+183+1+(i*12))==5 and v2[1]==5 then
+        elseif get.Global(int,1590682+1+(iVar0[selected_player]*883)+274+183+1+(i*12))==5 and v2[1]==5 then
           DocLocation = "["..v2[1].."] "..v2[2]
-        elseif get.Global(int,1590682+1+(Plev_arr[selected_player]*883)+274+183+1+(i*12))==10 and v2[1]==10 then
+        elseif get.Global(int,1590682+1+(iVar0[selected_player]*883)+274+183+1+(i*12))==10 and v2[1]==10 then
           DocLocation = "["..v2[1].."] "..v2[2]
-        elseif get.Global(int,1590682+1+(Plev_arr[selected_player]*883)+274+183+1+(i*12))==15 and v2[1]==15 then
+        elseif get.Global(int,1590682+1+(iVar0[selected_player]*883)+274+183+1+(i*12))==15 and v2[1]==15 then
           DocLocation = "["..v2[1].."] "..v2[2]
-        elseif get.Global(int,1590682+1+(Plev_arr[selected_player]*883)+274+183+1+(i*12))==20 and v2[1]==20 then
+        elseif get.Global(int,1590682+1+(iVar0[selected_player]*883)+274+183+1+(i*12))==20 and v2[1]==20 then
           DocLocation = "["..v2[1].."] "..v2[2]
-        elseif get.Global(int,1590682+1+(Plev_arr[selected_player]*883)+274+183+1+(i*12))==0 and v2[1]==nil then
+        elseif get.Global(int,1590682+1+(iVar0[selected_player]*883)+274+183+1+(i*12))==0 and v2[1]==nil then
           MethLocation,WeedLocation,CokeLocation,CashLocation,DocLocation = "Not Have","Not Have","Not Have","Not Have","Not Have"
         end
       end
@@ -1658,12 +1721,14 @@ HP : %d/%d
 Armor : %d/50
 Wanted Level : %s
 Total Kill : %s  Total Death : %s Ratio : %s
+=========BUSINESS LOCATION=========
 Bunker Location : ID %s
 Meth Location : ID %s
 Weed Location : ID %s
 Cocain Location : ID %s
 Cash Location : ID %s
 Document Location : ID %s
+=========CASINO HEIST STAT==========
 Casino Heist Primary Prep : %s
 Casino Heist Gunman : %s
 Casino Heist Driver : %s
@@ -1673,13 +1738,49 @@ Casino Heist Target : %s
 Security Pass Level : %s
 Disrupted Level : %s
 Casino Heist Optional Prep : %s
+=============Match Status===========
 Race Won : %s
 Race Lost : %s
 Death Match Win : %s
 Death Match Lost : %s
+==========CAYO PERICO HEIST=========
+Mission Status : %s
+Mission Progress : %s
+Point Of Interest : %s
+Primary Target : %s
+Cayo Perico Weapon :%s
+Boltcut : %s
+Grapple : %s
+Uniform : %s
+Entrance : %s
+ID[%s]
+Loot Cash : %s/24
+ID[%s]
+Compound Cash : %s/8
+ID[%s]
+Loot Weed : %s/24
+ID[%s]
+Compound Weed : %s/8
+ID[%s]
+Loot Coke : %s/24
+ID[%s]
+Compound Coke : %s/8
+ID[%s]
+Loot Gold : %s/24
+ID[%s]
+Compound  Gold : %s/8
+Loot Paint : ID[%s]
+Value Cash : $%s
+Value Weed : $%s
+Value Coke : $%s
+Value Gold : $%s
+Value Paint : $%s
 ]],IPR4,IPR3,IPR2,IPR1,PPort,IPRL4,IPRL3,IPRL2,IPRL1,PPort,PlayerName,SCID,PLG,PVG,JoinStatus,TransitionStatus,Ragdoll,Pradars,PReveal,CurrentVehicleM,CurrentVehicle,CurWep,ListLevels,ListBanked,ListCash,ListOrgName,
 PTotalEXP,PGlobalEXP,PlayerLevelState,CurLevelStatus,IsHost,HP,Max_HP,Armor,ListWanted,TotalKill,TotalDeath,KDRatio,BunkerLocation,MethLocation,WeedLocation,CokeLocation,CashLocation,DocLocation,board_status,selected_gunman,selected_driver,
-selected_hacker,selected_approach,selected_target,security_pass,duggan_level,biset0,RaceWon,RaceLost,DMWin,DMlost)
+selected_hacker,selected_approach,selected_target,security_pass,duggan_level,biset0,RaceWon,RaceLost,DMWin,DMlost,
+MissionStatus,MissionProgress,TotalPOI,PrimaryTarget,CayoWeapon,Boltcut,Grapple,Uniform,Entrance,SecondaryLootCashI,
+TotalLootCash,SecondaryLootCashC,CompoundLootCash,SecondaryLootWeed,TotalLootWeed,SecondaryLootWeedC,CompoundLootWeed,SecondaryLootCoke,TotalLootCoke,SecondaryLootCokeC,CompoundLootCoke,
+SecondaryLootGoldI,TotalLootGold,SecondaryLootGoldC,CompoundLootGold,SecondaryLootPaint,ValueLootCash,ValueLootWeed,ValueLootCoke,ValueLootGold,ValueLootPaint)
 end
 
 function Playerlist_Manipulator(sender)
@@ -1762,10 +1863,10 @@ function Playerlist_Manipulator(sender)
             break
           return true
           end
-          script.yield();
+          Async();
         end
       end
-      start_yield(hwal,1000)
+      AsyncStart(hwal,1000)
     end,
     [9] = function()
       PlaylistTab.HashIndicator.Text = 'Spawn Object Loop To False'.." ["..selected_player.."]"..get.String(CPLAYER_NAME[selected_player])
@@ -2783,8 +2884,9 @@ function StatEditingOption()
   end
   ExecuteThread(start);
   elseif index == 4 then
-    set.global(int,2551832+3269,joaat(tostring(Protection.joaat.Text)))
-    set.global(int,2551832+3270,joaat(tostring(Protection.joaat.Text)))
+      set.global(int,2551832+3269,GAMEPLAY.GET_HASH_KEY(Protection.joaat.Text))
+      set.global(int,2551832+3270,GAMEPLAY.GET_HASH_KEY(Protection.joaat.Text))
+      set.global(int,1377236+1136,15)      
      StatTab.CEButton9.Caption = 'Get Value'
   elseif index == 5 then
      StatTab.CEButton9.Caption = 'Import Int'
@@ -2797,17 +2899,20 @@ end
 
 function ResetAllHeistCooldown()
   local MPX = get.Global(int,1312763)
-  if STATS.STAT_GET_INT("MP"..MPX.."_H3_COMPLETEDPOSIX")>0 then
-    STATS.STAT_SET_INT("MP"..MPX.."_H3_COMPLETEDPOSIX",-1)
-  elseif STATS.STAT_GET_INT("MP"..MPX.."H4_COOLDOWN")>0 then
-    STATS.STAT_SET_INT("MP"..MPX.."H4_COOLDOWN",-1)
-  elseif STATS.STAT_GET_INT("MP"..MPX.."H4_COOLDOWN_HARD")>0 then
-    STATS.STAT_SET_INT("MP"..MPX.."H4_COOLDOWN_HARD",-1)
-  elseif STATS.STAT_GET_INT("MPPLY_H4_COOLDOWN")>0 then
-    STATS.STAT_SET_INT("MPPLY_H4_COOLDOWN",-1)
-  elseif STATS.STAT_GET_INT("MPPLY_H3_COOLDOWN")>0 then
-    STATS.STAT_SET_INT("MPPLY_H3_COOLDOWN",-1)
-  end
+  local cooldown_stat = {
+    "MP"..MPX.."_H3_COMPLETEDPOSIX",
+    "MP"..MPX.."_H4_COOLDOWN",
+    "MP"..MPX.."_H4_COOLDOWN_HARD",
+    "MPPLY_H4_COOLDOWN",
+    "MPPLY_H3_COOLDOWN"
+  }
+  local sync = Asynchronous(function()
+    for k,v in pairs(cooldown_stat) do
+      if STATS.STAT_GET_INT(v) > 0 then STATS.STAT_SET_INT(v,-1) end
+      Async()
+    end
+  end)
+  AsyncStart(sync,500)
 end
 
 explosive_list = 
@@ -3015,7 +3120,7 @@ end
 function LocalAddress()
   local id = combobox_getItemIndex(StatTab.LocalType);
   local id2 = combobox_getItemIndex(StatTab.LocalScriptNames);
-  AddressEditor(Local_Type[id],"LA("..tostring(StatTab.LocalEditor.Text)..",".."'"..LocalScriptList[id2]..'_ptr'.."'"..")")
+  AddressEditor(Local_Type[id],"LA("..tostring(StatTab.LocalEditor.Text)..",".."'"..LocalScriptList[id2].."'"..")")
   LocalReader()
 end
 
@@ -3334,7 +3439,7 @@ end
 function VehicleResetCooldown()
   if STATS.STAT_GET_INT('MPPLY_VEHICLE_SELL_TIME')>0 then 
     STATS.STAT_SET_INT('MPPLY_VEHICLE_SELL_TIME',0)
-    script.yield();
+    Async();
     STATS.STAT_SET_INT('MPPLY_NUM_CARS_SOLD_TODAY',0)
   end
 end
@@ -3503,21 +3608,19 @@ local function local_script_handler()
   for k,v in pairs(LocalScriptList) do
     script_list_name = v
     SCRIPT.REQUEST_SCRIPT(v)
-    script.yield();
+    Async();
   end
 end
 -----------------------------------------------------NON STOP LOOP----------------------------------------------------
 TRY_CLAUSE {
   function()
-    local start = script.create(function()
+    local start = Asynchronous(function()
       while (true) do
-        SpectatorCheck()
-        AntiSpectate()
         local_script_handler()
-        script.yield();
+        Async();
       end
     end)
-    start_yield(start,5);
+    AsyncStart(start,5);
   end,
   EXCEPT_CLAUSE {
     function(start)
@@ -3525,6 +3628,25 @@ TRY_CLAUSE {
     end
  }
 }
+
+local function LoopForever()
+  local start = Asynchronous(function()
+      while (true) do
+          local id = VehicleTab.S_WheelType.itemIndex-1;
+          set.global(int,2462286+27+69,id)
+          WheelSelection()
+          SpawnerPrimaryColour()
+          SpawnerXenon()
+          returningValue()
+          frameFlagsOnTick(t)
+          SpectatorCheck()
+          AntiSpectate()
+      Async()
+      end
+  end)
+  AsyncStart(start,1000)
+end
+LoopForever()
 
 -----------------------------------------------------NON STOP LOOP END-------------------------------------------------
 

@@ -1,42 +1,26 @@
 require("joaat")
 require("CPH")
-
-ReportStat = {
-  {'MPPLY_EXPLOITS',1},
-  {'MPPLY_GRIEFING',1},
-  {'MPPLY_GAME_EXPLOITS',1},
-  {'MPPLY_VC_ANNOYINGME',1},
-  {'MPPLY_VC_HATE',1},
-  {'MPPLY_TC_ANNOYINGME',1},
-  {'MPPLY_TC_HATE',1},
-  {'MPPLY_OFFENSIVE_LANGUAGE',1},
-  {'MPPLY_OFFENSIVE_TAGPLATE',1},
-  {'MPPLY_OFFENSIVE_UGC',1},
-  {'MPPLY_BAD_CREW_NAME',1},
-  {'MPPLY_BAD_CREW_MOTTO',1},
-  {'MPPLY_BAD_CREW_STATUS',1},
-  {'MPPLY_BAD_CREW_EMBLEM',1},
-}
-
+require("instant_heist_array")
 
 STATS = {
 	STAT_GET_INT = function(joaat_hash) --Return value to function
     set.global(int,2551832+3269,GAMEPLAY.GET_HASH_KEY(joaat_hash))
     set.global(int,2551832+3270,GAMEPLAY.GET_HASH_KEY(joaat_hash))
-    return get.Global(int,2551832-12)
-end,
+    set.global(int,1377236+1136,15)
+    return get.Global(int,2551544+276)
+end;
 
 STAT_GET_BOOL = function(joaat_hash)
   set.global(int,2587834+617,GAMEPLAY.GET_HASH_KEY(joaat_hash))
   set.global(int,2587834+618,GAMEPLAY.GET_HASH_KEY(joaat_hash))
   return get.Bool(STAT_BOOL)
-end,
+end;
 
 STAT_SET_INT = function(joaat_hash,value) --Set Stat From Hash Key As Int
   set.global(int,1388013+4,GAMEPLAY.GET_HASH_KEY(joaat_hash))
   set.global(int,939452+5526,value)
-  set.global(int,1377236+1139,-1)
-end,
+  set.global(int,1377236+1139,3)
+end;
 
 STAT_SET_BOOL = function(joaat_hash,bool) --Set Stat From Hash Key As Bool
   local start = function()
@@ -46,7 +30,7 @@ STAT_SET_BOOL = function(joaat_hash,bool) --Set Stat From Hash Key As Bool
     set.bool(STAT_BOOL,bool)
   end
   ExecuteThread(start);
-end,
+end;
 
 STAT_LOOP_INT = function(ArrayName) --Set Stat Group In Loop
   local start = function()
@@ -58,11 +42,11 @@ STAT_LOOP_INT = function(ArrayName) --Set Stat Group In Loop
       Protection_ImportView.Text =  string.format("Apply: %s/%s",i,c)
       Protection_joaat.Text = string.format("%s",v[1])
       Protection_stat_value.Text = string.format("%s",v[2])
-      SYSTEM.WAIT(800)
+      SYSTEM.WAIT(500)
     end -- Coroutine has completed, it will be marked as dead after this print..
   end
   ExecuteThread(start)
-end,
+end;
 
 
 STAT_LOOP_BOOL = function(ArrayName) --Set Stat Group In Loop
@@ -79,18 +63,7 @@ STAT_LOOP_BOOL = function(ArrayName) --Set Stat Group In Loop
     end
   end
   ExecuteThread(start);
-end,
-
-BLOCK_REPORTS = function(ArrayName) --To Clean Report Automatically
-  for i,v in pairs(ArrayName)
-  do
-    if STATS.STAT_GET_INT(v[1]) >= v[2] then 
-      local name = readString(CPlayerInfo + 0x84)
-      NotificationPopUpMapRockstar("Kepada :"..name,[[~a~ ~s~Anda Telah Direport]])--STATS.STAT_SET_INT(v[1],0)
-    end
-    script.yield();
-  end
-end,
+end;
 
 STAT_LOADER_BOOL = function ()
   local tbl_Stats={}
@@ -115,7 +88,7 @@ STAT_LOADER_BOOL = function ()
   ::continue::
   fs:close();
   return tbl_Stats
-end,
+end;
 
 RUN_LOADER_BOOL = function ()
   local start = function()
@@ -136,7 +109,7 @@ RUN_LOADER_BOOL = function ()
     ::continue::
   end
   ExecuteThread(start);
-end,
+end;
 
 STAT_LOADER_INT = function ()
   local tbl_Stats={}
@@ -161,7 +134,7 @@ STAT_LOADER_INT = function ()
   ::continue::
   fs:close();
   return tbl_Stats
-end,
+end;
 
 RUN_LOADER_INT = function ()
   local start = function()
@@ -182,7 +155,7 @@ RUN_LOADER_INT = function ()
     ::continue::
   end
   ExecuteThread(start);
-end,
+end;
 
 
 };
@@ -202,7 +175,7 @@ SCRIPT = {
         Protection.RunningStatus.Caption = 'Running';
         return TRUE;
       end
-  end,
+  end;
 
   HAS_SCRIPT_LOADED = function(Scriptname)
     local get_script = GetLocalScript(Scriptname)
@@ -211,7 +184,7 @@ SCRIPT = {
     else
       return true
     end
-  end,
+  end;
 
   DOES_SCRIPT_EXIST = function(Scriptname)
     if (not get.Memory(Scriptname.."_ptr")) then
@@ -219,7 +192,7 @@ SCRIPT = {
     else
       return true
     end
-  end,
+  end;
 
   SET_SCRIPT_AS_NO_LONGER_NEEDED = function (Scriptname)
     local script_address = GetLocalScript(Scriptname)
@@ -228,7 +201,7 @@ SCRIPT = {
     else
       unregisterSymbol(Scriptname.."_ptr")
     end
-  end,
+  end;
 
 
 }
@@ -238,7 +211,7 @@ PLAYER =
 	SET_PLAYER_WANTED_LEVEL = function (value)
 		set.int(PLAYER_WANTED_LEVEL, value)
     return value
-	end,
+	end;
 
 	SET_PLAYER_INVINCIBLE = function (Trigger)
   local Activation = Trigger
@@ -260,7 +233,7 @@ PLAYER =
     set.float(PLAYER_HP, 328)
     set.float(PLAYER_ARMOR, 50)
     return Activation
-	end,
+	end;
 
   SET_PLAYER_INVISIBLE = function (Trigger)
     local Activation = Trigger
@@ -271,7 +244,7 @@ PLAYER =
       elseif (1 == get.Bool(CPlayer + 0x52, 1, false)) and (Activation == false) then set.int(CVehicle + 0x2C,turn_off)
     end
     return Activation
-  end,
+  end;
 
   SET_PLAYER_NO_RAGDOLL = function (Boolean)
     local Trigger = Boolean
@@ -279,7 +252,7 @@ PLAYER =
     elseif Trigger==false then set.int(CPlayer + 0x10B8,32)
     end
     return Trigger
-  end,
+  end;
 
   GODMODE_RESISTANCE = function (Activation)
     local Trigger = Activation
@@ -287,14 +260,14 @@ PLAYER =
     elseif Trigger == false then set.float(CPlayerInfo + 0xCAC,1)
     end
     return Trigger
-  end,
+  end;
 
   PLAYER_PED_ID = function()
     local x = readFloat(PLAYER_CORDX)
     local y = readFloat(PLAYER_CORDY)
     local z = readFloat(PLAYER_CORDZ)
     return x,y,z
-  end,
+  end;
 
   --PLAYER.PLAYER_INDEX_ID(selected_player)
   PLAYER_INDEX_ID = function (selected_player)
@@ -302,14 +275,14 @@ PLAYER =
     local y = get.Float(target_y[selected_player])
     local z = get.Float(target_z[selected_player])
     return x,y,z
-  end,
+  end;
 
   SET_PLAYER_MAX_HEALTH = function (health)
     set.int(CPlayer + 0x2A0,health)
   end,
   PLAYER_ID = function()
     return PLAYER_ID()
-  end,
+  end;
 }
 
 VEHICLE =
@@ -319,14 +292,14 @@ VEHICLE =
     set.float(CVehicle + VEH_HP2, FLOAT)
 	  set.float(CVehicle + VEH_HP3, FLOAT)
 	  set.float(CVehicle + HP, FLOAT)
-   end,
+   end;
 
    EXPLODE_LAST_VEHICLE = function()
    	set.float(CVehicle + VEH_HP1, -999)
 	  set.float(CVehicle + VEH_HP2, -999)
 	  set.float(CVehicle + VEH_HP3, -999)
 	  set.float(CVehicle + HP, -999)
-   end,
+   end;
    IS_VEHICLE_MODEL = function(hash)
       local Hash = get.Ptr(CVehicle + 0x20)
       if get.Int(Hash + 0x18) == hash then
@@ -334,7 +307,7 @@ VEHICLE =
       else 
         return false
       end
-   end,
+   end;
 
   CREATE_VEHICLE = function (Dist,cord_x,cord_y,cord_z,Heading_X,Heading_Y,pegasus,Hash)
     local spawner_z = get.Float(cord_z)      
@@ -373,7 +346,7 @@ VEHICLE =
     set.global(int,2462286+27+27,1)
     --set.global(int,2462286+27+69,8) ---Wheel type
     --set.global(int,2462286+27+33,217) --Wheel Selection
-  end,
+  end;
   
   _SET_VEHICLE_UNK_DAMAGE_MULTIPLIER = function(Vehicle,Float)
     local damage = get.Ptr(CVehicle + 0x938)
@@ -386,7 +359,7 @@ VEHICLE =
     else 
       return false
     end
-  end,
+  end;
 
     MODIFY_VEHICLE_TOP_SPEED = function(Value)
         Value=tonumber(Value)
@@ -416,7 +389,7 @@ VEHICLE =
         if fInitialDriveMaxFlatVel==nil or fInitialDriveMaxFlatVel==0.0 then return end
         fInitialDriveMaxFlatVel=tonumber(string.format('%.5f',fInitialDriveMaxFlatVel))
         writeFloat('[[[WorldPTR]+8]+D30]+8A8',fInitialDriveMaxFlatVel)
-    end,
+    end;
 }
 
 FORM =
@@ -432,140 +405,127 @@ ADD_LOCAL = function (formname,arrayname,Item1)
     formname.items.add(string.format('[%i]%s :%s',n,l,ScriptStatus))
   end
   formname.ItemIndex=0
-end,
+end;
 
 ADD_STD = function (formname,arrayname)
   formname.Items.clear()
   for k,v in pairs(arrayname) do formname.items.add(v) end
   formname.ItemIndex=0
-end,
+end;
 
 ADD_STD_2 = function (ObjeName,Arrayname,Item1)
   ObjeName.Items.clear()
   ObjeName.items.add(Item1)
   for k,v in pairs(Arrayname) do ObjeName.items.add(v) end
   ObjeName.ItemIndex=0
-end,
+end;
 
 ADD_LOOP = function (ObjeName,Arrayname,iVar)
   ObjeName.Items.clear()
   for k,v in pairs(Arrayname) do ObjeName.items.add(v[iVar]) end
   ObjeName.ItemIndex=0
-end,
+end;
 
 ADD_LOOP_2 = function (ObjeName,Arrayname,iVar,Item1)
   ObjeName.Items.clear()
   ObjeName.items.add(Item1)
   for k,v in pairs(Arrayname) do ObjeName.items.add(v[iVar]) end
   ObjeName.ItemIndex=0
-end,
+end;
 
 ADD_LOOP_3 = function (ObjeName,Arrayname,Item1)
   ObjeName.Items.clear()
   ObjeName.items.add(Item1)
   for k,v in pairs(Arrayname) do ObjeName.items.add(string.format('%s (%s)',v[2],v[4])) end
   ObjeName.ItemIndex=0
-end,
+end;
 
 ADD_ADDRESS = function(Address,Description)
   local list = getAddressList()
   local rec = list.createMemoryRecord()
   rec.setAddress(Address)
   rec.setDescription(Description)
-end,
+end;
 
 }
-
-function start_yield(thread,interval)
-  local timer     = createTimer();
-    timer.Interval  = interval; 
-    timer.OnTimer   = function(t) 
-      local status = script.status(thread);
-      if (thread ~= nil and status ~= 'dead') then
-        script.resume(thread);
-      else
-          t.destroy();        
-      end
-    end
-end
     
 THREAD = {
 
 func_1 = function(funcName,boolean,interval)
 local isRunning = boolean;
-local func = script.create(function()
+local func = Asynchronous(function()
     while (isRunning == true) do
         funcName()
         if isRunning == false then
           isRunning = false
           break
         end
-        script.yield();
+        Async();
     end
 end);
-start_yield(func,interval)
-end,
+AsyncStart(func,interval)
+end;
 
 YIELD = function(funcName,Trigger,Value,interval)
-yield = Trigger
-local yielder = script.create(function()
-    while (yield == true) do
+yield_looper = Trigger
+local yielder = Asynchronous(function()
+    while (yield_looper == true) do
         funcName(Value)
-        if yield == false then
+        if yield_looper == false then
           funcName(Value)
-          yield = false
+          yield_looper = false
           break
         end
-        script.yield();
+        Async();
     end
-end);
-start_yield(yielder,interval)
-end,
+end)
+AsyncStart(yielder,interval)
+end;
 
 YIELD2 = function(funcName,Trigger,Value1,Value2,interval)
 yield2 = Trigger
-local yielder2 = script.create(function()
+local yielder2 = Asynchronous(function()
     while (yield2 == true) do
         funcName(Value1,Value2)
         if yield2 == false then
           yield2 = false
           break
         end
-        script.yield();
+        Async();
     end
-end);
-start_yield(yielder2,interval)
-end,
+end)
+AsyncStart(yielder2,interval)
+end;
 
 LOOPING = function(funcName,Trigger,Value,interval)
   loop_running = Trigger
-  local looping = script.create(function()
+  local looping = Asynchronous(function()
       while (loop_running == true) do
           funcName(Value)
           if loop_running == false then
             loop_running = false
             break
           end
-          script.yield();
+          Async();
       end
-  end);
-    start_yield(looping,interval)
-  end,
+  end)
+    AsyncStart(looping,interval)
+  end;
 
   FUNC_1 = function(funcName,Trigger,interval)
     loop_FUNC_1 = Trigger
-    local co1 = script.create(function()
+    local co1 = Asynchronous(function()
         while (loop_FUNC_1 == true) do
             funcName()
             if loop_FUNC_1 == false then
               loop_FUNC_1 = false
               break
             end
-            script.yield();
+            Async();
         end
-    end);
-    start_yield(co1,interval)
-end,
+    end)
+    AsyncStart(co1,interval)
+end;
 
 NATIVE_LOOP = function (funcName,Boolean,Interval)
     LoopStarter = Boolean
@@ -581,7 +541,7 @@ NATIVE_LOOP = function (funcName,Boolean,Interval)
       end
   end
   ExecuteThread(LoopRunner);
-end,
+end;
 
 NATIVE_LOOP_2 = function (funcName,Value,Boolean,Interval)
   NATIVE_LOOP_2_Starter = Boolean
@@ -597,7 +557,7 @@ NATIVE_LOOP_2 = function (funcName,Value,Boolean,Interval)
     end
 end
 ExecuteThread(NewThread);
-end,
+end;
 
 SPECIAL_NATIVE = function(func,Value,Boolean,Interval)
   SPECIAL_Starter = Boolean
@@ -612,30 +572,30 @@ SPECIAL_NATIVE = function(func,Value,Boolean,Interval)
       end
     end
 end
-ExecuteThread(ThreadStart);
+ExecuteThread(ThreadStart)
 end;
 
 SPECIAL_YIELD = function(funcName,Value,Trigger,interval)
   loop_s = Trigger
-  local co1 = script.create(function()
+  local co1 = Asynchronous(function()
       while (loop_s == true) do
           funcName(Value)
           if loop_s == false then
             loop_s = false
             break
           end
-          script.yield();
+          Async();
       end
   end);
-  start_yield(co1,interval)
-end,
+  AsyncStart(co1,interval)
+end;
 };
 
 SYSTEM = {
   WAIT = function (milisecond)
     local ntime = os.clock() + milisecond/1000
     repeat until os.clock() > ntime
-  end
+  end;
 }
 
 ENTITY = {}

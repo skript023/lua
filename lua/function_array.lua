@@ -155,16 +155,14 @@ function GAMEPLAY.SET_EXPLOSIVE_AMMO_THIS_FRAME(Player)
     if Player then set.int(CPlayerInfo + 0x1F8,2048) end
 end
 ]]
+
 function frameFlagsOnTick(t)
-    local NewThread = function()
-        local SetFrame = 0
-        if g_superJump then SetFrame = SetFrame + 16384 end
-        if g_flamingFists then SetFrame = SetFrame + 8192 end
-        if g_flamingAmmo then SetFrame = SetFrame + 4096 end
-        if g_explosiveAmmo then SetFrame = SetFrame + 2048 end
-        set.int(CPlayerInfo + 0x1F8,SetFrame)
-    end
-    ExecuteThread(NewThread)
+    local SetFrame = 0
+    if g_superJump then SetFrame = 1 << 14 end
+    if g_flamingFists then SetFrame = 1 << 13 end
+    if g_flamingAmmo then SetFrame = 1 << 12 end
+    if g_explosiveAmmo then SetFrame = 1 << 11 end
+    set.int(CPlayerInfo + 0x1F8,SetFrame)
 end
 if g_frameTimer == nil then
     g_frameTimer = createTimer(nil, false)
@@ -264,11 +262,32 @@ function SpecialCargo(amount)
         local REQ = get.Int(REQ_DEL_CARGO)
         set.global(int,262145+15337,amount)
         set.int(TIMER_CARGO,180000)
-        if (REQ ~= 3) or (REQ ~= 4) or (REQ ~= 5) or (REQ ~= 6) or (REQ ~= 7) or (REQ ~= 8) or (REQ ~= 9) 
-            or (REQ ~= 10) or (REQ ~= 11) or (REQ ~= 12) or (REQ ~= 13) or (REQ ~= 14)  or (REQ ~= 15) then
+        if (REQ == 1) then
+            set.int(DEL_CARGO,1)
+        elseif (REQ == 1) and get.Int(DEL_CARGO) == 1 then
+            set.int(DEL_CARGO,0)
+            SYSTEM.WAIT(100)
+            set.int(DEL_CARGO,1)
+        elseif (REQ == 3) then 
+            set.int(DEL_CARGO,3)
+        elseif (REQ == 3) and get.Int(DEL_CARGO) == 3 then
+            set.int(DEL_CARGO,0)
+            SYSTEM.WAIT(100)
+            set.int(DEL_CARGO,1)
+        elseif (REQ == 10) then 
+            set.int(DEL_CARGO,10)
+        elseif (REQ == 10) and get.Int(DEL_CARGO) == 10 then
+            set.int(DEL_CARGO,0)
+            SYSTEM.WAIT(100)
+            set.int(DEL_CARGO,1)
+        elseif(REQ == 15) then
+            set.int(DEL_CARGO,15)
+        elseif (REQ == 15) and get.Int(DEL_CARGO) == 15 then
+            set.int(DEL_CARGO,0)
+            SYSTEM.WAIT(100)
             set.int(DEL_CARGO,1)
         else
-            set.int(DEL_CARGO,REQ)
+            set.int(DEL_CARGO,1)
         end
         SYSTEM.WAIT(500)
         set.global(int,262145+15337,10000)
@@ -1214,9 +1233,9 @@ function blacklist_comparing()
                 LoadSession(10)
             end
             if JOIN_STATUS == 0 or JOIN_STATUS == 10 then goto atas end
-        script.yield();
+        Async();
         end
-    script.yield();
+    Async();
     end
 end
 
@@ -1307,79 +1326,96 @@ function SpectatorCheck()
 end
 
 function AntiSpectate()
-    local MissionLaunch = SCRIPT.HAS_SCRIPT_LOADED('fm_mission_controller')
-    local MissionLaunchNew = SCRIPT.HAS_SCRIPT_LOADED('fm_mission_controller_2020')
+    local MissionLaunch = SCRIPT.DOES_SCRIPT_EXIST('fm_mission_controller')
+    local MissionLaunchNew = SCRIPT.DOES_SCRIPT_EXIST('fm_mission_controller_2020')
     local TotalPlayer = NETWORK.NETWORK_GET_NUM_CONNECTED_PLAYERS()
     if (MissionLaunch == true) or (MissionLaunchNew == true) and TotalPlayer == 4 then
         if (TotalPlayer > 4) then print("CheckPlayerList") playSound(findTableFile('Alarm.wav')) end
     end
 end
 
-function CasinoHeistCrewRemove()
-    if SCRIPT.HAS_SCRIPT_LOADED('fm_mission_controller') == true then
-        set.global(int,1701666+1+(PLAYER.PLAYER_ID()*68)+18+14,6)
-        set.global(int,1701666+1+(PLAYER.PLAYER_ID()*68)+18+12,6)
-        set.global(int,1701666+1+(PLAYER.PLAYER_ID()*68)+18+10,6)
-    end
+function CasinoHeistCrewRemove(Executor)
+    local start = Asynchronous(function()
+        CrewRemoveLoop = Executor
+        while (CrewRemoveLoop == true) do
+            Async()
+            if SCRIPT.DOES_SCRIPT_EXIST('fm_mission_controller') == true then
+                set.global(int,1701666+1+(PLAYER.PLAYER_ID()*68)+18+14,6)
+                set.global(int,1701666+1+(PLAYER.PLAYER_ID()*68)+18+12,6)
+                set.global(int,1701666+1+(PLAYER.PLAYER_ID()*68)+18+10,6)
+            end
+            if CrewRemoveLoop == false then
+                break
+            end
+        end
+    end)
+    AsyncStart(start,1500)
 end
 
 function RemoveCrewCutToZero(Execution)
-    local Trigger = Execution
-    if Trigger == true then
-        set.global(int,262145+28099,0)
-        set.global(int,262145+28100,0)
-        set.global(int,262145+28101,0)
-        set.global(int,262145+28102,0)
-        set.global(int,262145+28103,0)
-        set.global(int,262145+28109,0)
-        set.global(int,262145+28110,0)
-        set.global(int,262145+28111,0)
-        set.global(int,262145+28112,0)
-        set.global(int,262145+28113,0)
-        set.global(int,262145+28104,0)
-        set.global(int,262145+28105,0)
-        set.global(int,262145+28106,0)
-        set.global(int,262145+28107,0)
-        set.global(int,262145+28108,0)
-        --set.global(int,262145+28073,0)
-        set.global(int,2452679+6480,85)
-        return true
-    elseif Trigger == false then
-        set.global(int,262145+28099,5)
-        set.global(int,262145+28100,9)
-        set.global(int,262145+28101,7)
-        set.global(int,262145+28102,10)
-        set.global(int,262145+28103,8)
-        set.global(int,262145+28109,3)
-        set.global(int,262145+28110,7)
-        set.global(int,262145+28111,5)
-        set.global(int,262145+28112,10)
-        set.global(int,262145+28113,9)
-        set.global(int,262145+28104,5)
-        set.global(int,262145+28105,7)
-        set.global(int,262145+28106,9)
-        set.global(int,262145+28107,6)
-        set.global(int,262145+28108,10)
-        return false
-    else
-        ShowMessage("Set Execution");
-    end
+    local start = Asynchronous(function()
+        CutToZero = Execution
+        while CutToZero == true do
+            Async()
+            set.global(int,262145+28099,0)
+            set.global(int,262145+28100,0)
+            set.global(int,262145+28101,0)
+            set.global(int,262145+28102,0)
+            set.global(int,262145+28103,0)
+            set.global(int,262145+28109,0)
+            set.global(int,262145+28110,0)
+            set.global(int,262145+28111,0)
+            set.global(int,262145+28112,0)
+            set.global(int,262145+28113,0)
+            set.global(int,262145+28104,0)
+            set.global(int,262145+28105,0)
+            set.global(int,262145+28106,0)
+            set.global(int,262145+28107,0)
+            set.global(int,262145+28108,0)
+            --set.global(int,262145+28073,0)
+            set.global(int,2452679+6480,85)
+            if CutToZero == false then
+                set.global(int,262145+28099,5)
+                set.global(int,262145+28100,9)
+                set.global(int,262145+28101,7)
+                set.global(int,262145+28102,10)
+                set.global(int,262145+28103,8)
+                set.global(int,262145+28109,3)
+                set.global(int,262145+28110,7)
+                set.global(int,262145+28111,5)
+                set.global(int,262145+28112,10)
+                set.global(int,262145+28113,9)
+                set.global(int,262145+28104,5)
+                set.global(int,262145+28105,7)
+                set.global(int,262145+28106,9)
+                set.global(int,262145+28107,6)
+                set.global(int,262145+28108,10)
+                break
+            end
+        end
+    end)
+    AsyncStart(start,1500)
 end
 
 function AntiAFKLobby(Execution)
-    local Trigger = Execution
-    if Trigger == true then
-        set.int(AFK1,MAX_INT)
-        set.int(AFK2,MAX_INT)
-        set.int(AFK3,MAX_INT)
-        set.int(AFK4,MAX_INT)
-    elseif Trigger == false then
-        set.int(AFK1,120000)
-        set.int(AFK2,300000)
-        set.int(AFK3,600000)
-        set.int(AFK4,900000)
-    end
-    return Trigger
+    local start = Asynchronous(function()
+        AntiAFKTrigger = Execution
+        while(AntiAFKTrigger == true) do
+            Async();
+            set.int(AFK1,MAX_INT)
+            set.int(AFK2,MAX_INT)
+            set.int(AFK3,MAX_INT)
+            set.int(AFK4,MAX_INT)
+            if AntiAFKTrigger == false then
+                set.int(AFK1,120000)
+                set.int(AFK2,300000)
+                set.int(AFK3,600000)
+                set.int(AFK4,900000)
+                break
+            end
+        end
+    end)
+    AsyncStart(start,1500);
 end
 
 function AutoHealthPack(targets)
@@ -1450,3 +1486,172 @@ function ToggleChat()
     end
 end
 
+function All_Mission_Lives(Executor)
+    local asynch = Asynchronous(function()
+        All_Live_Loop = Executor
+        while (All_Live_Loop == true) do
+            Async()
+            set.locals(int,'fm_mission_controller',25438+1322+1,9999)
+            if (All_Live_Loop == false) then
+                set.locals(int,'fm_mission_controller',25438+1322+1,1)
+                break
+            end
+        end
+    end)
+    AsyncStart(asynch,1000)
+end
+
+function CayoLives(Executor)
+    local asynch = Asynchronous(function()
+        CayoLiveLoop = Executor
+        while (CayoLiveLoop == true) do
+            Async()
+            Cayo.SL(40170+976+1,9999)
+            if (CayoLiveLoop == false) then
+                Cayo.SL(40170+976+1,1)
+                break
+            end
+        end
+    end)
+    AsyncStart(asynch,1000)
+ end
+
+ function SecondaryLootDalem(Loot,Location) --(1 << 8) - 1
+    local y = (Loot << Location) - 1
+    return y
+ end
+
+function BLOCK_REPORTS(Boolean) --To Clean Report Automatically
+    Report_Boolean = Boolean
+    local function ReportScan()
+        for i,v in pairs(ReportStat) do
+            MainTab.PatternScan.Text = string.format('%s : %s',v[1],STATS.STAT_GET_INT(v[1]))
+            if STATS.STAT_GET_INT(v[1]) >= v[2] then 
+                local name = get.String(CPlayerInfo + 0x84)
+                NotificationPopUpMapRockstar("Kepada :"..name,[[~a~ ~s~Anda Telah Direport]])--STATS.STAT_SET_INT(v[1],0)
+            end
+            Async();
+        end
+    end
+    local new = Asynchronous(function()
+        while (Report_Boolean == true) do
+            Async()
+            ReportScan()
+            if (Report_Boolean == false) then
+                break
+            end
+        end
+    end)
+    AsyncStart(new,1000)
+end;
+
+function TotalEXPIndex(id)
+    local CurrentLevel = get.Global(int,1590682+1+iVar0[id]*883+211+6)
+    local CurrentEXP = get.Global(int,1590682+1+iVar0[id]*883+211+1)
+    for i = 1,#level_data do
+        local RealLevel = CurrentLevel+1
+        local NeedEXP =  level_data[RealLevel] - CurrentEXP
+        if CurrentEXP >= level_data[i] and CurrentEXP <= level_data[i+1] then
+            ActualLevel = i
+        end
+        LevelStatus = string.format([[%s/%s Actual Level:[%s] 
+  Needed EXP : %s]],CurrentEXP,level_data[RealLevel],ActualLevel,NeedEXP)
+    end
+    return LevelStatus
+end
+  
+function LootIsLandCash(targets)
+    for i = 1,24,1 do
+        local Cash = get.Global(int,1706028+1+iVar0[targets]*53+10+10)
+        if Cash >= SecondaryLocation[i] and Cash < SecondaryLocation[i+1] then
+            TotalCash = i
+        elseif Cash == 0 then 
+            return "0"
+        end
+    end
+    return TotalCash
+end
+
+function LootIsLandWeed(targets)
+    for i = 1,24,1 do
+        local Weed = get.Global(int,1706028+1+iVar0[targets]*53+10+11)
+        if Weed >= SecondaryLocation[i] and Weed < SecondaryLocation[i+1] then
+            TotalWeed = i
+        elseif Weed == 0 then 
+            return "0"
+        end
+    end
+    return TotalWeed
+end
+
+function LootIsLandCoke(targets)
+    for i = 1,24,1 do
+        local Coke = get.Global(int,1706028+1+iVar0[targets]*53+10+12)
+        if Coke >= SecondaryLocation[i] and Coke < SecondaryLocation[i+1] then
+            TotalCoke = i
+        elseif Coke == 0 then 
+            return "0"
+        end
+    end
+    return TotalCoke
+end
+
+function LootIsLandGold(targets)
+    for i = 1,24,1 do
+        local Gold = get.Global(int,1706028+1+iVar0[targets]*53+10+13)
+        if Gold >= SecondaryLocation[i] and Gold < SecondaryLocation[i+1] then
+            TotalGold = i
+            return TotalGold
+        elseif Gold == 0 then 
+            return "0"
+        end
+    end
+end
+
+function LootCompoundCash(targets)
+    for i = 1,8,1 do
+        local CompoundCash = get.Global(int,1706028+1+iVar0[targets]*53+10+19)
+        if CompoundCash >= SecondaryLocation[i] and CompoundCash < SecondaryLocation[i+1] then
+            TotalCompoundCash = i
+        elseif CompoundCash == 0 then 
+            TotalCompoundCash = "0"
+        end
+    end
+    return TotalCompoundCash
+end
+
+function LootCompoundWeed(targets)
+    for i = 1,8,1 do
+        local CompoundWeed = get.Global(int,1706028+1+iVar0[targets]*53+10+19)
+        if CompoundWeed >= SecondaryLocation[i] and CompoundWeed < SecondaryLocation[i+1] then
+            TotalCompoundWeed = i
+        elseif CompoundWeed == 0 then 
+            TotalCompoundWeed = "0"
+        end
+    end
+    return TotalCompoundWeed
+end
+
+function LootCompoundCoke(targets)
+    for i = 1,8,1 do
+        local CompoundCoke = get.Global(int,1706028+1+iVar0[targets]*53+10+20)
+        if CompoundCoke >= SecondaryLocation[i] and CompoundCoke < SecondaryLocation[i+1] then
+            TotalCompoundCoke = i
+        elseif CompoundCoke == 0 then 
+            TotalCompoundCoke = "0"
+        end
+    end
+    return TotalCompoundCoke
+end
+
+function LootCompoundGold(targets)
+    for i = 1,8,1 do
+        local CompoundGold = get.Global(int,1706028+1+iVar0[targets]*53+10+21)
+        if CompoundGold >= SecondaryLocation[i] and CompoundGold < SecondaryLocation[i+1] then
+            TotalCompoundGold = i
+        elseif CompoundGold == 0 then 
+            TotalCompoundGold = "0"
+        end
+    end
+    return TotalCompoundGold
+end

@@ -259,6 +259,27 @@ function SetWindowName(Name)
     getApplication().Title=tostring(Name)
 end
 
+function Asynchronous(func)
+    return coroutine.create(func)
+end
+
+function AsyncStart(thread,interval)
+    local timer     = createTimer();
+    timer.Interval  = interval; 
+    timer.OnTimer = function(t) 
+        local status = script.status(thread);
+        if (thread ~= nil and status ~= 'dead') then
+        script.resume(thread);
+        else
+            t.destroy();        
+        end
+    end
+end
+
+function Async()
+    return coroutine.yield()
+end
+
 function GG(Type,Index) --// Get Global
     local case ={}
 

@@ -1,5 +1,3 @@
-require("STATS")
-require("mobil")
 
 StatTab = Protection
 MainTab = Player
@@ -17,17 +15,3 @@ MiscTab = Struct
 --RIDSpooferSet = CEEdit8
 --ScriptEventData = CheckListBox1
 
-local function LoopForever()
-    local start = script.create(function()
-        while (true) do
-            local id = VehicleTab.S_WheelType.itemIndex;
-            set.global(int,2462286+27+69,id)
-            WheelSelection()
-            SpawnerPrimaryColour()
-            SpawnerXenon()
-        script.yield()
-        end
-    end)
-    start_yield(start,1000)
-end
-LoopForever()

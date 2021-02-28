@@ -1,5 +1,12 @@
 require("sig_array")
 require("pointers")
+require("CPH")
+
+--x = x * 2 ^ y - 1;
+function SecondaryLoot(Location) --(1 << 24) - 1 
+    local x = (1 << Location) - 1
+    return x
+end
 
 function ptr_string()--Pointer or Address To String
 gptr      = readPointer
@@ -31,6 +38,31 @@ MAX_UINT = 4294967295 or "4294967295"
 MAX_ULONG = 18446744073709551615 or "18446744073709551615"
 TRUE = 1
 FALSE = 0
+
+LOOT_LOC_A = SecondaryLoot(1) 
+LOOT_LOC_B = SecondaryLoot(2) 
+LOOT_LOC_C = SecondaryLoot(3) 
+LOOT_LOC_D = SecondaryLoot(4) 
+LOOT_LOC_E = SecondaryLoot(5) 
+LOOT_LOC_F = SecondaryLoot(6) 
+LOOT_LOC_G = SecondaryLoot(7) 
+LOOT_LOC_H = SecondaryLoot(8) 
+LOOT_LOC_I = SecondaryLoot(9) 
+LOOT_LOC_J = SecondaryLoot(10) 
+LOOT_LOC_K = SecondaryLoot(11) 
+LOOT_LOC_L = SecondaryLoot(12) 
+LOOT_LOC_M = SecondaryLoot(13) 
+LOOT_LOC_N = SecondaryLoot(14) 
+LOOT_LOC_O = SecondaryLoot(15) 
+LOOT_LOC_P = SecondaryLoot(16) 
+LOOT_LOC_Q = SecondaryLoot(17) 
+LOOT_LOC_R = SecondaryLoot(18) 
+LOOT_LOC_S = SecondaryLoot(19) 
+LOOT_LOC_T = SecondaryLoot(20) 
+LOOT_LOC_U = SecondaryLoot(21) 
+LOOT_LOC_V = SecondaryLoot(22) 
+LOOT_LOC_W = SecondaryLoot(23) 
+LOOT_LOC_X = SecondaryLoot(24) 
 
 FLYING_HANDLING = 0x158
 
@@ -340,6 +372,36 @@ elseif STAT_BOOL == nil then
     local bool_backup3 = hook.GET("[[[[GTA5.exe+02DA43D8]+68]+E0]+20]+218")
     STAT_BOOL = bool_backup3
 end
+
+
+SecondaryLocation = {
+	SecondaryLoot(1), 
+	SecondaryLoot(2), 
+	SecondaryLoot(3), 
+	SecondaryLoot(4), 
+	SecondaryLoot(5), 
+	SecondaryLoot(6), 
+	SecondaryLoot(7), 
+	SecondaryLoot(8), 
+	SecondaryLoot(9), 
+	SecondaryLoot(10), 
+	SecondaryLoot(11), 
+	SecondaryLoot(12), 
+	SecondaryLoot(13), 
+	SecondaryLoot(14), 
+	SecondaryLoot(15), 
+	SecondaryLoot(16), 
+	SecondaryLoot(17), 
+	SecondaryLoot(18), 
+	SecondaryLoot(19), 
+	SecondaryLoot(20), 
+	SecondaryLoot(21), 
+	SecondaryLoot(22), 
+	SecondaryLoot(23), 
+	SecondaryLoot(24), 
+    SecondaryLoot(25)
+}
+
 
 --[[function local_loader()
     Local.l_perico()
