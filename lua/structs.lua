@@ -1147,6 +1147,11 @@ function ReportCheck()
         Async()
         cheating = STATS.STAT_GET_INT(v[1])
         Scanner.Text = string.format('%s : %s',v[1],cheating)
+        if STATS.STAT_GET_INT(v[1]) >= v[2] then
+          if messageDialog("You Got A Report By "..v[1],mtWarning, mbYes, mbNo) == mrYes then
+            STATS.STAT_SET_INT(v[1],0)
+          end
+        end
       end
   end)
   AsyncStart(sync,1000)
@@ -1417,7 +1422,23 @@ function Player_List_Info()
   local CompoundLootWeed = LootCompoundWeed(selected_player)
   local CompoundLootCoke = LootCompoundCoke(selected_player)
   local CompoundLootGold = LootCompoundGold(selected_player)
-  
+  local CompoundLootPaint = LootCompoundPaint(selected_player)
+  local TotalValueCash = ValueLootCash * (TotalLootCash + CompoundLootCash)
+  local TotalValueWeed = ValueLootWeed * (TotalLootWeed + CompoundLootWeed)
+  local TotalValueCoke = ValueLootCoke * (TotalLootCoke + CompoundLootCoke)
+  local TotalValueGold = ValueLootGold * (TotalLootGold + CompoundLootGold)
+  local TotalValuePaint = ValueLootPaint * (CompoundLootPaint)
+  local TotalSecondaryLoot = TotalValueCash + TotalValueWeed + TotalValueCoke + TotalValueGold + TotalValuePaint;
+  local TotalValueMain = "Null"
+
+  if PrimaryLoot == 0 then TotalValueMain = "$900.000"
+  elseif PrimaryLoot == 1 then TotalValueMain = "$1.000.000"
+  elseif PrimaryLoot == 2 then TotalValueMain = "$1.100.000"
+  elseif PrimaryLoot == 3 then TotalValueMain = "$1.300.000"
+  elseif PrimaryLoot == 4 then TotalValueMain = "$1.100.000"
+  elseif PrimaryLoot == 5 then TotalValueMain = "$1.900.000"
+  end
+
   if MissionStatus == 65535 then
     MissionStatus = "ID ["..MissionStatus.."] Complete"
   else
@@ -1753,34 +1774,38 @@ Boltcut : %s
 Grapple : %s
 Uniform : %s
 Entrance : %s
-ID[%s]
+Cash Island ID:[0x%x]
 Loot Cash : %s/24
-ID[%s]
+Cash Compound ID:[0x%x]
 Compound Cash : %s/8
-ID[%s]
+Weed Island ID :[0x%x]
 Loot Weed : %s/24
-ID[%s]
+Weed Compound ID:[0x%x]
 Compound Weed : %s/8
-ID[%s]
+Coke Island ID:[0x%x]
 Loot Coke : %s/24
-ID[%s]
+Coke Compound ID:[0x%x]
 Compound Coke : %s/8
-ID[%s]
+Gold Island ID:[0x%x]
 Loot Gold : %s/24
-ID[%s]
+Gold Compound ID:[0x%x]
 Compound  Gold : %s/8
-Loot Paint : ID[%s]
+Compound Paint ID:[0x%x]
+Loot Paint : %s/8 
 Value Cash : $%s
 Value Weed : $%s
 Value Coke : $%s
 Value Gold : $%s
 Value Paint : $%s
+Total Main Target : %s
+Total Secondary Target : $%d
 ]],IPR4,IPR3,IPR2,IPR1,PPort,IPRL4,IPRL3,IPRL2,IPRL1,PPort,PlayerName,SCID,PLG,PVG,JoinStatus,TransitionStatus,Ragdoll,Pradars,PReveal,CurrentVehicleM,CurrentVehicle,CurWep,ListLevels,ListBanked,ListCash,ListOrgName,
 PTotalEXP,PGlobalEXP,PlayerLevelState,CurLevelStatus,IsHost,HP,Max_HP,Armor,ListWanted,TotalKill,TotalDeath,KDRatio,BunkerLocation,MethLocation,WeedLocation,CokeLocation,CashLocation,DocLocation,board_status,selected_gunman,selected_driver,
 selected_hacker,selected_approach,selected_target,security_pass,duggan_level,biset0,RaceWon,RaceLost,DMWin,DMlost,
 MissionStatus,MissionProgress,TotalPOI,PrimaryTarget,CayoWeapon,Boltcut,Grapple,Uniform,Entrance,SecondaryLootCashI,
 TotalLootCash,SecondaryLootCashC,CompoundLootCash,SecondaryLootWeed,TotalLootWeed,SecondaryLootWeedC,CompoundLootWeed,SecondaryLootCoke,TotalLootCoke,SecondaryLootCokeC,CompoundLootCoke,
-SecondaryLootGoldI,TotalLootGold,SecondaryLootGoldC,CompoundLootGold,SecondaryLootPaint,ValueLootCash,ValueLootWeed,ValueLootCoke,ValueLootGold,ValueLootPaint)
+SecondaryLootGoldI,TotalLootGold,SecondaryLootGoldC,CompoundLootGold,SecondaryLootPaint,CompoundLootPaint,ValueLootCash,ValueLootWeed,ValueLootCoke,ValueLootGold,
+ValueLootPaint,TotalValueMain,TotalSecondaryLoot)
 end
 
 function Playerlist_Manipulator(sender)
@@ -3454,7 +3479,7 @@ function ChangeVehicles()
   set.global(int,1323678+1+(tbl_GSV[id][1]*141)+66,joaat(tbl_Vehicles[id2][1]))
 end
 
-bag_value = {1800,3600,5600,6400,7400,8400}
+bag_value = {1800,3600,5600,6400,7400,8400,MAX_INT}
 function BagLimit(sender)
   local id = combobox_getItemIndex(MainTab.BagLimit);
   set.global(int,262145+28999,bag_value[id])
@@ -3496,42 +3521,22 @@ function SpawnVehicleManual()
   return VehicleTab.SpawnManual.Text
 end
 
-function autoHeistcut()
-  if get.Global(int,1697303+2326) < 85 then set.global(int,1697303+2326,85)
-  elseif get.Global(int,1697303+2327) < 85 then set.global(int,1697303+2327,85)
-  elseif get.Global(int,1697303+2328) < 85 then set.global(int,1697303+2328,85)
-  elseif get.Global(int,1697303+2329) < 85 then set.global(int,1697303+2329,85)
-  elseif get.Global(int,1704127+823+56+1) < 85 then set.global(int,1704127+823+56+1,85)
-  elseif get.Global(int,1704127+823+56+2) < 85 then set.global(int,1704127+823+56+2,85)
-  elseif get.Global(int,1704127+823+56+3) < 85 then set.global(int,1704127+823+56+3,85)
-  elseif get.Global(int,1704127+823+56+4) < 85 then set.global(int,1704127+823+56+4,85)
-  elseif get.Int(DOOMSDAY_CUT_1) < 85 then set.int(DOOMSDAY_CUT_1,85)
-  elseif get.Int(DOOMSDAY_CUT_2) < 85 then set.int(DOOMSDAY_CUT_2,85)
-  elseif get.Int(DOOMSDAY_CUT_3) < 85 then set.int(DOOMSDAY_CUT_3,85)
-  elseif get.Int(DOOMSDAY_CUT_4) < 85 then set.int(DOOMSDAY_CUT_4,85)
-  elseif get.Int(APT_CUT_1) < 85 then set.int(APT_CUT_1,85)
-  elseif get.Int(APT_CUT_2) < 85 then set.int(APT_CUT_2,85)
-  elseif get.Int(APT_CUT_3) < 85 then set.int(APT_CUT_3,85)
-  elseif get.Int(APT_CUT_4) < 85 then set.int(APT_CUT_4,85)
-  end
-end
-
 function AutomateCut85() --Automatically set heist cut to 85%
-  local checked = checkbox_getState(MainTab.AutomateHeistCut);
-  if checked == cbChecked then
-    THREAD.func_1(autoHeistcut,true,1000)
-  elseif checked == cbUnchecked then
-    THREAD.func_1(autoHeistcut,false,1000)
-  end
+  local check = checkbox_getState(MainTab.AutomateHeistCut);
+    if check == cbChecked then
+      autoHeistcut(true)
+    elseif check == cbUnchecked then
+      autoHeistcut(false)
+    end
 end
 
 function Admin_Escape()
   local check = checkbox_getState(MainTab.EscapeRoutes);
   if check == cbChecked then
-    THREAD.FUNC_1(blacklist_comparing,true,55);
+    blacklist_comparing(true)
     MainTab.EscapeRoutes.Caption = "Escape : ON"
   elseif check == cbUnchecked then
-    THREAD.FUNC_1(blacklist_comparing,false,55);
+    blacklist_comparing(false)
     MainTab.EscapeRoutes.Caption = "Escape : OFF"
   end
 end

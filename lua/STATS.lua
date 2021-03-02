@@ -42,7 +42,7 @@ STAT_LOOP_INT = function(ArrayName) --Set Stat Group In Loop
       Protection_ImportView.Text =  string.format("Apply: %s/%s",i,c)
       Protection_joaat.Text = string.format("%s",v[1])
       Protection_stat_value.Text = string.format("%s",v[2])
-      SYSTEM.WAIT(500)
+      SYSTEM.WAIT(100)
     end -- Coroutine has completed, it will be marked as dead after this print..
   end
   ExecuteThread(start)
@@ -150,7 +150,7 @@ RUN_LOADER_INT = function ()
        Protection_joaat.Text = string.format("%s",k[1])
        Protection_stat_value.Text = string.format("%s",k[2])
        STATS.STAT_SET_INT(k[1],k[2])
-       SYSTEM.WAIT(800);
+       SYSTEM.WAIT(210)
     end
     ::continue::
   end

@@ -274,8 +274,8 @@ CPHeist =
     {'MP'..MPX..'_H4LOOT_GOLD_I',16777215},
     {'MP'..MPX..'_H4LOOT_GOLD_C_SCOPED',255}, --131
     {'MP'..MPX..'_H4LOOT_GOLD_C',255}, --131
-    {'MP'..MPX..'_H4LOOT_PAINT_SCOPED',96}, --48
-    {'MP'..MPX..'_H4LOOT_PAINT',96}, --48
+    {'MP'..MPX..'_H4LOOT_PAINT_SCOPED',255}, --48
+    {'MP'..MPX..'_H4LOOT_PAINT',255}, --48
     {'MP'..MPX..'_H4CNF_BS_ENTR',63},
     {'MP'..MPX..'_H4CNF_BS_ABIL',63},
     {'MP'..MPX..'_H4CNF_WEP_DISRP',3},

@@ -1218,25 +1218,35 @@ function PED.SET_PED_COORD(pos_x,pos_y,pos_z,player)
    ::continue::
 end
 
-function blacklist_comparing()
-    ::atas::
-    for k,v in pairs(CPLAYER_INDEX) do
-        local user_id = get.Long(v[2]) 
-        local nickname = get.String(v[1])
-        if user_id == nil then user_id = 0 end
-        if nickname == nil then nickname = "" end
-        for k2, v2 in pairs(blacklist_player) do
-            --print(string.format('%s/%s | %s/%s',nickname,v2[1],user_id,v2[2]));
-            PlayerData.AdminScanner.Caption = string.format('%s/%s | %s/%s',nickname,v2[1],user_id,v2[2]);
-            if (user_id == v2[2]) or (nickname == v2[1]) then
-                ShowMessage("R* Employee Come!")
-                LoadSession(10)
+function blacklist_comparing(Executor)
+    blacklist_comparing_loop = Executor
+    local function ScanPlayerList()
+        for k,v in pairs(CPLAYER_INDEX) do
+            local user_id = get.Long(v[2]) 
+            local nickname = get.String(v[1])
+            if user_id == nil then user_id = 0 end
+            if nickname == nil then nickname = "" end
+            for k2, v2 in pairs(blacklist_player) do
+                --print(string.format('%s/%s | %s/%s',nickname,v2[1],user_id,v2[2]));
+                PlayerData.AdminScanner.Caption = string.format('%s/%s | %s/%s',nickname,v2[1],user_id,v2[2]);
+                if (user_id == v2[2]) or (nickname == v2[1]) then
+                    ShowMessage("R* Employee Come!")
+                    LoadSession(10)
+                end
+                if blacklist_comparing_loop == false then break end
+            Async();
             end
-            if JOIN_STATUS == 0 or JOIN_STATUS == 10 then goto atas end
         Async();
         end
-    Async();
     end
+    local sync = Asynchronous(function()
+        while (blacklist_comparing_loop == true) do
+            Async()
+            ScanPlayerList()
+            if (blacklist_comparing_loop == false) then break end
+        end
+    end)
+    AsyncStart(sync,55)
 end
 
 function AutoClicker()
@@ -1516,11 +1526,6 @@ function CayoLives(Executor)
     AsyncStart(asynch,1000)
  end
 
- function SecondaryLootDalem(Loot,Location) --(1 << 8) - 1
-    local y = (Loot << Location) - 1
-    return y
- end
-
 function BLOCK_REPORTS(Boolean) --To Clean Report Automatically
     Report_Boolean = Boolean
     local function ReportScan()
@@ -1530,6 +1535,7 @@ function BLOCK_REPORTS(Boolean) --To Clean Report Automatically
                 local name = get.String(CPlayerInfo + 0x84)
                 NotificationPopUpMapRockstar("Kepada :"..name,[[~a~ ~s~Anda Telah Direport]])--STATS.STAT_SET_INT(v[1],0)
             end
+            if Report_Boolean == false then break end
             Async();
         end
     end
@@ -1610,7 +1616,7 @@ end
 
 function LootCompoundCash(targets)
     for i = 1,8,1 do
-        local CompoundCash = get.Global(int,1706028+1+iVar0[targets]*53+10+19)
+        local CompoundCash = get.Global(int,1706028+1+iVar0[targets]*53+10+18)
         if CompoundCash >= SecondaryLocation[i] and CompoundCash < SecondaryLocation[i+1] then
             TotalCompoundCash = i
         elseif CompoundCash == 0 then 
@@ -1654,4 +1660,47 @@ function LootCompoundGold(targets)
         end
     end
     return TotalCompoundGold
+end
+
+function LootCompoundPaint(targets)
+    for i = 1,8,1 do
+        local CompoundPaint = get.Global(int,1706028+1+iVar0[targets]*53+10+23)
+        if CompoundPaint >= SecondaryLocation[i] and CompoundPaint < SecondaryLocation[i+1] then
+            TotalCompoundPaint = i
+        elseif CompoundPaint == 0 then 
+            TotalCompoundPaint = "0"
+        end
+    end
+    return TotalCompoundPaint
+end
+
+function autoHeistcut(Executor)
+    AutomateCutLoop = Executor
+    local function CutData()
+        if get.Global(int,1697303+2326) < 85 then set.global(int,1697303+2326,85)
+        elseif get.Global(int,1697303+2327) < 85 then set.global(int,1697303+2327,85)
+        elseif get.Global(int,1697303+2328) < 85 then set.global(int,1697303+2328,85)
+        elseif get.Global(int,1697303+2329) < 85 then set.global(int,1697303+2329,85)
+        elseif get.Global(int,1704127+823+56+1) < 85 then set.global(int,1704127+823+56+1,85)
+        elseif get.Global(int,1704127+823+56+2) < 85 then set.global(int,1704127+823+56+2,85)
+        elseif get.Global(int,1704127+823+56+3) < 85 then set.global(int,1704127+823+56+3,85)
+        elseif get.Global(int,1704127+823+56+4) < 85 then set.global(int,1704127+823+56+4,85)
+        elseif get.Int(DOOMSDAY_CUT_1) < 85 then set.int(DOOMSDAY_CUT_1,85)
+        elseif get.Int(DOOMSDAY_CUT_2) < 85 then set.int(DOOMSDAY_CUT_2,85)
+        elseif get.Int(DOOMSDAY_CUT_3) < 85 then set.int(DOOMSDAY_CUT_3,85)
+        elseif get.Int(DOOMSDAY_CUT_4) < 85 then set.int(DOOMSDAY_CUT_4,85)
+        elseif get.Int(APT_CUT_1) < 85 then set.int(APT_CUT_1,85)
+        elseif get.Int(APT_CUT_2) < 85 then set.int(APT_CUT_2,85)
+        elseif get.Int(APT_CUT_3) < 85 then set.int(APT_CUT_3,85)
+        elseif get.Int(APT_CUT_4) < 85 then set.int(APT_CUT_4,85)
+    end
+    local sync = Asynchronous(function()
+        while AutomateCutLoop == true do
+            Async()
+            CutData()
+            if AutomateCutLoop == false then break end
+        end
+    end)
+    AsyncStart(sync,800)
+  end
 end
