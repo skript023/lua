@@ -72,6 +72,13 @@ function CheckForUpdate()
   end
 end
 ------------------------------------------------TAB CONTROLLER---------------------------------------------------------
+function HideConsole(sender)
+  DebugController.hide()
+end
+
+function DebugConsoleDrag(sender, button, x, y)
+  DebugController.dragNow()
+end
 
 function VehicleOptionToMainMenu(sender)
   id_tab_control = 1
@@ -894,8 +901,9 @@ DATA_A = {
 "Ruby","Tequila"
 }
 function PotentialAndTakeEditor()
-  local index = combobox_getItemIndex(MainTab.PTAKE);
-  set.int(DATA_A[index], tonumber(MainTab.Num.Text))
+  local id = combobox_getItemIndex(MainTab.PTAKE);
+  set.int(DATA_A[id], tonumber(MainTab.Num.Text))
+  print(string.format("%s : %i",DATA_A[id],get.Int(DATA_A[id])))
   SetTimer.Enabled = true
 end
 if SetTimer == nil then
@@ -1146,6 +1154,8 @@ function ReportCheck()
       for k,v in pairs(ReportStat) do
         Async()
         cheating = STATS.STAT_GET_INT(v[1])
+        SystemLog(string.format("%s : %s [Hash : 0x%X]",v[1],STATS.STAT_GET_INT(v[1]),joaat(v[1])))
+        print(string.format("Stat : %s | Value : %s [Hash : 0x%X]",v[1],STATS.STAT_GET_INT(v[1]),joaat(v[1])))
         Scanner.Text = string.format('%s : %s',v[1],cheating)
         if STATS.STAT_GET_INT(v[1]) >= v[2] then
           if messageDialog("You Got A Report By "..v[1],mtWarning, mbYes, mbNo) == mrYes then
@@ -1776,23 +1786,23 @@ Boltcut : %s
 Grapple : %s
 Uniform : %s
 Entrance : %s
-Cash Island ID:[0x%x]
+Cash Island ID:[0x%X]
 Loot Cash : %s/24
-Cash Compound ID:[0x%x]
+Cash Compound ID:[0x%X]
 Compound Cash : %s/8
-Weed Island ID :[0x%x]
+Weed Island ID :[0x%X]
 Loot Weed : %s/24
-Weed Compound ID:[0x%x]
+Weed Compound ID:[0x%X]
 Compound Weed : %s/8
-Coke Island ID:[0x%x]
+Coke Island ID:[0x%X]
 Loot Coke : %s/24
-Coke Compound ID:[0x%x]
+Coke Compound ID:[0x%X]
 Compound Coke : %s/8
-Gold Island ID:[0x%x]
+Gold Island ID:[0x%X]
 Loot Gold : %s/24
-Gold Compound ID:[0x%x]
+Gold Compound ID:[0x%X]
 Compound  Gold : %s/8
-Compound Paint ID:[0x%x]
+Compound Paint ID:[0x%X]
 Loot Paint : %s/8 
 Value Cash : $%s
 Value Weed : $%s
@@ -2008,9 +2018,10 @@ function InstantDeliveryExecutor(sender)
 end
 
 function ListMenuExecutor(sender, user)
-  local index = listbox_getItemIndex(MainTab.CheatMenu) + 1;
-  SetList(CT[index][1],true)
-  SetList(CT[index][1],false)
+  local id = listbox_getItemIndex(MainTab.CheatMenu) + 1;
+  SetList(CT[id][1],true)
+  SetList(CT[id][1],false)
+  printf("Activate : %s",CT[id][2])
 end
 
 function Player_CEListBox2SelectionChange(sender, user)
@@ -2025,8 +2036,9 @@ function MainMenuCheckBox(sender)
     MainTab.CEEdit1.Text = "Activate : "..CT2[id][2]
     MainTab.CheckListBox2.Checked = true
     writeZeroBytes("LabelTextAddress+0xC4CF3",504)
-    set.string("LabelTextAddress+0xC4CF3","Activate : "..CT2[id][2])
+    set.string("LabelTextAddress+0xC4CF3","Activate : %s"..CT2[id][2])
     set.global(int,1574395,1)
+    print(string.format("Activate : %s",CT2[id][2]))
   elseif ReadAct(CT2[id][1])==true then
     SetList(CT2[id][1],false)
     MainTab.CEEdit1.Text = "Deactivate : "..CT2[id][2]
@@ -2034,6 +2046,7 @@ function MainMenuCheckBox(sender)
     writeZeroBytes("LabelTextAddress+0xC4CF3",504)
     set.string("LabelTextAddress+0xC4CF3","Deactivate : "..CT2[id][2])
     set.global(int,1574395,1)
+    print(string.format("Deactivate : %s",CT2[id][2]))
   end
 end
     
@@ -2041,7 +2054,7 @@ function SliderMenuExecutor(sender)
 local index = listbox_getItemIndex(MainTab.CEListBox1) + 1;
 local data = get.Float(CT3[index][2])
 MainTab.SetSliderFloat.TextHint = get.Float(CT3[index][2])
-
+printf("%s : %s",CT3[index][1],get.Float(CT3[index][2]))
   if sender.Position == 0 then
   writeFloat(CT3[index][2],1)
   elseif sender.Position == 1 then
@@ -2157,6 +2170,7 @@ end
 function SliderMenuReader(sender, user)
   local index = listbox_getItemIndex(MainTab.CEListBox1) + 1;
   MainTab.SetSliderFloat.TextHint = get.Float(CT3[index][2])
+  printf("%s : %s",CT3[index][1],get.Float(CT3[index][2]))
 end
 
 function NameChanger(sender)
@@ -2197,8 +2211,10 @@ function AutoSpoofRID()
   local check = checkbox_getState(PlaylistTab.AutoSpoofer)
   if check == cbChecked then
     SetList('RID SPOOF',true)
+    printf("Activate SCID Spoof : %s",get.TListA("RID SPOOF"))
   elseif check == cbUnchecked then
     SetList('RID SPOOF',false)
+    printf("Activate SCID Spoof : %s",get.TListA("RID SPOOF"))
   end
 end
 
@@ -2269,6 +2285,7 @@ end
 function InstantRID_Spoofer(sender)
   local id = combobox_getItemIndex(PlaylistTab.InstantRID) + 1;
   RID_SPOOF(DATA_RID[id][2])
+  printf("Username : %s | SCID : %i",DATA_RID[id][1],DATA_RID[id][2])
 end
 
 function NetwordScriptedEventBlock(sender)
@@ -2469,11 +2486,13 @@ function VehicleMenuExecutor(sender)
     writeZeroBytes(Address_LabelText_UNLOCK_AWRD_SHIRT1,504)
     writeString(Address_LabelText_UNLOCK_AWRD_SHIRT1,"Activate : "..VehOption[index])
     set.global(int,1574395,1)
+    printf("Activate : %s",VehOption[index])
   elseif ReadAct(VehOption[index])==true then
     SetList(VehOption[index],false)
     writeZeroBytes(Address_LabelText_UNLOCK_AWRD_SHIRT1,504)
     writeString(Address_LabelText_UNLOCK_AWRD_SHIRT1,"Deactivate : "..VehOption[index])
     set.global(int,1574395,1)
+    printf("Deactivate : %s",VehOption[index])
   end
 end
 
@@ -2899,21 +2918,15 @@ function StatEditingOption()
   local index = combobox_getItemIndex(StatTab.CEComboBox13) + 1;
   if index==2 then
     StatTab.CEButton9.Caption = 'Set Integer'
-    set.global(int,1388013+4,joaat(tostring(Protection.joaat.Text)))
-    set.global(int,939452+5526,tonumber(Protection.stat_value.Text))
+    STATS.STAT_SET_INT(tostring(Protection.joaat.Text),tonumber(Protection.stat_value.Text))
+    printf("Stat : %s | Value : %i | [Hash : 0x%X]",Protection.joaat.Text,Protection.stat_value.Text,joaat(tostring(Protection.joaat.Text)))
   elseif index==3 then
-     StatTab.CEButton9.Caption = 'Set Boolean'
-    local start = function()
-    set.global(int,2582545+1728,joaat(tostring(Protection.joaat.Text)))
-    set.global(int,2582546+1728,joaat(tostring(Protection.joaat.Text)))
-    sleep(1500)
-    set.bool(STAT_BOOL,tonumber(Protection.stat_value.Text))
-  end
-  ExecuteThread(start);
+    StatTab.CEButton9.Caption = 'Set Boolean'
+    STATS.STAT_SET_BOOL(tostring(Protection.joaat.Text),tonumber(Protection.stat_value.Text))
+    printf("Stat : %s | Value : %i | [Hash : 0x%X]",Protection.joaat.Text,Protection.stat_value.Text,joaat(tostring(Protection.joaat.Text)))
   elseif index == 4 then
-      set.global(int,2551832+3269,GAMEPLAY.GET_HASH_KEY(Protection.joaat.Text))
-      set.global(int,2551832+3270,GAMEPLAY.GET_HASH_KEY(Protection.joaat.Text))
-      set.global(int,1377236+1136,15)      
+      STATS.STAT_GET_INT(tostring(Protection.joaat.Text))
+      printf("Stat : %s | Value : %i | [Hash : 0x%X]",Protection.joaat.Text,Protection.stat_value.Text,joaat(tostring(Protection.joaat.Text)))
      StatTab.CEButton9.Caption = 'Get Value'
   elseif index == 5 then
      StatTab.CEButton9.Caption = 'Import Int'
@@ -3648,6 +3661,7 @@ local function LoopForever()
           frameFlagsOnTick(t)
           SpectatorCheck()
           AntiSpectate()
+          DebugController.ConsoleOutput.append(console.mOutput.Lines.Text)
       Async()
       end
   end)
@@ -3665,6 +3679,14 @@ function AutoClick()
   elseif check == cbUnchecked then
     Player.AutoClick.Checked = false
     THREAD.NATIVE_LOOP(AutoClicker,FALSE,100)
+  end
+end
+
+function SendCommandConsole(sender)
+  getConsole = DebugController.CommandSend.Text
+  if getConsole == 'clear' then
+    DebugController.ConsoleOutput.clear()
+    console.mOutput.clear()
   end
 end
 

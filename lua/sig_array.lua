@@ -5,64 +5,105 @@
   Compiler : Ellohim a.k.a vladi023
   ]]
 function ProcessChecks()
-    if not openProcess('GTA5.exe') then --sleep(250) 
-    if getOpenedProcessID()==0 then getAutoAttachList().add('GTA5.exe') --sleep(250)
-    else closeCE()
-    end 
-  end
+    if not openProcess('GTA5.exe') then 
+        sleep(250) 
+        if getOpenedProcessID()==0 then 
+            getAutoAttachList().add('GTA5.exe') 
+            sleep(250)
+        else 
+            closeCE()
+        end 
+    end
 end
 ProcessChecks()
-function Pointer(options)
-            local _ptr = {
-                Options = options,
-                Scan = function()
-                    --DEBUG: 
-                    print("Signature Scanning:  "..options.Pattern);
-                    print("Registering Pointer: "..options.Name);
-                    print(string.format('Scan Method:%s | Sig Offset:%s | Target Offset:%s',options.ScanMethod,options.SigOffset,options.TargetOffset));
 
-                    autoAssemble([[
-                        aobscanmodule(]]..options.Name..[[,]]..process..[[,]]..options.Pattern..[[)
-                        registersymbol(]]..options.Name..[[)
-                    ]]);
+function ConsoleLog(Message)
+    console = getLuaEngine()
+    console.GroupBox1.Caption = 'This Is Console Log Output'
+    LogOutput = console.mOutput
+    console.Color = '0x000000'
+    LogOutput.Color = '0x000000'
+    LogOutput.Font.Color = '1030655'
+    console.show()
+    print(Message)
+end
 
-                    if (options.ScanMethod == 1) then
-                        local _addr = getAddress(options.Name) + options.SigOffset;
-                        _addr = _addr + readInteger(_addr) + options.TargetOffset;
-                        unregisterSymbol(options.Name);
-                        registerSymbol(options.Name, _addr, true);
-                    elseif (options.ScanMethod == 2) then
-                        local _addr = getAddress(options.Name) + options.SigOffset;
-                        _addr = getAddress(process) + readInteger(_addr);
-                        unregisterSymbol(options.Name);
-                        registerSymbol(options.Name, _addr, true);
-                    end
-                    return _ptr;
-                end,
+function getAppsPath()
+    FilePath='';
+    if TrainerOrigin~=nil then 
+        FilePath=TrainerOrigin 
+    else 
+        FilePath=getCheatEngineDir();
+    end
+    return FilePath
+end
 
-                Release = function()
-                    --DEBUG: print("Unregistering "..options.Name.." Symbol");
-                    unregisterSymbol(options.Name);
-                    return _ptr;
-                end,
-
-                BaseAddress = function()
-                    return getAddress(options.Name);
-                end,
-
-                HeapAddress = function()
-                    return readPointer(options.Name);
-                end,
-
-                Exists = function()
-                    local _exists, err = pcall(function() local a = getAddress(options.Name) end);
-                    return _exists;
-                end
-            };
-
-            table.insert(Pointers, _ptr);
-            return _ptr;
+function SystemLog(Message)
+    local new = function()
+        LogMessage = Message
+        if getAppsPath() then
+            f = io.open(string.format("%s/Log-System.log",FilePath),"a+")
+            f:write(LogMessage.." "..os.date().."\n")
+            f:close()
         end
+    end
+    createNativeThread(new)
+end
+
+function Pointer(options)
+    local _ptr = {
+        Options = options,
+        Scan = function()
+            --DEBUG: 
+            ConsoleLog("Signature Scanning:  "..options.Pattern);
+            ConsoleLog("Registering Pointer: "..options.Name);
+            ConsoleLog(string.format('Scan Method:%s | Sig Offset:%s | Target Offset:%s',options.ScanMethod,options.SigOffset,options.TargetOffset));
+
+            autoAssemble([[
+                aobscanmodule(]]..options.Name..[[,]]..process..[[,]]..options.Pattern..[[)
+                registersymbol(]]..options.Name..[[)
+            ]]);
+
+            if (options.ScanMethod == 1) then
+                local _addr = getAddress(options.Name) + options.SigOffset;
+                _addr = _addr + readInteger(_addr) + options.TargetOffset;
+                unregisterSymbol(options.Name);
+                registerSymbol(options.Name, _addr, true);
+            elseif (options.ScanMethod == 2) then
+                local _addr = getAddress(options.Name) + options.SigOffset;
+                _addr = getAddress(process) + readInteger(_addr);
+                unregisterSymbol(options.Name);
+                registerSymbol(options.Name, _addr, true);
+            end
+            ConsoleLog(string.format("Address: 0x%X",getAddressSafe(options.Name)));
+            SystemLog(string.format("Registered Pointer : %s | Address : 0x%X | Scan Method:%s | Sig Offset:%s | Target Offset:%s",options.Name,getAddressSafe(options.Name),options.ScanMethod,options.SigOffset,options.TargetOffset))
+            
+            return _ptr;
+        end,
+
+        Release = function()
+            --DEBUG: print("Unregistering "..options.Name.." Symbol");
+            unregisterSymbol(options.Name);
+            return _ptr;
+        end,
+
+        BaseAddress = function()
+            return getAddress(options.Name);
+        end,
+
+        HeapAddress = function()
+            return readPointer(options.Name);
+        end,
+
+        Exists = function()
+            local _exists, err = pcall(function() local a = getAddress(options.Name) end);
+            return _exists;
+        end
+    };
+
+    table.insert(Pointers, _ptr);
+    return _ptr;
+end
 
 Pointers = { };
 WorldPTR = Pointer({
@@ -500,6 +541,15 @@ function EXCEPT_CLAUSE(what)
       if case then return case() end
       local def = case_table['default']
   return def and def() or nil
+end
+
+function PlayerLog(Message)
+    PlayerInformationLog = Message
+    if getAppsPath() then
+        f = io.open(string.format("%s/Log-Player.log",FilePath),"a+")
+        f:write(PlayerInformationLog.." "..os.date().."\n")
+        f:close()
+    end
 end
 
 function CleanNils(t)

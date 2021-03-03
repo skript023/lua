@@ -42,6 +42,8 @@ STAT_LOOP_INT = function(ArrayName) --Set Stat Group In Loop
       Protection_ImportView.Text =  string.format("Apply: %s/%s",i,c)
       Protection_joaat.Text = string.format("%s",v[1])
       Protection_stat_value.Text = string.format("%s",v[2])
+      SystemLog(string.format("%s : %s [Hash : 0x%X]",v[1],v[2],joaat(v[1])))
+      printf("%s : %s [Hash : 0x%X]",v[1],v[2],joaat(v[1]))
       SYSTEM.WAIT(100)
     end -- Coroutine has completed, it will be marked as dead after this print..
   end
@@ -55,10 +57,12 @@ STAT_LOOP_BOOL = function(ArrayName) --Set Stat Group In Loop
     for _ in pairs(ArrayName) do c=c+1 end
     for i,v in pairs(ArrayName)
     do
-      STATS.STAT_SET_BOOL(v[1],v[2])
+      STATS.STAT_SET_BOOL(v[1],TRUE)
       Protection_ImportView.Text = string.format("Apply: %s/%s",i,c)
       Protection_joaat.Text = string.format("%s",v[1])
       Protection_stat_value.Text = string.format("%s",v[2])
+      SystemLog(string.format("%s : %s [Hash : 0x%X]",v[1],v[2],joaat(v[1])))
+      printf("%s : %s [Hash : 0x%X]",v[1],v[2],joaat(v[1]))
       SYSTEM.WAIT(3000)
     end
   end

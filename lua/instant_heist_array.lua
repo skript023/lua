@@ -260,6 +260,7 @@ CT2 =
 	{"Doomsday Bypass","DD Payout Bypass"},
 	{"No Spread","No Spread"},
 	{"Infinites Ammos Raw","Infinite Ammo 2"},
+	{"Console Show","Show Console Log"},
 }
 
 CT3 =

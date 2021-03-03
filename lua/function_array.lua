@@ -653,15 +653,18 @@ function DisableEvent(ID,Executor)
     if tbl_ScriptEvents==nil then return end
       local tbl_SE=tbl_ScriptEvents[ID]
       if tbl_SE==nil then return end
-      if Trigger == true then
-          writeBytes(tbl_SE[1],0xC3)
-          tbl_ScriptEvents[ID][3]=true;
-          MiscTab.EventStatus.Text = string.format('[%i]Event: %s | Status: %s | Address: 0x%s',ID,tbl_SE[2],'true',tbl_SE[1])
-      elseif Trigger == false then
-          writeBytes(tbl_SE[1],0x48)
-          tbl_ScriptEvents[ID][3]=false;
-          MiscTab.EventStatus.Text = string.format('[%i]Event: %s | Status: %s | Address: 0x%s',ID,tbl_SE[2],'false',tbl_SE[1])
-      else print(string.format('ERROR: Wrong Input..')) 
+        if Trigger == true then
+            writeBytes(tbl_SE[1],0xC3)
+            tbl_ScriptEvents[ID][3]=true;
+            MiscTab.EventStatus.Text = string.format('[%i]Event: %s | Status: %s | Address: 0x%s',ID,tbl_SE[2],'true',tbl_SE[1])
+            print(string.format('[%i] Event: %s\nProtected: %s\nAddress: 0x%s\n',ID,tbl_SE[2],'true',tbl_SE[1]))
+        elseif Trigger == false then
+            writeBytes(tbl_SE[1],0x48)
+            tbl_ScriptEvents[ID][3]=false;
+            MiscTab.EventStatus.Text = string.format('[%i]Event: %s | Status: %s | Address: 0x%s',ID,tbl_SE[2],'false',tbl_SE[1])
+            print(string.format('[%i] Event: %s\nProtected: %s\nAddress: 0x%s\n',ID,tbl_SE[2],'false',tbl_SE[1]))
+        else 
+            print(string.format('ERROR: Wrong Input..')) 
     end
 end
 
@@ -993,8 +996,7 @@ function ChangePickup(Hash)
         if  PickupHash==GAMEPLAY.GET_HASH_KEY("PICKUP_MONEY_VARIABLE") then 
             writeInteger(readPointer(p)+0x488,Hash) 
             print("Hash Changed")
-            PlaylistTab.PickupCheck.Text =  " "
-            PlaylistTab.PickupCheck.Text =  "Hash Changed"
+            SystemLog(string.format("Hash : 0x%X",readInteger(readPointer(p)+0x488)))
         end
         ::continue::
     end
@@ -1224,6 +1226,7 @@ function blacklist_comparing(Executor)
         for k,v in pairs(CPLAYER_INDEX) do
             local user_id = get.Long(v[2]) 
             local nickname = get.String(v[1])
+            PlayerLog(string.format("Player Name : %s | SCID : %s",nickname,user_id))
             if user_id == nil then user_id = 0 end
             if nickname == nil then nickname = "" end
             for k2, v2 in pairs(blacklist_player) do
@@ -1231,6 +1234,7 @@ function blacklist_comparing(Executor)
                 PlayerData.AdminScanner.Caption = string.format('%s/%s | %s/%s',nickname,v2[1],user_id,v2[2]);
                 if (user_id == v2[2]) or (nickname == v2[1]) then
                     ShowMessage("R* Employee Come!")
+                    SystemLog(string.format("R* Employee Has Come ID %s Name %s",v2[2],v2[1]))
                     LoadSession(10)
                 end
                 if blacklist_comparing_loop == false then break end
@@ -1531,9 +1535,16 @@ function BLOCK_REPORTS(Boolean) --To Clean Report Automatically
     local function ReportScan()
         for i,v in pairs(ReportStat) do
             MainTab.PatternScan.Text = string.format('%s : %s',v[1],STATS.STAT_GET_INT(v[1]))
+            --print(string.format("%s : %s [Hash : 0x%X]",v[1],STATS.STAT_GET_INT(v[1]),joaat(v[1])))
             if STATS.STAT_GET_INT(v[1]) >= v[2] then 
                 local name = get.String(CPlayerInfo + 0x84)
                 NotificationPopUpMapRockstar("Kepada :"..name,[[~a~ ~s~Anda Telah Direport]])--STATS.STAT_SET_INT(v[1],0)
+                SystemLog(string.format("%s : %s [Hash : 0x%X]",v[1],STATS.STAT_GET_INT(v[1]),joaat(v[1])))
+                if messageDialog("You Got A Report By "..v[1],mtWarning, mbYes, mbNo) == mrYes then
+                    STATS.STAT_SET_INT(v[1],0)
+                else
+                    messageDialog("Are You Sure Want Keep Your Report",mtWarning, mbYes, mbNo)
+                end
             end
             if Report_Boolean == false then break end
             Async();
@@ -1549,7 +1560,7 @@ function BLOCK_REPORTS(Boolean) --To Clean Report Automatically
         end
     end)
     AsyncStart(new,1000)
-end;
+end
 
 function TotalEXPIndex(id)
     local CurrentLevel = get.Global(int,1590682+1+iVar0[id]*883+211+6)
@@ -1704,3 +1715,4 @@ function autoHeistcut(Executor)
     AsyncStart(sync,800)
   end
 end
+
