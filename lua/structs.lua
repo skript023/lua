@@ -1836,7 +1836,7 @@ Total Main Target : %s
 Total Secondary Target : $%d
 ]],IPR4,IPR3,IPR2,IPR1,PPort,IPRL4,IPRL3,IPRL2,IPRL1,PPort,PlayerName,SCID,PLG,PVG,JoinStatus,TransitionStatus,Ragdoll,Pradars,PReveal,CurrentVehicleM,CurrentVehicle,CurWep,ListLevels,ListBanked,ListCash,ListOrgName,
 PTotalEXP,PGlobalEXP,PlayerLevelState,CurLevelStatus,IsHost,HP,Max_HP,Armor,ListWanted,TotalKill,TotalDeath,KDRatio,BunkerLocation,MethLocation,WeedLocation,CokeLocation,CashLocation,DocLocation,
-board_status,PrepPrimary,PrepOptional,TotalPrepWajib,TotalPrepOptional,selected_gunman,selected_driver,
+board_status,PrepPrimary,TotalPrepWajib,PrepOptional,TotalPrepOptional,selected_gunman,selected_driver,
 selected_hacker,selected_approach,selected_target,security_pass,duggan_level,biset0,RaceWon,RaceLost,DMWin,DMlost,
 MissionStatus,MissionProgress,TotalPOI,PrimaryTarget,CayoWeapon,Boltcut,Grapple,Uniform,Entrance,SecondaryLootCashI,
 TotalLootCash,SecondaryLootCashC,CompoundLootCash,SecondaryLootWeed,TotalLootWeed,SecondaryLootWeedC,CompoundLootWeed,SecondaryLootCoke,TotalLootCoke,SecondaryLootCokeC,CompoundLootCoke,
