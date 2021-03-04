@@ -1784,8 +1784,8 @@ Cash Location : ID %s
 Document Location : ID %s
 =========CASINO HEIST STAT==========
 Casino Heist Primary Prep : %s
-Primary Prep : %i/i%
-Optional Prep : %i/i%
+Primary Prep : %i/%s
+Optional Prep : %i/%s
 Casino Heist Gunman : %s
 Casino Heist Driver : %s
 Casino Heist Hacker : %s
