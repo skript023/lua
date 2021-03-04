@@ -43,7 +43,7 @@ STAT_LOOP_INT = function(ArrayName) --Set Stat Group In Loop
       Protection_joaat.Text = string.format("%s",v[1])
       Protection_stat_value.Text = string.format("%s",v[2])
       SystemLog(string.format("%s : %s [Hash : 0x%X]",v[1],v[2],joaat(v[1])))
-      printf("%s : %s [Hash : 0x%X]",v[1],v[2],joaat(v[1]))
+      LuaEngineLog(string.format("%s : %s [Hash : 0x%X]",v[1],v[2],joaat(v[1])))
       SYSTEM.WAIT(100)
     end -- Coroutine has completed, it will be marked as dead after this print..
   end
@@ -62,7 +62,7 @@ STAT_LOOP_BOOL = function(ArrayName) --Set Stat Group In Loop
       Protection_joaat.Text = string.format("%s",v[1])
       Protection_stat_value.Text = string.format("%s",v[2])
       SystemLog(string.format("%s : %s [Hash : 0x%X]",v[1],v[2],joaat(v[1])))
-      printf("%s : %s [Hash : 0x%X]",v[1],v[2],joaat(v[1]))
+      LuaEngineLog(string.format("%s : %s [Hash : 0x%X]",v[1],v[2],joaat(v[1])))
       SYSTEM.WAIT(3000)
     end
   end
@@ -669,6 +669,7 @@ ENTITY.SET_ENTITY_COORD = function(x,y,z)
     set.float(CPlayer + 0x90,x)
     set.float(CPlayer + 0x94,y)
     set.float(CPlayer + 0x98,z)
+    LuaEngineLog(string.format("Set Coodinates To X : %.5f | Y : %.5f | Z : %.5f",x,y,z))
 end
 
 

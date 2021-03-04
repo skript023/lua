@@ -43,11 +43,21 @@ function SystemLog(Message)
         LogMessage = Message
         if getAppsPath() then
             f = io.open(string.format("%s/Log-System.log",FilePath),"a+")
-            f:write(LogMessage.." "..os.date().."\n")
+            f:write(LogMessage.." | "..os.date().."\n")
             f:close()
         end
     end
     createNativeThread(new)
+end
+
+function LuaEngineLog(Message)--console.mOutput.Lines.Text
+    PlayerInformationLog = Message
+    DebugController.ConsoleOutput.append(Message)
+    if getAppsPath() then
+        LuaLogs = io.open(string.format("%s/Lua-Log.log",FilePath),"a+")
+        LuaLogs:write(PlayerInformationLog.." | "..os.date().."\n")
+        LuaLogs:close()
+    end
 end
 
 function Pointer(options)
@@ -55,9 +65,9 @@ function Pointer(options)
         Options = options,
         Scan = function()
             --DEBUG: 
-            ConsoleLog("Signature Scanning:  "..options.Pattern);
-            ConsoleLog("Registering Pointer: "..options.Name);
-            ConsoleLog(string.format('Scan Method:%s | Sig Offset:%s | Target Offset:%s',options.ScanMethod,options.SigOffset,options.TargetOffset));
+            LuaEngineLog("Signature Scanning:  "..options.Pattern);
+            LuaEngineLog("Registering Pointer: "..options.Name);
+            LuaEngineLog(string.format('Scan Method:%s | Sig Offset:%s | Target Offset:%s',options.ScanMethod,options.SigOffset,options.TargetOffset));
 
             autoAssemble([[
                 aobscanmodule(]]..options.Name..[[,]]..process..[[,]]..options.Pattern..[[)
@@ -75,7 +85,7 @@ function Pointer(options)
                 unregisterSymbol(options.Name);
                 registerSymbol(options.Name, _addr, true);
             end
-            ConsoleLog(string.format("Address: 0x%X",getAddressSafe(options.Name)));
+            LuaEngineLog(string.format("Address: 0x%X",getAddressSafe(options.Name)));
             SystemLog(string.format("Registered Pointer : %s | Address : 0x%X | Scan Method:%s | Sig Offset:%s | Target Offset:%s",options.Name,getAddressSafe(options.Name),options.ScanMethod,options.SigOffset,options.TargetOffset))
             
             return _ptr;

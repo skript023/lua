@@ -253,6 +253,7 @@ function bunker_deliver(hasil)
         set.global(int,262145+21230,900000)
         set.global(int,262145+21235,900000)
         set.global(int,262145+21224,900000)
+        LuaEngineLog(string.format("You Received $%i | Total Sent %i| 0x%X | 0x%X | 0x%X",hasil,total,get.Memory("GTA5.exe+025FAF80"),get.Memory("[[GlobalPTR-128]+1180]+37C0"),get.Memory("[[GlobalPTR-128]+1180]+3F68")))
     end
     ExecuteThread(new_thread)
 end
@@ -292,6 +293,7 @@ function SpecialCargo(amount)
         SYSTEM.WAIT(500)
         set.global(int,262145+15337,10000)
         set.int(TIMER_CARGO,1800000)
+        LuaEngineLog(string.format("You Received $%i | Total %i | Memory 0x%X",amount,REQ,get.Memory(REQ_DEL_CARGO)))
     end
     ExecuteThread(new_thread)
 end
@@ -322,6 +324,7 @@ function hangar(amount)
         set.global(int,262145+22347,1800000)
         set.global(int,262145+22349,1800000)
         set.global(int,262145+22351,1800000)
+        LuaEngineLog(string.format("You Received $%i | Total %i | Memory 0x%X",amount,REQ,get.Memory(REQ_DEL_CARGO)))
     end
     ExecuteThread(new_thread)
 end
@@ -336,19 +339,19 @@ function bkr(amount)
         set.global(int,262145+16967,amount)
         set.global(int,262145+16968,amount)
         set.global(float,262145+18603,1)
-        SYSTEM.WAIT(250)
         set.int(DEL_CASH,REQ)
         set.int(DEL_COKE,REQ)
         set.int(DEL_DOC,REQ)
         set.int(DEL_WEED,REQ)
         set.int(DEL_FLY,REQ)
-        sleep(200)
+        SYSTEM.WAIT(500)
         set.global(int,262145+16956,1000)
         set.global(int,262145+16957,3500)
         set.global(int,262145+16958,20000)
         set.global(int,262145+16959,8500)
         set.global(int,262145+16960,1500)
         set.global(float,262145+18603,1.5)
+        LuaEngineLog(string.format("You Received $%i | Total %i | Memory 0x%X",amount,REQ,get.Memory(REQ_DEL_CARGO)))
     end
     ExecuteThread(new_thread)
 end
@@ -657,14 +660,14 @@ function DisableEvent(ID,Executor)
             writeBytes(tbl_SE[1],0xC3)
             tbl_ScriptEvents[ID][3]=true;
             MiscTab.EventStatus.Text = string.format('[%i]Event: %s | Status: %s | Address: 0x%s',ID,tbl_SE[2],'true',tbl_SE[1])
-            print(string.format('[%i] Event: %s\nProtected: %s\nAddress: 0x%s\n',ID,tbl_SE[2],'true',tbl_SE[1]))
+            LuaEngineLog(string.format('[%i] Event: %s\nProtected: %s\nAddress: 0x%s\n',ID,tbl_SE[2],'true',tbl_SE[1]))
         elseif Trigger == false then
             writeBytes(tbl_SE[1],0x48)
             tbl_ScriptEvents[ID][3]=false;
             MiscTab.EventStatus.Text = string.format('[%i]Event: %s | Status: %s | Address: 0x%s',ID,tbl_SE[2],'false',tbl_SE[1])
-            print(string.format('[%i] Event: %s\nProtected: %s\nAddress: 0x%s\n',ID,tbl_SE[2],'false',tbl_SE[1]))
+            LuaEngineLog(string.format('[%i] Event: %s\nProtected: %s\nAddress: 0x%s\n',ID,tbl_SE[2],'false',tbl_SE[1]))
         else 
-            print(string.format('ERROR: Wrong Input..')) 
+            LuaEngineLog(string.format('ERROR: Wrong Input..')) 
     end
 end
 
@@ -679,7 +682,7 @@ end
 
 function _Str(Address,String,Size)
     local bt=stringToByteTable(String)
-    if #bt>Size then print("too many characters") return
+    if #bt>Size then LuaEngineLog("too many characters") return
     elseif #bt==Size then goto continue end
     for i=1,Size-(#bt),1 do
         bt[#bt+i]=0x00
@@ -995,7 +998,7 @@ function ChangePickup(Hash)
         local PickupHash=readInteger(readPointer(p)+0x488) if not PickupHash then goto continue end
         if  PickupHash==GAMEPLAY.GET_HASH_KEY("PICKUP_MONEY_VARIABLE") then 
             writeInteger(readPointer(p)+0x488,Hash) 
-            print("Hash Changed")
+            LuaEngineLog("Hash Changed")
             SystemLog(string.format("Hash : 0x%X",readInteger(readPointer(p)+0x488)))
         end
         ::continue::
@@ -1013,9 +1016,9 @@ function CheckPickups()
         local p=readPointer(pPickupList)+(i*0x10)
         if not p then goto continue end
         local PickupHash=readInteger(readPointer(p)+0x488) if not PickupHash then goto continue end
-        --print(PickupHash)
+            LuaEngineLog(PickupHash)
         if PickupHash == joaat("PICKUP_MONEY_VARIABLE") then 
-            print("DANGER HASH IS PICKUP_MONEY_VARIABLE")
+            LuaEngineLog("DANGER HASH IS PICKUP_MONEY_VARIABLE")
             PlaylistTab.PickupCheck.Text = "DANGER HASH IS PICKUP_MONEY_VARIABLE"
             return true
         else
@@ -1233,6 +1236,7 @@ function blacklist_comparing(Executor)
                 --print(string.format('%s/%s | %s/%s',nickname,v2[1],user_id,v2[2]));
                 PlayerData.AdminScanner.Caption = string.format('%s/%s | %s/%s',nickname,v2[1],user_id,v2[2]);
                 if (user_id == v2[2]) or (nickname == v2[1]) then
+                    LuaEngineLog(string.format("R* Employee is Here %s [%i]",nickname,user_id))
                     ShowMessage("R* Employee Come!")
                     SystemLog(string.format("R* Employee Has Come ID %s Name %s",v2[2],v2[1]))
                     LoadSession(10)
@@ -1272,7 +1276,7 @@ function SpectatorCheck()
             set.string("Ada yang join Sesi Cuk")
             set.global(int,1574395,1)
             ShowMessage("Ada yang join Sesi Cuk")
-            print("Ada yang join Sesi Cuk")
+            LuaEngineLog("Ada yang join Sesi Cuk")
         end
     end,
     [1] = function()
@@ -1281,7 +1285,7 @@ function SpectatorCheck()
             set.string("Ada yang join Sesi Cuk")
             set.global(int,1574395,1)
             ShowMessage("Ada yang join Sesi Cuk")
-            print("Ada yang join Sesi Cuk")
+            LuaEngineLog("Ada yang join Sesi Cuk")
         end
     end,
     [11] = function()
@@ -1290,12 +1294,12 @@ function SpectatorCheck()
             set.string("Ada yang join Sesi Cuk")
             set.global(int,1574395,1)
             ShowMessage("Ada yang join Sesi Cuk")
-            print("Ada yang join Sesi Cuk")
+            LuaEngineLog("Ada yang join Sesi Cuk")
         end
     end,
     [10] = function()
         if NETWORK.NETWORK_GET_NUM_CONNECTED_PLAYERS() > 1 then
-            print("Ada yang join Sesi Cuk")
+            LuaEngineLog("Ada yang join Sesi Cuk")
             LoadSession(10)
         end
     end,
@@ -1305,7 +1309,7 @@ function SpectatorCheck()
             set.string("Ada yang join Sesi Cuk")
             set.global(int,1574395,1)
             ShowMessage("Ada yang join Sesi Cuk")
-            print("Ada yang join Sesi Cuk")
+            LuaEngineLog("Ada yang join Sesi Cuk")
         end
     end,
     [2] = function()
@@ -1314,7 +1318,7 @@ function SpectatorCheck()
             set.string("Ada yang join Sesi Cuk")
             set.global(int,1574395,1)
             ShowMessage("Ada yang join Sesi Cuk")
-            print("Ada yang join Sesi Cuk")
+            LuaEngineLog("Ada yang join Sesi Cuk")
         end
     end,
     [3] = function()
@@ -1323,7 +1327,7 @@ function SpectatorCheck()
             set.string("Ada yang join Sesi Cuk")
             set.global(int,1574395,1)
             ShowMessage("Ada yang join Sesi Cuk")
-            print("Ada yang join Sesi Cuk")
+            LuaEngineLog("Ada yang join Sesi Cuk")
         end
     end,
     [6] = function()
@@ -1332,7 +1336,7 @@ function SpectatorCheck()
             set.string("Ada yang join Sesi Cuk")
             set.global(int,1574395,1)
             ShowMessage("Ada yang join Sesi Cuk")
-            print("Ada yang join Sesi Cuk")
+            LuaEngineLog("Ada yang join Sesi Cuk")
         end
     end,
     }
@@ -1344,7 +1348,7 @@ function AntiSpectate()
     local MissionLaunchNew = SCRIPT.DOES_SCRIPT_EXIST('fm_mission_controller_2020')
     local TotalPlayer = NETWORK.NETWORK_GET_NUM_CONNECTED_PLAYERS()
     if (MissionLaunch == true) or (MissionLaunchNew == true) and TotalPlayer == 4 then
-        if (TotalPlayer > 4) then print("CheckPlayerList") playSound(findTableFile('Alarm.wav')) end
+        if (TotalPlayer > 4) then LuaEngineLog("CheckPlayerList") playSound(findTableFile('Alarm.wav')) end
     end
 end
 
@@ -1445,7 +1449,7 @@ function AntiSpecAFK(Activator)
 	local NewThread = function()
 		Executor = Activator;
 		while (Executor == true) do
-	   	print('CheckSession')
+	   	LuaEngineLog('CheckSession')
 	   	if GetCurrentSession() == 1 and NETWORK.NETWORK_GET_NUM_CONNECTED_PLAYERS() > 1 then
 	      	LoadSession(1)
 	      end
@@ -1507,7 +1511,8 @@ function All_Mission_Lives(Executor)
             Async()
             set.locals(int,'fm_mission_controller',25438+1322+1,9999)
             if (All_Live_Loop == false) then
-                set.locals(int,'fm_mission_controller',25438+1322+1,1)
+                --set.locals(int,'fm_mission_controller',25438+1322+1,1)
+                LuaEngineLog(string.format("Mission Lives Status %s",All_Live_Loop))
                 break
             end
         end
@@ -1520,9 +1525,10 @@ function CayoLives(Executor)
         CayoLiveLoop = Executor
         while (CayoLiveLoop == true) do
             Async()
-            Cayo.SL(40170+976+1,9999)
+            set.locals(int,'fm_mission_controller_2020',40170+976+1,9999)
             if (CayoLiveLoop == false) then
-                Cayo.SL(40170+976+1,1)
+                --set.locals(int,'fm_mission_controller_2020',40170+976+1,1)
+                LuaEngineLog(string.format("Cayo Lives Status %s",CayoLiveLoop))
                 break
             end
         end
@@ -1685,6 +1691,30 @@ function LootCompoundPaint(targets)
     return TotalCompoundPaint
 end
 
+function PrepWajib(targets)
+    for i = 1,9,1 do
+        local IDPrepWajib = get.Global(int,1701666+1+iVar0[selected_player]*68+18+1)
+        if IDPrepWajib >= SecondaryLocation[i] and IDPrepWajib < SecondaryLocation[i+1] then
+            PrepWajibStatus = i+1
+        elseif IDPrepWajib == 0 then
+            PrepWajibStatus = "0"
+        end
+    end
+    return PrepWajibStatus
+end
+
+function PrepOptional(targets)
+    for i = 1,20,1 do
+        local IDPrepOption = get.Global(int,1701666+1+iVar0[selected_player]*68+18)
+        if IDPrepOption >= SecondaryLocation[i] and IDPrepOption < SecondaryLocation[i+1] then
+            PrepOptionStatus = i+1
+        elseif IDPrepOption == 0 then
+            PrepOptionStatus = "0"
+        end
+    end
+    return PrepOptionStatus
+end
+
 function autoHeistcut(Executor)
     AutomateCutLoop = Executor
     local function CutData()
@@ -1716,3 +1746,11 @@ function autoHeistcut(Executor)
   end
 end
 
+function SetAssistedAim(Boolean)
+    local Activator = Boolean
+    if Activator == true then
+        set.int(AIM_STATUS,0)
+    elseif Activator == false then
+        set.int(AIM_STATUS,3)
+    end
+end

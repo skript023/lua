@@ -358,6 +358,7 @@ auto_aim        = get.Memory("GTA5.exe+1F805CC")
 script          = coroutine
 --IsTaking        = get.Memory("[[[[[GTA5.exe+01EE18A8]+0]+3B0]+918]+2A0]+318")
 TAKE_ALL_C      = get.Memory("[[GlobalPTR-128]+1180]+4B500")
+AIM_STATUS = get.Memory("GTA5.exe+1F805CC",true)
 end
 
 ptr_string()

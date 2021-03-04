@@ -883,6 +883,7 @@ SESSION_ID = {1, 0, 10, 11, 2, 3, 12, 6, 9, -1, 13}
 function SessionChanger()
   local session_id = combobox_getItemIndex(MainTab.Sessions) + 1;
   LoadSession(SESSION_ID[session_id])
+  LuaEngineLog(string.format("Change Session To : ID[0x%X]",SESSION_ID[session_id]))
 end
 
 SEASON_ID = {1, 0, 2, 3, 4, 5, 6, 7, 8, 9, 10 ,11, 12, 13, 14, -1}
@@ -903,7 +904,7 @@ DATA_A = {
 function PotentialAndTakeEditor()
   local id = combobox_getItemIndex(MainTab.PTAKE);
   set.int(DATA_A[id], tonumber(MainTab.Num.Text))
-  print(string.format("%s : %i",DATA_A[id],get.Int(DATA_A[id])))
+  LuaEngineLog(string.format("%s : %i",DATA_A[id],get.Int(DATA_A[id])))
   SetTimer.Enabled = true
 end
 if SetTimer == nil then
@@ -1155,7 +1156,7 @@ function ReportCheck()
         Async()
         cheating = STATS.STAT_GET_INT(v[1])
         SystemLog(string.format("%s : %s [Hash : 0x%X]",v[1],STATS.STAT_GET_INT(v[1]),joaat(v[1])))
-        print(string.format("Stat : %s | Value : %s [Hash : 0x%X]",v[1],STATS.STAT_GET_INT(v[1]),joaat(v[1])))
+        LuaEngineLog(string.format("Stat : %s | Value : %s [Hash : 0x%X]",v[1],STATS.STAT_GET_INT(v[1]),joaat(v[1])))
         Scanner.Text = string.format('%s : %s',v[1],cheating)
         if STATS.STAT_GET_INT(v[1]) >= v[2] then
           if messageDialog("You Got A Report By "..v[1],mtWarning, mbYes, mbNo) == mrYes then
@@ -1425,6 +1426,8 @@ function Player_List_Info()
   local MissionStatus = get.Global(int,1706028+1+iVar0[selected_player]*53+2)
   local MissionProgress = get.Global(int,1706028+1+iVar0[selected_player]*53+1)
   local TotalPOI = get.Global(int,1706028+1+iVar0[selected_player]*53+5)
+  local PrepPrimary = PrepWajib(selected_player)
+  local PrepOptional = PrepOptional(selected_player)
   local PrimaryTarget = "NULL"
   local TotalLootCash = LootIsLandCash(selected_player)
   local TotalLootWeed = LootIsLandWeed(selected_player)
@@ -1442,6 +1445,8 @@ function Player_List_Info()
   local TotalValuePaint = ValueLootPaint * (CompoundLootPaint)
   local TotalSecondaryLoot = TotalValueCash + TotalValueWeed + TotalValueCoke + TotalValueGold + TotalValuePaint;
   local TotalValueMain = "Null"
+  local TotalPrepWajib = "Unknown"
+  local TotalPrepOptional = "Unknown"
 
   if PrimaryLoot == 0 then TotalValueMain = "$900.000"
   elseif PrimaryLoot == 1 then TotalValueMain = "$1.000.000"
@@ -1588,11 +1593,11 @@ function Player_List_Info()
     BunkerLocation = "["..BunkerLocation.."]".." No Data"
   end
 
-  if board_status == MAX_UINT then board_status = 'Skip Prep' end
-  if selected_approach == 1 and board_status == 127 then board_status = 'Complete'
-  elseif selected_approach == 2 and board_status == 159 then board_status = 'Complete'
-  elseif selected_approach == 3 and board_status == 799 then board_status = 'Complete' 
-  else board_status = 'Not Complete'
+  if board_status == MAX_UINT then board_status = string.format('ID[0x%X] Skip Prep',board_status) end
+  if selected_approach == 1 and board_status == 127 then board_status = string.format('ID[0x%X] Complete',board_status)
+  elseif selected_approach == 2 and board_status == 159 then board_status = string.format('ID[0x%X] Complete',board_status)
+  elseif selected_approach == 3 and board_status == 799 then board_status = string.format('ID[0x%X] Complete',board_status)
+  else board_status = string.format('ID[0x%X] Not Complete',board_status)
   end
 
   
@@ -1601,6 +1606,22 @@ function Player_List_Info()
   elseif selected_approach == 2 and biset0 == 339990 then biset0 = 'Complete'
   elseif selected_approach == 3 and biset0 == 3670038 then biset0 = 'Complete'
   else biset0 = 'Not Complete'
+  end
+
+  if selected_approach == 1 then 
+    PrepPrimary = PrepPrimary
+    TotalPrepWajib = 7 
+    TotalPrepOptional = 7
+  elseif selected_approach == 2 then
+    PrepPrimary = PrepPrimary - 2
+    PrepOptional = PrepOptional - 4
+    TotalPrepWajib = 6 
+    TotalPrepOptional = 15
+  elseif selected_approach == 3 then
+    PrepPrimary = PrepPrimary - 3
+    PrepOptional = PrepOptional - 13
+    TotalPrepWajib = 7
+    TotalPrepOptional = 6
   end
 
   if selected_driver == 0 then
@@ -1763,6 +1784,8 @@ Cash Location : ID %s
 Document Location : ID %s
 =========CASINO HEIST STAT==========
 Casino Heist Primary Prep : %s
+Primary Prep : %i/i%
+Optional Prep : %i/i%
 Casino Heist Gunman : %s
 Casino Heist Driver : %s
 Casino Heist Hacker : %s
@@ -1812,7 +1835,8 @@ Value Paint : $%s
 Total Main Target : %s
 Total Secondary Target : $%d
 ]],IPR4,IPR3,IPR2,IPR1,PPort,IPRL4,IPRL3,IPRL2,IPRL1,PPort,PlayerName,SCID,PLG,PVG,JoinStatus,TransitionStatus,Ragdoll,Pradars,PReveal,CurrentVehicleM,CurrentVehicle,CurWep,ListLevels,ListBanked,ListCash,ListOrgName,
-PTotalEXP,PGlobalEXP,PlayerLevelState,CurLevelStatus,IsHost,HP,Max_HP,Armor,ListWanted,TotalKill,TotalDeath,KDRatio,BunkerLocation,MethLocation,WeedLocation,CokeLocation,CashLocation,DocLocation,board_status,selected_gunman,selected_driver,
+PTotalEXP,PGlobalEXP,PlayerLevelState,CurLevelStatus,IsHost,HP,Max_HP,Armor,ListWanted,TotalKill,TotalDeath,KDRatio,BunkerLocation,MethLocation,WeedLocation,CokeLocation,CashLocation,DocLocation,
+board_status,PrepPrimary,PrepOptional,TotalPrepWajib,TotalPrepOptional,selected_gunman,selected_driver,
 selected_hacker,selected_approach,selected_target,security_pass,duggan_level,biset0,RaceWon,RaceLost,DMWin,DMlost,
 MissionStatus,MissionProgress,TotalPOI,PrimaryTarget,CayoWeapon,Boltcut,Grapple,Uniform,Entrance,SecondaryLootCashI,
 TotalLootCash,SecondaryLootCashC,CompoundLootCash,SecondaryLootWeed,TotalLootWeed,SecondaryLootWeedC,CompoundLootWeed,SecondaryLootCoke,TotalLootCoke,SecondaryLootCokeC,CompoundLootCoke,
@@ -1828,24 +1852,28 @@ function Playerlist_Manipulator(sender)
   local id_prop = combobox_getItemIndex(PlaylistTab.prop_changer);
   switch(idc,{
     [0] = function()
+      LuaEngineLog(string.format("Player Index [%i] | Player Name : %s | Memory Address 0x%X",selected_player,get.String(CPLAYER_NAME[selected_player]),get.Memory(CPLAYER_NAME[selected_player])))
       Player_List_Info()
       ShowPlayerAvatar(selected_player,0)
       PlaylistTab.HashIndicator.Text = 'Selected Index'.." ["..selected_player.."] Name : "..get.String(CPLAYER_NAME[selected_player])
     end,
     [1] = function()
       Player_List_Info()
+      LuaEngineLog(string.format("Player Index [%i] | Player Name : %s | Memory Address 0x%X",selected_player,get.String(CPLAYER_NAME[selected_player]),get.Memory(CPLAYER_NAME[selected_player])))
       ShowPlayerAvatar(selected_player,0)
       PlaylistTab.HashIndicator.Text = 'Teleport To '.." ["..selected_player.."] "..get.String(CPLAYER_NAME[selected_player])
       teleport_to_player(target_x[selected_player],target_y[selected_player],target_z[selected_player])
     end,
     [2] = function()
       Player_List_Info()
+      LuaEngineLog(string.format("Player Index [%i] | Player Name : %s | Memory Address 0x%X | Vehicle : 0x%X ",selected_player,get.String(CPLAYER_NAME[selected_player]),get.Memory(CPLAYER_NAME[selected_player]),tbl_Vehicles[id2][2]))
       ShowPlayerAvatar(selected_player,0)
       PlaylistTab.HashIndicator.Text = 'Spawn Vehicle To '.." ["..selected_player.."] "..get.Int(VEH_HANDLER).." "..get.String(CPLAYER_NAME[selected_player])
       VEHICLE.CREATE_VEHICLE(tonumber(VehicleTab.Dist.Text),target_x[selected_player],target_y[selected_player],target_z[selected_player],theading_x[selected_player],theading_y[selected_player],deactivate,tbl_Vehicles[id2][1])
     end,
     [3] = function()
       Player_List_Info()
+      LuaEngineLog(string.format("Player Index [%i] | Player Name : %s | Memory Address 0x%X",selected_player,get.String(CPLAYER_NAME[selected_player]),get.Memory(CPLAYER_NAME[selected_player])))
       ShowPlayerAvatar(selected_player,0)
       PlaylistTab.HashIndicator.Text = 'Spawn Pickup To '.." ["..selected_player.."] "..' '..get.String(CPLAYER_NAME[selected_player])
       OBJECT.CREATE_AMBIENT_PICKUP(tbl_pickup_hash[IDHash],data_prop[id_prop],9999,target_x[selected_player],target_y[selected_player],target_z[selected_player],theading_x[selected_player],theading_y[selected_player],tonumber(PlaylistTab.Dist.Text))
@@ -1858,6 +1886,7 @@ function Playerlist_Manipulator(sender)
         for _,v in pairs(all_weapon_dropper)
         do
           PlaylistTab.HashIndicator.Text = 'Spawn All Weapon To '.." ["..selected_player.."] "..v[1]..' '..get.String(CPLAYER_NAME[selected_player])
+          LuaEngineLog(string.format("Player Index [%i]\nPlayer Name : %s\nMemory Address 0x%X\nHash : 0x%X\nWeapon : 0x%X",selected_player,get.String(CPLAYER_NAME[selected_player]),get.Memory(CPLAYER_NAME[selected_player]),v[1],v[2]))
           OBJECT.CREATE_AMBIENT_PICKUP(v[1],v[2],9999,target_x[selected_player],target_y[selected_player],target_z[selected_player],theading_x[selected_player],theading_y[selected_player],tonumber(PlaylistTab.Dist.Text))
           if give_all_weapon_var == false then break end
           SYSTEM.WAIT(300)
@@ -1867,6 +1896,7 @@ function Playerlist_Manipulator(sender)
     end,
     [5] = function()
       Player_List_Info()
+      LuaEngineLog(string.format("Player Index [%i] | Player Name : %s | Memory Address 0x%X",selected_player,get.String(CPLAYER_NAME[selected_player]),get.Memory(CPLAYER_NAME[selected_player])))
       ShowPlayerAvatar(selected_player,0)
       PlaylistTab.HashIndicator.Text = 'Spawn Auto Health True To '.." ["..selected_player.."] "..get.String(CPLAYER_NAME[selected_player])
       THREAD.YIELD(AutoHealthPack,true,selected_player,1000)
@@ -1874,6 +1904,7 @@ function Playerlist_Manipulator(sender)
     end,
     [6] = function()
       Player_List_Info()
+      LuaEngineLog(string.format("Player Index [%i] | Player Name : %s | Memory Address 0x%X",selected_player,get.String(CPLAYER_NAME[selected_player]),get.Memory(CPLAYER_NAME[selected_player])))
       ShowPlayerAvatar(selected_player,0)
       PlaylistTab.HashIndicator.Text = 'Spawn Auto Health False To '.." ["..selected_player.."] "..get.String(CPLAYER_NAME[selected_player])
       THREAD.YIELD(AutoHealthPack,false,selected_player,1000)
@@ -1881,11 +1912,13 @@ function Playerlist_Manipulator(sender)
     end,
     [7] = function()
       Player_List_Info()
+      LuaEngineLog(string.format("Player Index [%i] | Player Name : %s | Memory Address 0x%X",selected_player,get.String(CPLAYER_NAME[selected_player]),get.Memory(CPLAYER_NAME[selected_player])))
       ShowPlayerAvatar(selected_player,0)
       PlaylistTab.HashIndicator.Text = 'Teleport Ped To '.." ["..selected_player.."] "..get.String(CPLAYER_NAME[selected_player])
       PED.SET_PED_COORD(pos_x,pos_y,pos_z,PLAYER.PLAYER_INDEX_ID(selected_player))
     end,
     [8] = function()
+      LuaEngineLog(string.format("Player Index [%i] | Player Name : %s | Memory Address 0x%X",selected_player,get.String(CPLAYER_NAME[selected_player]),get.Memory(CPLAYER_NAME[selected_player])))
       PlaylistTab.HashIndicator.Text = 'Spawn Object Loop To True'.." ["..selected_player.."] "..' '..get.String(CPLAYER_NAME[selected_player])
       Player_List_Info()
       ShowPlayerAvatar(selected_player,0)
@@ -1908,12 +1941,14 @@ function Playerlist_Manipulator(sender)
     [9] = function()
       PlaylistTab.HashIndicator.Text = 'Spawn Object Loop To False'.." ["..selected_player.."]"..get.String(CPLAYER_NAME[selected_player])
       Player_List_Info()
+      LuaEngineLog(string.format("Player Index [%i] | Player Name : %s | Memory Address 0x%X",selected_player,get.String(CPLAYER_NAME[selected_player]),get.Memory(CPLAYER_NAME[selected_player])))
       ShowPlayerAvatar(selected_player,0)
       hwal=0
       hwal_loop = false
     end,
     [10] = function()
       Player_List_Info()
+      LuaEngineLog(string.format("Player Index [%i] | Player Name : %s | Memory Address 0x%X",selected_player,get.String(CPLAYER_NAME[selected_player]),get.Memory(CPLAYER_NAME[selected_player])))
       ShowPlayerAvatar(selected_player,0)
       local spwnveh_loop = true
       spwnveh=1
@@ -1931,6 +1966,7 @@ function Playerlist_Manipulator(sender)
       ExecuteThread(spwnveh);
     end,
     [11] = function()
+      LuaEngineLog(string.format("Player Index [%i] | Player Name : %s | Memory Address 0x%X",selected_player,get.String(CPLAYER_NAME[selected_player]),get.Memory(CPLAYER_NAME[selected_player])))
       PlaylistTab.HashIndicator.Text = 'Spawn Vehicle Loop To False'.." ["..selected_player.."]"..get.String(CPLAYER_NAME[selected_player])
       Player_List_Info()
       ShowPlayerAvatar(selected_player,0)
@@ -2021,7 +2057,7 @@ function ListMenuExecutor(sender, user)
   local id = listbox_getItemIndex(MainTab.CheatMenu) + 1;
   SetList(CT[id][1],true)
   SetList(CT[id][1],false)
-  printf("Activate : %s",CT[id][2])
+  LuaEngineLog(string.format("Activate : %s",CT[id][2]))
 end
 
 function Player_CEListBox2SelectionChange(sender, user)
@@ -2038,7 +2074,7 @@ function MainMenuCheckBox(sender)
     writeZeroBytes("LabelTextAddress+0xC4CF3",504)
     set.string("LabelTextAddress+0xC4CF3","Activate : %s"..CT2[id][2])
     set.global(int,1574395,1)
-    print(string.format("Activate : %s",CT2[id][2]))
+    LuaEngineLog(string.format("Activate : %s",CT2[id][2]))
   elseif ReadAct(CT2[id][1])==true then
     SetList(CT2[id][1],false)
     MainTab.CEEdit1.Text = "Deactivate : "..CT2[id][2]
@@ -2046,7 +2082,7 @@ function MainMenuCheckBox(sender)
     writeZeroBytes("LabelTextAddress+0xC4CF3",504)
     set.string("LabelTextAddress+0xC4CF3","Deactivate : "..CT2[id][2])
     set.global(int,1574395,1)
-    print(string.format("Deactivate : %s",CT2[id][2]))
+    LuaEngineLog(string.format("Deactivate : %s",CT2[id][2]))
   end
 end
     
@@ -2054,7 +2090,7 @@ function SliderMenuExecutor(sender)
 local index = listbox_getItemIndex(MainTab.CEListBox1) + 1;
 local data = get.Float(CT3[index][2])
 MainTab.SetSliderFloat.TextHint = get.Float(CT3[index][2])
-printf("%s : %s",CT3[index][1],get.Float(CT3[index][2]))
+LuaEngineLog(string.format("%s : %s",CT3[index][1],get.Float(CT3[index][2])))
   if sender.Position == 0 then
   writeFloat(CT3[index][2],1)
   elseif sender.Position == 1 then
@@ -2170,7 +2206,7 @@ end
 function SliderMenuReader(sender, user)
   local index = listbox_getItemIndex(MainTab.CEListBox1) + 1;
   MainTab.SetSliderFloat.TextHint = get.Float(CT3[index][2])
-  printf("%s : %s",CT3[index][1],get.Float(CT3[index][2]))
+  LuaEngineLog(string.format("%s : %s",CT3[index][1],get.Float(CT3[index][2])))
 end
 
 function NameChanger(sender)
@@ -2211,10 +2247,10 @@ function AutoSpoofRID()
   local check = checkbox_getState(PlaylistTab.AutoSpoofer)
   if check == cbChecked then
     SetList('RID SPOOF',true)
-    printf("Activate SCID Spoof : %s",get.TListA("RID SPOOF"))
+    LuaEngineLog(string.format("Activate SCID Spoof : %s",get.TListA("RID SPOOF")))
   elseif check == cbUnchecked then
     SetList('RID SPOOF',false)
-    printf("Activate SCID Spoof : %s",get.TListA("RID SPOOF"))
+    LuaEngineLog(string.format("Deactivate SCID Spoof : %s",get.TListA("RID SPOOF")))
   end
 end
 
@@ -2285,7 +2321,7 @@ end
 function InstantRID_Spoofer(sender)
   local id = combobox_getItemIndex(PlaylistTab.InstantRID) + 1;
   RID_SPOOF(DATA_RID[id][2])
-  printf("Username : %s | SCID : %i",DATA_RID[id][1],DATA_RID[id][2])
+  LuaEngineLog(string.format("Username : %s | SCID : %i",DATA_RID[id][1],DATA_RID[id][2]))
 end
 
 function NetwordScriptedEventBlock(sender)
@@ -2486,13 +2522,13 @@ function VehicleMenuExecutor(sender)
     writeZeroBytes(Address_LabelText_UNLOCK_AWRD_SHIRT1,504)
     writeString(Address_LabelText_UNLOCK_AWRD_SHIRT1,"Activate : "..VehOption[index])
     set.global(int,1574395,1)
-    printf("Activate : %s",VehOption[index])
+    LuaEngineLog(string.format("Activate : %s",VehOption[index]))
   elseif ReadAct(VehOption[index])==true then
     SetList(VehOption[index],false)
     writeZeroBytes(Address_LabelText_UNLOCK_AWRD_SHIRT1,504)
     writeString(Address_LabelText_UNLOCK_AWRD_SHIRT1,"Deactivate : "..VehOption[index])
     set.global(int,1574395,1)
-    printf("Deactivate : %s",VehOption[index])
+    LuaEngineLog(string.format("Deactivate : %s",VehOption[index]))
   end
 end
 
@@ -2759,7 +2795,7 @@ function HeistSet1()
   }  
 )
   elseif mp_id == 2 then
-    print("NULL")
+    LuaEngineLog("NULL")
   end
 end
 
@@ -2919,14 +2955,14 @@ function StatEditingOption()
   if index==2 then
     StatTab.CEButton9.Caption = 'Set Integer'
     STATS.STAT_SET_INT(tostring(Protection.joaat.Text),tonumber(Protection.stat_value.Text))
-    printf("Stat : %s | Value : %i | [Hash : 0x%X]",Protection.joaat.Text,Protection.stat_value.Text,joaat(tostring(Protection.joaat.Text)))
+    LuaEngineLog(string.format("Stat : %s | Value : %i | [Hash : 0x%X]",Protection.joaat.Text,Protection.stat_value.Text,joaat(tostring(Protection.joaat.Text))))
   elseif index==3 then
     StatTab.CEButton9.Caption = 'Set Boolean'
     STATS.STAT_SET_BOOL(tostring(Protection.joaat.Text),tonumber(Protection.stat_value.Text))
-    printf("Stat : %s | Value : %i | [Hash : 0x%X]",Protection.joaat.Text,Protection.stat_value.Text,joaat(tostring(Protection.joaat.Text)))
+    (string.format("Stat : %s | Value : %i | [Hash : 0x%X]",Protection.joaat.Text,Protection.stat_value.Text,joaat(tostring(Protection.joaat.Text))))
   elseif index == 4 then
       STATS.STAT_GET_INT(tostring(Protection.joaat.Text))
-      printf("Stat : %s | Value : %i | [Hash : 0x%X]",Protection.joaat.Text,Protection.stat_value.Text,joaat(tostring(Protection.joaat.Text)))
+    LuaEngineLog(string.format("Stat : %s | Value : %i | [Hash : 0x%X]",Protection.joaat.Text,Protection.stat_value.Text,joaat(tostring(Protection.joaat.Text))))
      StatTab.CEButton9.Caption = 'Get Value'
   elseif index == 5 then
      StatTab.CEButton9.Caption = 'Import Int'
@@ -3465,7 +3501,8 @@ business_controller = {
   'Script Special Cargo Selling Cooldown',
   'Script Special Cargo Buying Cooldown',
   'NC Timer Production',
-  'Safety AFK in Solo Public'
+  'Safety AFK in Solo Public',
+  'Set Aim Assisted'
 }
 function PlayerData_BusinessActClickCheck(sender)
   local id = listbox_getItemIndex(ManualTab.BusinessAct) + 1;
@@ -3492,6 +3529,7 @@ function ChangeVehicles()
   local id,id2=VehicleTab.VehicleList.ItemIndex,VehicleTab.VehicleChanger.ItemIndex
   if id==-1 or id==0 or id2==-1 or id2==0 then return end
   set.global(int,1323678+1+(tbl_GSV[id][1]*141)+66,joaat(tbl_Vehicles[id2][1]))
+  LuaEngineLog(string.format("Vehicle Changed From %s To %s",tbl_GSV[id][1],tbl_Vehicles[id2][1]))
 end
 
 bag_value = {1800,3600,5600,6400,7400,8400,MAX_INT}
@@ -3644,7 +3682,7 @@ TRY_CLAUSE {
   end,
   EXCEPT_CLAUSE {
     function(start)
-       print('caught error: '..start)
+      LuaEngineLog('caught error: '..start)
     end
  }
 }
@@ -3661,7 +3699,6 @@ local function LoopForever()
           frameFlagsOnTick(t)
           SpectatorCheck()
           AntiSpectate()
-          DebugController.ConsoleOutput.append(console.mOutput.Lines.Text)
       Async()
       end
   end)
@@ -3687,8 +3724,20 @@ function SendCommandConsole(sender)
   if getConsole == 'clear' then
     DebugController.ConsoleOutput.clear()
     console.mOutput.clear()
+  elseif getConsole == 'LocalScript' then
+    local function loadlocals()
+      for _,v in pairs(LocalScriptList) do
+        local script_condition = 'Killed'
+        if SCRIPT.DOES_SCRIPT_EXIST(v) == true then 
+          script_condition = 'Running' 
+          LuaEngineLog(string.format('%s : %s',v,script_condition))
+        end
+      end
+    end
+    ExecuteThread(loadlocals)
   end
 end
+
 
 
 
