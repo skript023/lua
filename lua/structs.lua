@@ -1982,66 +1982,66 @@ function panik()
 end
 
 function InceaseX()
-  local cord_x=GET_FLOAT(PLAYER_CORDX)
+  local cord_x=get.Float(PLAYER_CORDX)
   set.float(PLAYER_CORDX,cord_x+1)
   set.float(PLAYER_VECX,cord_x+1)
-  local p = readPointer(readPointer(getAddress("WorldPTR")) + 0x8)
-  if (2 == readInteger(p + 0x148C)) then
+  local p = get.Ptr(get.Ptr(get.Memory("WorldPTR")) + 0x8)
+  if (2 == get.Int(p + 0x148C)) then
     set.float(("[[[[WorldPTR]+8]+VEH]+30]+50"),cord_x+1)
     set.float(("[[[WorldPTR]+8]+VEH]+90"),cord_x+1)
   end
 end
 
 function DecreaseX()
-  local cord_x=GET_FLOAT(PLAYER_CORDX)
+  local cord_x=get.Float(PLAYER_CORDX)
   set.float(PLAYER_CORDX,cord_x-1)
   set.float(PLAYER_VECX,cord_x-1)
-  local p = readPointer(readPointer(getAddress("WorldPTR")) + 0x8)
-  if (2 == readInteger(p + 0x148C)) then
+  local p = get.Ptr(get.Ptr(get.Memory("WorldPTR")) + 0x8)
+  if (2 == get.Int(p + 0x148C)) then
     set.float(("[[[[WorldPTR]+8]+VEH]+30]+50"),cord_x-1)
     set.float(("[[[WorldPTR]+8]+VEH]+90"),cord_x-1)
   end
 end
 
 function IncreaseY()
-  local cord_y=GET_FLOAT(PLAYER_CORDY)
+  local cord_y=get.Float(PLAYER_CORDY)
   set.float(PLAYER_CORDY,cord_y+1)
   set.float(PLAYER_VECY,cord_y+1)
-  local p = readPointer(readPointer(getAddress("WorldPTR")) + 0x8)
-  if (2 == readInteger(p + 0x148C)) then
+  local p = get.Ptr(get.Ptr(get.Memory("WorldPTR")) + 0x8)
+  if (2 == get.Int(p + 0x148C)) then
     set.float(("[[[[WorldPTR]+8]+VEH]+30]+54"),cord_y+1)
     set.float(("[[[WorldPTR]+8]+VEH]+94"),cord_y+1)
    end
 end
 
 function DecreaseY()
-  local cord_y=GET_FLOAT(PLAYER_CORDY)
+  local cord_y=get.Float(PLAYER_CORDY)
   set.float(PLAYER_CORDY,cord_y-1)
   set.float(PLAYER_VECY,cord_y-1)
-  local p = readPointer(readPointer(getAddress("WorldPTR")) + 0x8)
-  if (2 == readInteger(p + 0x148C)) then
+  local p = get.Ptr(get.Ptr(get.Memory("WorldPTR")) + 0x8)
+  if (2 == get.Int(p + 0x148C)) then
     set.float(("[[[[WorldPTR]+8]+VEH]+30]+54"),cord_y-1)
     set.float(("[[[WorldPTR]+8]+VEH]+94"),cord_y-1)
   end
 end
 
 function IncreaseZ()
-  local cord_z=GET_FLOAT(PLAYER_CORDZ)
+  local cord_z=get.Float(PLAYER_CORDZ)
   set.float(PLAYER_CORDZ,cord_z+1)
   set.float(PLAYER_VECZ,cord_z+1)
-  local p = readPointer(readPointer(getAddress("WorldPTR")) + 0x8)
-  if (2 == readInteger(p + 0x148C)) then
+  local p = get.Ptr(get.Ptr(get.Memory("WorldPTR")) + 0x8)
+  if (2 == get.Int(p + 0x148C)) then
     set.float(("[[[[WorldPTR]+8]+VEH]+30]+58"),cord_z+1)
     set.float(("[[[WorldPTR]+8]+VEH]+98"),cord_z+1)
   end
 end
 
 function DecreaseZ()
-  local cord_z=GET_FLOAT(PLAYER_CORDZ)
+  local cord_z=get.Float(PLAYER_CORDZ)
   set.float(PLAYER_CORDZ,cord_z-1)
   set.float(PLAYER_VECZ,cord_z-1)
-  local p = readPointer(readPointer(getAddress("WorldPTR")) + 0x8)
-  if (2 == readInteger(p + 0x148C)) then
+  local p = get.Ptr(get.Ptr(get.Memory("WorldPTR")) + 0x8)
+  if (2 == get.Int(p + 0x148C)) then
     set.float(("[[[[WorldPTR]+8]+VEH]+30]+58"),cord_z-1)
     set.float(("[[[WorldPTR]+8]+VEH]+98"),cord_z-1)
   end
@@ -2092,109 +2092,109 @@ local data = get.Float(CT3[index][2])
 MainTab.SetSliderFloat.TextHint = get.Float(CT3[index][2])
 LuaEngineLog(string.format("%s : %s",CT3[index][1],get.Float(CT3[index][2])))
   if sender.Position == 0 then
-  writeFloat(CT3[index][2],1)
+  set.float(CT3[index][2],1)
   elseif sender.Position == 1 then
-  writeFloat(CT3[index][2],2)
+  set.float(CT3[index][2],2)
   elseif sender.Position == 2 then
-  writeFloat(CT3[index][2],3)
+  set.float(CT3[index][2],3)
   elseif sender.Position == 3 then
-  writeFloat(CT3[index][2],4)
+  set.float(CT3[index][2],4)
   elseif sender.Position == 4 then
-  writeFloat(CT3[index][2],5)
+  set.float(CT3[index][2],5)
   elseif sender.Position == 5 then
-  writeFloat(CT3[index][2],6)
+  set.float(CT3[index][2],6)
   elseif sender.Position == 6 then
-  writeFloat(CT3[index][2],7)
+  set.float(CT3[index][2],7)
   elseif sender.Position == 7 then
-  writeFloat(CT3[index][2],8)
+  set.float(CT3[index][2],8)
   elseif sender.Position == 8 then
-  writeFloat(CT3[index][2],9)
+  set.float(CT3[index][2],9)
   elseif sender.Position == 9 then
-  writeFloat(CT3[index][2],10)
+  set.float(CT3[index][2],10)
   elseif sender.Position == 10 then
-  writeFloat(CT3[index][2],11)
+  set.float(CT3[index][2],11)
   elseif sender.Position == 11 then
-  writeFloat(CT3[index][2],12)
+  set.float(CT3[index][2],12)
   elseif sender.Position == 12 then
-  writeFloat(CT3[index][2],14)
+  set.float(CT3[index][2],14)
   elseif sender.Position == 13 then
-  writeFloat(CT3[index][2],16)
+  set.float(CT3[index][2],16)
   elseif sender.Position == 14 then
-  writeFloat(CT3[index][2],18)
+  set.float(CT3[index][2],18)
   elseif sender.Position == 15 then
-  writeFloat(CT3[index][2],20)
+  set.float(CT3[index][2],20)
   elseif sender.Position == 16 then
-  writeFloat(CT3[index][2],22)
+  set.float(CT3[index][2],22)
   elseif sender.Position == 17 then
-  writeFloat(CT3[index][2],24)
+  set.float(CT3[index][2],24)
   elseif sender.Position == 18 then
-  writeFloat(CT3[index][2],26)
+  set.float(CT3[index][2],26)
   elseif sender.Position == 19 then
-  writeFloat(CT3[index][2],28)
+  set.float(CT3[index][2],28)
   elseif sender.Position == 20 then
-  writeFloat(CT3[index][2],30)
+  set.float(CT3[index][2],30)
   elseif sender.Position == 21 then
-  writeFloat(CT3[index][2],32)
+  set.float(CT3[index][2],32)
   elseif sender.Position == 22 then
-  writeFloat(CT3[index][2],34)
+  set.float(CT3[index][2],34)
   elseif sender.Position == 23 then
-  writeFloat(CT3[index][2],36)
+  set.float(CT3[index][2],36)
   elseif sender.Position == 24 then
-  writeFloat(CT3[index][2],38)
+  set.float(CT3[index][2],38)
   elseif sender.Position == 25 then
-  writeFloat(CT3[index][2],40)
+  set.float(CT3[index][2],40)
   elseif sender.Position == 26 then
-  writeFloat(CT3[index][2],42)
+  set.float(CT3[index][2],42)
   elseif sender.Position == 27 then
-  writeFloat(CT3[index][2],44)
+  set.float(CT3[index][2],44)
   elseif sender.Position == 28 then
-  writeFloat(CT3[index][2],46)
+  set.float(CT3[index][2],46)
   elseif sender.Position == 29 then
-  writeFloat(CT3[index][2],48)
+  set.float(CT3[index][2],48)
   elseif sender.Position == 30 then
-  writeFloat(CT3[index][2],50)
+  set.float(CT3[index][2],50)
   elseif sender.Position == 31 then
-  writeFloat(CT3[index][2],52)
+  set.float(CT3[index][2],52)
   elseif sender.Position == 32 then
-  writeFloat(CT3[index][2],54)
+  set.float(CT3[index][2],54)
   elseif sender.Position == 33 then
-  writeFloat(CT3[index][2],56)
+  set.float(CT3[index][2],56)
   elseif sender.Position == 34 then
-  writeFloat(CT3[index][2],58)
+  set.float(CT3[index][2],58)
   elseif sender.Position == 35 then
-  writeFloat(CT3[index][2],60)
+  set.float(CT3[index][2],60)
   elseif sender.Position == 36 then
-  writeFloat(CT3[index][2],62)
+  set.float(CT3[index][2],62)
   elseif sender.Position == 37 then
-  writeFloat(CT3[index][2],64)
+  set.float(CT3[index][2],64)
   elseif sender.Position == 38 then
-  writeFloat(CT3[index][2],70)
+  set.float(CT3[index][2],70)
   elseif sender.Position == 39 then
-  writeFloat(CT3[index][2],80)
+  set.float(CT3[index][2],80)
   elseif sender.Position == 40 then
-  writeFloat(CT3[index][2],90)
+  set.float(CT3[index][2],90)
   elseif sender.Position == 37 then
-  writeFloat(CT3[index][2],100)
+  set.float(CT3[index][2],100)
   elseif sender.Position == 41 then
-  writeFloat(CT3[index][2],100)
+  set.float(CT3[index][2],100)
   elseif sender.Position == 42 then
-  writeFloat(CT3[index][2],200)
+  set.float(CT3[index][2],200)
   elseif sender.Position == 43 then
-  writeFloat(CT3[index][2],300)
+  set.float(CT3[index][2],300)
   elseif sender.Position == 44 then
-  writeFloat(CT3[index][2],400)
+  set.float(CT3[index][2],400)
   elseif sender.Position == 45 then
-  writeFloat(CT3[index][2],500)
+  set.float(CT3[index][2],500)
   elseif sender.Position == 46 then
-  writeFloat(CT3[index][2],600)
+  set.float(CT3[index][2],600)
   elseif sender.Position == 47 then
-  writeFloat(CT3[index][2],700)
+  set.float(CT3[index][2],700)
   elseif sender.Position == 48 then
-  writeFloat(CT3[index][2],800)
+  set.float(CT3[index][2],800)
   elseif sender.Position == 49 then
-  writeFloat(CT3[index][2],900)
+  set.float(CT3[index][2],900)
   elseif sender.Position == 50 then
-  writeFloat(CT3[index][2],1000)
+  set.float(CT3[index][2],1000)
   end
 end
 
@@ -3721,6 +3721,7 @@ end
 
 function SendCommandConsole(sender)
   getConsole = DebugController.CommandSend.Text
+  DebugController.CommandSend.Text = console.mScript
   if getConsole == 'clear' then
     DebugController.ConsoleOutput.clear()
     console.mOutput.clear()
