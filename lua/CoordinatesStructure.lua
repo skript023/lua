@@ -71,34 +71,40 @@ coord = {
     Blip Marker iconName: radar_gun_shop | iconID: 110
     ]]
 
-    Property_ID = 
-    {
-        {"Arcade",740},
-        {"MC Club House",492},
-        {"Cocain Lockup",497},
-        {"Meth Lab",499},
-        {"Counterfeit Cash",500},
-        {"Weed Farm",496},
-        {"Document Forgery",498},
-        {"Bunker",557},
-        {"Nightclub",614},
-        {"Hangar",569},
-        {"CEO Office",475},
-        {"Facility",590},
-        {"Yacht",455},
-        {"Submarine",760},
-        {"Terrorbyte",632},
-        {"Avanger",589},
-        {"MOC",564},
-        {"Arena Wars",643}
-    }
+Property_ID = 
+{
+    {"Arcade",740},
+    {"MC Club House",492},
+    {"Cocain Lockup",497},
+    {"Meth Lab",499},
+    {"Counterfeit Cash",500},
+    {"Weed Farm",496},
+    {"Document Forgery",498},
+    {"Bunker",557},
+    {"Nightclub",614},
+    {"Hangar",569},
+    {"CEO Office",475},
+    {"Facility",590},
+    {"Yacht",455},
+    {"Submarine",760},
+    {"Terrorbyte",632},
+    {"Avanger",589},
+    {"MOC",564},
+    {"Arena Wars",643}
+}
 
+Blip_ID = 
+{
+    {"Shooting Range",313},
+    {"Suit",366},
+
+}
 
 Treasure_Hunt = {
     {'Treasure Hunt - Location 1' ,-1912.870, 1388.680, 219.100},
     {'Treasure Hunt - Location 2' ,1924.326, 3986.480, 32.190},
     {'Treasure Hunt - Location 3' ,1994.780, 5078.750, 42.680},
-    }
+}
 
 Navy_Revolver = {
     {'Navy Revolver Clue #1 ',-134.846, 1912.264, 197.324},

@@ -245,7 +245,7 @@ CT2 =
 	{"OFF RADAR LESTER","Off Radar"},
 	{"Ghost Organizations","Ghost Organization"},
 	{"Faster timescale","Time Faster"},
-	{"freezes times","Time Faster"},
+	{"freezes times","Freeze Time"},
 	{"No Clip","No Clip"},
 	--{"RID SPOOF","Instant RID Spoof"},
 	--{"Mati Lampu","Blackout"},

@@ -1899,7 +1899,7 @@ function Playerlist_Manipulator(sender)
       LuaEngineLog(string.format("Player Index [%i] | Player Name : %s | Memory Address 0x%X",selected_player,get.String(CPLAYER_NAME[selected_player]),get.Memory(CPLAYER_NAME[selected_player])))
       ShowPlayerAvatar(selected_player,0)
       PlaylistTab.HashIndicator.Text = 'Spawn Auto Health True To '.." ["..selected_player.."] "..get.String(CPLAYER_NAME[selected_player])
-      THREAD.YIELD(AutoHealthPack,true,selected_player,1000)
+      AutoHealthPack(true,1000,selected_player)
       VSpawn.CEListView1.MultiSelect = true
     end,
     [6] = function()
@@ -1907,7 +1907,7 @@ function Playerlist_Manipulator(sender)
       LuaEngineLog(string.format("Player Index [%i] | Player Name : %s | Memory Address 0x%X",selected_player,get.String(CPLAYER_NAME[selected_player]),get.Memory(CPLAYER_NAME[selected_player])))
       ShowPlayerAvatar(selected_player,0)
       PlaylistTab.HashIndicator.Text = 'Spawn Auto Health False To '.." ["..selected_player.."] "..get.String(CPLAYER_NAME[selected_player])
-      THREAD.YIELD(AutoHealthPack,false,selected_player,1000)
+      AutoHealthPack(false,1000,selected_player)
       VSpawn.CEListView1.MultiSelect = false
     end,
     [7] = function()
@@ -2951,23 +2951,23 @@ function HeistReset2()
 end
 
 function StatEditingOption()
-  local index = combobox_getItemIndex(StatTab.CEComboBox13) + 1;
-  if index==2 then
+  local types_stat = combobox_getItemIndex(StatTab.CEComboBox13) + 1;
+  if types_stat == 2 then
     StatTab.CEButton9.Caption = 'Set Integer'
     STATS.STAT_SET_INT(tostring(Protection.joaat.Text),tonumber(Protection.stat_value.Text))
     LuaEngineLog(string.format("Stat : %s | Value : %i | [Hash : 0x%X]",Protection.joaat.Text,Protection.stat_value.Text,joaat(tostring(Protection.joaat.Text))))
-  elseif index==3 then
+  elseif types_stat == 3 then
     StatTab.CEButton9.Caption = 'Set Boolean'
     STATS.STAT_SET_BOOL(tostring(Protection.joaat.Text),tonumber(Protection.stat_value.Text))
     (string.format("Stat : %s | Value : %i | [Hash : 0x%X]",Protection.joaat.Text,Protection.stat_value.Text,joaat(tostring(Protection.joaat.Text))))
-  elseif index == 4 then
+  elseif types_stat == 4 then
       STATS.STAT_GET_INT(tostring(Protection.joaat.Text))
     LuaEngineLog(string.format("Stat : %s | Value : %i | [Hash : 0x%X]",Protection.joaat.Text,Protection.stat_value.Text,joaat(tostring(Protection.joaat.Text))))
      StatTab.CEButton9.Caption = 'Get Value'
-  elseif index == 5 then
+  elseif types_stat == 5 then
      StatTab.CEButton9.Caption = 'Import Int'
     STATS.RUN_LOADER_INT()
-  elseif index == 6 then
+  elseif types_stat == 6 then
      StatTab.CEButton9.Caption = 'Import Bool'
     STATS.RUN_LOADER_BOOL()
   end
@@ -2975,20 +2975,13 @@ end
 
 function ResetAllHeistCooldown()
   local MPX = get.Global(int,1312763)
-  local cooldown_stat = {
-    "MP"..MPX.."_H3_COMPLETEDPOSIX",
-    "MP"..MPX.."_H4_COOLDOWN",
-    "MP"..MPX.."_H4_COOLDOWN_HARD",
-    "MPPLY_H4_COOLDOWN",
-    "MPPLY_H3_COOLDOWN"
-  }
-  local sync = Asynchronous(function()
-    for k,v in pairs(cooldown_stat) do
-      if STATS.STAT_GET_INT(v) > 0 then STATS.STAT_SET_INT(v,-1) end
-      Async()
+    if STATS.STAT_GET_INT("MP"..MPX.."_H3_COMPLETEDPOSIX") > 0 and STATS.STAT_GET_INT("MP"..MPX.."_H4_COOLDOWN") == 0 and STATS.STAT_GET_INT("MP"..MPX.."_H4_COOLDOWN_HARD") == 0 then
+      STATS.STAT_SET_INT("MP"..MPX.."_H3_COMPLETEDPOSIX",-1)
+    elseif STATS.STAT_GET_INT("MP"..MPX.."_H3_COMPLETEDPOSIX") == 0 and STATS.STAT_GET_INT("MP"..MPX.."_H4_COOLDOWN") > 0 and STATS.STAT_GET_INT("MP"..MPX.."_H4_COOLDOWN_HARD") > 0 then
+      STATS.STAT_SET_INT("MP"..MPX.."_H4_COOLDOWN",-1)
+    elseif STATS.STAT_GET_INT("MP"..MPX.."_H3_COMPLETEDPOSIX") == 0 and STATS.STAT_GET_INT("MP"..MPX.."_H4_COOLDOWN") > 0 and STATS.STAT_GET_INT("MP"..MPX.."_H4_COOLDOWN_HARD") > 0 then
+      STATS.STAT_SET_INT("MP"..MPX.."_H4_COOLDOWN_HARD",-1)
     end
-  end)
-  AsyncStart(sync,500)
 end
 
 explosive_list = 
@@ -3000,30 +2993,30 @@ MAX_UINT, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 
 
 function CustomExplosiveAmmo()
   local explosive_id = combobox_getItemIndex(Player_CEComboBox1)
-  local explosive_data = hook.GET("[[[[WorldPTR]+8]+10D8]+20]+24")
+  local explosive_data = get.Memory("[[[[WorldPTR]+8]+10D8]+20]+24")
   set.int(explosive_data,explosive_list[explosive_id])
 end
 
 bullet_data = {
-  2859594365226630004,
-  11110951714979414514,
-  1888850886560837135,
-  218444191,
-  1950175060,
-  1788949567,
-  1285032059,
-  2680539266,
-  1248118643977556913,
-  8367639472447989230,
-  14664555797958359509,
-  17701764769462510584,
-  8059274042439501991,
-  13678455710766380567,
-  6835654834441291942
+  0x27AF51ECA50ABB74,
+  0x9A3207B767DD81F2,
+  0x1A368BDFAF23EE0F,
+  0xD05319F,
+  0x743D4F54,
+  0x6AA1343F,
+  0x4C98087B,
+  0x9FC5C882,
+  0x1152354B3BD313B1,
+  0x741FD3C43BCCA5EE,
+  0xCB82F7CD5633F9D5,
+  0xF5A94D45155663F8,
+  0x6FD84B0AAF2208A7,
+  0xBDD3A2FF5424B617,
+  0x5EDD1FDAE60E08A6
 }
 function CustomBulletFunc()
   local bullet_id = combobox_getItemIndex(Player_CEComboBox2)
-  local bullet_set = hook.GET("[[[[[WorldPTR]+8]+10D8]+20]+60]+10")
+  local bullet_set = get.Memory("[[[[[WorldPTR]+8]+10D8]+20]+60]+10")
   set.long(bullet_set,bullet_data[bullet_id])
 end
 

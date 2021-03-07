@@ -1436,13 +1436,25 @@ function AntiAFKLobby(Execution)
     AsyncStart(start,1500);
 end
 
-function AutoHealthPack(targets)
-    if get.Float(PListHP[targets]) < get.Float(PLisMAXtHP[targets]) then
-        OBJECT.CREATE_AMBIENT_PICKUP(GAMEPLAY.GET_HASH_KEY("PICKUP_HEALTH_STANDARD"),GAMEPLAY.GET_HASH_KEY("prop_ld_health_pack"),1,target_x[targets],target_y[targets],target_z[targets],theading_x[targets],theading_y[targets],tonumber(PlaylistTab.Dist.Text))
-        SYSTEM.WAIT(500)
-        OBJECT.CREATE_AMBIENT_PICKUP(GAMEPLAY.GET_HASH_KEY("PICKUP_ARMOUR_STANDARD"),GAMEPLAY.GET_HASH_KEY("prop_armour_pickup"),1,target_x[targets],target_y[targets],target_z[targets],theading_x[targets],theading_y[targets],tonumber(PlaylistTab.Dist.Text))
+function AutoHealthPack(Boolean,Delay,targets)
+    AutoHealTrigger = Boolean
+    local function AutoHealDrop()
+        if get.Float(PListHP[targets]) < get.Float(PLisMAXtHP[targets]) then
+            OBJECT.CREATE_AMBIENT_PICKUP(GAMEPLAY.GET_HASH_KEY("PICKUP_HEALTH_STANDARD"),GAMEPLAY.GET_HASH_KEY("prop_ld_health_pack"),1,target_x[targets],target_y[targets],target_z[targets],theading_x[targets],theading_y[targets],tonumber(PlaylistTab.Dist.Text))
+            SYSTEM.WAIT(500)
+            OBJECT.CREATE_AMBIENT_PICKUP(GAMEPLAY.GET_HASH_KEY("PICKUP_ARMOUR_STANDARD"),GAMEPLAY.GET_HASH_KEY("prop_armour_pickup"),1,target_x[targets],target_y[targets],target_z[targets],theading_x[targets],theading_y[targets],tonumber(PlaylistTab.Dist.Text))
+        end
     end
-    if not targets or targets == nil then loop_FUNC_1 = false end
+    local function CheckHPNeeded()
+        while (AutoHealTrigger == true) do
+            AutoHealDrop()
+            if (AutoHealTrigger == false) or (targets == nil) then
+                break
+            end
+        SYSTEM.WAIT(Delay)
+        end
+    end
+    ExecuteThread(CheckHPNeeded)
 end
 
 function AntiSpecAFK(Activator)
