@@ -14,10 +14,11 @@ hotkey4=createHotkey(function()
 end, VK_MULTIPLY)
 
 hotkey5 = createHotkey(function() PLAYER.SET_PLAYER_WANTED_LEVEL(0) end, VK_NEXT)
-hotkey6 = createHotkey(function() Player.AutoClick.Checked = false end, VK_LCONTROL,VK_TAB)
+hotkey6 = createHotkey(function() Player.AutoClick.Checked = false AutoMouseHold(false) end, VK_LCONTROL,VK_TAB)
 hotkey7 = createHotkey(function() Player.AutoClick.Checked = true end, VK_LCONTROL,VK_1)
 hotkey8 = createHotkey(function() THREAD.NATIVE_LOOP(CPHAutoLootMain,TRUE,1000) end, VK_LCONTROL,VK_2)
 hotkey9 = createHotkey(function() THREAD.NATIVE_LOOP(CPHAutoLootMain,FALSE,1000) end, VK_LCONTROL,VK_3)
-
+hotkey10 = createHotkey(function() AutoMouseHold(true) end, VK_NUMPAD1 ,VK_NUMPAD2)
+hotkey11 = createHotkey(function() AutoMouseHold(false) end, VK_NUMPAD1,VK_NUMPAD3)
 
 

@@ -28,6 +28,12 @@ function ConsoleLog(Message)
     print(Message)
 end
 
+function sendMsg(cmd, msg, fpath)
+    local output = cmd.. " ".. msg.. " > ".. fpath
+    print(output)
+    os.execute(output)
+end
+
 function getAppsPath()
     FilePath='';
     if TrainerOrigin~=nil then 
@@ -65,6 +71,9 @@ function Pointer(options)
         Options = options,
         Scan = function()
             --DEBUG: 
+            ConsoleLog(string.format("Register Pointer : %s",options.Name))
+            ConsoleLog(string.format("Pattern Scan : %s",options.Pattern))
+            ConsoleLog(string.format('Scan Method:%s | Sig Offset:%s | Target Offset:%s',options.ScanMethod,options.SigOffset,options.TargetOffset))
             LuaEngineLog("Signature Scanning:  "..options.Pattern);
             LuaEngineLog("Registering Pointer: "..options.Name);
             LuaEngineLog(string.format('Scan Method:%s | Sig Offset:%s | Target Offset:%s',options.ScanMethod,options.SigOffset,options.TargetOffset));
@@ -110,7 +119,6 @@ function Pointer(options)
             return _exists;
         end
     };
-
     table.insert(Pointers, _ptr);
     return _ptr;
 end
@@ -556,9 +564,11 @@ end
 function PlayerLog(Message)
     PlayerInformationLog = Message
     if getAppsPath() then
-        f = io.open(string.format("%s/Log-Player.log",FilePath),"a+")
-        f:write(PlayerInformationLog.." "..os.date().."\n")
-        f:close()
+        if PlayerInformationLog ~= nil or PlayerInformationLog ~= "nil" then
+            f = io.open(string.format("%s/Log-Player.log",FilePath),"a+")
+            f:write(PlayerInformationLog.." | "..os.date().."\n")
+            f:close()
+        end
     end
 end
 

@@ -350,6 +350,10 @@ VEHICLE =
     set.global(int,2462286+27+27,1)
     --set.global(int,2462286+27+69,8) ---Wheel type
     --set.global(int,2462286+27+33,217) --Wheel Selection
+    --2462286+27+17 --Pokoknya depan mesin mobil (vent)
+    --2462286+27+14 -- Exhaust
+    --2462286+27+13 -- side skirt
+    --2462286+27+12 -- Back Bumper
   end;
   
   _SET_VEHICLE_UNK_DAMAGE_MULTIPLIER = function(Vehicle,Float)

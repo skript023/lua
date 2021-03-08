@@ -861,6 +861,30 @@ end
     
 
 ------------------------------------------Vehicle Menu---------------------------------------------------------------------
+function ExhaustSelect(sender)
+  local id = VehicleTab.Exhaust.ItemIndex
+  if id == nil then id = MAX_UINT end
+  set.global(int,2462286+27+14,id)
+end
+
+function VentSelect(sender)
+  local id = VehicleTab.Vent.ItemIndex
+  if id == nil then id = MAX_UINT end
+  set.global(int,2462286+27+17,id)
+end
+
+function SideSkirtSelect()
+  local id = VehicleTab.SideSkirt.ItemIndex
+  if id == nil then id = MAX_UINT end
+  set.global(int,2462286+27+13,id)
+end
+
+function RearBumperSelect()
+  local id = VehicleTab.BackBumper.ItemIndex
+  if id == nil then id = MAX_UINT end
+  set.global(int,2462286+27+12,id)
+end
+
 function SpawnerXenon()
   local colour_id = {255,3,4,5,6,7,8,9,10,11,12,13,14}
   local xenon_id = combobox_getItemIndex(VehicleTab.XenonSpawn) + 1;
@@ -955,7 +979,7 @@ end
 
 function WeaponSpawner()
   local Weapon_Hashes = combobox_getItemIndex(MainTab.Weapon) + 1;
-  OBJECT.CREATE_AMBIENT_PICKUP(all_weapon_dropper[Weapon_Hashes][1],all_weapon_dropper[Weapon_Hashes][2],9999,PLAYER_CORDX,PLAYER_CORDY,PLAYER_CORDZ,PLAYER_HEADINGS[1],PLAYER_HEADINGS[2],tonumber(PlaylistTab.Dist.Text))
+  OBJECT.CREATE_AMBIENT_PICKUP(all_weapon_dropper[Weapon_Hashes][1],all_weapon_dropper[Weapon_Hashes][2],9999,PLAYER_CORDX,PLAYER_CORDY,PLAYER_CORDZ,PLAYER_HEADINGS[1],PLAYER_HEADINGS[2],tonumber(PlaylistTab.Dist.Text),tonumber(PlaylistTab.Tinggi.Text))
 end
 
 function PrimaryWeapon(sender)
@@ -1221,8 +1245,8 @@ function PlayerCord()
   player_pos_z.Text = ENTITY.f_Round(get.Float("PLAYER_CORDZ"),5)
   PlayerNickname.TextHint = 'Name Changer'
   CurrentPlayerLevel.TextHint = 'Level Spoof'
-  CurrentVehicleNames.Text = get.String("GTA5.exe+24E4C30")
-  PlayerIndicator1.Text = string.format('Region : %s | Location : %s | Vehicle : %s | Bank : $ %s | MP%s | Level : %s',get.String("GTA5.exe+24E456B"),get.String("GTA5.exe+24E12A0"),get.String("GTA5.exe+24E4C30"),Banca,Slots,PlayerLevel)
+  CurrentVehicleNames.Text = get.String("GTA5.exe+24ECC80")
+  PlayerIndicator1.Text = string.format('Region : %s | Location : %s | Vehicle : %s | Bank : $ %s | MP%s | Level : %s',get.String("GTA5.exe+24EC5BB"),get.String("GTA5.exe+24E9300"),get.String("GTA5.exe+24E4C30"),Banca,Slots,PlayerLevel)
   PlayerIndicator2.Text = string.format('IP : %s.%s.%s.%s:%s | IP LAN : %s.%s.%s.%s:%s | Name : %s | Cash : $ %s',ip4,ip3,ip2,ip1,PlayerPort,ipl4,ipl3,ipl2,ipl1,PlayerPort,get.String(CPlayerInfo + 0x84),get.Global(int,1590682+1+PLAYER_ID()*883+211+3))
   PlayerCEONames.Text = get.Global(str,1630317+1+PLAYER_ID()*595+11+104)
   TotalPlayerInSession.Text = string.format('Total Player : %s | Join : %s',TotalPlayer,PlayerJoin)
@@ -1275,9 +1299,6 @@ function PlayerCord()
   elseif GetCurrentSession() == 13 then MainTab.SessionID.Text = string.format('Session: %s| Private: %s','Spectator Box',Public) 
   end
 
-  if get.Int("WorldPTR")==nil then 
-    closeCE() 
-  end
 end
 ReadTimer = createTimer(nil, true)
 ReadTimer.Interval = 30  --0.5 seconds
@@ -1852,7 +1873,7 @@ function Playerlist_Manipulator(sender)
   local id_prop = combobox_getItemIndex(PlaylistTab.prop_changer);
   switch(idc,{
     [0] = function()
-      LuaEngineLog(string.format("Player Index [%i] | Player Name : %s | Memory Address 0x%X",selected_player,get.String(CPLAYER_NAME[selected_player]),get.Memory(CPLAYER_NAME[selected_player])))
+      LuaEngineLog(PlaylistTab.PlayerInfo.Lines.Text)
       Player_List_Info()
       ShowPlayerAvatar(selected_player,0)
       PlaylistTab.HashIndicator.Text = 'Selected Index'.." ["..selected_player.."] Name : "..get.String(CPLAYER_NAME[selected_player])
@@ -1876,7 +1897,7 @@ function Playerlist_Manipulator(sender)
       LuaEngineLog(string.format("Player Index [%i] | Player Name : %s | Memory Address 0x%X",selected_player,get.String(CPLAYER_NAME[selected_player]),get.Memory(CPLAYER_NAME[selected_player])))
       ShowPlayerAvatar(selected_player,0)
       PlaylistTab.HashIndicator.Text = 'Spawn Pickup To '.." ["..selected_player.."] "..' '..get.String(CPLAYER_NAME[selected_player])
-      OBJECT.CREATE_AMBIENT_PICKUP(tbl_pickup_hash[IDHash],data_prop[id_prop],9999,target_x[selected_player],target_y[selected_player],target_z[selected_player],theading_x[selected_player],theading_y[selected_player],tonumber(PlaylistTab.Dist.Text))
+      OBJECT.CREATE_AMBIENT_PICKUP(tbl_pickup_hash[IDHash],data_prop[id_prop],9999,target_x[selected_player],target_y[selected_player],target_z[selected_player],theading_x[selected_player],theading_y[selected_player],tonumber(PlaylistTab.Dist.Text),tonumber(PlaylistTab.Tinggi.Text))
     end,
     [4] = function()
       Player_List_Info()
@@ -1887,7 +1908,7 @@ function Playerlist_Manipulator(sender)
         do
           PlaylistTab.HashIndicator.Text = 'Spawn All Weapon To '.." ["..selected_player.."] "..v[1]..' '..get.String(CPLAYER_NAME[selected_player])
           LuaEngineLog(string.format("Player Index [%i]\nPlayer Name : %s\nMemory Address 0x%X\nHash : 0x%X\nWeapon : 0x%X",selected_player,get.String(CPLAYER_NAME[selected_player]),get.Memory(CPLAYER_NAME[selected_player]),v[1],v[2]))
-          OBJECT.CREATE_AMBIENT_PICKUP(v[1],v[2],9999,target_x[selected_player],target_y[selected_player],target_z[selected_player],theading_x[selected_player],theading_y[selected_player],tonumber(PlaylistTab.Dist.Text))
+          OBJECT.CREATE_AMBIENT_PICKUP(v[1],v[2],9999,target_x[selected_player],target_y[selected_player],target_z[selected_player],theading_x[selected_player],theading_y[selected_player],tonumber(PlaylistTab.Dist.Text),tonumber(PlaylistTab.Tinggi.Text))
           if give_all_weapon_var == false then break end
           SYSTEM.WAIT(300)
         end
@@ -1927,7 +1948,7 @@ function Playerlist_Manipulator(sender)
       function hwal()
         while (hwal_loop) do
           set.global(int,262145+167,10000)
-          OBJECT.CREATE_AMBIENT_PICKUP(tbl_pickup_hash[IDHash],data_prop[id_prop],1,target_x[selected_player],target_y[selected_player],target_z[selected_player],theading_x[selected_player],theading_y[selected_player],tonumber(PlaylistTab.Dist.Text))
+          OBJECT.CREATE_AMBIENT_PICKUP(tbl_pickup_hash[IDHash],data_prop[id_prop],1,target_x[selected_player],target_y[selected_player],target_z[selected_player],theading_x[selected_player],theading_y[selected_player],tonumber(PlaylistTab.Dist.Text),tonumber(PlaylistTab.Tinggi.Text))
           if hwal==0 or CheckPickups() == true then
             hwal_loop = false
             break
@@ -3731,7 +3752,3 @@ function SendCommandConsole(sender)
     ExecuteThread(loadlocals)
   end
 end
-
-
-
-

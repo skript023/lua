@@ -968,7 +968,7 @@ function NotificationPopUpTop(Text)
     end
 end
 
-function f_CreateAmbientPickup(ObjectHash,Amount,pos_x,pos_y,pos_z,headingX,headingY,Distance)
+function f_CreateAmbientPickup(ObjectHash,Amount,pos_x,pos_y,pos_z,headingX,headingY,Distance,Height)
     set.int(PROP_HASH,ObjectHash)
     set.int(PROP_HASH2,ObjectHash)
     local HeadX = get.Float(headingX)
@@ -976,9 +976,10 @@ function f_CreateAmbientPickup(ObjectHash,Amount,pos_x,pos_y,pos_z,headingX,head
     local x=get.Float(pos_x)-(HeadY*Distance)
     local y=get.Float(pos_y)+(HeadX*Distance)
     local z=get.Float(pos_z)
+    z = z + Height
     set.global(float,2515202+3,x)
     set.global(float,2515202+4,y)
-    if SCRIPT.HAS_SCRIPT_LOADED('am_mp_smpl_interior_int') == true then set.global(float,2515202+5,z+1.1) else set.global(float,2515202+5,z+3.0) end
+    set.global(float,2515202+5,z)
     set.global(int,2515202+1,Amount)
     local iParam=get.Global(int,2515202)
     if iParam==nil then return end
@@ -1030,9 +1031,9 @@ end
 
 
 OBJECT = {
-    CREATE_AMBIENT_PICKUP = function (PickupObj,ObjectHash,Amount,pos_x,pos_y,pos_z,headingX,headingY,Distance)
+    CREATE_AMBIENT_PICKUP = function (PickupObj,ObjectHash,Amount,pos_x,pos_y,pos_z,headingX,headingY,Distance,Height)
         local new = function()
-            f_CreateAmbientPickup(ObjectHash,Amount,pos_x,pos_y,pos_z,headingX,headingY,Distance)
+            f_CreateAmbientPickup(ObjectHash,Amount,pos_x,pos_y,pos_z,headingX,headingY,Distance,Height)
             sleep(100)
             ChangePickup(PickupObj)
             CheckPickups()
@@ -1229,11 +1230,11 @@ function blacklist_comparing(Executor)
         for k,v in pairs(CPLAYER_INDEX) do
             local user_id = get.Long(v[2]) 
             local nickname = get.String(v[1])
-            PlayerLog(string.format("Player Name : %s | SCID : %s",nickname,user_id))
+            if nickname ~= nil and user_id ~= nil then PlayerLog(string.format("Player Name : %s | SCID : %s",nickname,user_id)) end
             if user_id == nil then user_id = 0 end
             if nickname == nil then nickname = "" end
             for k2, v2 in pairs(blacklist_player) do
-                --print(string.format('%s/%s | %s/%s',nickname,v2[1],user_id,v2[2]));
+                --printf('%s/%s | %s/%s',nickname,v2[1],user_id,v2[2]);
                 PlayerData.AdminScanner.Caption = string.format('%s/%s | %s/%s',nickname,v2[1],user_id,v2[2]);
                 if (user_id == v2[2]) or (nickname == v2[1]) then
                     LuaEngineLog(string.format("R* Employee is Here %s [%i]",nickname,user_id))
@@ -1263,8 +1264,21 @@ function AutoClicker()
     mouse_event(MOUSEEVENTF_LEFTUP);
 end
 
+function AutoMouseHold(Boolean)
+    AutoHoldActivator = Boolean
+    local function AutoHold()
+        while AutoHoldActivator == true do
+            mouse_event(MOUSEEVENTF_LEFTDOWN);
+            if AutoHoldActivator == false then break end
+        SYSTEM.WAIT(100)
+        end
+    end
+    ExecuteThread(AutoHold)
+end
+
 function CPHAutoLootMain()
-    doKeyPress(VK_PRIOR)
+    --doKeyPress(VK_PRIOR)
+    keyDown(VK_PRIOR)
 end
 
 function SpectatorCheck()
@@ -1440,9 +1454,9 @@ function AutoHealthPack(Boolean,Delay,targets)
     AutoHealTrigger = Boolean
     local function AutoHealDrop()
         if get.Float(PListHP[targets]) < get.Float(PLisMAXtHP[targets]) then
-            OBJECT.CREATE_AMBIENT_PICKUP(GAMEPLAY.GET_HASH_KEY("PICKUP_HEALTH_STANDARD"),GAMEPLAY.GET_HASH_KEY("prop_ld_health_pack"),1,target_x[targets],target_y[targets],target_z[targets],theading_x[targets],theading_y[targets],tonumber(PlaylistTab.Dist.Text))
+            OBJECT.CREATE_AMBIENT_PICKUP(GAMEPLAY.GET_HASH_KEY("PICKUP_HEALTH_STANDARD"),GAMEPLAY.GET_HASH_KEY("prop_ld_health_pack"),1,target_x[targets],target_y[targets],target_z[targets],theading_x[targets],theading_y[targets],tonumber(PlaylistTab.Dist.Text),tonumber(PlaylistTab.Tinggi.Text))
             SYSTEM.WAIT(500)
-            OBJECT.CREATE_AMBIENT_PICKUP(GAMEPLAY.GET_HASH_KEY("PICKUP_ARMOUR_STANDARD"),GAMEPLAY.GET_HASH_KEY("prop_armour_pickup"),1,target_x[targets],target_y[targets],target_z[targets],theading_x[targets],theading_y[targets],tonumber(PlaylistTab.Dist.Text))
+            OBJECT.CREATE_AMBIENT_PICKUP(GAMEPLAY.GET_HASH_KEY("PICKUP_ARMOUR_STANDARD"),GAMEPLAY.GET_HASH_KEY("prop_armour_pickup"),1,target_x[targets],target_y[targets],target_z[targets],theading_x[targets],theading_y[targets],tonumber(PlaylistTab.Dist.Text),tonumber(PlaylistTab.Tinggi.Text))
         end
     end
     local function CheckHPNeeded()
