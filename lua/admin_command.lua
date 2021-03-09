@@ -561,13 +561,13 @@ local generate_strings = async(function(count)
     return strings
 end)
 
-for _ = 1, 2 do
+--[[for _ = 1, 2 do
     print_values(await(generate_numbers(3)))
     print_values(await(generate_strings(3)))
 end
 
 task_schedule_all()
-
+]]
 -- Parking a task and awaiting an external event: For this we set an external
 -- boolean flag up and toggle its state, a task polls this periodically when
 -- scheduled and if it isn't set then it will yield.

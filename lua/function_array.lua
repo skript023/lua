@@ -1780,3 +1780,57 @@ function SetAssistedAim(Boolean)
         set.int(AIM_STATUS,3)
     end
 end
+
+function AutoHealPlayer(Boolean)
+    local autoheal = true
+    AutohealTrigger = Boolean  
+    local HealExecution = async(function()
+        printf("Health Check %s",get.Float(PLAYER_HP))
+        local MaxHP = get.Float(PLAYER_MAX_HP)
+        if (TriggerHealing == TRUE) then
+            set.float(PLAYER_HP, MaxHP)
+            set.float(PLAYER_ARMOR, 50)
+            set.float(DMG_TO_HP, 0.25)
+        elseif AutohealTrigger == false or TriggerHealing == FALSE then
+            set.float(DMG_TO_HP, 1)
+        end
+    end)
+
+    local HealthCheck = Asynchronous(function()
+        while (AutohealTrigger == true) do
+            Async()
+            local health = get.Float(PLAYER_HP)
+            TriggerHealing = FALSE
+            if health <= 150 then
+                TriggerHealing = TRUE
+            else
+                set.float(DMG_TO_HP,1)
+            end
+            task_schedule_all()
+            HealExecution()
+            if AutohealTrigger == false then
+                TriggerHealing = FALSE
+                break
+            end
+        end
+    end)
+    AsyncStart(HealthCheck,250)
+end
+
+function HealthRegeneration(Boolean)
+    HealthRegenTrigger = Boolean
+    local Regenerating = function()
+        local healthPointer = get.Memory(CPlayer + 0x280)
+        local maxHealth = get.Memory(CPlayer + 0x2A0)
+        local healthRegen = 15
+        while (HealthRegenTrigger == true) do
+            local curHealth = get.Float(healthPointer)
+            if curHealth and curHealth < maxHealth then -- if successfully read and not full
+                set.float(healthPointer, curHealth+healthRegen) -- increment health by 1
+            end
+            if HealthRegenTrigger == false then break end
+            SYSTEM.WAIT(1500)
+        end
+    end
+    ExecuteThread(Regenerating)
+end

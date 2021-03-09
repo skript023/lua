@@ -581,6 +581,18 @@ ReportStat = {
 	{'MPPLY_BAD_CREW_MOTTO',1};
 	{'MPPLY_BAD_CREW_STATUS',1};
 	{'MPPLY_BAD_CREW_EMBLEM',1};
+	{'MPPLY_BECAME_BADSPORT_NUM',1};
+	{'MPPLY_BECAME_CHEATER_NUM',1};
+	{'MPPLY_DESTROYED_PVEHICLES',1};
+	{'MPPLY_BADSPORT_MESSAGE',1};
+	{'MPPLY_LAST_REPORT_PENALTY',1};
+	{'MPPLY_LAST_REPORT_RESTORE',1};
+	{'MPPLY_VOTED_OUT',1};
+	{'MPPLY_VOTED_OUT_QUIT',1};
+	{'MPPLY_IS_CHEATER_TIME',1};
+	{'MPPLY_WAS_I_BAD_SPORT',1};
+	{'MP'..MPX..'_CHEAT_BITSET',1};
+	{'MP'..MPX..'_BAD_SPORT_BITSET',1};
   }
 
 ---------------------------------------------------CASINO HEIST--------------------------------------------------------
@@ -830,7 +842,7 @@ bigcon =
 	{'MP'..MPX..'_H3OPT_CREWHACKER',4},
 	{'MP'..MPX..'_H3OPT_VEHS',3},
 	{'MP'..MPX..'_H3OPT_WEAPS',0},
-	{'MP'..MPX..'_H3OPT_BITSET0',339990}
+	{'MP'..MPX..'_H3OPT_BITSET0',392982}--392982 full 339990 not full gruppe only
 }
 aggressive = 
 {

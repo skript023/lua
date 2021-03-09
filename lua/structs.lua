@@ -46,25 +46,51 @@ end
 LocalLoads()
 
 function LoadRID()
-  FORM.ADD_LOOP(PlaylistTab.InstantRID,DATA_RID,1);
+  local LoadRIDList = async(function()
+    FORM.ADD_LOOP(PlaylistTab.InstantRID,DATA_RID,1);
+  end)
+  LoadRIDList()
+  task_schedule_all()
 end
 
 function DropVehicleList(sender)
-  FORM.ADD_LOOP(PlaylistTab.VehList,tbl_Vehicles,1);
+  local LoadVehicleList = async(function()
+    FORM.ADD_LOOP(PlaylistTab.VehList,tbl_Vehicles,1);
+  end)
+  LoadVehicleList()
+  task_schedule_all()
 end
 
 function LocalScripLoad()
-  FORM.ADD_LOCAL(Protection.LocalScriptNames,LocalScriptList,"Local Script");
+  local LoadAllScript = async(function()
+    FORM.ADD_LOCAL(Protection.LocalScriptNames,LocalScriptList,"Local Script");
+  end)
+  LoadAllScript()
+  task_schedule_all()
 end
 -----------------------------------------------------JSON LIBRARY--------------------------------------------------------
 --dofile([[config/setting.lua]]);
 ------------------------Other------------------------------------------------------------------------------------------------------------------------
+function ShowMenuWhenLoaded()
 if get.Int(JOIN_STATUS) == 0 or get.Int(JOIN_STATUS) == 10 then
-  --nothing
+  ShowNotification([[Menu Has Been Loaded To The Game 
+Press Insert To Show or Hide Menu
+
+-Signed Ellohim]])
 else
   NotificationPopUpMapRockstar("Ellohim",[[~a~~s~ ~s~Menu Telah Terhubung Dengan Game!]])
 end
-
+  local new = Asynchronous(function()
+    local Tampil = 10
+    for i = Tampil,0,-1 do
+      print(i)
+      Async()
+      if i == 0 then Notification.destroy() end
+    end
+  end)
+  AsyncStart(new,1000)
+end
+ShowMenuWhenLoaded()
 --------------------------------------------Timer Disabler-------------------------------------------------------------
 function CheckForUpdate()
   if get.Int(CPlayerInfo) == nil or get.Int("GTA5.exe+24E5C20") == nil then
@@ -2093,7 +2119,7 @@ function MainMenuCheckBox(sender)
     MainTab.CEEdit1.Text = "Activate : "..CT2[id][2]
     MainTab.CheckListBox2.Checked = true
     writeZeroBytes("LabelTextAddress+0xC4CF3",504)
-    set.string("LabelTextAddress+0xC4CF3","Activate : %s"..CT2[id][2])
+    set.string("LabelTextAddress+0xC4CF3","Activate : "..CT2[id][2])
     set.global(int,1574395,1)
     LuaEngineLog(string.format("Activate : %s",CT2[id][2]))
   elseif ReadAct(CT2[id][1])==true then
@@ -3698,7 +3724,7 @@ TRY_CLAUSE {
     function(start)
       LuaEngineLog('caught error: '..start)
     end
- }
+  }
 }
 
 local function LoopForever()
