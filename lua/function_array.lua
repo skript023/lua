@@ -235,24 +235,24 @@ function bunker_deliver(hasil)
         local duit = get.Int(get.Ptr("GTA5.exe+025FAF80")+0x128)
         local kargo= get.Int("[[GlobalPTR-128]+1180]+37C0")
         local data = hasil*kargo/duit
-        local total = math.floor(data)
-        set.int("[[GlobalPTR-128]+1180]+3F68", total)
-
+        set.int("[[GlobalPTR-128]+1180]+3F68", data)
         set.global(float,262145+21045,1)
-        set.global(int,262145+21228,1)
-        set.global(int,262145+21232,1)
-        set.global(int,262145+21222,1)
-        set.global(int,262145+21230,1)
-        set.global(int,262145+21235,1)
-        set.global(int,262145+21224,1)
-        sleep(500)
-        set.global(float,262145+21045,1.5)
-        set.global(int,262145+21228,1800000)
-        set.global(int,262145+21232,900000)
-        set.global(int,262145+21222,900000)
-        set.global(int,262145+21230,900000)
-        set.global(int,262145+21235,900000)
-        set.global(int,262145+21224,900000)
+        if get.Int("[[GlobalPTR-128]+1180]+3F68") > 0 and get.Global(float,262145+21045) ~= 1.5 then
+            set.global(int,262145+21228,1)
+            set.global(int,262145+21232,1)
+            set.global(int,262145+21222,1)
+            set.global(int,262145+21230,1)
+            set.global(int,262145+21235,1)
+            set.global(int,262145+21224,1)
+            SYSTEM.WAIT(500)
+            set.global(float,262145+21045,1.5)
+            set.global(int,262145+21228,1800000)
+            set.global(int,262145+21232,900000)
+            set.global(int,262145+21222,900000)
+            set.global(int,262145+21230,900000)
+            set.global(int,262145+21235,900000)
+            set.global(int,262145+21224,900000)
+        end
         LuaEngineLog(string.format("You Received $%i | Total Sent %i| 0x%X | 0x%X | 0x%X",hasil,total,get.Memory("GTA5.exe+025FAF80"),get.Memory("[[GlobalPTR-128]+1180]+37C0"),get.Memory("[[GlobalPTR-128]+1180]+3F68")))
     end
     ExecuteThread(new_thread)
@@ -1459,20 +1459,20 @@ function AutoHealthPack(Boolean,Delay,targets)
             OBJECT.CREATE_AMBIENT_PICKUP(GAMEPLAY.GET_HASH_KEY("PICKUP_ARMOUR_STANDARD"),GAMEPLAY.GET_HASH_KEY("prop_armour_pickup"),1,target_x[targets],target_y[targets],target_z[targets],theading_x[targets],theading_y[targets],tonumber(PlaylistTab.Dist.Text),tonumber(PlaylistTab.Tinggi.Text))
         end
     end
-    local function CheckHPNeeded()
+    local CheckHPNeeded = Asynchronous(function()
         while (AutoHealTrigger == true) do
             AutoHealDrop()
             if (AutoHealTrigger == false) or (targets == nil) then
                 break
             end
-        SYSTEM.WAIT(Delay)
+        Async()
         end
-    end
-    ExecuteThread(CheckHPNeeded)
+    end)
+    AsyncStart(CheckHPNeeded,Delay)
 end
 
 function AntiSpecAFK(Activator)
-	local NewThread = function()
+	local NewThread = Asynchronous(function()
 		Executor = Activator;
 		while (Executor == true) do
 	   	LuaEngineLog('CheckSession')
@@ -1480,10 +1480,10 @@ function AntiSpecAFK(Activator)
 	      	LoadSession(1)
 	      end
         if Executor == false then break end
-	   SYSTEM.WAIT(1000)
+	   Async()
 	   end
-	end
-   ExecuteThread(NewThread);
+	end)
+   AsyncStart(NewThread,1000);
 end
 
 function ShowPlayerAvatar(id,Char)
@@ -1785,7 +1785,7 @@ function AutoHealPlayer(Boolean)
     local autoheal = true
     AutohealTrigger = Boolean  
     local HealExecution = async(function()
-        printf("Health Check %s",get.Float(PLAYER_HP))
+        --printf("Health Check %s",get.Float(PLAYER_HP))
         local MaxHP = get.Float(PLAYER_MAX_HP)
         if (TriggerHealing == TRUE) then
             set.float(PLAYER_HP, MaxHP)
@@ -1819,7 +1819,7 @@ end
 
 function HealthRegeneration(Boolean)
     HealthRegenTrigger = Boolean
-    local Regenerating = function()
+    local Regenerating = Asynchronous(function()
         local healthPointer = get.Memory(CPlayer + 0x280)
         local maxHealth = get.Memory(CPlayer + 0x2A0)
         local healthRegen = 15
@@ -1829,8 +1829,8 @@ function HealthRegeneration(Boolean)
                 set.float(healthPointer, curHealth+healthRegen) -- increment health by 1
             end
             if HealthRegenTrigger == false then break end
-            SYSTEM.WAIT(1500)
+            Async()
         end
-    end
-    ExecuteThread(Regenerating)
+    end)
+    AsyncStart(Regenerating,1500)
 end

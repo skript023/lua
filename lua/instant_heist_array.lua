@@ -593,219 +593,219 @@ ReportStat = {
 	{'MPPLY_WAS_I_BAD_SPORT',1};
 	{'MP'..MPX..'_CHEAT_BITSET',1};
 	{'MP'..MPX..'_BAD_SPORT_BITSET',1};
-  }
+}
 
 ---------------------------------------------------CASINO HEIST--------------------------------------------------------
 
 bitset0 =
 {
-	PatrolRoutes = 0x00000002,
-	DugganShipments = 0x00000004,
-	InfiltrationSuits = 0x00000008,
-	PowerDrills = 0x00000010,
-	EMP = 0x00000020,
-	GunmanDecoy = 0x00000040,
-	CleanVehicle = 0x00000080,
-	BugstarsPartOne = 0x00000100,
-	BugstarsPartTwo = 0x00000200,
-	MaintenancePartOne = 0x00000400,
-	MaintenancePartTwo = 0x00000800,
-	GruppeSechsPartOne = 0x00001000,
-	GruppeSechsPartTwo = 0x00002000,
-	YungAncestorPartOne = 0x00004000,
-	YungAncestorPartTwo = 0x00008000,
-	NOOSEGearExitDisguise = 0x00010000,
-	FirefighterGearExitDisguise = 0x00020000,
-	HighRollerExitDisguise = 0x00040000,
-	ReinforcedArmor = 0x00100000,
-	BoringMachine = 0x00280000
+	PatrolRoutes = 0x00000002;
+	DugganShipments = 0x00000004;
+	InfiltrationSuits = 0x00000008;
+	PowerDrills = 0x00000010;
+	EMP = 0x00000020;
+	GunmanDecoy = 0x00000040;
+	CleanVehicle = 0x00000080;
+	BugstarsPartOne = 0x00000100;
+	BugstarsPartTwo = 0x00000200;
+	MaintenancePartOne = 0x00000400;
+	MaintenancePartTwo = 0x00000800;
+	GruppeSechsPartOne = 0x00001000;
+	GruppeSechsPartTwo = 0x00002000;
+	YungAncestorPartOne = 0x00004000;
+	YungAncestorPartTwo = 0x00008000;
+	NOOSEGearExitDisguise = 0x00010000;
+	FirefighterGearExitDisguise = 0x00020000;
+	HighRollerExitDisguise = 0x00040000;
+	ReinforcedArmor = 0x00100000;
+	BoringMachine = 0x00280000;
 };
 
 bitset1 = 
 {	
-	None = 0x00000000,
-	VaultContents = 0x00000001,
-	VaultKeys = 0x00000002,
-	WeaponsMissionFinished = 0x00000004,
-	VehicleMissionFinished = 0x00000008,
-	HackingDevice = 0x00000010,
-	NanoDrone = 0x00000020,
-	VaultLaser = 0x00000040,
-	VaultDrill = 0x00000080,
-	VaultExplosives = 0x00000100,
+	None = 0x00000000;
+	VaultContents = 0x00000001;
+	VaultKeys = 0x00000002;
+	WeaponsMissionFinished = 0x00000004;
+	VehicleMissionFinished = 0x00000008;
+	HackingDevice = 0x00000010;
+	NanoDrone = 0x00000020;
+	VaultLaser = 0x00000040;
+	VaultDrill = 0x00000080;
+	VaultExplosives = 0x00000100;
 	ThermalCharges = 0x00000200
 };
 
 MP1_Approach = 
 {
-	{"Choose Approach","Unw"},
-	{"Silent","MP1_H3OPT_APPROACH"},
-	{"Big Con","MP1_H3OPT_APPROACH"},
-	{"Loud","MP1_H3OPT_APPROACH"}
+	{"Choose Approach","Unw"};
+	{"Silent","MP1_H3OPT_APPROACH"};
+	{"Big Con","MP1_H3OPT_APPROACH"};
+	{"Loud","MP1_H3OPT_APPROACH"};
 }
 
 MP0_Approach = 
 {
-	{"Choose Approach","Unw"},
-	{"Silent","MP0_H3OPT_APPROACH"},
-	{"Big Con","MP0_H3OPT_APPROACH"},
-	{"Loud","MP0_H3OPT_APPROACH"}
+	{"Choose Approach","Unw"};
+	{"Silent","MP0_H3OPT_APPROACH"};
+	{"Big Con","MP0_H3OPT_APPROACH"};
+	{"Loud","MP0_H3OPT_APPROACH"};
 }
 MP1_TARGET = 
 {
-	{"Choose Target","Unw"},
-	{"CASH","MP1_H3OPT_TARGET"},
-	{"GOLD","MP1_H3OPT_TARGET"},
-	{"ART","MP1_H3OPT_TARGET"},
-	{"DIAMOND","MP1_H3OPT_TARGET"}
+	{"Choose Target","Unw"};
+	{"CASH","MP1_H3OPT_TARGET"};
+	{"GOLD","MP1_H3OPT_TARGET"};
+	{"ART","MP1_H3OPT_TARGET"};
+	{"DIAMOND","MP1_H3OPT_TARGET"};
 }
 MP0_TARGET = 
 {
-	{"Choose Target","Unw"},
-	{"CASH","MP0_H3OPT_TARGET"},
-	{"GOLD","MP0_H3OPT_TARGET"},
-	{"ART","MP0_H3OPT_TARGET"},
-	{"DIAMOND","MP0_H3OPT_TARGET"}
+	{"Choose Target","Unw"};
+	{"CASH","MP0_H3OPT_TARGET"};
+	{"GOLD","MP0_H3OPT_TARGET"};
+	{"ART","MP0_H3OPT_TARGET"};
+	{"DIAMOND","MP0_H3OPT_TARGET"};
 }
 MP0_LAST_AP = 
 {
-	{"Last Approach","Unw"},
-	{"Silent","MP0_H3_LAST_APPROACH"},
-	{"Big Con","MP0_H3_LAST_APPROACH"},
-	{"Loud","MP0_H3_LAST_APPROACH"}
+	{"Last Approach","Unw"};
+	{"Silent","MP0_H3_LAST_APPROACH"};
+	{"Big Con","MP0_H3_LAST_APPROACH"};
+	{"Loud","MP0_H3_LAST_APPROACH"};
 }
 MP1_LAST_AP = 
 {
-	{"Last Approach","Unw"},
-	{"Silent","MP1_H3_LAST_APPROACH"},
-	{"Big Con","MP1_H3_LAST_APPROACH"},
-	{"Loud","MP1_H3_LAST_APPROACH"}
+	{"Last Approach","Unw"};
+	{"Silent","MP1_H3_LAST_APPROACH"};
+	{"Big Con","MP1_H3_LAST_APPROACH"};
+	{"Loud","MP1_H3_LAST_APPROACH"};
 }
 MP0_HARD_AP = 
 {
-	{"Hard Approach","Unw"},
-	{"Silent","MP0_H3_HARD_APPROACH"},
-	{"Big Con","MP0_H3_HARD_APPROACH"},
-	{"Loud","MP0_H3_HARD_APPROACH"}
+	{"Hard Approach","Unw"};
+	{"Silent","MP0_H3_HARD_APPROACH"};
+	{"Big Con","MP0_H3_HARD_APPROACH"};
+	{"Loud","MP0_H3_HARD_APPROACH"};
 }
 MP1_HARD_AP = 
 {
-	{"Hard Approach","Unw"},
-	{"Silent","MP1_H3_HARD_APPROACH"},
-	{"Big Con","MP1_H3_HARD_APPROACH"},
-	{"Loud","MP1_H3_HARD_APPROACH"}
+	{"Hard Approach","Unw"};
+	{"Silent","MP1_H3_HARD_APPROACH"};
+	{"Big Con","MP1_H3_HARD_APPROACH"};
+	{"Loud","MP1_H3_HARD_APPROACH"};
 }
 MP0_DUGGAN = 
 {
-	{"Duggan Shipment","Unw"},
-	{"DUGGAN 0","MP0_H3OPT_DISRUPTSHIP"},
-	{"DUGGAN 1","MP0_H3OPT_DISRUPTSHIP"},
-	{"DUGGAN 2","MP0_H3OPT_DISRUPTSHIP"},
-	{"DUGGAN 3","MP0_H3OPT_DISRUPTSHIP"}
+	{"Duggan Shipment","Unw"};
+	{"DUGGAN 0","MP0_H3OPT_DISRUPTSHIP"};
+	{"DUGGAN 1","MP0_H3OPT_DISRUPTSHIP"};
+	{"DUGGAN 2","MP0_H3OPT_DISRUPTSHIP"};
+	{"DUGGAN 3","MP0_H3OPT_DISRUPTSHIP"};
 }
 MP1_DUGGAN = 
 {
 	{"Duggan Shipment","Unw"},
-	{"DUGGAN 0","MP1_H3OPT_DISRUPTSHIP"},
-	{"DUGGAN 1","MP1_H3OPT_DISRUPTSHIP"},
-	{"DUGGAN 2","MP1_H3OPT_DISRUPTSHIP"},
-	{"DUGGAN 3","MP1_H3OPT_DISRUPTSHIP"}
+	{"DUGGAN 0","MP1_H3OPT_DISRUPTSHIP"};
+	{"DUGGAN 1","MP1_H3OPT_DISRUPTSHIP"};
+	{"DUGGAN 2","MP1_H3OPT_DISRUPTSHIP"};
+	{"DUGGAN 3","MP1_H3OPT_DISRUPTSHIP"};
 }
 MP0_PASS = 
 {
-	{"Select Security Pass","Unw"},
-	{"No Security Pass","MP0_H3OPT_KEYLEVELS"},
-	{"Keycard Lv 1","MP0_H3OPT_KEYLEVELS"},
-	{"Keycard Lv 2","MP0_H3OPT_KEYLEVELS"}
+	{"Select Security Pass","Unw"};
+	{"No Security Pass","MP0_H3OPT_KEYLEVELS"};
+	{"Keycard Lv 1","MP0_H3OPT_KEYLEVELS"};
+	{"Keycard Lv 2","MP0_H3OPT_KEYLEVELS"};
 }
 MP1_PASS = 
 {
-	{"Security Pass","Unw"},
-	{"Key Lv 0","MP1_H3OPT_KEYLEVELS"},
-	{"Key Lv 1","MP1_H3OPT_KEYLEVELS"},
-	{"Key Lv 2","MP1_H3OPT_KEYLEVELS"}
+	{"Security Pass","Unw"};
+	{"Key Lv 0","MP1_H3OPT_KEYLEVELS"};
+	{"Key Lv 1","MP1_H3OPT_KEYLEVELS"};
+	{"Key Lv 2","MP1_H3OPT_KEYLEVELS"};
 }
 MP0_WEP = 
 {
-	{"Weapon","Unw"},
-	{"Karl","MP0_H3OPT_CREWWEAP"},
-	{"Gustavo","MP0_H3OPT_CREWWEAP"},
-	{"Charlie","MP0_H3OPT_CREWWEAP"},
-	{"Chester","MP0_H3OPT_CREWWEAP"},
-	{"Packie","MP0_H3OPT_CREWWEAP"}
+	{"Weapon","Unw"};
+	{"Karl","MP0_H3OPT_CREWWEAP"};
+	{"Gustavo","MP0_H3OPT_CREWWEAP"};
+	{"Charlie","MP0_H3OPT_CREWWEAP"};
+	{"Chester","MP0_H3OPT_CREWWEAP"};
+	{"Packie","MP0_H3OPT_CREWWEAP"};
 }
 MP1_WEP = 
 {
-	{"Weapon","Unw"},
-	{"Karl","MP1_H3OPT_CREWWEAP"},
-	{"Gustavo","MP1_H3OPT_CREWWEAP"},
-	{"Charlie","MP1_H3OPT_CREWWEAP"},
-	{"Chester","MP1_H3OPT_CREWWEAP"},
-	{"Packie","MP1_H3OPT_CREWWEAP"}
+	{"Weapon","Unw"};
+	{"Karl","MP1_H3OPT_CREWWEAP"};
+	{"Gustavo","MP1_H3OPT_CREWWEAP"};
+	{"Charlie","MP1_H3OPT_CREWWEAP"};
+	{"Chester","MP1_H3OPT_CREWWEAP"};
+	{"Packie","MP1_H3OPT_CREWWEAP"};
 }
 MP0_DRIVER = 
 {
-	{"Driver","Unw"},
-	{"Karim","MP0_H3OPT_CREWDRIVER"},
-	{"Taliana","MP0_H3OPT_CREWDRIVER"},
-	{"Eddie","MP0_H3OPT_CREWDRIVER"},
-	{"Zach","MP0_H3OPT_CREWDRIVER"},
-	{"Chester","MP0_H3OPT_CREWDRIVER"}
+	{"Driver","Unw"};
+	{"Karim","MP0_H3OPT_CREWDRIVER"};
+	{"Taliana","MP0_H3OPT_CREWDRIVER"};
+	{"Eddie","MP0_H3OPT_CREWDRIVER"};
+	{"Zach","MP0_H3OPT_CREWDRIVER"};
+	{"Chester","MP0_H3OPT_CREWDRIVER"};
 }
 MP1_DRIVER = 
 {
-	{"Driver","Unw"},
-	{"Karim","MP1_H3OPT_CREWDRIVER"},
-	{"Taliana","MP1_H3OPT_CREWDRIVER"},
-	{"Eddie","MP1_H3OPT_CREWDRIVER"},
-	{"Zach","MP1_H3OPT_CREWDRIVER"},
-	{"Chester","MP1_H3OPT_CREWDRIVER"}
+	{"Driver","Unw"};
+	{"Karim","MP1_H3OPT_CREWDRIVER"};
+	{"Taliana","MP1_H3OPT_CREWDRIVER"};
+	{"Eddie","MP1_H3OPT_CREWDRIVER"};
+	{"Zach","MP1_H3OPT_CREWDRIVER"};
+	{"Chester","MP1_H3OPT_CREWDRIVER"};
 }
 MP0_HACKER = 
 {
-	{"Hacker","Unw"},
-	{"Rickie","MP0_H3OPT_CREWHACKER"},
-	{"Christian","MP0_H3OPT_CREWHACKER"},
-	{"Yohan","MP0_H3OPT_CREWHACKER"},
-	{"Avi","MP0_H3OPT_CREWHACKER"},
-	{"Paige","MP0_H3OPT_CREWHACKER"}
+	{"Hacker","Unw"};
+	{"Rickie","MP0_H3OPT_CREWHACKER"};
+	{"Christian","MP0_H3OPT_CREWHACKER"};
+	{"Yohan","MP0_H3OPT_CREWHACKER"};
+	{"Avi","MP0_H3OPT_CREWHACKER"};
+	{"Paige","MP0_H3OPT_CREWHACKER"};
 }
 MP1_HACKER = 
 {
-	{"Hacker","Unw"},
-	{"Rickie","MP1_H3OPT_CREWHACKER"},
-	{"Christian","MP1_H3OPT_CREWHACKER"},
-	{"Yohan","MP1_H3OPT_CREWHACKER"},
-	{"Avi","MP1_H3OPT_CREWHACKER"},
-	{"Paige","MP1_H3OPT_CREWHACKER"}
+	{"Hacker","Unw"};
+	{"Rickie","MP1_H3OPT_CREWHACKER"};
+	{"Christian","MP1_H3OPT_CREWHACKER"};
+	{"Yohan","MP1_H3OPT_CREWHACKER"};
+	{"Avi","MP1_H3OPT_CREWHACKER"};
+	{"Paige","MP1_H3OPT_CREWHACKER"};
 }
 MP0_VEH = 
 {
-	{"Vehicle Set","Unw"},
-	{"Vehicle 1","MP0_H3OPT_VEHS"},
-	{"Vehicle 2","MP0_H3OPT_VEHS"},
-	{"Vehicle 3","MP0_H3OPT_VEHS"},
-	{"Vehicle 4","MP0_H3OPT_VEHS"}
+	{"Vehicle Set","Unw"};
+	{"Vehicle 1","MP0_H3OPT_VEHS"};
+	{"Vehicle 2","MP0_H3OPT_VEHS"};
+	{"Vehicle 3","MP0_H3OPT_VEHS"};
+	{"Vehicle 4","MP0_H3OPT_VEHS"};
 }
 MP1_VEH = 
 {
-	{"Vehicle Set","Unw"},
-	{"Vehicle 1","MP1_H3OPT_VEHS"},
-	{"Vehicle 2","MP1_H3OPT_VEHS"},
-	{"Vehicle 3","MP1_H3OPT_VEHS"},
-	{"Vehicle 4","MP1_H3OPT_VEHS"}
+	{"Vehicle Set","Unw"};
+	{"Vehicle 1","MP1_H3OPT_VEHS"};
+	{"Vehicle 2","MP1_H3OPT_VEHS"};
+	{"Vehicle 3","MP1_H3OPT_VEHS"};
+	{"Vehicle 4","MP1_H3OPT_VEHS"};
 }
 MP0_WEPS = 
 {
-	{"Weapon Set","Unw"},
-	{"Weapon 1","MP0_H3OPT_WEAPS"},
-	{"Weapon 2","MP0_H3OPT_WEAPS"}
+	{"Weapon Set","Unw"};
+	{"Weapon 1","MP0_H3OPT_WEAPS"};
+	{"Weapon 2","MP0_H3OPT_WEAPS"};
 }
 MP1_WEPS = 
 {
-	{"Weapon Set","Unw"},
-	{"Weapon 1","MP1_H3OPT_WEAPS"},
-	{"Weapon 2","MP1_H3OPT_WEAPS"}
+	{"Weapon Set","Unw"};
+	{"Weapon 1","MP1_H3OPT_WEAPS"};
+	{"Weapon 2","MP1_H3OPT_WEAPS"};
 }
 
 function CH_Arr()
@@ -814,106 +814,106 @@ MPx = tostring('MP'..MPX..'_')
 
 silent = 
 {
-	{'MP'..MPX..'_H3OPT_APPROACH',1},
-	{'MP'..MPX..'_H3_LAST_APPROACH',2},
-	{'MP'..MPX..'_H3_HARD_APPROACH',1},
-	{'MP'..MPX..'_H3OPT_TARGET',3},
-	{'MP'..MPX..'_H3OPT_BITSET1',127},
-	{'MP'..MPX..'_H3OPT_DISRUPTSHIP',3},
-	{'MP'..MPX..'_H3OPT_KEYLEVELS',2},
-	{'MP'..MPX..'_H3OPT_CREWWEAP',5},
-	{'MP'..MPX..'_H3OPT_CREWDRIVER',2},
-	{'MP'..MPX..'_H3OPT_CREWHACKER',4},
-	{'MP'..MPX..'_H3OPT_VEHS',3},
-	{'MP'..MPX..'_H3OPT_WEAPS',1},
-	{'MP'..MPX..'_H3OPT_BITSET0',62}
+	{'MP'..MPX..'_H3OPT_APPROACH',1};
+	{'MP'..MPX..'_H3_LAST_APPROACH',2};
+	{'MP'..MPX..'_H3_HARD_APPROACH',1};
+	{'MP'..MPX..'_H3OPT_TARGET',3};
+	{'MP'..MPX..'_H3OPT_BITSET1',127};
+	{'MP'..MPX..'_H3OPT_DISRUPTSHIP',3};
+	{'MP'..MPX..'_H3OPT_KEYLEVELS',2};
+	{'MP'..MPX..'_H3OPT_CREWWEAP',5};
+	{'MP'..MPX..'_H3OPT_CREWDRIVER',2};
+	{'MP'..MPX..'_H3OPT_CREWHACKER',4};
+	{'MP'..MPX..'_H3OPT_VEHS',3};
+	{'MP'..MPX..'_H3OPT_WEAPS',1};
+	{'MP'..MPX..'_H3OPT_BITSET0',62};
 }
 bigcon = 
 {
-	{'MP'..MPX..'_H3OPT_APPROACH',2},
-	{'MP'..MPX..'_H3_LAST_APPROACH',3},
-	{'MP'..MPX..'_H3_HARD_APPROACH',2},
-	{'MP'..MPX..'_H3OPT_TARGET',3},
-	{'MP'..MPX..'_H3OPT_BITSET1',159},
-	{'MP'..MPX..'_H3OPT_DISRUPTSHIP',3},
-	{'MP'..MPX..'_H3OPT_KEYLEVELS',2},
-	{'MP'..MPX..'_H3OPT_CREWWEAP',2},
-	{'MP'..MPX..'_H3OPT_CREWDRIVER',2},
-	{'MP'..MPX..'_H3OPT_CREWHACKER',4},
-	{'MP'..MPX..'_H3OPT_VEHS',3},
-	{'MP'..MPX..'_H3OPT_WEAPS',0},
-	{'MP'..MPX..'_H3OPT_BITSET0',392982}--392982 full 339990 not full gruppe only
+	{'MP'..MPX..'_H3OPT_APPROACH',2};
+	{'MP'..MPX..'_H3_LAST_APPROACH',3};
+	{'MP'..MPX..'_H3_HARD_APPROACH',2};
+	{'MP'..MPX..'_H3OPT_TARGET',3};
+	{'MP'..MPX..'_H3OPT_BITSET1',159};
+	{'MP'..MPX..'_H3OPT_DISRUPTSHIP',3};
+	{'MP'..MPX..'_H3OPT_KEYLEVELS',2};
+	{'MP'..MPX..'_H3OPT_CREWWEAP',2};
+	{'MP'..MPX..'_H3OPT_CREWDRIVER',2};
+	{'MP'..MPX..'_H3OPT_CREWHACKER',4};
+	{'MP'..MPX..'_H3OPT_VEHS',3};
+	{'MP'..MPX..'_H3OPT_WEAPS',0};
+	{'MP'..MPX..'_H3OPT_BITSET0',392982};--392982 full 339990 not full gruppe only
 }
 aggressive = 
 {
-	{'MP'..MPX..'_H3OPT_APPROACH',3},
-	{'MP'..MPX..'_H3_LAST_APPROACH',2},
-	{'MP'..MPX..'_H3_HARD_APPROACH',3},
-	{'MP'..MPX..'_H3OPT_TARGET',3},
-	{'MP'..MPX..'_H3OPT_BITSET1',799},
-	{'MP'..MPX..'_H3OPT_DISRUPTSHIP',3},
-	{'MP'..MPX..'_H3OPT_KEYLEVELS',2},
-	{'MP'..MPX..'_H3OPT_CREWWEAP',5},
-	{'MP'..MPX..'_H3OPT_CREWDRIVER',2},
-	{'MP'..MPX..'_H3OPT_CREWHACKER',4},
-	{'MP'..MPX..'_H3OPT_VEHS',3},
-	{'MP'..MPX..'_H3OPT_WEAPS',1},
-	{'MP'..MPX..'_H3OPT_BITSET0',3670038}
+	{'MP'..MPX..'_H3OPT_APPROACH',3};
+	{'MP'..MPX..'_H3_LAST_APPROACH',2};
+	{'MP'..MPX..'_H3_HARD_APPROACH',3};
+	{'MP'..MPX..'_H3OPT_TARGET',3};
+	{'MP'..MPX..'_H3OPT_BITSET1',799};
+	{'MP'..MPX..'_H3OPT_DISRUPTSHIP',3};
+	{'MP'..MPX..'_H3OPT_KEYLEVELS',2};
+	{'MP'..MPX..'_H3OPT_CREWWEAP',5};
+	{'MP'..MPX..'_H3OPT_CREWDRIVER',2};
+	{'MP'..MPX..'_H3OPT_CREWHACKER',4};
+	{'MP'..MPX..'_H3OPT_VEHS',3};
+	{'MP'..MPX..'_H3OPT_WEAPS',1};
+	{'MP'..MPX..'_H3OPT_BITSET0',3670038};
 }
 doomsday = 
 {
-	{'MP'..MPX..'_GANGOPS_FLOW_MISSION_PROG',-1},
-	{'MP'..MPX..'_GANGOPS_FLOW_NOTIFICATIONS',1557}
+	{'MP'..MPX..'_GANGOPS_FLOW_MISSION_PROG',-1};
+	{'MP'..MPX..'_GANGOPS_FLOW_NOTIFICATIONS',1557};
 }
 apartment = {{'MP'..MPX..'_HEIST_PLANNING_STAGE',-1}}
 end
 CH_Arr()
 silent_1 = {
-	{'MP1_H3OPT_APPROACH',1},
-	{'MP1_H3_LAST_APPROACH',2},
-	{'MP1_H3_HARD_APPROACH',1},
-	{'MP1_H3OPT_TARGET',3},
-	{'MP1_H3OPT_BITSET1',-1},
-	{'MP1_H3OPT_DISRUPTSHIP',3},
-	{'MP1_H3OPT_KEYLEVELS',2},
-	{'MP1_H3OPT_CREWWEAP',5},
-	{'MP1_H3OPT_CREWDRIVER',2},
-	{'MP1_H3OPT_CREWHACKER',4},
-	{'MP1_H3OPT_VEHS',3},
-	{'MP1_H3OPT_WEAPS',1},
-	{'MP1_H3OPT_BITSET0',-1}
+	{'MP1_H3OPT_APPROACH',1};
+	{'MP1_H3_LAST_APPROACH',2};
+	{'MP1_H3_HARD_APPROACH',1};
+	{'MP1_H3OPT_TARGET',3};
+	{'MP1_H3OPT_BITSET1',-1};
+	{'MP1_H3OPT_DISRUPTSHIP',3};
+	{'MP1_H3OPT_KEYLEVELS',2};
+	{'MP1_H3OPT_CREWWEAP',5};
+	{'MP1_H3OPT_CREWDRIVER',2};
+	{'MP1_H3OPT_CREWHACKER',4};
+	{'MP1_H3OPT_VEHS',3};
+	{'MP1_H3OPT_WEAPS',1};
+	{'MP1_H3OPT_BITSET0',-1};
 }
 
 bigcon_1 = {
-	{'MP1_H3OPT_APPROACH',2},
-	{'MP1_H3_LAST_APPROACH',3},
-	{'MP1_H3_HARD_APPROACH',2},
-	{'MP1_H3OPT_TARGET',3},
-	{'MP1_H3OPT_BITSET1',-1},
-	{'MP1_H3OPT_DISRUPTSHIP',3},
-	{'MP1_H3OPT_KEYLEVELS',2},
-	{'MP1_H3OPT_CREWWEAP',2},
-	{'MP1_H3OPT_CREWDRIVER',2},
-	{'MP1_H3OPT_CREWHACKER',4},
-	{'MP1_H3OPT_VEHS',3},
-	{'MP1_H3OPT_WEAPS',0},
-	{'MP1_H3OPT_BITSET0',-1}
+	{'MP1_H3OPT_APPROACH',2};
+	{'MP1_H3_LAST_APPROACH',3};
+	{'MP1_H3_HARD_APPROACH',2};
+	{'MP1_H3OPT_TARGET',3};
+	{'MP1_H3OPT_BITSET1',-1};
+	{'MP1_H3OPT_DISRUPTSHIP',3};
+	{'MP1_H3OPT_KEYLEVELS',2};
+	{'MP1_H3OPT_CREWWEAP',2};
+	{'MP1_H3OPT_CREWDRIVER',2};
+	{'MP1_H3OPT_CREWHACKER',4};
+	{'MP1_H3OPT_VEHS',3};
+	{'MP1_H3OPT_WEAPS',0};
+	{'MP1_H3OPT_BITSET0',-1};
 }
 
 aggressive_1 = {
-	{'MP1_H3OPT_APPROACH',3},
-	{'MP1_H3_LAST_APPROACH',2},
-	{'MP1_H3_HARD_APPROACH',3},
-	{'MP1_H3OPT_TARGET',3},
-	{'MP1_H3OPT_BITSET1',-1},
-	{'MP1_H3OPT_DISRUPTSHIP',3},
-	{'MP1_H3OPT_KEYLEVELS',2},
-	{'MP1_H3OPT_CREWWEAP',5},
-	{'MP1_H3OPT_CREWDRIVER',2},
-	{'MP1_H3OPT_CREWHACKER',4},
-	{'MP1_H3OPT_VEHS',3},
-	{'MP1_H3OPT_WEAPS',1},
-	{'MP1_H3OPT_BITSET0',-1}
+	{'MP1_H3OPT_APPROACH',3};
+	{'MP1_H3_LAST_APPROACH',2};
+	{'MP1_H3_HARD_APPROACH',3};
+	{'MP1_H3OPT_TARGET',3};
+	{'MP1_H3OPT_BITSET1',-1};
+	{'MP1_H3OPT_DISRUPTSHIP',3};
+	{'MP1_H3OPT_KEYLEVELS',2};
+	{'MP1_H3OPT_CREWWEAP',5};
+	{'MP1_H3OPT_CREWDRIVER',2};
+	{'MP1_H3OPT_CREWHACKER',4};
+	{'MP1_H3OPT_VEHS',3};
+	{'MP1_H3OPT_WEAPS',1};
+	{'MP1_H3OPT_BITSET0',-1};
 }
 
 
