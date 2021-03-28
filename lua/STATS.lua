@@ -4,165 +4,181 @@ require("instant_heist_array")
 
 STATS = {
 	STAT_GET_INT = function(joaat_hash) --Return value to function
-    set.global(int,2551832+3269,GAMEPLAY.GET_HASH_KEY(joaat_hash))
-    set.global(int,2551832+3270,GAMEPLAY.GET_HASH_KEY(joaat_hash))
-    set.global(int,1377236+1136,15)
-    return get.Global(int,2551544+276)
-end;
+    set.global(int,2552060+3269,GAMEPLAY.GET_HASH_KEY(joaat_hash))
+    set.global(int,2552060+3270,GAMEPLAY.GET_HASH_KEY(joaat_hash))
+    set.global(int,1377236+1136,15)-- 2551832
+    return get.Global(int,2551772+276) --2551544
+  end;
 
-STAT_GET_BOOL = function(joaat_hash)
-  set.global(int,2587834+617,GAMEPLAY.GET_HASH_KEY(joaat_hash))
-  set.global(int,2587834+618,GAMEPLAY.GET_HASH_KEY(joaat_hash))
-  return get.Bool(STAT_BOOL)
-end;
-
-STAT_SET_INT = function(joaat_hash,value) --Set Stat From Hash Key As Int
-  set.global(int,1388013+4,GAMEPLAY.GET_HASH_KEY(joaat_hash))
-  set.global(int,939452+5526,value)
-  set.global(int,1377236+1139,3)
-end;
-
-STAT_SET_BOOL = function(joaat_hash,bool) --Set Stat From Hash Key As Bool
-  local start = function()
+  STAT_GET_BOOL = function(joaat_hash)
     set.global(int,2587834+617,GAMEPLAY.GET_HASH_KEY(joaat_hash))
     set.global(int,2587834+618,GAMEPLAY.GET_HASH_KEY(joaat_hash))
-    SYSTEM.WAIT(1500)
-    set.bool(STAT_BOOL,bool)
-  end
-  ExecuteThread(start);
-end;
+    return get.Bool(STAT_BOOL)
+  end;
 
-STAT_LOOP_INT = function(ArrayName) --Set Stat Group In Loop
-  local start = function()
-    local c = 0
-    for _ in pairs(ArrayName) do c=c+1 end
-    for i,v in pairs(ArrayName)
-    do
-      STATS.STAT_SET_INT(v[1],v[2])    
-      Protection_ImportView.Text =  string.format("Apply: %s/%s",i,c)
-      Protection_joaat.Text = string.format("%s",v[1])
-      Protection_stat_value.Text = string.format("%s",v[2])
-      SystemLog(string.format("%s : %s [Hash : 0x%X]",v[1],v[2],joaat(v[1])))
-      LuaEngineLog(string.format("%s : %s [Hash : 0x%X]",v[1],v[2],joaat(v[1])))
-      SYSTEM.WAIT(100)
-    end -- Coroutine has completed, it will be marked as dead after this print..
-  end
-  ExecuteThread(start)
-end;
+  STAT_SET_INT = function(joaat_hash,value) --Set Stat From Hash Key As Int
+    set.global(int,1388013+4,GAMEPLAY.GET_HASH_KEY(joaat_hash))
+    set.global(int,939452+5526,value)
+    set.global(int,1377236+1139,3)
+    set.global(int,2550376+305,3)
+  end;
 
-
-STAT_LOOP_BOOL = function(ArrayName) --Set Stat Group In Loop
-  local start = function()
-    local c = 0
-    for _ in pairs(ArrayName) do c=c+1 end
-    for i,v in pairs(ArrayName)
-    do
-      STATS.STAT_SET_BOOL(v[1],TRUE)
-      Protection_ImportView.Text = string.format("Apply: %s/%s",i,c)
-      Protection_joaat.Text = string.format("%s",v[1])
-      Protection_stat_value.Text = string.format("%s",v[2])
-      SystemLog(string.format("%s : %s [Hash : 0x%X]",v[1],v[2],joaat(v[1])))
-      LuaEngineLog(string.format("%s : %s [Hash : 0x%X]",v[1],v[2],joaat(v[1])))
-      SYSTEM.WAIT(3000)
+  STAT_SET_BOOL = function(joaat_hash,bool) --Set Stat From Hash Key As Bool
+    local start = function()
+      set.global(int,2588062+617,GAMEPLAY.GET_HASH_KEY(joaat_hash)) -- 2587834
+      set.global(int,2588062+618,GAMEPLAY.GET_HASH_KEY(joaat_hash))
+      SYSTEM.WAIT(1500)
+      set.bool(STAT_BOOL,bool)
     end
-  end
-  ExecuteThread(start);
-end;
+    ExecuteThread(start);
+  end;
 
-STAT_LOADER_BOOL = function ()
-  local tbl_Stats={}
-  FileName=tostring(Protection.FileName.Text)
-  if FileName==nil or FileName=='' then return end
-  local fs=assert(io.open(string.format('%s/%s.txt',_MyFilePath,FileName), "r"));
-  local k,bool=1,false
-  for c=1,200,1 do
-    local line=fs:read("*line")
-    if line==nil or line=='' then goto continue end
-    if line=="BOOL" then bool = true goto bool end
-    if c%2==1 and bool==false then
-       tbl_Stats[k] = {line}
-    elseif c%2==0 and bool==true then
-       tbl_Stats[k] = {line}
-    else
-       tbl_Stats[k][2] = line
-       k=k+1
+  STAT_LOOP_INT = function(ArrayName) --Set Stat Group In Loop
+    local start = function()
+      local c = 0
+      for _ in pairs(ArrayName) do c=c+1 end
+      for i,v in pairs(ArrayName)
+      do
+        STATS.STAT_SET_INT(v[1],v[2])    
+        Protection_ImportView.Text =  string.format("Apply: %s/%s",i,c)
+        Protection_joaat.Text = string.format("%s",v[1])
+        Protection_stat_value.Text = string.format("%s",v[2])
+        SystemLog(string.format("%s : %s [Hash : 0x%X]",v[1],v[2],joaat(v[1])))
+        LuaEngineLog(string.format("%s : %s [Hash : 0x%X]",v[1],v[2],joaat(v[1])))
+        SYSTEM.WAIT(550)
+      end -- Coroutine has completed, it will be marked as dead after this print..
     end
-    ::bool::
-  end
-  ::continue::
-  fs:close();
-  return tbl_Stats
-end;
+    ExecuteThread(start)
+  end;
 
-RUN_LOADER_BOOL = function ()
-  local start = function()
-    local MPX = tostring(get.Global(int,1312763))
-    local tbl_Stats = STATS.STAT_LOADER_BOOL()
-    if tbl_Stats == nil then goto continue end
-    local i = 0
-    for _ in pairs(tbl_Stats) do i=i+1 end
-    for c,k in pairs(tbl_Stats) do
-       if k[1]:match("$") then k[1]=k[1]:match("$([^,]+)") end
-          k[1]=k[1]:sub(1,2)..MPX..k[1]:sub(4)
-       Protection_ImportView.Text = string.format("Apply: %s/%s",c,i)
-       Protection_joaat.Text = string.format("%s",k[1])
-       Protection_stat_value.Text = string.format("%s",k[2])
-       STATS.STAT_SET_BOOL(k[1],k[2])
-       SYSTEM.WAIT(1000)
+  STAT_FAST_INT = function(ArrayName) --Set Stat Group In Loop
+    local start = function()
+      local c = 0
+      for _ in pairs(ArrayName) do c=c+1 end
+      for i,v in pairs(ArrayName)
+      do
+        STATS.STAT_SET_INT(v[1],v[2])    
+        Protection_ImportView.Text =  string.format("Apply: %s/%s",i,c)
+        Protection_joaat.Text = string.format("%s",v[1])
+        Protection_stat_value.Text = string.format("%s",v[2])
+        SystemLog(string.format("%s : %s [Hash : 0x%X]",v[1],v[2],joaat(v[1])))
+        LuaEngineLog(string.format("%s : %s [Hash : 0x%X]",v[1],v[2],joaat(v[1])))
+        SYSTEM.WAIT(100)
+      end -- Coroutine has completed, it will be marked as dead after this print..
     end
-    ::continue::
-  end
-  ExecuteThread(start);
-end;
+    ExecuteThread(start)
+  end;
 
-STAT_LOADER_INT = function ()
-  local tbl_Stats={}
-  FileName=tostring(Protection.FileName.Text)
-  if FileName==nil or FileName=='' then return end
-  local fs=assert(io.open(string.format('%s/%s.txt',_MyFilePath,FileName), "r"));
-  local k,int32=1,false
-  for c=1,200,1 do
-    local line=fs:read("*line")
-    if line==nil or line=='' then goto continue end
-    if line=="INT32" then int32 = true goto int end
-    if c%2==1 and int32==false then
-       tbl_Stats[k] = {line}
-    elseif c%2==0 and int32==true then
-       tbl_Stats[k] = {line}
-    else
-       tbl_Stats[k][2] = line
-       k=k+1
+  STAT_LOOP_BOOL = function(ArrayName) --Set Stat Group In Loop
+    local start = function()
+      local c = 0
+      for _ in pairs(ArrayName) do c=c+1 end
+      for i,v in pairs(ArrayName)
+      do
+        STATS.STAT_SET_BOOL(v[1],TRUE)
+        Protection_ImportView.Text = string.format("Apply: %s/%s",i,c)
+        Protection_joaat.Text = string.format("%s",v[1])
+        Protection_stat_value.Text = string.format("%s",v[2])
+        SystemLog(string.format("%s : %s [Hash : 0x%X]",v[1],v[2],joaat(v[1])))
+        LuaEngineLog(string.format("%s : %s [Hash : 0x%X]",v[1],v[2],joaat(v[1])))
+        SYSTEM.WAIT(3000)
+      end
     end
-    ::int::
-  end
-  ::continue::
-  fs:close();
-  return tbl_Stats
-end;
+    ExecuteThread(start);
+  end;
 
-RUN_LOADER_INT = function ()
-  local start = function()
-    local MPX = tostring(get.Global(int,1312763))
-    local tbl_Stats = STATS.STAT_LOADER_INT()
-    if tbl_Stats == nil then goto continue end
-    local i = 0
-    for _ in pairs(tbl_Stats) do i=i+1 end
-    for c,k in pairs(tbl_Stats) do
-       if k[1]:match("$") then k[1]=k[1]:match("$([^,]+)") end
-          k[1]=k[1]:sub(1,2)..MPX..k[1]:sub(4)
-       Protection_ImportView.Text = string.format("Apply: %s/%s",c,i)
-       Protection_joaat.Text = string.format("%s",k[1])
-       Protection_stat_value.Text = string.format("%s",k[2])
-       STATS.STAT_SET_INT(k[1],k[2])
-       SYSTEM.WAIT(210)
+  STAT_LOADER_BOOL = function ()
+    local tbl_Stats={}
+    FileName=tostring(Protection.FileName.Text)
+    if FileName==nil or FileName=='' then return end
+    local fs=assert(io.open(string.format('%s/%s.txt',_MyFilePath,FileName), "r"));
+    local k,bool=1,false
+    for c=1,200,1 do
+      local line=fs:read("*line")
+      if line==nil or line=='' then goto continue end
+      if line=="BOOL" then bool = true goto bool end
+      if c%2==1 and bool==false then
+        tbl_Stats[k] = {line}
+      elseif c%2==0 and bool==true then
+        tbl_Stats[k] = {line}
+      else
+        tbl_Stats[k][2] = line
+        k=k+1
+      end
+      ::bool::
     end
     ::continue::
-  end
-  ExecuteThread(start);
-end;
+    fs:close();
+    return tbl_Stats
+  end;
 
+  RUN_LOADER_BOOL = function ()
+    local start = function()
+      local MPX = tostring(get.Global(int,1312763))
+      local tbl_Stats = STATS.STAT_LOADER_BOOL()
+      if tbl_Stats == nil then goto continue end
+      local i = 0
+      for _ in pairs(tbl_Stats) do i=i+1 end
+      for c,k in pairs(tbl_Stats) do
+        if k[1]:match("$") then k[1]=k[1]:match("$([^,]+)") end
+            k[1]=k[1]:sub(1,2)..MPX..k[1]:sub(4)
+        Protection_ImportView.Text = string.format("Apply: %s/%s",c,i)
+        Protection_joaat.Text = string.format("%s",k[1])
+        Protection_stat_value.Text = string.format("%s",k[2])
+        STATS.STAT_SET_BOOL(k[1],k[2])
+        SYSTEM.WAIT(1000)
+      end
+      ::continue::
+    end
+    ExecuteThread(start);
+  end;
 
-};
+  STAT_LOADER_INT = function ()
+    local tbl_Stats={}
+    FileName=tostring(Protection.FileName.Text)
+    if FileName==nil or FileName=='' then return end
+    local fs=assert(io.open(string.format('%s/%s.txt',_MyFilePath,FileName), "r"));
+    local k,int32=1,false
+    for c=1,200,1 do
+      local line=fs:read("*line")
+      if line==nil or line=='' then goto continue end
+      if line=="INT32" then int32 = true goto int end
+      if c%2==1 and int32==false then
+        tbl_Stats[k] = {line}
+      elseif c%2==0 and int32==true then
+        tbl_Stats[k] = {line}
+      else
+        tbl_Stats[k][2] = line
+        k=k+1
+      end
+      ::int::
+    end
+    ::continue::
+    fs:close();
+    return tbl_Stats
+  end;
+
+  RUN_LOADER_INT = function ()
+    local start = function()
+      local MPX = tostring(get.Global(int,1312763))
+      local tbl_Stats = STATS.STAT_LOADER_INT()
+      if tbl_Stats == nil then goto continue end
+      local i = 0
+      for _ in pairs(tbl_Stats) do i=i+1 end
+      for c,k in pairs(tbl_Stats) do
+        if k[1]:match("$") then k[1]=k[1]:match("$([^,]+)") end
+            k[1]=k[1]:sub(1,2)..MPX..k[1]:sub(4)
+        Protection_ImportView.Text = string.format("Apply: %s/%s",c,i)
+        Protection_joaat.Text = string.format("%s",k[1])
+        Protection_stat_value.Text = string.format("%s",k[2])
+        STATS.STAT_SET_INT(k[1],k[2])
+        SYSTEM.WAIT(210)
+      end
+      ::continue::
+    end
+    ExecuteThread(start);
+  end;
+}
 
 SCRIPT = {
   REQUEST_SCRIPT = function(ScriptName)
@@ -207,7 +223,13 @@ SCRIPT = {
     end
   end;
 
-
+  TRIGGER_SCRIPT_EVENT = function(Struct_3_param0, uParam3, iParam4, uParam5)
+    set.global(int,2405074+77,Struct_3_param0)
+    set.global(int,2405074+680,uParam3)
+    iParam6 = get.Memory(Global_(2405074+692))
+    set.int(iParam6,iParam4)
+    set.global(int,2405074+668,uParam5)
+  end;
 }
 
 PLAYER = 
@@ -217,53 +239,46 @@ PLAYER =
     return value
 	end;
 
-	SET_PLAYER_INVINCIBLE = function (Trigger)
-  local Activation = Trigger
-	 if Trigger == true then
+	SET_PLAYER_INVINCIBLE = function (PlayerActivation)
+	  if PlayerActivation then
       set.bool(PLAYER_GOD, TRUE)
 		  set.float(DMG_TO_HP, FALSE) 
 		  set.float(DMG_TO_ARMOR,FALSE)
 		  set.float(PLAYER_RUN_SPD,1.2)
 		  set.float(PLAYER_SWIM_SPD,1.2)
 		  set.float(PLAYER_SNEAK_SPD,1.2)
-	 elseif Trigger == false then
+	  elseif not PlayerActivation then
       set.bool(PLAYER_GOD, FALSE)
 		  set.float(DMG_TO_HP,TRUE) 
 		  set.float(DMG_TO_ARMOR,TRUE)
 		  set.float(PLAYER_RUN_SPD,1)
 		  set.float(PLAYER_SWIM_SPD,1)
 		  set.float(PLAYER_SNEAK_SPD,1)
-	 end
+	  end
     set.float(PLAYER_HP, 328)
     set.float(PLAYER_ARMOR, 50)
     return Activation
 	end;
 
-  SET_PLAYER_INVISIBLE = function (Trigger)
-    local Activation = Trigger
+  SET_PLAYER_INVISIBLE = function (Activation)
     local turn_off = 47  
-      if Activation == true then set.int(CPlayer + 0x2C,1)
-      elseif Activation == false then set.int(CPlayer + 0x2C,turn_off)
-      elseif (1 == get.Bool(CPlayer + 0x52, 1, false)) and (Activation == true) then set.int(CVehicle + 0x2C,1)
-      elseif (1 == get.Bool(CPlayer + 0x52, 1, false)) and (Activation == false) then set.int(CVehicle + 0x2C,turn_off)
+      if Activation then set.int(CPlayer + 0x2C,1)
+      elseif not Activation then set.int(CPlayer + 0x2C,turn_off)
+      elseif (true == get.Bool(CPlayer + IN_VEH2)) and (Activation) then set.int(CVehicle + 0x2C,1)
+      elseif (true == get.Bool(CPlayer + IN_VEH2)) and (not Activation) then set.int(CVehicle + 0x2C,turn_off)
     end
-    return Activation
   end;
 
-  SET_PLAYER_NO_RAGDOLL = function (Boolean)
-    local Trigger = Boolean
-    if Trigger==true then set.int(CPlayer + 0x10B8,1)
-    elseif Trigger==false then set.int(CPlayer + 0x10B8,32)
+  SET_PLAYER_NO_RAGDOLL = function (Trigger)
+    if Trigger then set.int(CPlayer + 0x10B8,1)
+    elseif not Trigger then set.int(CPlayer + 0x10B8,32)
     end
-    return Trigger
   end;
 
   GODMODE_RESISTANCE = function (Activation)
-    local Trigger = Activation
-    if Trigger == true then set.float(CPlayerInfo + 0xCAC,-999)
-    elseif Trigger == false then set.float(CPlayerInfo + 0xCAC,1)
+    if Activation then set.float(CPlayerInfo + 0xCAC,-999)
+    elseif not Activation then set.float(CPlayerInfo + 0xCAC,1)
     end
-    return Trigger
   end;
 
   PLAYER_PED_ID = function()
@@ -283,9 +298,25 @@ PLAYER =
 
   SET_PLAYER_MAX_HEALTH = function (health)
     set.int(CPlayer + 0x2A0,health)
-  end,
+  end;
+
   PLAYER_ID = function()
     return PLAYER_ID()
+  end;
+
+  GET_PLAYER_INVINCIBLE = function(Player)
+    local Status = get.Bool(PLGod[Player])
+    return Status
+  end;
+  
+  GET_PLAYER_WANTED_LEVEL = function(Player)
+    return get.Global(int,1630317+1+(Player*595)+11+186)
+  end;
+}
+
+PED = {
+  IS_PED_IN_ANY_VEHICLE = function()
+    return get.Bool(CPlayer + IN_VEH2)
   end;
 }
 
@@ -320,40 +351,40 @@ VEHICLE =
     local spawner_x = get.Float(cord_x)-(head2*Dist)
     local spawner_y = get.Float(cord_y)+(head*Dist)
 
-    set.global(float,2462286+7+0, spawner_x)
-    set.global(float,2462286+7+1, spawner_y)
-    set.global(float,2462286+7+2, spawner_z)
+    set.global(float,2462514+7+0, spawner_x)
+    set.global(float,2462514+7+1, spawner_y)
+    set.global(float,2462514+7+2, spawner_z)
     set.int(VEH_LIST, RAGE_JOAAT(Hash))
-    set.global(bool,2462286+27+28, 1) --weaponised ownerflag
+    set.global(bool,2462514+27+28, 1) --weaponised ownerflag
     set.int(BYPASS_VEH_1, 14) --ownerflag
     set.int(BYPASS_VEH_2, 2) --personal car ownerflag
-    set.global(bool,2462286+5,1)         ---SET('i',CarSpawn+0x1168, 1)  --can spawn flag must be odd
-    set.global(bool,2462286+2,1)         ---SET('i',CarSpawn+0x1180, 1) --spawn toggle gets reset to 0 on car spawn
-    set.global(bool,2462286+3,pegasus)
-    set.global(int,2462286+27+74, 1) --Red Neon Amount 1-255 100%-0%
-    set.global(int,2462286+27+75, 1) --Green Neon Amount 1-255 100%-0%
-    set.global(int,2462286+27+76, 0) --Blue Neon Amount 1-255 100%-0%
-    set.global(int,2462286+27+77, 4030726305) --landinggear/vehstate
-    --set.global(int,2462286+27+5, -1)  --default paintjob primary -1 auto 120
-    --set.global(int,2462286+27+6, -1)  --default paintjob secondary -1 auto 120
-    set.global(int,2462286+27+7, -1)
-    set.global(int,2462286+27+8, -1)
-    set.global(int,2462286+27+19,4)
-    set.global(int,2462286+27+60,1)
-    --set.global(int,2462286+27+20,1)
-    set.global(int,2462286+27+21,3)
-    set.global(int,2462286+27+22,6)
-    set.global(int,2462286+27+23,9)
-    set.global(int,2462286+27+24,58)
-    set.global(int,2462286+27+25,13)
-    set.global(int,2462286+27+26,18)
-    set.global(int,2462286+27+27,1)
-    --set.global(int,2462286+27+69,8) ---Wheel type
-    --set.global(int,2462286+27+33,217) --Wheel Selection
-    --2462286+27+17 --Pokoknya depan mesin mobil (vent)
-    --2462286+27+14 -- Exhaust
-    --2462286+27+13 -- side skirt
-    --2462286+27+12 -- Back Bumper
+    set.global(bool,2462514+5,1)         ---SET('i',CarSpawn+0x1168, 1)  --can spawn flag must be odd
+    set.global(bool,2462514+2,1)         ---SET('i',CarSpawn+0x1180, 1) --spawn toggle gets reset to 0 on car spawn
+    set.global(bool,2462514+3,pegasus)
+    set.global(int,2462514+27+74, 1) --Red Neon Amount 1-255 100%-0%
+    set.global(int,2462514+27+75, 1) --Green Neon Amount 1-255 100%-0%
+    set.global(int,2462514+27+76, 0) --Blue Neon Amount 1-255 100%-0%
+    set.global(int,2462514+27+77, 4030726305) --landinggear/vehstate
+    --set.global(int,2462514+27+5, -1)  --default paintjob primary -1 auto 120
+    --set.global(int,2462514+27+6, -1)  --default paintjob secondary -1 auto 120
+    set.global(int,2462514+27+7, -1)
+    set.global(int,2462514+27+8, -1)
+    set.global(int,2462514+27+19,4)
+    set.global(int,2462514+27+60,1)
+    --set.global(int,2462514+27+20,1)
+    set.global(int,2462514+27+21,3)
+    set.global(int,2462514+27+22,6)
+    set.global(int,2462514+27+23,9)
+    set.global(int,2462514+27+24,58)
+    set.global(int,2462514+27+25,13)
+    set.global(int,2462514+27+26,18)
+    set.global(int,2462514+27+27,1)
+    --set.global(int,2462514+27+69,8) ---Wheel type
+    --set.global(int,2462514+27+33,217) --Wheel Selection
+    --2462514+27+17 --Pokoknya depan mesin mobil (vent)
+    --2462514+27+14 -- Exhaust
+    --2462514+27+13 -- side skirt
+    --2462514+27+12 -- Back Bumper
   end;
   
   _SET_VEHICLE_UNK_DAMAGE_MULTIPLIER = function(Vehicle,Float)
@@ -459,65 +490,61 @@ end;
     
 THREAD = {
 
-func_1 = function(funcName,boolean,interval)
-local isRunning = boolean;
-local func = Asynchronous(function()
-    while (isRunning == true) do
-        funcName()
-        if isRunning == false then
-          isRunning = false
-          break
-        end
+  func_1 = function(funcName,boolean,interval)
+    func_1_loop = boolean
+    local func = Asynchronous(function()
+        while (func_1_loop) do
+          funcName()
+          if not func_1_loop then
+            break
+          end
         Async();
-    end
-end);
-AsyncStart(func,interval)
-end;
+        end
+    end);
+    AsyncStart(func,interval)
+  end;
 
-YIELD = function(funcName,Trigger,Value,interval)
-yield_looper = Trigger
-local yielder = Asynchronous(function()
-    while (yield_looper == true) do
-        funcName(Value)
-        if yield_looper == false then
+  YIELD = function(funcName,Trigger,Value,interval)
+    YIELD_LOOP = Trigger
+    local yielder = Asynchronous(function()
+        while (YIELD_LOOP) do
           funcName(Value)
-          yield_looper = false
-          break
-        end
+          if not YIELD_LOOP then
+            funcName(Value)
+            break
+          end
         Async();
-    end
-end)
-AsyncStart(yielder,interval)
-end;
+        end
+    end)
+    AsyncStart(yielder,interval)
+  end;
 
-YIELD2 = function(funcName,Trigger,Value1,Value2,interval)
-yield2 = Trigger
-local yielder2 = Asynchronous(function()
-    while (yield2 == true) do
+  YIELD2 = function(funcName,Trigger,Value1,Value2,interval)
+    YIELD2_LOOP = Trigger
+    local yielder2 = Asynchronous(function()
+      while (YIELD2_LOOP) do
         funcName(Value1,Value2)
-        if yield2 == false then
-          yield2 = false
+        if not YIELD2_LOOP then
           break
         end
         Async();
-    end
-end)
+      end
+  end)
 AsyncStart(yielder2,interval)
 end;
 
-LOOPING = function(funcName,Trigger,Value,interval)
-  loop_running = Trigger
-  local looping = Asynchronous(function()
-      while (loop_running == true) do
-          funcName(Value)
-          if loop_running == false then
-            loop_running = false
-            break
-          end
-          Async();
-      end
-  end)
-    AsyncStart(looping,interval)
+  LOOPING = function(funcName,Trigger,Value,interval)
+    LOOPING_LOOP = Trigger
+    local looping = Asynchronous(function()
+        while (LOOPING_LOOP) do
+            funcName(Value)
+            if not TriggLOOPING_LOOPer then
+              break
+            end
+            Async();
+        end
+    end)
+  AsyncStart(looping,interval)
   end;
 
   FUNC_1 = function(funcName,Trigger,interval)
@@ -533,70 +560,67 @@ LOOPING = function(funcName,Trigger,Value,interval)
         end
     end)
     AsyncStart(co1,interval)
-end;
+  end;
 
-NATIVE_LOOP = function (funcName,Boolean,Interval)
-    LoopStarter = Boolean
-    LoopBreaker=Boolean
-      function LoopRunner()
-        while (LoopStarter == TRUE) do
-          SYSTEM.WAIT(Interval);
-           funcName()
-    	    if LoopBreaker==FALSE then
-            LoopStarter = FALSE
-    	    break
-    	  end
-      end
-  end
-  ExecuteThread(LoopRunner);
-end;
-
-NATIVE_LOOP_2 = function (funcName,Value,Boolean,Interval)
-  NATIVE_LOOP_2_Starter = Boolean
-  NATIVE_LOOP_2_Breaker=Boolean
-    local function NewThread()
-      while (NATIVE_LOOP_2_Starter == TRUE) do
-        SYSTEM.WAIT(Interval);
-         funcName(Value)
-        if NATIVE_LOOP_2_Breaker==FALSE then
-          NATIVE_LOOP_2_Starter = FALSE
-        break
-      end
-    end
-end
-ExecuteThread(NewThread);
-end;
-
-SPECIAL_NATIVE = function(func,Value,Boolean,Interval)
-  SPECIAL_Starter = Boolean
-  SPECIAL_Breaker=Boolean
-    local function ThreadStart()
-      while (SPECIAL_Starter == TRUE) do
-        SYSTEM.WAIT(Interval);
-         funcName(Value)
-        if SPECIAL_Breaker==FALSE then
-          SPECIAL_Starter = FALSE
-        break
-      end
-    end
-end
-ExecuteThread(ThreadStart)
-end;
-
-SPECIAL_YIELD = function(funcName,Value,Trigger,interval)
-  loop_s = Trigger
-  local co1 = Asynchronous(function()
-      while (loop_s == true) do
-          funcName(Value)
-          if loop_s == false then
-            loop_s = false
+  NATIVE_LOOP = function (funcName,Boolean,Interval)
+      LoopStarter = Boolean
+      LoopBreaker = Boolean
+        function LoopRunner()
+          while (LoopStarter == TRUE) do
+            SYSTEM.WAIT(Interval);
+            funcName()
+            if LoopBreaker==FALSE then
+              LoopStarter = FALSE
             break
           end
-          Async();
+        end
+    end
+  ExecuteThread(LoopRunner);
+  end;
+
+  NATIVE_LOOP_2 = function (funcName,Value,Boolean,Interval)
+    NATIVE_LOOP_2_Starter = Boolean
+    NATIVE_LOOP_2_Breaker = Boolean
+      local function NewThread()
+        while (NATIVE_LOOP_2_Starter == TRUE) do
+          SYSTEM.WAIT(Interval);
+          funcName(Value)
+          if NATIVE_LOOP_2_Breaker==FALSE then
+            NATIVE_LOOP_2_Starter = FALSE
+          break
+        end
       end
-  end);
-  AsyncStart(co1,interval)
-end;
+    end
+  ExecuteThread(NewThread);
+  end;
+
+  SPECIAL_NATIVE = function(func,Value,Boolean,Interval)
+    local function ThreadStart()
+      while (Boolean) do
+        SYSTEM.WAIT(Interval);
+        funcName(Value)
+        if not Boolean then
+          break
+        end
+      end
+    end
+  ExecuteThread(ThreadStart)
+  end;
+
+  SPECIAL_YIELD = function(funcName,Value,Trigger,interval)
+    loop_s = Trigger
+    local co1 = Asynchronous(function()
+      while (loop_s == true) do
+        funcName(Value)
+        if loop_s == false then
+          loop_s = false
+          break
+        end
+        Async();
+      end
+    end);
+    AsyncStart(co1,interval)
+  end;
 };
 
 SYSTEM = {
@@ -746,7 +770,7 @@ function ENTITY.SET_CORD(to,x,y,z,yaw)
         local x = get.Float(n + 0x10)
         local y = get.Float(n + 0x14)
         local p = get.Ptr(get.Ptr(hook.GET("WorldPTR")) + CPED)
-        if (1 == get.Bool(p + IN_VEH2, 1, false))
+        if (true == get.Bool(p + IN_VEH2))
         then
           p = get.Ptr(p + VEH)
         end
@@ -771,7 +795,7 @@ end
       local y = get.Float(n + 0x14)
       local z = get.Float(n + 0x18) + 0.1
       local p = get.Ptr(get.Ptr(hook.GET("WorldPTR")) + CPED)
-      if (1 == get.Bool(p + IN_VEH2, 1, false))
+      if (true == get.Bool(p + IN_VEH2))
       then
         p = get.Ptr(p + VEH)
       end
@@ -796,7 +820,7 @@ end
       local y = get.Float(n + 0x14)
       local z = get.Float(n + 0x18) + 0.1
       local p = get.Ptr(get.Ptr(hook.GET("WorldPTR")) + CPED)
-      if (1 == get.Bool(p + IN_VEH2, 1, false))
+      if (true == get.Bool(p + IN_VEH2))
       then
         p = get.Ptr(p + VEH)
       end
@@ -815,7 +839,7 @@ end
   if to == 'c' then
     local z = z + 0.03
     local p = get.Ptr(get.Ptr(hook.GET("WorldPTR")) + CPED)
-    if (1 == get.Bool(p + IN_VEH2, 1, false)) then
+    if (true == get.Bool(p + IN_VEH2)) then
       p = get.Ptr(p + VEH)
     end
     local v = get.Ptr(p + POS)
@@ -829,7 +853,7 @@ end
   -- Forward
   if to == 'f' then
     local p = get.Ptr(get.Ptr(hook.GET("WorldPTR")) + CPED)
-    if (1 == get.Bool(p + IN_VEH2, 1, false)) then
+    if (true == get.Bool(p + IN_VEH2)) then
       p = get.Ptr(p + VEH)
     end
     local v = get.Ptr(p + POS)

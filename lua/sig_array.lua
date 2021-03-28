@@ -4,6 +4,7 @@
   Special Thanks to UC in Reversal Thread especially to Kiddion and ScriptKiddy1337
   Compiler : Ellohim a.k.a vladi023
   ]]
+
 function ProcessChecks()
     if not openProcess('GTA5.exe') then 
         sleep(250) 
@@ -125,155 +126,228 @@ end
 
 Pointers = { };
 WorldPTR = Pointer({
-Name = 'WorldPTR',
-Pattern = '48 8B 05 ? ? ? ? 45 ? ? ? ? 48 8B 48 08 48 85 C9 74 07',
-ScanMethod = 1,
-SigOffset = 3,
-TargetOffset = 4
+Name = 'WorldPTR';
+Pattern = '48 8B 05 ? ? ? ? 45 ? ? ? ? 48 8B 48 08 48 85 C9 74 07';
+ScanMethod = 1;
+SigOffset = 3;
+TargetOffset = 4;
 });
 WorldPTR.Scan();
 
 Pointers = { };
 GlobalPTR = Pointer({
-Name = 'GlobalPTR',
-Pattern = '4C 8D 05 ? ? ? ? 4D 8B 08 4D 85 C9 74 11',
-ScanMethod = 1,
-SigOffset = 3,
-TargetOffset = 4
+Name = 'GlobalPTR';
+Pattern = '4C 8D 05 ? ? ? ? 4D 8B 08 4D 85 C9 74 11';
+ScanMethod = 1;
+SigOffset = 3;
+TargetOffset = 4;
 });
 GlobalPTR.Scan();
 
 Pointers = { };
 BlipPTR = Pointer({
-Name = 'BlipPTR',
-Pattern = '4C 8D 05 ? ? ? ? 0F B7 C1',
-ScanMethod = 1,
-SigOffset = 3,
-TargetOffset = 4
+Name = 'BlipPTR';
+Pattern = '4C 8D 05 ? ? ? ? 0F B7 C1';
+ScanMethod = 1;
+SigOffset = 3;
+TargetOffset = 4;
 });
 BlipPTR.Scan();
 
 Pointers = { };
 PlayerCountPTR = Pointer({
-Name = 'PlayerCountPTR',
-Pattern = '48 8B 0D ? ? ? ? E8 ? ? ? ? 48 8B C8 E8 ? ? ? ? 48 8B CF',
-ScanMethod = 1,
-SigOffset = 3,
-TargetOffset = 4
+Name = 'PlayerCountPTR';
+Pattern = '48 8B 0D ? ? ? ? E8 ? ? ? ? 48 8B C8 E8 ? ? ? ? 48 8B CF';
+ScanMethod = 1;
+SigOffset = 3;
+TargetOffset = 4;
 });
 PlayerCountPTR.Scan();
 
 Pointers = { };
 GetPointerAddressA = Pointer({
-Name = 'GetPointerAddressA',
-Pattern = '4D 89 B4 F7 xx xx xx xx 48 8B 74 24',
-ScanMethod = 2,
-SigOffset = 4,
-TargetOffset = 6
+Name = 'GetPointerAddressA';
+Pattern = '4D 89 B4 F7 xx xx xx xx 48 8B 74 24';
+ScanMethod = 2;
+SigOffset = 4;
+TargetOffset = 6;
 });
 GetPointerAddressA.Scan();
 
 Pointers = { };
 LocalScriptsPTR = Pointer({
-Name = 'LocalScriptsPTR',
-Pattern = '48 8B 05 ? ? ? ? 8B CF 48 8B 0C C8 39 59 68',
-ScanMethod = 1,
-SigOffset = 3,
-TargetOffset = 4
+Name = 'LocalScriptsPTR';
+Pattern = '48 8B 05 ? ? ? ? 8B CF 48 8B 0C C8 39 59 68';
+ScanMethod = 1;
+SigOffset = 3;
+TargetOffset = 4;
 });
 LocalScriptsPTR.Scan();
 
 Pointers = { };
 PlayerNamePTR_1 = Pointer({
-Name = 'PlayerNamePTR_1',
-Pattern = '48 8D 0D ? ? ? ? E8 ? ? ? ? 48 8D 0D ? ? ? ? 83',
-ScanMethod = 1,
-SigOffset = 3,
-TargetOffset = 0x68
+Name = 'PlayerNamePTR_1';
+Pattern = '48 8D 0D ? ? ? ? E8 ? ? ? ? 48 8D 0D ? ? ? ? 83';
+ScanMethod = 1;
+SigOffset = 3;
+TargetOffset = 0x68;
 });
 PlayerNamePTR_1.Scan();
 
-Pointers = { };
-PlayerNamePTR_2 = Pointer({
-Name = 'PlayerNamePTR_2',
-Pattern = '48 8D 05 ? ? ? ? 48 8D 54 24 28 49 8B FE',
-ScanMethod = 1,
-SigOffset = 3,
-TargetOffset = 0x68
-});
-PlayerNamePTR_2.Scan();
+-- Pointers = { };
+-- PlayerNamePTR_2 = Pointer({
+-- Name = 'PlayerNamePTR_2',
+-- Pattern = '48 8D 05 ? ? ? ? 48 8D 54 24 28 49 8B FE',
+-- ScanMethod = 1,
+-- SigOffset = 3,
+-- TargetOffset = 0x68
+-- });
+-- PlayerNamePTR_2.Scan();
+
+-- Pointers = { };
+-- PlayerNamePTR_2 = Pointer({
+-- Name = 'PlayerNamePTR_2',
+-- Pattern = '48 8D ? ? ? ? ? 48 8D ? ? ? 48 8D ? ? 41 B8 ? ? ? ? 48 89 ? ? ? 48 89',
+-- ScanMethod = 1,
+-- SigOffset = 3,
+-- TargetOffset = 0x68
+-- });
+-- PlayerNamePTR_2.Scan();
+
+-- Pointers = { };
+-- PlayerNamePTR_3 = Pointer({
+-- Name = 'PlayerNamePTR_3',
+-- Pattern = '4C 8B 05 ? ? ? ? 4D 85 C0 74 E4',
+-- ScanMethod = 1,
+-- SigOffset = 3,
+-- TargetOffset = 0x68
+-- });
+-- PlayerNamePTR_3.Scan();
 
 Pointers = { };
-PlayerNamePTR_3 = Pointer({
-Name = 'PlayerNamePTR_3',
-Pattern = '4C 8B 05 ? ? ? ? 4D 85 C0 74 E4',
-ScanMethod = 1,
-SigOffset = 3,
-TargetOffset = 0x68
+LampPTR = Pointer({
+Name = 'LampPTR';
+Pattern = '8B 0D ? ? ? ? E8 ? ? ? ? 48 8B ? E8 ? ? ? ? B2';
 });
-PlayerNamePTR_3.Scan();
+LampPTR.Scan();
+
+Pointers = { };
+SubGlobalPTR = Pointer({
+Name = 'SubGlobalPTR';
+Pattern = '48 8D ? ? ? ? ? E8 ? ? ? ? 0F B7 ? ? ? ? ? 33 FF 8B DF';
+ScanMethod = 1;
+SigOffset = 3;
+TargetOffset = 4;
+});
+SubGlobalPTR.Scan();
+
+Pointers = { };
+UnknownPatternPTR = Pointer({
+Name = 'UnknownPatternPTR';
+Pattern = '48 8B ? ? ? ? ? 48 89 ? 0F B7 ? ? ? ? ? FF 05 ? ? ? ? 48 89 ? ? ? ? ? 3B F8';
+ScanMethod = 1;
+SigOffset = 3;
+TargetOffset = 4;
+});
+UnknownPatternPTR.Scan();
+
+Pointers = { };
+GunLockerPTR = Pointer({
+Name = 'GunLockerPTR';
+Pattern = '4C 8D ? ? ? ? ? 48 8D ? ? ? 49 8B ? E9 ? ? ? ? 48 89';
+ScanMethod = 1;
+SigOffset = 3;
+TargetOffset = 4;
+});
+GunLockerPTR.Scan();
+
+Pointers = { };
+SubWorldPTR = Pointer({
+Name = 'SubWorldPTR';
+Pattern = '48 8B ? ? ? ? ? E9 ? ? ? ? F3 44 ? ? ? ? F3 0F';
+ScanMethod = 1;
+SigOffset = 3;
+TargetOffset = 4;
+});
+SubWorldPTR.Scan();
 
 Pointers = { };
 ReplayInterfacePTR = Pointer({
-Name = 'ReplayInterfacePTR',
-Pattern = '48 8D 0D ? ? ? ? 48 8B D7 E8 ? ? ? ? 48 8D 0D ? ? ? ? 8A D8 E8 ? ? ? ? 84 DB 75 13 48 8D 0D ? ? ? ?',
-ScanMethod = 1,
-SigOffset = 3,
-TargetOffset = 4
+Name = 'ReplayInterfacePTR';
+Pattern = '48 8D 0D ? ? ? ? 48 8B D7 E8 ? ? ? ? 48 8D 0D ? ? ? ? 8A D8 E8 ? ? ? ? 84 DB 75 13 48 8D 0D ? ? ? ?';
+ScanMethod = 1;
+SigOffset = 3;
+TargetOffset = 4;
 });
 ReplayInterfacePTR.Scan();
 
 Pointers = { };
 GetEventDataPTR = Pointer({
-Name = 'GetEventDataPTR',
-Pattern = '48 89 5C 24 ? 57 48 83 EC ? 49 8B F8 4C 8D 05',
+Name = 'GetEventDataPTR';
+Pattern = '48 89 5C 24 ? 57 48 83 EC ? 49 8B F8 4C 8D 05';
 });
 GetEventDataPTR.Scan();
 
 Pointers = { };
 SendNetToLobby = Pointer({
-Name = 'SendNetToLobby',
-Pattern = '48 8B C4 48 89 58 ? 48 89 68 ? 48 89 70 ? 57 41 54 41 55 41 56 41 57 48 83 EC ? 4D 8B F9 48 8B F1 4C 8D 48 ? 33 DB',
-ScanMethod = 1,
-SigOffset = 13,
+Name = 'SendNetToLobby';
+Pattern = '48 8B C4 48 89 58 ? 48 89 68 ? 48 89 70 ? 57 41 54 41 55 41 56 41 57 48 83 EC ? 4D 8B F9 48 8B F1 4C 8D 48 ? 33 DB';
+ScanMethod = 1;
+SigOffset = 13;
 TargetOffset = 14
 });
 SendNetToLobby.Scan();
 
 Pointers = { };
 ScriptEventPTR = Pointer({
-Name = 'ScriptEventPTR',
-Pattern = '48 83 EC 28 E8 ? ? ? ? 48 8B 0D ? ? ? ? 4C 8D 0D ? ? ? ? 4C 8D 05 ? ? ? ? BA 03',
+Name = 'ScriptEventPTR';
+Pattern = '48 83 EC 28 E8 ? ? ? ? 48 8B 0D ? ? ? ? 4C 8D 0D ? ? ? ? 4C 8D 05 ? ? ? ? BA 03';
 });
 ScriptEventPTR.Scan();
 
 Pointers = { };
-ForceJoin = Pointer({
-Name = 'ForceJoin',
-Pattern = '48 8D BE ? ? ? ? 48 8B CF 0F 10 00 41 8B C4',
+RIDJoinerPTR = Pointer({
+Name = 'RIDJoinerPTR';
+Pattern = '48 8D BE ? ? ? ? 48 8B CF 0F 10 00 41 8B C4';
 });
-ForceJoin.Scan();
+RIDJoinerPTR.Scan();
 
 Pointers = { };
-ModelHashPTR = Pointer({
-Name = 'ModelHashPTR',
-Pattern = '4C 8B 15 ? ? ? ? 49 8B 04 D2 44 39 40 08',
-ScanMethod = 1,
-SigOffset = 3,
-TargetOffset = 4
+IS_DLC_PRESENT = Pointer({
+Name = 'IS_DLC_PRESENT';
+Pattern = '48 89 5C 24 08 57 48 83 EC 20 81 F9';
 });
-ModelHashPTR.Scan();
+IS_DLC_PRESENT.Scan();
+
+-- Pointers = { };
+-- ModelHashPTR = Pointer({
+-- Name = 'ModelHashPTR',
+-- Pattern = '4C 8B 15 ? ? ? ? 49 8B 04 D2 44 39 40 08',
+-- ScanMethod = 1,
+-- SigOffset = 3,
+-- TargetOffset = 4
+-- });
+-- ModelHashPTR.Scan();
 
 Pointers = { };
 VehPTR = Pointer({
-Name = 'VehPTR',
-Pattern = '48 39 3D ? ? ? ? 75 2D',
-ScanMethod = 1,
-SigOffset = 3,
-TargetOffset = 4
+Name = 'VehPTR';
+Pattern = '48 39 3D ? ? ? ? 75 2D';
+ScanMethod = 1;
+SigOffset = 3;
+TargetOffset = 4;
 });
 VehPTR.Scan();
 
+Pointers = { };
+PickupDataPTR = Pointer({
+Name = 'PickupDataPTR';
+Pattern = '48 8B 05 ? ? ? ? 48 8B 1C F8 8B';
+ScanMethod = 1;
+SigOffset = 3;
+TargetOffset = 4;
+});
+PickupDataPTR.Scan();
 --[[Pointers = { };
 LabelTextAddress = Pointer({
 Name = 'LabelTextAddress',
@@ -310,7 +384,7 @@ LA = function(Index,ScriptName)
 end
 
 function PLAYER_ID() 
-    return readInteger(GA(2440049)) 
+    return readInteger(GA(2440277)) 
 end
 
 function SetWindowName(Name)
@@ -326,9 +400,9 @@ function AsyncStart(thread,interval)
     local timer     = createTimer();
     timer.Interval  = interval; 
     timer.OnTimer = function(t) 
-        local status = script.status(thread);
+        local status = coroutine.status(thread);
         if (thread ~= nil and status ~= 'dead') then
-        script.resume(thread);
+            coroutine.resume(thread);
         else
             t.destroy();        
         end
@@ -564,12 +638,47 @@ end
 function PlayerLog(Message)
     PlayerInformationLog = Message
     if getAppsPath() then
-        if PlayerInformationLog ~= nil or PlayerInformationLog ~= "nil" then
-            f = io.open(string.format("%s/Log-Player.log",FilePath),"a+")
-            f:write(PlayerInformationLog.." | "..os.date().."\n")
-            f:close()
-        end
+        f = io.open(string.format("%s/Log-Player.log",FilePath),"a+")
+        f:write(PlayerInformationLog.." | "..os.date().."\n")
+        f:close()
     end
+end
+
+function Hexadecimal(num)
+    if num == 0 then
+        return '0'
+    end
+    local neg = false
+    if num < 0 then
+        neg = true
+        num = num * -1
+    end
+    local hexstr = "0123456789ABCDEF"
+    local result = ""
+    while num > 0 do
+        local n = math.mod(num, 16)
+        result = string.sub(hexstr, n + 1, n + 1) .. result
+        num = math.floor(num / 16)
+    end
+    if neg then
+        result = '-' .. result
+    end
+    return result
+end
+
+function MemoryCopy(Memory)
+    local orig_type = type(Memory)
+    local copy
+    if orig_type == 'table' then
+        copy = {}
+        for orig_key, orig_value in next, Memory, nil do
+            copy[MemoryCopy(orig_key)] = MemoryCopy(orig_value)
+        end
+        setmetatable(copy, MemoryCopy(getmetatable(Memory)))
+    else -- number, string, boolean, etc
+        copy = Memory
+    end
+    return copy
 end
 
 function CleanNils(t)

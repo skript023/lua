@@ -7,6 +7,8 @@ require("mobil")
 require("STATS")
 require("CPH")
 require("instant_heist_array")
+require("f_string")
+
 WEAPON = {}
 function SetList(Name,boolean)
     getAddressList().getMemoryRecordByDescription(Name).Active=boolean
@@ -43,80 +45,86 @@ end
 function CheckTypes(Name)
     return AddressList.getMemoryRecordByDescription(Name).Type
 end
+MISC = {
+    SET_BIT = function(Address,Offset)
+        local set_bit = Address | 1 << Offset
+    end;
+
+    IS_BIT_SET = function(Address,Offset)
+        local is_set = (Address >> Offset) & 1
+        return is_set
+    end;
+}
 ----------------------------Function------------------------------------------------------------------
 function teleport_to_waypoint()
-local a = hook.GET("BlipPTR")
-for i = 2000, 1, -1
-do
-  local n = get.Ptr(a + (i * 8))
-  if (n > 0) and (8 == get.Int(n + 0x40)) and (84 == get.Int(n + 0x48))
-  then
-    local x = get.Float(n + 0x10)
-    local y = get.Float(n + 0x14)
-    local p = CPlayer
-    if (1 == get.Bool(p + IN_VEH2, 1, false))
-    then
-      p = get.Ptr(p + VEH)
+local a = get.Memory("BlipPTR")
+    for i = 2000, 1, -1 do
+        local n = get.Ptr(a + (i * 8))
+        if (n > 0) and (8 == get.Int(n + 0x40)) and (84 == get.Int(n + 0x48)) then
+            local x = get.Float(n + 0x10)
+            local y = get.Float(n + 0x14)
+            local p = CPlayer
+            if PED.IS_PED_IN_ANY_VEHICLE() then
+            p = get.Ptr(p + VEH)
+            end
+            local v = get.Ptr(p + POS)
+            set.float(v + CORDX, x)
+            set.float(v + CORDY, y)
+            set.float(v + CORDZ, -210)
+            set.float(p + VECX, x)
+            set.float(p + VECY, y)
+            set.float(p + VECZ, -210)
+        end
     end
-    local v = get.Ptr(p + POS)
-    set.float(v + CORDX, x)
-    set.float(v + CORDY, y)
-    set.float(v + CORDZ, -210)
-    set.float(p + VECX, x)
-    set.float(p + VECY, y)
-    set.float(p + VECZ, -210)
-  end
- end
 end
 
 function teleport_to_objective()
-local a = hook.GET("BlipPTR")
-for i = 2000, 1, -1
-do
-  local n = get.Ptr(a + (i * 8))
-  if (n > 0) and (1 == get.Int(n + 0x40)) and ((5 == get.Int(n + 0x48)) or (60 == get.Int(n + 0x48)) or (66 == get.Int(n + 0x48)))
-  then
-    local x = get.Float(n + 0x10)
-    local y = get.Float(n + 0x14)
-    local z = get.Float(n + 0x18)
-    local p = CPlayer
-     if (1 == get.Bool(p + IN_VEH2, 1, false))
-    then
-      p = readPointer(p + VEH)
+local a = get.Memory("BlipPTR")
+    for i = 2000, 1, -1 do
+    local n = get.Ptr(a + (i * 8))
+        if (n > 0) and (1 == get.Int(n + 0x40)) and ((5 == get.Int(n + 0x48)) or (60 == get.Int(n + 0x48)) or (66 == get.Int(n + 0x48))) then
+            local x = get.Float(n + 0x10)
+            local y = get.Float(n + 0x14)
+            local z = get.Float(n + 0x18)
+            local p = CPlayer
+            if PED.IS_PED_IN_ANY_VEHICLE() then
+                p = get.Ptr(p + VEH)
+            end
+            local v = get.Ptr(p + POS)
+            set.float(v + CORDX, x)
+            set.float(v + CORDY, y)
+            set.float(v + CORDZ, z)
+            set.float(p + VECX, x)
+            set.float(p + VECY, y)
+            set.float(p + VECZ, z)
+        end
     end
-    local v = readPointer(p + POS)
-    set.float(v + CORDX, x)
-    set.float(v + CORDY, y)
-    set.float(v + CORDZ, z)
-    set.float(p + VECX, x)
-    set.float(p + VECY, y)
-    set.float(p + VECZ, z)
-  end
- end
 end
 
-function teleport_to_player(cord_x,cord_y,cord_z)
-local x = get.Float(cord_x)
-local y = get.Float(cord_y)
-local z = get.Float(cord_z)
-local p = readPointer(readPointer(getAddress("WorldPTR")) + 0x8)
-if (2 == readInteger(p + 0x148C))
-    then
-      p = readPointer(p + 0xD30)
-    end
- local v = readPointer(p + 0x30)
-    set.float(v + 0x50, x)
-    set.float(v + 0x54, y)
-    set.float(v + 0x58, z)
-    set.float(p + 0x90, x)
-    set.float(p + 0x94, y)
-    set.float(p + 0x98, z)
- end
+function teleport_to_player(coord_x,coord_y,coord_z)
+    local x = get.Float(coord_x)
+    local y = get.Float(coord_y)
+    local z = get.Float(coord_z)
+    local p = get.Ptr(get.Ptr(get.Memory("WorldPTR")) + 0x8)
+        if PED.IS_PED_IN_ANY_VEHICLE() then
+            p = get.Ptr(p + 0xD30)
+        end
+        local v = get.Ptr(p + 0x30)
+        set.float(v + 0x50, x)
+        set.float(v + 0x54, y)
+        set.float(v + 0x58, z)
+        set.float(p + 0x90, x)
+        set.float(p + 0x94, y)
+        set.float(p + 0x98, z)
+end
 
 function neon_color(R,G,B)
-    set.byte("[[[[WorldPTR]+8]+VEH]+48]+3A2",R)
-    set.byte("[[[[WorldPTR]+8]+VEH]+48]+3A0",B)
-    set.byte("[[[[WorldPTR]+8]+VEH]+48]+3A1",G)
+    local Is_In_Vehicle = PED.IS_PED_IN_ANY_VEHICLE()
+    if Is_In_Vehicle == true then
+        set.byte(CUpgrade + 0x3A2,R)
+        set.byte(CUpgrade + 0x3A0,B)
+        set.byte(CUpgrade + 0x3A1,G)
+    end
 end
 
 function tire_color(R,G,B)
@@ -162,7 +170,7 @@ function frameFlagsOnTick(t)
     if g_flamingFists then SetFrame = 1 << 13 end
     if g_flamingAmmo then SetFrame = 1 << 12 end
     if g_explosiveAmmo then SetFrame = 1 << 11 end
-    set.int(CPlayerInfo + 0x1F8,SetFrame)
+    set.int(CPlayerInfo + 0x218,SetFrame) --0x1F8
 end
 if g_frameTimer == nil then
     g_frameTimer = createTimer(nil, false)
@@ -173,13 +181,14 @@ end
 
 --WEAPON.SET_PED_INFINITE_AMMO(Ped ped,Bool toogle,Hash weaponHash)
 WEAPON.SET_PED_INFINITE_AMMO = function (activation)
-    local f_based = get.Ptr(getAddress(CInventory + 0x48))
+    local f_based = get.Ptr(get.Memory(CInventory + 0x48))
+    local TransitionStatus = SCRIPT.DOES_SCRIPT_EXIST('fm_maintain_transition_players')
     local inventory = get.Short(CInventory + 0x50)
     local solut = inventory - 1;
     for i = 0,solut,1 do
         local inf_ammo = get.Ptr(f_based + 0x8 * i)
-        if (not inf_ammo) or (inf_ammo==nil) then break end
-        if inventory==0 then break end
+        if not inf_ammo or (inventory == 0) or (TransitionStatus == true) then break end
+        --printf("Address : 0x%X",get.Memory(inf_ammo + 0x24))
         set.bool(inf_ammo + 0x24, activation)
     end
 end
@@ -189,7 +198,7 @@ WEAPON.ADD_AMMO_TO_PED = function (amount)
     local inventory = get.Short(CInventory + 0x50)
     for i = inventory,0,-1 do
         local inf_ammo = get.Ptr(g_based + 0x8 * i)
-        if (not inf_ammo) or (inf_ammo==nil) then break end
+        if not inf_ammo then return false end
         if inventory==0 then break end
         set.int(inf_ammo + 0x20, amount)
     end
@@ -199,24 +208,39 @@ function WEAPON.GET_CURRENT_PED_WEAPON(ped,weaponHash,p2)
     return get.Int(CAmmoType + 0x10)
 end
 
+function InfiniteAmmoLoop(Bool)
+    InfinitAmmoRun = Bool
+    local NewAsync = Asynchronous(function()
+        while (InfinitAmmoRun) do
+            Async();
+            WEAPON.SET_PED_INFINITE_AMMO(TRUE)
+            if not InfinitAmmoRun then
+                WEAPON.SET_PED_INFINITE_AMMO(FALSE)
+                break
+            end
+        end
+    end)
+    AsyncStart(NewAsync,2000)
+end
+
 function RIDSpoofer()
     local RID = get.Long(RID_LIST[selected_player])
     local sc_asli = get.Long(RID_ASLI)
     local SessionState = get.Int(JOIN_STATUS)
     switch(SessionState,{
         [0] = function() 
-            set.long(CPlayerInfo + 0x70,sc_asli) 
+            set.long(CPlayerInfo + 0x90,sc_asli) 
         end,
         [10] = function() 
-            set.long(CPlayerInfo + 0x70,sc_asli) 
+            set.long(CPlayerInfo + 0x90,sc_asli) 
         end,
         [4] = function()
             local Transition = SCRIPT.HAS_SCRIPT_LOADED('fm_maintain_transition_players');
             local freemode = SCRIPT.HAS_SCRIPT_LOADED('freemode')
             if Transition == true or freemode == false then
-                set.long(CPlayerInfo +0x70,sc_asli)
+                set.long(CPlayerInfo +0x90,sc_asli)
             else
-                set.long(CPlayerInfo +0x70,RID)
+                set.long(CPlayerInfo +0x90,RID)
             end
         end,
         }
@@ -225,14 +249,14 @@ end
 
 function ReturnRID()
     local scid_asli = get.Long(RID_ASLI)
-    set.long(CPlayerInfo + 0x70,scid_asli)
+    set.long(CPlayerInfo + 0x90,scid_asli)
     return scid_asli
 end
     
 ---------------------------------------------------Business---------------------------------------------
 function bunker_deliver(hasil)
     local new_thread = function()
-        local duit = get.Int(get.Ptr("GTA5.exe+025FAF80")+0x128)
+        local duit = get.Int(get.Ptr("GTA5.exe+0260E010")+0x128)
         local kargo= get.Int("[[GlobalPTR-128]+1180]+37C0")
         local data = hasil*kargo/duit
         set.int("[[GlobalPTR-128]+1180]+3F68", data)
@@ -253,7 +277,7 @@ function bunker_deliver(hasil)
             set.global(int,262145+21235,900000)
             set.global(int,262145+21224,900000)
         end
-        LuaEngineLog(string.format("You Received $%i | Total Sent %i| 0x%X | 0x%X | 0x%X",hasil,total,get.Memory("GTA5.exe+025FAF80"),get.Memory("[[GlobalPTR-128]+1180]+37C0"),get.Memory("[[GlobalPTR-128]+1180]+3F68")))
+        LuaEngineLog(string.format("You Received $%i | Total Sent %i| 0x%X | 0x%X | 0x%X",hasil,total,get.Memory("GTA5.exe+0260E010"),get.Memory("[[GlobalPTR-128]+1180]+37C0"),get.Memory("[[GlobalPTR-128]+1180]+3F68")))
     end
     ExecuteThread(new_thread)
 end
@@ -379,20 +403,20 @@ function GetCurrentSession()
 end
 
 function PLAYER.GET_PLAYER_INDEX()
-    local addr = getAddress("PlayerCountPTR")
-    local pCNetworkPlayerMgr = readPointer(addr)
+    local addr = get.Memory("PlayerCountPTR")
+    local pCNetworkPlayerMgr = get.Ptr(addr)
     if not pCNetworkPlayerMgr then return end
     PLAYER_INDEX_ID = {}
     for i = 0, 32, 1
     do
-        local pCNetGamePlayer = readPointer(pCNetworkPlayerMgr + 0x180 + (i * 8))
+        local pCNetGamePlayer = get.Ptr(pCNetworkPlayerMgr + 0x180 + (i * 8))
         if not pCNetGamePlayer then goto continue end
         local Host = getAddress(GA(1630317+1+(i*595)+10))
-        local pCPlayerInfo = readPointer(pCNetGamePlayer + 0xB0)
+        local pCPlayerInfo = get.Ptr(pCNetGamePlayer + 0xA0)
         if not pCPlayerInfo then goto continue end
-        local pCPed = readPointer(pCPlayerInfo + 0x01C8)
+        local pCPed = get.Ptr(pCPlayerInfo + 0x01C8)
         if not pCPed then goto continue end
-        local nameBuffer = getAddress(pCPlayerInfo + 0x84)
+        local nameBuffer = getAddress(pCPlayerInfo + 0xA4)
         table.insert(PLAYER_INDEX_ID, {i,nameBuffer,pCPed})
     ::continue::
     end
@@ -460,18 +484,18 @@ end
 
 function GetPlayerIndexCoord(pCPed)
     local addr = getAddress("PlayerCountPTR")
-    local pCNetworkPlayerMgr = readPointer(addr)
+    local pCNetworkPlayerMgr = get.Ptr(addr)
     if not pCNetworkPlayerMgr then return end
     PLAYER_INDEX_NAV = {}
     for i = 0, 32, 1
     do
-        local pCNetGamePlayer = readPointer(pCNetworkPlayerMgr + 0x180 + (i * 8))
+        local pCNetGamePlayer = get.Ptr(pCNetworkPlayerMgr + 0x180 + (i * 8))
         if not pCNetGamePlayer then goto continue end
-        local pCPlayerInfo = readPointer(pCNetGamePlayer + 0xB0)
+        local pCPlayerInfo = get.Ptr(pCNetGamePlayer + 0xB0)
         if not pCPlayerInfo then goto continue end
-        local pCPed = readPointer(pCPlayerInfo + 0x01C8)
+        local pCPed = get.Ptr(pCPlayerInfo + 0x01C8)
         if not pCPed then goto continue end
-        local Nav = readPointer(pCPed + 0x30)
+        local Nav = get.Ptr(pCPed + 0x30)
         local headx = getAddress(Nav + 20)
         local heady = getAddress(Nav + 24)
         local x = getAddress(Nav + 0x50)
@@ -483,8 +507,16 @@ function GetPlayerIndexCoord(pCPed)
     ::continue::
 end
 
-function TCOMP(T,C,...) for K,V in pairs(C) do T[K]=V end if select('#',...)>0 then return TCOMP(T,...) else return T end end
-
+function TCOMP(T,C,...) 
+    for K,V in pairs(C) do 
+        T[K]=V 
+    end 
+    if select('#',...)>0 then 
+        return TCOMP(T,...) 
+    else 
+        return T 
+    end 
+end
 
 function FindVehicleName(Hash)
     if not Hash or Hash==0 then return false end
@@ -500,7 +532,7 @@ function GetVehicleSlots()
         local hash=get.Global(int,1323678+1+(i*141)+66)
         local name=FindVehicleName(hash)
         if name then
-            table.insert(tbl_GSV, {i,name,hash,GG('s',1323678+1+(i*141)+1)})
+            table.insert(tbl_GSV, {i,name,hash,get.Global(str,1323678+1+(i*141)+1)})
         end
     end
 end
@@ -528,8 +560,8 @@ function OpenForm_MiniGarageMod()
     CEButton1.OnClick=function()
         local id=CEComboBox1.ItemIndex
         if id==-1 or id==0 then return end
-        set.global(int,2540384+962,tbl_GSV[id][1])
-        set.global(int,2540384+959,1)
+        set.global(int,2540612+962,tbl_GSV[id][1])
+        set.global(int,2540612+959,1)
         Sleep(700)
         set.global(int,2409291+8,1)
     end
@@ -581,8 +613,8 @@ function f_GetScriptEvents()
             l2=string.len(_bytes)
             local _EventAddress=string.sub(_bytes,l1+8,l2-1)
             if _EventAddress==nil then return end
-            if readBytes(_EventAddress)==0x48 then _status=false
-            elseif readBytes(_EventAddress)==0xC3 then _status=true
+            if get.Byte(_EventAddress)==0x48 then _status=false
+            elseif get.Byte(_EventAddress)==0xC3 then _status=true
             else return end
             tbl_ScriptEvents[ic]={_EventAddress,_EventString,_status}
             ic=ic+1
@@ -598,8 +630,8 @@ function f_PrintScriptEvent(ID)
         tbl_SE=tbl_ScriptEvents[i]
         if tbl_SE ~= nil then
             local ev_addr=tbl_SE[1]
-            if readBytes(ev_addr)==0x48 then s='false'
-            elseif readBytes(ev_addr)==0xC3 then s='true'
+            if get.Byte(ev_addr)==0x48 then s='false'
+            elseif get.Byte(ev_addr)==0xC3 then s='true'
             else goto continue; 
         end
             PlayerData_CEListBox1.Items.clear()
@@ -614,8 +646,8 @@ function f_PrintScriptEvent(ID)
     tbl_SE=tbl_ScriptEvents[ID]
     if tbl_SE ~= nil then
         local ev_addr=tbl_SE[1]
-        if readBytes(ev_addr)==0x48 then s='false'
-        elseif readBytes(ev_addr)==0xC3 then s='true'
+        if get.Byte(ev_addr)==0x48 then s='false'
+        elseif get.Byte(ev_addr)==0xC3 then s='true'
         else goto continue; 
     end
         print(string.format('[%i]Event: %s\nProtected: %s\nAddress: 0x%s\n',ID,tbl_SE[2],s,tbl_SE[1]))
@@ -633,12 +665,12 @@ function v_ProtectEvent(ID)
     end
       local tbl_SE=tbl_ScriptEvents[ID]
       if tbl_SE==nil then return end
-      if readBytes(tbl_SE[1])==0x48 then
-          writeBytes(tbl_SE[1],0xC3)
+      if get.Byte(tbl_SE[1])==0x48 then
+          set.byte(tbl_SE[1],0xC3)
           tbl_ScriptEvents[ID][3]=true;
           Protection_EventIndicator.Text = string.format('Activate Protection for :[%i]Event: %s | Protected: %s | Address: 0x%s',ID,tbl_SE[2],'true',tbl_SE[1])
-      elseif readBytes(tbl_SE[1])==0xC3 then
-          writeBytes(tbl_SE[1],0x48)
+      elseif get.Byte(tbl_SE[1])==0xC3 then
+          set.byte(tbl_SE[1],0x48)
           tbl_ScriptEvents[ID][3]=false;
           Protection_EventIndicator.Text = string.format('Deactivate Protection for :[%i]Event: %s | Protected: %s | Address: 0x%s',ID,tbl_SE[2],'false',tbl_SE[1])
       else print(string.format('ERROR: Wrong Input..')) 
@@ -657,12 +689,12 @@ function DisableEvent(ID,Executor)
       local tbl_SE=tbl_ScriptEvents[ID]
       if tbl_SE==nil then return end
         if Trigger == true then
-            writeBytes(tbl_SE[1],0xC3)
+            set.byte(tbl_SE[1],0xC3)
             tbl_ScriptEvents[ID][3]=true;
             MiscTab.EventStatus.Text = string.format('[%i]Event: %s | Status: %s | Address: 0x%s',ID,tbl_SE[2],'true',tbl_SE[1])
             LuaEngineLog(string.format('[%i] Event: %s\nProtected: %s\nAddress: 0x%s\n',ID,tbl_SE[2],'true',tbl_SE[1]))
         elseif Trigger == false then
-            writeBytes(tbl_SE[1],0x48)
+            set.byte(tbl_SE[1],0x48)
             tbl_ScriptEvents[ID][3]=false;
             MiscTab.EventStatus.Text = string.format('[%i]Event: %s | Status: %s | Address: 0x%s',ID,tbl_SE[2],'false',tbl_SE[1])
             LuaEngineLog(string.format('[%i] Event: %s\nProtected: %s\nAddress: 0x%s\n',ID,tbl_SE[2],'false',tbl_SE[1]))
@@ -688,13 +720,19 @@ function _Str(Address,String,Size)
         bt[#bt+i]=0x00
     end
     ::continue::
-    writeBytes(Address,bt)
+    set.byte(Address,bt)
 end
 
 function ChangePlayerName(String)
-    _Str("PlayerNamePTR_1",String,16)
-    _Str("PlayerNamePTR_2",String,16)
-    _Str(CPlayerInfo + 0x84,String,16)
+    set.char(Playername1,String,16)
+    set.char(Playername2,String,16)
+    set.char(Playername3,String,16)
+    set.char(Playername4,String,16)
+    set.char(Playername6,String,16)
+    set.char(Playername7,String,16)
+    set.char(Playername8,String,16)
+    set.char(Playername9,String,16)
+    set.char(CPlayerInfo + 0xA4,String,16)
 end
 
 -- Bisnis
@@ -860,7 +898,11 @@ Address_LabelText_UNLOCK_AWRD_SHIRT3="LabelTextAddress+0x6FFF0"--// default: You
 --Address_LabelText_FM_CREW_INV="LabelTextAddress+0x18D77F" 
 Address_LabelText_FM_CREW_INV="LabelTextAddress+0x1A3673"--// default: Someone has requested to join your crew! Go to the Crews menu to accept or decline it. (max. length ≈504)
 
-function writeZeroBytes(Address,Size) for i=0,Size-1,1 do writeBytes(getAddress(Address)+(i*0x1),0x00)end end
+function writeZeroBytes(Address,Size) 
+    for i=0,Size-1,1 do 
+        set.byte(get.Memory(Address)+(i*0x1),0x00)
+    end 
+end
 
 NotificationPopUpMapRockstar_Active=false
 function NotificationPopUpMapRockstar(Text_1,Text_2)
@@ -881,11 +923,12 @@ function NotificationPopUpMapRockstar(Text_1,Text_2)
     writeString(Address_LabelText_PIM_TIGC22,Text_2)
     --set.global(int,2462090+1,1)
     --set.global(int,2463661+1,1)
-    set.global(int,2463661+1,1)
+    --set.global(int,2463661+1,1)
+    set.global(int,2463889+1,1)
     local t=createTimer(nil,true) t.Interval=15000
     t.OnTimer=function()
-        writeBytes(Address_LabelText_CREATOR_RSC,bt_org_CREATOR_RSC)
-        writeBytes(Address_LabelText_PIM_TIGC22,bt_org_PIM_TIGC22)
+        set.byte(Address_LabelText_CREATOR_RSC,bt_org_CREATOR_RSC)
+        set.byte(Address_LabelText_PIM_TIGC22,bt_org_PIM_TIGC22)
         t.destroy()
         NotificationPopUpMapRockstar_Active=false
     end
@@ -904,7 +947,7 @@ function NotificationPopUpMap(Text)
         --set.global(int,1573941,1)
         set.global(int,1574395,1)
         local t=createTimer(nil,true) t.Interval=15000
-        t.OnTimer=function() writeBytes(Address_LabelText_FM_CREW_INV,bt_org_FM_CREW_INV) NotificationPopUpMap_1_Active=false t.destroy() end
+        t.OnTimer=function() set.byte(Address_LabelText_FM_CREW_INV,bt_org_FM_CREW_INV) NotificationPopUpMap_1_Active=false t.destroy() end
         return
     elseif not NotificationPopUpMap_2_Active then
         NotificationPopUpMap_2_Active=true
@@ -913,7 +956,7 @@ function NotificationPopUpMap(Text)
         --Memory.Set_Bit(GA(1574395),0)
         set.global(int,1574395,0)
         local t=createTimer(nil,true) t.Interval=15000
-        t.OnTimer=function() writeBytes(Address_LabelText_UNLOCK_AWRD_SHIRT1,bt_org_UNLOCK_AWRD_SHIRT1) NotificationPopUpMap_2_Active=false t.destroy() end
+        t.OnTimer=function() set.byte(Address_LabelText_UNLOCK_AWRD_SHIRT1,bt_org_UNLOCK_AWRD_SHIRT1) NotificationPopUpMap_2_Active=false t.destroy() end
         return
     elseif not NotificationPopUpMap_3_Active then
         NotificationPopUpMap_3_Active=true
@@ -922,7 +965,7 @@ function NotificationPopUpMap(Text)
         --Memory.Set_Bit(GA(1574395),1)
         set.global(int,1574395,1)
         local t=createTimer(nil,true) t.Interval=15000
-        t.OnTimer=function() writeBytes(Address_LabelText_UNLOCK_AWRD_SHIRT2,bt_org_UNLOCK_AWRD_SHIRT2) NotificationPopUpMap_3_Active=false t.destroy() end
+        t.OnTimer=function() set.byte(Address_LabelText_UNLOCK_AWRD_SHIRT2,bt_org_UNLOCK_AWRD_SHIRT2) NotificationPopUpMap_3_Active=false t.destroy() end
         return
     elseif not NotificationPopUpMap_4_Active then
         NotificationPopUpMap_4_Active=true
@@ -931,7 +974,7 @@ function NotificationPopUpMap(Text)
         --Memory.Set_Bit(GA(1574395),2)
         set.global(int,1574395,2)
         local t=createTimer(nil,true) t.Interval=15000
-        t.OnTimer=function() writeBytes(Address_LabelText_UNLOCK_AWRD_SHIRT3,bt_org_UNLOCK_AWRD_SHIRT3) NotificationPopUpMap_4_Active=false t.destroy() end
+        t.OnTimer=function() set.byte(Address_LabelText_UNLOCK_AWRD_SHIRT3,bt_org_UNLOCK_AWRD_SHIRT3) NotificationPopUpMap_4_Active=false t.destroy() end
         return
     else
         local td=createTimer(nil,true) td.Interval=15000
@@ -962,7 +1005,7 @@ function NotificationPopUpTop(Text)
     set.global(int,2540384+1798,5)
     local t=createTimer(nil,true) t.Interval=12000
     t.OnTimer=function()
-        writeBytes(Address_LabelText_ATTK_ILLICIT,bt_org_ATTK_ILLICIT)
+        set.byte(Address_LabelText_ATTK_ILLICIT,bt_org_ATTK_ILLICIT)
         t.destroy()
         NotificationPopUpTop_Active=false
     end
@@ -977,46 +1020,46 @@ function f_CreateAmbientPickup(ObjectHash,Amount,pos_x,pos_y,pos_z,headingX,head
     local y=get.Float(pos_y)+(HeadX*Distance)
     local z=get.Float(pos_z)
     z = z + Height
-    set.global(float,2515202+3,x)
-    set.global(float,2515202+4,y)
-    set.global(float,2515202+5,z)
-    set.global(int,2515202+1,Amount)
-    local iParam=get.Global(int,2515202)
+    set.global(float,2515430+3,x)
+    set.global(float,2515430+4,y)
+    set.global(float,2515430+5,z)
+    set.global(int,2515430+1,Amount)
+    local iParam=get.Global(int,2515430)
     if iParam==nil then return end
-    if iParam~=0 then iParam=0 set.global(int,2515202,iParam) end
+    if iParam~=0 then iParam=0 set.global(int,2515430,iParam) end
         set.global(int,4264051+1+(iParam*85)+66+2,2)
-        set.global(int,2515208,1)
+        set.global(int,2515436,1)
 end
 ---func_10(iParam0, iParam1, joaat("HOLD_UP_CASH_REWARD_CAP"), &(Global_262145.f_167), 1);
 function ChangePickup(Hash)
-    pCPickupInterface=readPointer("ReplayInterfacePTR")+0x20
-    iPickupCount=readInteger(readPointer(pCPickupInterface)+0x110)
-    local pPickupList=readPointer(pCPickupInterface)+0x100
+    pCPickupInterface=get.Ptr("ReplayInterfacePTR")+0x20
+    iPickupCount=get.Int(get.Ptr(pCPickupInterface)+0x110)
+    local pPickupList=get.Ptr(pCPickupInterface)+0x100
     if not pPickupList then return end
     for i=0,iPickupCount,1 do
-        local p=readPointer(pPickupList)+(i*0x10)
+        local p=get.Ptr(pPickupList)+(i*0x10)
         if not p then goto continue end
-        local PickupHash=readInteger(readPointer(p)+0x488) if not PickupHash then goto continue end
+        local PickupHash=get.Int(get.Ptr(p)+0x488) if not PickupHash then goto continue end
         if  PickupHash==GAMEPLAY.GET_HASH_KEY("PICKUP_MONEY_VARIABLE") then 
-            writeInteger(readPointer(p)+0x488,Hash) 
-            LuaEngineLog("Hash Changed")
-            SystemLog(string.format("Hash : 0x%X",readInteger(readPointer(p)+0x488)))
+            writeInteger(get.Ptr(p)+0x488,Hash) 
+            LuaEngineLog("Hash Changed To"..Hash)
+            SystemLog(string.format("Hash : 0x%X",get.Int(get.Ptr(p)+0x488)))
         end
         ::continue::
     end
 end
 
 function CheckPickups()
-    pCPickupInterface=readPointer("ReplayInterfacePTR")+0x20
-    iPickupCount=readInteger(readPointer(pCPickupInterface)+0x110)
-    iMaxPickups=readInteger(readPointer(pCPickupInterface)+0x108)
-    local pPickupList=readPointer(pCPickupInterface)+0x100
+    pCPickupInterface=get.Ptr("ReplayInterfacePTR")+0x20
+    iPickupCount=get.Int(get.Ptr(pCPickupInterface)+0x110)
+    iMaxPickups=get.Int(get.Ptr(pCPickupInterface)+0x108)
+    local pPickupList=get.Ptr(pCPickupInterface)+0x100
     if not pPickupList then return end
     --print(iMaxPickups,iPickupCount)
     for i=0,iMaxPickups,1 do
-        local p=readPointer(pPickupList)+(i*0x10)
+        local p=get.Ptr(pPickupList)+(i*0x10)
         if not p then goto continue end
-        local PickupHash=readInteger(readPointer(p)+0x488) if not PickupHash then goto continue end
+        local PickupHash=get.Int(get.Ptr(p)+0x488) if not PickupHash then goto continue end
             LuaEngineLog(PickupHash)
         if PickupHash == joaat("PICKUP_MONEY_VARIABLE") then 
             LuaEngineLog("DANGER HASH IS PICKUP_MONEY_VARIABLE")
@@ -1029,6 +1072,55 @@ function CheckPickups()
     end
 end
 
+function RepairVehicle()
+    local NewThread = function()
+        set.global(int,2540612+879,1)
+        SYSTEM.WAIT(400)
+        local FixVehValue = get.Int("[PickupDataPTR]+220")  -- pFixVeh = 0x220
+        local BSTValue    = get.Int("[PickupDataPTR]+160")  -- pBST = 0x160
+    
+        local CPickupInterface = get.Ptr("ReplayInterfacePTR")+0x20
+        local PickupCount = get.Int(get.Ptr(CPickupInterface)+0x110)
+        local PickupList = get.Ptr(CPickupInterface)+0X100
+        if not PickupList then return end
+        for i=0,PickupCount,1 do
+            local p=get.Ptr(PickupList)+(i*0x10)
+            if not p then goto continue end
+    
+            local PickupValue = get.Int(get.Ptr(p)+0x490)    --pDroppedPickupData = 0x490
+            if not PickupValue then goto continue end
+            if (PickupValue == BSTValue) then set.int(get.Ptr(p)+0x490,FixVehValue) end
+        end
+    ::continue::
+    end
+    ExecuteThread(NewThread)
+end
+
+function RepairVehicleDrop()
+    local NewThread = function()
+        local LocalPlayer = PLAYER_ID()+1
+        OBJECT.CREATE_AMBIENT_PICKUP(GAMEPLAY.GET_HASH_KEY("PICKUP_VEHICLE_HEALTH_STANDARD"),GAMEPLAY.GET_HASH_KEY("prop_ld_health_pack"),1,target_x[LocalPlayer],target_y[LocalPlayer],target_z[LocalPlayer],theading_x[LocalPlayer],theading_y[LocalPlayer],tonumber(PlaylistTab.Dist.Text),tonumber(PlaylistTab.Tinggi.Text))
+        SYSTEM.WAIT(200)
+        local FixVehValue = get.Int("[PickupDataPTR]+220")  -- pFixVeh = 0x220
+        local Dropper    = get.Int("[PickupDataPTR]+100")  -- pBST = 0x160
+        local Unk    = get.Int("[PickupDataPTR]+278")
+    
+        local CPickupInterface = get.Ptr("ReplayInterfacePTR")+0x20
+        local PickupCount = get.Int(get.Ptr(CPickupInterface)+0x110)
+        local PickupList = get.Ptr(CPickupInterface)+0X100
+        if not PickupList then return end
+        for i=0,PickupCount,1 do
+            local p = get.Ptr(PickupList)+(i*0x10)
+            if not p then goto continue end
+    
+            local PickupValue = get.Int(get.Ptr(p)+0x490)    --pDroppedPickupData = 0x490
+            if not PickupValue then goto continue end
+            if (PickupValue == Dropper) then set.int(get.Ptr(p)+0x490,FixVehValue) end
+        end
+    ::continue::
+    end
+    ExecuteThread(NewThread)
+end
 
 OBJECT = {
     CREATE_AMBIENT_PICKUP = function (PickupObj,ObjectHash,Amount,pos_x,pos_y,pos_z,headingX,headingY,Distance,Height)
@@ -1041,7 +1133,6 @@ OBJECT = {
         ExecuteThread(new)
     end,
 };
-    
 
 function BlockPhoneCalls()
     for k,v in pairs(tbl_BlacklistContacts) do
@@ -1054,45 +1145,45 @@ end
 
 
 function Kill_All_Ped(health)
-  PedInterface=readPointer("ReplayInterfacePTR")+0x18
-  NPCCount=get.Int(readPointer(PedInterface)+0x110)
-  local Pedlist=readPointer(PedInterface)+0x100
+  PedInterface=get.Ptr("ReplayInterfacePTR")+0x18
+  NPCCount=get.Int(get.Ptr(PedInterface)+0x110)
+  local Pedlist=get.Ptr(PedInterface)+0x100
   if not Pedlist then return end
   for i=0,NPCCount,1 do
-    NPCptr=readPointer(Pedlist)+(i*0x10)
+    NPCptr=get.Ptr(Pedlist)+(i*0x10)
     if not NPCptr then goto continue end
-    local npchealth=readFloat(readPointer(NPCptr)+0x2A0) if not npchealth then goto continue end
-    if npchealth~=328 then set.float(readPointer(NPCptr)+0x280,health) end
+    local npchealth=get.Float(get.Ptr(NPCptr)+0x2A0) if not npchealth then goto continue end
+    if npchealth~=328 then set.float(get.Ptr(NPCptr)+0x280,health) end
     ::continue::
   end
 end
 
 function Kill_Police(health)
-  PedInterface=readPointer("ReplayInterfacePTR")+0x18
-  NPCCount=get.Int(readPointer(PedInterface)+0x110)
-  local Pedlist=readPointer(PedInterface)+0x100
+  PedInterface=get.Ptr("ReplayInterfacePTR")+0x18
+  NPCCount=get.Int(get.Ptr(PedInterface)+0x110)
+  local Pedlist=get.Ptr(PedInterface)+0x100
   if not Pedlist then return end
   for i=0,NPCCount,1 do
-      NPCptr=readPointer(Pedlist)+(i*0x10)
+      NPCptr=get.Ptr(Pedlist)+(i*0x10)
       if not NPCptr then goto continue end
-      local npchealth=readFloat(readPointer(NPCptr)+0x2A0) if not npchealth then goto continue end
-      if npchealth == 200 then set.float(readPointer(NPCptr)+0x280,health) end
+      local npchealth=get.Float(get.Ptr(NPCptr)+0x2A0) if not npchealth then goto continue end
+      if npchealth == 200 then set.float(get.Ptr(NPCptr)+0x280,health) end
       ::continue::
     end
 end
 
 function Kill_Enemy(health)
-    PedInterface=readPointer("ReplayInterfacePTR")+0x18
-    NPCCount=get.Int(readPointer(PedInterface)+0x110)
-    local Pedlist=readPointer(PedInterface)+0x100
+    PedInterface=get.Ptr("ReplayInterfacePTR")+0x18
+    NPCCount=get.Int(get.Ptr(PedInterface)+0x110)
+    local Pedlist=get.Ptr(PedInterface)+0x100
     if not Pedlist then return end
     for i=0,NPCCount,1 do
-        NPCptr=readPointer(Pedlist)+(i*0x10)
+        NPCptr=get.Ptr(Pedlist)+(i*0x10)
         if not NPCptr then goto continue end
-        local npchealth=readFloat(readPointer(NPCptr)+0x2A0) if not npchealth then goto continue end
-        local hostility=readBytes(readPointer(NPCptr)+0x18C)
+        local npchealth=get.Float(get.Ptr(NPCptr)+0x2A0) if not npchealth then goto continue end
+        local hostility=get.Byte(get.Ptr(NPCptr)+0x18C)
         if (hostility > 1) and (npchealth ~= 328) then
-        set.float(readPointer(NPCptr)+0x280,health)
+        set.float(get.Ptr(NPCptr)+0x280,health)
         end
        ::continue::
     end
@@ -1121,7 +1212,7 @@ function Destroy_All_Veh(health)
   for i=0,VehCount,1 do
     Vehptr=get.Ptr(Vehlist)+(i*0x10)
     if not Vehptr then goto continue end
-    local Vehhealth=readFloat(get.Ptr(Vehptr)+0x2A0) if not Vehhealth then goto continue end
+    local Vehhealth=get.Float(get.Ptr(Vehptr)+0x2A0) if not Vehhealth then goto continue end
     local VehicleState = get.Byte(get.Ptr(Vehptr)+0xD8) if not VehicleState then goto continue end
     set.float(get.Ptr(Vehptr)+0x280,health)
     set.float(get.Ptr(Vehptr)+0x844,health)
@@ -1142,8 +1233,8 @@ function Destroy_Enemy_Veh(health)
   for i=0,VehCount,1 do
       Vehptr=get.Ptr(Vehlist)+(i*0x10)
       if not Vehptr then goto continue end
-      local Vehhealth=readFloat(get.Ptr(Vehptr)+0x2A0) if not Vehhealth then goto continue end
-      local Enemy = readBytes(Vehptr+0x18C)
+      local Vehhealth=get.Float(get.Ptr(Vehptr)+0x2A0) if not Vehhealth then goto continue end
+      local Enemy = get.Byte(Vehptr+0x18C)
       if Enemy > 1 then
         set.float(get.Ptr(Vehptr)+0x280,health)
         set.float(get.Ptr(Vehptr)+0x844,health)
@@ -1204,13 +1295,13 @@ function PED.SET_PED_COORD(pos_x,pos_y,pos_z,player)
         x,y,z = PLAYER.PLAYER_INDEX_ID(selected_player);
         pos_x,pos_y,pos_z = x,y,z
     end
-    local PedInterface=readPointer("[ReplayInterfacePTR]+0x18")
+    local PedInterface=get.Ptr("[ReplayInterfacePTR]+0x18")
     local count=get.Int(PedInterface+0x110)
-    local list=readPointer(PedInterface+0x100) if not list then return end
+    local list=get.Ptr(PedInterface+0x100) if not list then return end
     for i=0,count,1 do
-        local Ped = readPointer(list+i*0x10)
+        local Ped = get.Ptr(list+i*0x10)
       if not Ped then goto continue end
-        local pedPos = readPointer(Ped + 0x30)
+        local pedPos = get.Ptr(Ped + 0x30)
       if not pedPos then goto continue end
       if get.Float(pedPos + 0x50) ~= get.Float(PLAYER_CORDX) and get.Float(pedPos + 0x54) ~= get.Float(PLAYER_CORDY) and get.Float(pedPos + 0x58) ~= get.Float(PLAYER_CORDZ) then
         set.float(pedPos + 0x50,x)
@@ -1224,15 +1315,15 @@ function PED.SET_PED_COORD(pos_x,pos_y,pos_z,player)
    ::continue::
 end
 
-function blacklist_comparing(Executor)
-    blacklist_comparing_loop = Executor
+function blacklist_comparing(Bool)
+    blacklist_comparing_loop = Bool
     local function ScanPlayerList()
         for k,v in pairs(CPLAYER_INDEX) do
             local user_id = get.Long(v[2]) 
             local nickname = get.String(v[1])
             if nickname ~= nil and user_id ~= nil then PlayerLog(string.format("Player Name : %s | SCID : %s",nickname,user_id)) end
-            if user_id == nil then user_id = 0 end
-            if nickname == nil then nickname = "" end
+            if not user_id then user_id = 0 end
+            if not nickname then nickname = "" end
             for k2, v2 in pairs(blacklist_player) do
                 --printf('%s/%s | %s/%s',nickname,v2[1],user_id,v2[2]);
                 PlayerData.AdminScanner.Caption = string.format('%s/%s | %s/%s',nickname,v2[1],user_id,v2[2]);
@@ -1242,25 +1333,25 @@ function blacklist_comparing(Executor)
                     SystemLog(string.format("R* Employee Has Come ID %s Name %s",v2[2],v2[1]))
                     LoadSession(10)
                 end
-                if blacklist_comparing_loop == false then break end
+                if not blacklist_comparing_loop then break end
             Async();
             end
         Async();
         end
     end
-    local sync = Asynchronous(function()
-        while (blacklist_comparing_loop == true) do
+    local NewAsync = Asynchronous(function()
+        while (blacklist_comparing_loop) do
             Async()
             ScanPlayerList()
-            if (blacklist_comparing_loop == false) then break end
+            if not blacklist_comparing_loop then break end
         end
     end)
-    AsyncStart(sync,55)
+    AsyncStart(NewAsync,55)
 end
 
 function AutoClicker()
     mouse_event(MOUSEEVENTF_LEFTDOWN);
-    sleep(100)
+    SYSTEM.WAIT(100)
     mouse_event(MOUSEEVENTF_LEFTUP);
 end
 
@@ -1366,17 +1457,17 @@ function AntiSpectate()
     end
 end
 
-function CasinoHeistCrewRemove(Executor)
+function CasinoHeistCrewRemove(Bool)
+    CrewRemoveLoop = Bool
     local start = Asynchronous(function()
-        CrewRemoveLoop = Executor
-        while (CrewRemoveLoop == true) do
+        while (CrewRemoveLoop) do
             Async()
             if SCRIPT.DOES_SCRIPT_EXIST('fm_mission_controller') == true then
-                set.global(int,1701666+1+(PLAYER.PLAYER_ID()*68)+18+14,6)
-                set.global(int,1701666+1+(PLAYER.PLAYER_ID()*68)+18+12,6)
-                set.global(int,1701666+1+(PLAYER.PLAYER_ID()*68)+18+10,6)
+                set.global(int,1701669+1+(PLAYER.PLAYER_ID()*68)+18+14,6)
+                set.global(int,1701669+1+(PLAYER.PLAYER_ID()*68)+18+12,6)
+                set.global(int,1701669+1+(PLAYER.PLAYER_ID()*68)+18+10,6)
             end
-            if CrewRemoveLoop == false then
+            if not CrewRemoveLoop then
                 break
             end
         end
@@ -1384,44 +1475,44 @@ function CasinoHeistCrewRemove(Executor)
     AsyncStart(start,1500)
 end
 
-function RemoveCrewCutToZero(Execution)
+function RemoveCrewCutToZero(Bool)
+    CutToZero = Bool
     local start = Asynchronous(function()
-        CutToZero = Execution
-        while CutToZero == true do
+        while CutToZero do
             Async()
-            set.global(int,262145+28099,0)
             set.global(int,262145+28100,0)
             set.global(int,262145+28101,0)
             set.global(int,262145+28102,0)
             set.global(int,262145+28103,0)
-            set.global(int,262145+28109,0)
+            set.global(int,262145+28104,0)
             set.global(int,262145+28110,0)
             set.global(int,262145+28111,0)
             set.global(int,262145+28112,0)
             set.global(int,262145+28113,0)
-            set.global(int,262145+28104,0)
+            set.global(int,262145+28114,0)
             set.global(int,262145+28105,0)
             set.global(int,262145+28106,0)
             set.global(int,262145+28107,0)
             set.global(int,262145+28108,0)
+            set.global(int,262145+28109,0)
             --set.global(int,262145+28073,0)
             set.global(int,2452679+6480,85)
-            if CutToZero == false then
-                set.global(int,262145+28099,5)
-                set.global(int,262145+28100,9)
-                set.global(int,262145+28101,7)
-                set.global(int,262145+28102,10)
-                set.global(int,262145+28103,8)
-                set.global(int,262145+28109,3)
-                set.global(int,262145+28110,7)
-                set.global(int,262145+28111,5)
-                set.global(int,262145+28112,10)
-                set.global(int,262145+28113,9)
-                set.global(int,262145+28104,5)
-                set.global(int,262145+28105,7)
-                set.global(int,262145+28106,9)
-                set.global(int,262145+28107,6)
-                set.global(int,262145+28108,10)
+            if not CutToZero then
+                set.global(int,262145+28100,5)
+                set.global(int,262145+28101,9)
+                set.global(int,262145+28102,7)
+                set.global(int,262145+28103,10)
+                set.global(int,262145+28104,8)
+                set.global(int,262145+28110,3)
+                set.global(int,262145+28111,7)
+                set.global(int,262145+28112,5)
+                set.global(int,262145+28113,10)
+                set.global(int,262145+28114,9)
+                set.global(int,262145+28105,5)
+                set.global(int,262145+28106,7)
+                set.global(int,262145+28107,9)
+                set.global(int,262145+28108,6)
+                set.global(int,262145+28109,10)
                 break
             end
         end
@@ -1429,16 +1520,16 @@ function RemoveCrewCutToZero(Execution)
     AsyncStart(start,1500)
 end
 
-function AntiAFKLobby(Execution)
+function AntiAFKLobby(Bool)
+    AntiAFKTrigger = Bool
     local start = Asynchronous(function()
-        AntiAFKTrigger = Execution
-        while(AntiAFKTrigger == true) do
+        while AntiAFKTrigger do
             Async();
             set.int(AFK1,MAX_INT)
             set.int(AFK2,MAX_INT)
             set.int(AFK3,MAX_INT)
             set.int(AFK4,MAX_INT)
-            if AntiAFKTrigger == false then
+            if not AntiAFKTrigger then
                 set.int(AFK1,120000)
                 set.int(AFK2,300000)
                 set.int(AFK3,600000)
@@ -1450,19 +1541,25 @@ function AntiAFKLobby(Execution)
     AsyncStart(start,1500);
 end
 
-function AutoHealthPack(Boolean,Delay,targets)
-    AutoHealTrigger = Boolean
+function AutoHealthPack(Bool,Delay,targets)
+    AutoHealTrigger = Bool
     local function AutoHealDrop()
-        if get.Float(PListHP[targets]) < get.Float(PLisMAXtHP[targets]) then
+        if get.Float(PListHP[targets]) < get.Float(PLisMAXtHP[targets]) and not get.Bool(PInVeh[targets]) then
             OBJECT.CREATE_AMBIENT_PICKUP(GAMEPLAY.GET_HASH_KEY("PICKUP_HEALTH_STANDARD"),GAMEPLAY.GET_HASH_KEY("prop_ld_health_pack"),1,target_x[targets],target_y[targets],target_z[targets],theading_x[targets],theading_y[targets],tonumber(PlaylistTab.Dist.Text),tonumber(PlaylistTab.Tinggi.Text))
             SYSTEM.WAIT(500)
             OBJECT.CREATE_AMBIENT_PICKUP(GAMEPLAY.GET_HASH_KEY("PICKUP_ARMOUR_STANDARD"),GAMEPLAY.GET_HASH_KEY("prop_armour_pickup"),1,target_x[targets],target_y[targets],target_z[targets],theading_x[targets],theading_y[targets],tonumber(PlaylistTab.Dist.Text),tonumber(PlaylistTab.Tinggi.Text))
+            SystemLog("Health Pack Spawned")
+        elseif get.Float(PListHP[targets]) < get.Float(PLisMAXtHP[targets]) and get.Bool(PInVeh[targets]) then
+            OBJECT.CREATE_AMBIENT_PICKUP(GAMEPLAY.GET_HASH_KEY("VEHICLE_PICKUP_HEALTH_STANDARD"),GAMEPLAY.GET_HASH_KEY("prop_ld_health_pack"),1,target_x[targets],target_y[targets],target_z[targets],theading_x[targets],theading_y[targets],tonumber(PlaylistTab.Dist.Text),tonumber(PlaylistTab.Tinggi.Text))
+            SYSTEM.WAIT(500)
+            OBJECT.CREATE_AMBIENT_PICKUP(GAMEPLAY.GET_HASH_KEY("VEHICLE_PICKUP_ARMOUR_STANDARD"),GAMEPLAY.GET_HASH_KEY("prop_armour_pickup"),1,target_x[targets],target_y[targets],target_z[targets],theading_x[targets],theading_y[targets],tonumber(PlaylistTab.Dist.Text),tonumber(PlaylistTab.Tinggi.Text))
+            SystemLog("Health Pack Spawned")
         end
     end
     local CheckHPNeeded = Asynchronous(function()
-        while (AutoHealTrigger == true) do
+        while (AutoHealTrigger) do
             AutoHealDrop()
-            if (AutoHealTrigger == false) or (targets == nil) then
+            if not AutoHealTrigger or not targets then
                 break
             end
         Async()
@@ -1471,15 +1568,15 @@ function AutoHealthPack(Boolean,Delay,targets)
     AsyncStart(CheckHPNeeded,Delay)
 end
 
-function AntiSpecAFK(Activator)
+function AntiSpecAFK(Bool)
+    AntiSpecAFKExecutor = Bool
 	local NewThread = Asynchronous(function()
-		Executor = Activator;
-		while (Executor == true) do
-	   	LuaEngineLog('CheckSession')
+		while AntiSpecAFKExecutor do
 	   	if GetCurrentSession() == 1 and NETWORK.NETWORK_GET_NUM_CONNECTED_PLAYERS() > 1 then
+            LuaEngineLog('CheckSession')
 	      	LoadSession(1)
 	      end
-        if Executor == false then break end
+        if not AntiSpecAFKExecutor then break end
 	   Async()
 	   end
 	end)
@@ -1530,13 +1627,13 @@ function ToggleChat()
     end
 end
 
-function All_Mission_Lives(Executor)
+function All_Mission_Lives(Bool)
+    All_Live_Loop = Bool
     local asynch = Asynchronous(function()
-        All_Live_Loop = Executor
-        while (All_Live_Loop == true) do
+        while (All_Live_Loop) do
             Async()
             set.locals(int,'fm_mission_controller',25438+1322+1,9999)
-            if (All_Live_Loop == false) then
+            if not (All_Live_Loop) then
                 --set.locals(int,'fm_mission_controller',25438+1322+1,1)
                 LuaEngineLog(string.format("Mission Lives Status %s",All_Live_Loop))
                 break
@@ -1546,13 +1643,13 @@ function All_Mission_Lives(Executor)
     AsyncStart(asynch,1000)
 end
 
-function CayoLives(Executor)
+function CayoLives(Bool)
+    CayoLiveLoop = Bool
     local asynch = Asynchronous(function()
-        CayoLiveLoop = Executor
-        while (CayoLiveLoop == true) do
+        while (CayoLiveLoop) do
             Async()
             set.locals(int,'fm_mission_controller_2020',40170+976+1,9999)
-            if (CayoLiveLoop == false) then
+            if not (CayoLiveLoop == false) then
                 --set.locals(int,'fm_mission_controller_2020',40170+976+1,1)
                 LuaEngineLog(string.format("Cayo Lives Status %s",CayoLiveLoop))
                 break
@@ -1562,31 +1659,31 @@ function CayoLives(Executor)
     AsyncStart(asynch,1000)
  end
 
-function BLOCK_REPORTS(Boolean) --To Clean Report Automatically
-    Report_Boolean = Boolean
+function BLOCK_REPORTS(Bool) --To Clean Report Automatically
+    ReportCheckActivator = Bool
     local function ReportScan()
         for i,v in pairs(ReportStat) do
             MainTab.PatternScan.Text = string.format('%s : %s',v[1],STATS.STAT_GET_INT(v[1]))
             --print(string.format("%s : %s [Hash : 0x%X]",v[1],STATS.STAT_GET_INT(v[1]),joaat(v[1])))
-            if STATS.STAT_GET_INT(v[1]) >= v[2] then 
-                local name = get.String(CPlayerInfo + 0x84)
+            if STATS.STAT_GET_INT(v[1]) >= v[2] then
+                local name = get.String(CPlayerInfo + 0xA4)
                 NotificationPopUpMapRockstar("Kepada :"..name,[[~a~ ~s~Anda Telah Direport]])--STATS.STAT_SET_INT(v[1],0)
                 SystemLog(string.format("%s : %s [Hash : 0x%X]",v[1],STATS.STAT_GET_INT(v[1]),joaat(v[1])))
-                if messageDialog("You Got A Report By "..v[1],mtWarning, mbYes, mbNo) == mrYes then
-                    STATS.STAT_SET_INT(v[1],0)
-                else
-                    messageDialog("Are You Sure Want Keep Your Report",mtWarning, mbYes, mbNo)
-                end
+                -- if messageDialog("You Got A Report By "..v[1],mtWarning, mbYes, mbNo) == mrYes then
+                --     STATS.STAT_SET_INT(v[1],0)
+                -- else
+                --     messageDialog("Are You Sure Want Keep Your Report",mtWarning, mbYes, mbNo)
+                -- end
             end
-            if Report_Boolean == false then break end
+            if not ReportCheckActivator then break end
             Async();
         end
     end
     local new = Asynchronous(function()
-        while (Report_Boolean == true) do
+        while (ReportCheckActivator) do
             Async()
             ReportScan()
-            if (Report_Boolean == false) then
+            if not ReportCheckActivator then
                 break
             end
         end
@@ -1611,7 +1708,7 @@ end
   
 function LootIsLandCash(targets)
     for i = 1,24,1 do
-        local Cash = get.Global(int,1706028+1+iVar0[targets]*53+10+10)
+        local Cash = get.Global(int,1706031+1+iVar0[targets]*53+10+10)
         if Cash >= SecondaryLocation[i] and Cash < SecondaryLocation[i+1] then
             TotalCash = i
         elseif Cash == 0 then 
@@ -1623,7 +1720,7 @@ end
 
 function LootIsLandWeed(targets)
     for i = 1,24,1 do
-        local Weed = get.Global(int,1706028+1+iVar0[targets]*53+10+11)
+        local Weed = get.Global(int,1706031+1+iVar0[targets]*53+10+11)
         if Weed >= SecondaryLocation[i] and Weed < SecondaryLocation[i+1] then
             TotalWeed = i
         elseif Weed == 0 then 
@@ -1635,7 +1732,7 @@ end
 
 function LootIsLandCoke(targets)
     for i = 1,24,1 do
-        local Coke = get.Global(int,1706028+1+iVar0[targets]*53+10+12)
+        local Coke = get.Global(int,1706031+1+iVar0[targets]*53+10+12)
         if Coke >= SecondaryLocation[i] and Coke < SecondaryLocation[i+1] then
             TotalCoke = i
         elseif Coke == 0 then 
@@ -1647,7 +1744,7 @@ end
 
 function LootIsLandGold(targets)
     for i = 1,24,1 do
-        local Gold = get.Global(int,1706028+1+iVar0[targets]*53+10+13)
+        local Gold = get.Global(int,1706031+1+iVar0[targets]*53+10+13)
         if Gold >= SecondaryLocation[i] and Gold < SecondaryLocation[i+1] then
             TotalGold = i
             return TotalGold
@@ -1659,7 +1756,7 @@ end
 
 function LootCompoundCash(targets)
     for i = 1,8,1 do
-        local CompoundCash = get.Global(int,1706028+1+iVar0[targets]*53+10+18)
+        local CompoundCash = get.Global(int,1706031+1+iVar0[targets]*53+10+18)
         if CompoundCash >= SecondaryLocation[i] and CompoundCash < SecondaryLocation[i+1] then
             TotalCompoundCash = i
         elseif CompoundCash == 0 then 
@@ -1671,7 +1768,7 @@ end
 
 function LootCompoundWeed(targets)
     for i = 1,8,1 do
-        local CompoundWeed = get.Global(int,1706028+1+iVar0[targets]*53+10+19)
+        local CompoundWeed = get.Global(int,1706031+1+iVar0[targets]*53+10+19)
         if CompoundWeed >= SecondaryLocation[i] and CompoundWeed < SecondaryLocation[i+1] then
             TotalCompoundWeed = i
         elseif CompoundWeed == 0 then 
@@ -1683,7 +1780,7 @@ end
 
 function LootCompoundCoke(targets)
     for i = 1,8,1 do
-        local CompoundCoke = get.Global(int,1706028+1+iVar0[targets]*53+10+20)
+        local CompoundCoke = get.Global(int,1706031+1+iVar0[targets]*53+10+20)
         if CompoundCoke >= SecondaryLocation[i] and CompoundCoke < SecondaryLocation[i+1] then
             TotalCompoundCoke = i
         elseif CompoundCoke == 0 then 
@@ -1695,7 +1792,7 @@ end
 
 function LootCompoundGold(targets)
     for i = 1,8,1 do
-        local CompoundGold = get.Global(int,1706028+1+iVar0[targets]*53+10+21)
+        local CompoundGold = get.Global(int,1706031+1+iVar0[targets]*53+10+21)
         if CompoundGold >= SecondaryLocation[i] and CompoundGold < SecondaryLocation[i+1] then
             TotalCompoundGold = i
         elseif CompoundGold == 0 then 
@@ -1707,7 +1804,7 @@ end
 
 function LootCompoundPaint(targets)
     for i = 1,8,1 do
-        local CompoundPaint = get.Global(int,1706028+1+iVar0[targets]*53+10+23)
+        local CompoundPaint = get.Global(int,1706031+1+iVar0[targets]*53+10+23)
         if CompoundPaint >= SecondaryLocation[i] and CompoundPaint < SecondaryLocation[i+1] then
             TotalCompoundPaint = i
         elseif CompoundPaint == 0 then 
@@ -1719,7 +1816,7 @@ end
 
 function PrepWajib(targets)
     for i = 1,9,1 do
-        local IDPrepWajib = get.Global(int,1701666+1+iVar0[selected_player]*68+18+1)
+        local IDPrepWajib = get.Global(int,1701669+1+iVar0[selected_player]*68+18+1)
         if IDPrepWajib >= SecondaryLocation[i] and IDPrepWajib < SecondaryLocation[i+1] then
             PrepWajibStatus = i+1
         elseif IDPrepWajib == 0 then
@@ -1731,7 +1828,7 @@ end
 
 function PrepOptional(targets)
     for i = 1,20,1 do
-        local IDPrepOption = get.Global(int,1701666+1+iVar0[selected_player]*68+18)
+        local IDPrepOption = get.Global(int,1701669+1+iVar0[selected_player]*68+18)
         if IDPrepOption >= SecondaryLocation[i] and IDPrepOption < SecondaryLocation[i+1] then
             PrepOptionStatus = i+1
         elseif IDPrepOption == 0 then
@@ -1741,17 +1838,17 @@ function PrepOptional(targets)
     return PrepOptionStatus
 end
 
-function autoHeistcut(Executor)
-    AutomateCutLoop = Executor
+function autoHeistcut(Bool)
+    AutomateCutLoop = Bool
     local function CutData()
-        if get.Global(int,1697303+2326) < 85 then set.global(int,1697303+2326,85)
-        elseif get.Global(int,1697303+2327) < 85 then set.global(int,1697303+2327,85)
-        elseif get.Global(int,1697303+2328) < 85 then set.global(int,1697303+2328,85)
-        elseif get.Global(int,1697303+2329) < 85 then set.global(int,1697303+2329,85)
-        elseif get.Global(int,1704127+823+56+1) < 85 then set.global(int,1704127+823+56+1,85)
-        elseif get.Global(int,1704127+823+56+2) < 85 then set.global(int,1704127+823+56+2,85)
-        elseif get.Global(int,1704127+823+56+3) < 85 then set.global(int,1704127+823+56+3,85)
-        elseif get.Global(int,1704127+823+56+4) < 85 then set.global(int,1704127+823+56+4,85)
+        if get.Int(CASINO_CUT_1) < 85 then set.int(CASINO_CUT_1,85)
+        elseif get.Int(CASINO_CUT_2) < 85 then set.int(CASINO_CUT_2,85)
+        elseif get.Int(CASINO_CUT_3) < 85 then set.int(CASINO_CUT_3,85)
+        elseif get.Int(CASINO_CUT_4) < 85 then set.int(CASINO_CUT_4,85)
+        elseif get.Int(CPERICO_1) < 85 then set.int(CPERICO_1,85)
+        elseif get.Int(CPERICO_2) < 85 then set.int(CPERICO_2,85)
+        elseif get.Int(CPERICO_3) < 85 then set.int(CPERICO_3,85)
+        elseif get.Int(CPERICO_4) < 85 then set.int(CPERICO_4,85)
         elseif get.Int(DOOMSDAY_CUT_1) < 85 then set.int(DOOMSDAY_CUT_1,85)
         elseif get.Int(DOOMSDAY_CUT_2) < 85 then set.int(DOOMSDAY_CUT_2,85)
         elseif get.Int(DOOMSDAY_CUT_3) < 85 then set.int(DOOMSDAY_CUT_3,85)
@@ -1762,75 +1859,287 @@ function autoHeistcut(Executor)
         elseif get.Int(APT_CUT_4) < 85 then set.int(APT_CUT_4,85)
     end
     local sync = Asynchronous(function()
-        while AutomateCutLoop == true do
+        while AutomateCutLoop do
             Async()
             CutData()
-            if AutomateCutLoop == false then break end
+            if not AutomateCutLoop then break end
         end
     end)
     AsyncStart(sync,800)
   end
 end
 
-function SetAssistedAim(Boolean)
-    local Activator = Boolean
-    if Activator == true then
+function SetAssistedAim(AssistAimTrigger)
+    if AssistAimTrigger then
         set.int(AIM_STATUS,0)
-    elseif Activator == false then
+    elseif not AssistAimTrigger then
         set.int(AIM_STATUS,3)
     end
 end
 
-function AutoHealPlayer(Boolean)
-    local autoheal = true
-    AutohealTrigger = Boolean  
-    local HealExecution = async(function()
-        --printf("Health Check %s",get.Float(PLAYER_HP))
-        local MaxHP = get.Float(PLAYER_MAX_HP)
-        if (TriggerHealing == TRUE) then
-            set.float(PLAYER_HP, MaxHP)
-            set.float(PLAYER_ARMOR, 50)
-            set.float(DMG_TO_HP, 0.25)
-        elseif AutohealTrigger == false or TriggerHealing == FALSE then
-            set.float(DMG_TO_HP, 1)
-        end
-    end)
-
+function AutoHealPlayer(Bool)
+    AutohealTrigger = Bool
     local HealthCheck = Asynchronous(function()
-        while (AutohealTrigger == true) do
+        while (AutohealTrigger) do
             Async()
             local health = get.Float(PLAYER_HP)
-            TriggerHealing = FALSE
+            local Maximum_Health = get.Float(PLAYER_MAX_HP)
             if health <= 150 then
-                TriggerHealing = TRUE
+                set.float(PLAYER_HP, Maximum_Health)
+                set.float(PLAYER_ARMOR, 50)
+                set.float(DMG_TO_HP, 0.5)
             else
                 set.float(DMG_TO_HP,1)
             end
-            task_schedule_all()
-            HealExecution()
-            if AutohealTrigger == false then
-                TriggerHealing = FALSE
-                break
-            end
+            if not AutohealTrigger then break end
         end
     end)
     AsyncStart(HealthCheck,250)
 end
 
-function HealthRegeneration(Boolean)
-    HealthRegenTrigger = Boolean
+function HealthRegeneration(Bool)
+    HealthRegenTrigger = Bool
     local Regenerating = Asynchronous(function()
         local healthPointer = get.Memory(CPlayer + 0x280)
         local maxHealth = get.Memory(CPlayer + 0x2A0)
         local healthRegen = 15
-        while (HealthRegenTrigger == true) do
+        while (HealthRegenTrigger) do
             local curHealth = get.Float(healthPointer)
             if curHealth and curHealth < maxHealth then -- if successfully read and not full
                 set.float(healthPointer, curHealth+healthRegen) -- increment health by 1
             end
-            if HealthRegenTrigger == false then break end
+            if not HealthRegenTrigger then break end
             Async()
         end
     end)
     AsyncStart(Regenerating,1500)
 end
+
+function OffRadar(Bool,Type)
+    set.global(bool,2426097+1+PLAYER.PLAYER_ID()*443+204,Bool)
+    set.global(int,2440277+70,NETWORK.GET_NETWORK_TIME())
+    if Type == Lester then
+        set.global(int,2540612+4625,3)
+    elseif Type == Org then
+        set.global(int,2540612+4625,4)
+    end
+end
+
+function RevealRadar(Bool)
+    set.global(bool,2426097+1+PLAYER.PLAYER_ID()*443+204,Bool)
+    set.global(int,2440277+71,NETWORK.GET_NETWORK_TIME()+9999)
+end
+
+function BlindCops(Bool)
+    set.global(bool,2540612+4620,Bool)
+    set.global(int,2540612+4622,NETWORK.GET_NETWORK_TIME()+9999)
+    set.global(int,2540612+4619,5)
+end
+
+function ThermalVision(Bool)
+    if Bool then
+        if NETWORK.NETWORK_SESSION_IS_PRIVATE() == true then 
+            set.bool(PrivatePlayerID,TRUE)
+            set.bool(Thermalvision,TRUE)
+        elseif NETWORK.NETWORK_SESSION_IS_PRIVATE() == false then
+            set.bool(PublicPlayerID,TRUE)
+            set.bool(Thermalvision,TRUE)
+        end
+    else
+        set.bool(PublicPlayerID,FALSE)
+        set.bool(Thermalvision,FALSE)
+        set.bool(PrivatePlayerID,FALSE)
+    end
+end
+
+function NightVision(Boolean)
+    if Boolean then 
+        if NETWORK.NETWORK_SESSION_IS_PRIVATE() == true then
+            set.bool(PrivatePlayerID,TRUE)
+            set.bool(Nightvision,TRUE)
+        elseif NETWORK.NETWORK_SESSION_IS_PRIVATE() == false then
+            set.bool(PublicPlayerID,TRUE)
+            set.bool(Nightvision,TRUE)
+        end
+    else
+        set.bool(PublicPlayerID,FALSE)
+        set.bool(Nightvision,FALSE)
+        set.bool(PrivatePlayerID,FALSE)
+    end
+end
+
+function NoDamage(Bool)
+    if Bool then
+        set.float(CPlayerInfo + HP_DMG,0)
+    else
+        set.float(CPlayerInfo + HP_DMG,1)
+    end
+end
+
+function UnlockAtomizer(Boolean)
+    if Boolean then
+        set.global(int,101851,90)
+    else 
+        set.global(int,101851,0)
+    end
+end
+
+function UnlockAtomizerTint(Boolean)
+    if Boolean then
+        set.global(int,101852,90)
+    else 
+        set.global(int,101852,0)
+    end
+end
+
+function ReturningPlayer(Bool)
+    if Bool then
+        set.global(int,150693,2)
+    else
+        set.global(int,150693,3)
+    end
+end
+
+function DropItemLoop(Targets,Bool,Interval,PickupHash,PropHash)
+    DropActivate = Bool
+    local AsyncDropLoop = function()
+        while (DropActivate) do
+            --set.global(int,262145+167,10000)
+            OBJECT.CREATE_AMBIENT_PICKUP(tbl_pickup_hash[PickupHash],data_prop[PropHash],1,target_x[Targets],target_y[Targets],target_z[Targets],theading_x[Targets],theading_y[Targets],tonumber(PlaylistTab.Dist.Text),tonumber(PlaylistTab.Tinggi.Text))
+            if not DropActivate then break end
+            SYSTEM.WAIT(Interval)
+        end
+    end
+    ExecuteThread(AsyncDropLoop)
+end
+
+function VehicleSpammer(Targets,Bool,Interval,Hash)
+    ActivateSpam = Bool
+    local AsyncSpammer = function()
+        while ActivateSpam do
+            VEHICLE.CREATE_VEHICLE(tonumber(VehicleTab.Dist.Text),target_x[Targets],target_y[Targets],target_z[Targets],theading_x[Targets],theading_y[Targets],deactivate,Hash)
+            if not ActivateSpam then break end
+            SYSTEM.WAIT(Interval)
+        end
+    end
+    ExecuteThread(AsyncSpammer)
+end
+
+function DropWeaponInQueue(Targets,Interval)
+    local start = function()
+        for _,v in pairs(all_weapon_dropper) do
+            PlaylistTab.HashIndicator.Text = 'Spawn All Weapon To '.." ["..selected_player.."] "..v[1]..' '..get.String(CPLAYER_NAME[selected_player])
+            LuaEngineLog(string.format("Player Index [%s]\nPlayer Name : %s\nMemory Address 0x%X\nHash : 0x%X\nWeapon : 0x%X",selected_player,get.String(CPLAYER_NAME[selected_player]),get.Memory(CPLAYER_NAME[selected_player]),v[1],v[2]))
+            OBJECT.CREATE_AMBIENT_PICKUP(v[1],v[2],9999,target_x[Targets],target_y[Targets],target_z[Targets],theading_x[Targets],theading_y[Targets],tonumber(PlaylistTab.Dist.Text),tonumber(PlaylistTab.Tinggi.Text))
+            if give_all_weapon_var == false then break end
+            SYSTEM.WAIT(Interval)
+        end
+    end
+    ExecuteThread(start)
+end --Global_2540612.f_298 Global_2426097[PLAYER::PLAYER_ID() /*443*/].f_38;
+
+function RIDJoiner(RID,Activation)
+    local Asm = f[[
+        [ENABLE]
+        alloc(RIDTarget,$1000,RIDJoinerPTR)
+
+        label(code)
+        label(return)
+
+        RIDTarget:
+        mov [rax],#{RID}
+        code:
+        lea rdi,[rsi+000000E0]
+        mov rcx,rdi
+        movups xmm0,[rax]
+        mov eax,r12d
+        jmp return
+
+        RIDJoinerPTR:
+        jmp RIDTarget
+        return:
+
+        [DISABLE]
+        RIDJoinerPTR:
+        db 48 8D BE E0 00 00 00
+        dealloc(RIDTarget)
+    ]]
+
+    local function EnableScript()
+	    if not RIDJoinerActivate then
+		    RIDJoinerActivate,RIDJoinerDeactivate = set.assembly(Asm)
+	    end
+	end
+
+    local function DisableScript()
+        if RIDJoinerActivate then
+            if set.assembly(Asm,RIDJoinerDeactivate) then
+				RIDJoinerActivate = false
+            end
+        end
+    end
+
+    if Activation then
+        EnableScript()
+        RIDJoinerScriptStatus = true
+    else
+        DisableScript()
+        RIDJoinerScriptStatus = false
+    end
+end
+
+function MemoryCheck(Address)
+    if get.Memory(Address) then
+        return true
+    elseif not get.Memory(Address) then
+        return false
+    end
+end
+
+function DeveloperMode(Activation)
+    local Asm = [[
+    [ENABLE]
+    alloc(Devmode,$1000,IS_DLC_PRESENT)
+
+    label(code)
+    label(return)
+    
+    Devmode:
+    
+    code:
+    mov [rsp+08],rbx
+    jmp return
+    
+    IS_DLC_PRESENT:
+    mov al,01
+    ret
+    and al,08
+    return:
+
+    [DISABLE]
+    IS_DLC_PRESENT:
+    db 48 89 5C 24 08
+
+    dealloc(Devmode)
+    ]]
+    local function EnableScript()
+	    if not DeveloperActivate then
+		    DeveloperActivate,DeveloperDeactivate = set.assembly(Asm)
+	    end
+	end
+
+    local function DisableScript()
+        if DeveloperActivate then
+            if set.assembly(Asm,DeveloperDeactivate) then
+				DeveloperActivate = false
+            end
+        end
+    end
+
+    if Activation then
+        EnableScript()
+    else
+        DisableScript()
+    end
+end
+

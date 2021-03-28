@@ -1,293 +1,316 @@
-local scid_asli = get.Long("GTA5.exe+2D62A18")
+local scid_asli = get.Long("GTA5.exe+29240E8")
 DATA_RID = 
 {
-	{"Instant Spoof",0},
-	{"RID Asli",scid_asli},
-	{"YonataSP",134757642},
-	{"Dea_Fi",118756001},
-	{"swegley",171225995},
-	{"Leakess",177107411},
-	{"AMWARSS",52232807},
-	{"b0t0lpecah",176651480},
-	{"Ayam_Sayur_Kecap",17495234},
-	{"SoraYuta",123260984},
-	{"Reinbozz",124684044},
-	{"Wirangga987",118889452},
-	{"Kinderjoy77",172651939},
-	{"benjo_12",147137408},
-	{"MrPandA_Chan",143643867},
-	{"Mrc-Nata",147980514},
-	{"Animon2",150572443},
-	{"MichroLaserX10",140605373},
-	{"DE-ELGHI",85572123},
-	{"16Cal_ViN",178348899},
-	{"16Cal_ViN",178348899},
-	{"PutraGanjo2",184335063},
-	{"MAMAK_BOGENG",179673804},
-	{"Vaaleryn",149710162},
-	{"DevonNoLimit",117859114},
-	{"aqilnafal29",172919320},
-	{"oXxX00XxXo",159063872},
-	{"Lupa",174798177},
-	{"-Zill-[CODE]",160015232},
-	{"adreanbeta",164452633},
-	{"Lucasng_RS",162292162},
-	{"AceOfSpadesTR2",145964647},
-	{"Cloin-smiss[CODE]",161347480},
-	{"Raptor-KP",167765293},
-	{"Cl0utfather_",146604599},
-	{"OmGaban",162650999},
-	{"AnjayMabar",171311605},
-	{"KFC_TP_Delivery",176541246},
-	{"ranggaaryoko",174402390},
-	{"GamingNoBanned",155331185},
-	{"RioChan22",135394913},
-	{"paman_fred",171489492},
-	{"MAHATO",15832879},
-	{"Tanapon",139867806},
-	{"Catchy22",144539536},
+	{"Instant Spoof",0};
+	{"RID Asli",scid_asli};
+	{"YonataSP",134757642};
+	{"Dea_Fi",118756001};
+	{"swegley",171225995};
+	{"Leakess",177107411};
+	{"AMWARSS",52232807};
+	{"b0t0lpecah",176651480};
+	{"Ayam_Sayur_Kecap",17495234};
+	{"SoraYuta",123260984};
+	{"Reinbozz",124684044};
+	{"Wirangga987",118889452};
+	{"Kinderjoy77",172651939};
+	{"benjo_12",147137408};
+	{"MrPandA_Chan",143643867};
+	{"Mrc-Nata",147980514};
+	{"suzugamori27",155419627};
+	{"Animon2",150572443};
+	{"MichroLaserX10",140605373};
+	{"PapaCabut",159148187};
+	{"fadlan23",100451566};
+	{"Venom2zero",159147087};
+	{"TMF3WannaCry",146496695};
+	{"peuyeah",110368197};
+	{"devin",159318285};
+	{"Dave_lim2805",180247973};
+	{"bidipbidip",164581202};
+	{"HOSKREEH",162655526};
+	{"Gymnasty9810",156422602};
+	{"IrvanMacon",152831517};
+	{"EvroG1",160132903};
+	{"Spongeb0b",156350140};
+	{"Entercaps",135888882};
+	{"DE-ELGHI",85572123};
+	{"16Cal_ViN",178348899};
+	{"PutraGanjo2",184335063};
+	{"MAMAK_BOGENG",179673804};
+	{"Vaaleryn",149710162};
+	{"DevonNoLimit",117859114};
+	{"aqilnafal29",172919320};
+	{"oXxX00XxXo",159063872};
+	{"Lupa",174798177};
+	{"-Zill-[CODE]",160015232};
+	{"adreanbeta",164452633};
+	{"Lucasng_RS",162292162};
+	{"AceOfSpadesTR2",145964647};
+	{"Cloin-smiss[CODE]",161347480};
+	{"Raptor-KP",167765293};
+	{"Cl0utfather_",146604599};
+	{"OmGaban",162650999};
+	{"AnjayMabar",171311605};
+	{"KFC_TP_Delivery",176541246};
+	{"ranggaaryoko",174402390};
+	{"GamingNoBanned",155331185};
+	{"RioChan22",135394913};
+	{"paman_fred",171489492};
+	{"MAHATO",15832879};
+	{"Tanapon",139867806};
+	{"Catchy22",144539536};
 }
 blacklist_player = {
-	{"JulianApost4te",155527062},
-	{"Aur3lian",153219155},
-	{"DAWNBILLA",131037988},
-	{"Ghostofwar1",141884823},
-	{"IM-_-Wassup",104432921},
-	{"trajan5",147111499},
-	{"s0cc3r33",9284553},
-	{"DarkStar7171",114982881},
-	{"BananaGod951",137663665},
-	{"Sonknuck-",63457},
-	{"kingmario11",137601710},
-	{"Coffee_Collie",138075198},
-	{"johnet123",123017343},
-	{"Titan261",130291511},
-	{"Starfall",139981015},
-	{"Z3ro_Chill",137851207},
-	{"Th3_Morr1gan",137714280},
-	{"jakw0lf",127448079},
-	{"M1thras",137579070},
-	{"shibuz_gamer123",134412628},
-	{"PayneInUrAbs",133709045},
-	{"StrongBelwas1",64234321},
-	{"RossThetic",131973478},
-	{"DigitalKitsune",103019313},
-	{"DigitalFox9",103054099},
-	{"FoxesAreCool69",104041189},
-	{"huginn6767",110470958},
-	{"xCuteBunny",119266383},
-	{"random_123",119958356},
-	{"flyingcobra16",121397532},
-	{"CriticalRegret",121698158},
-	{"bipolarcarp",123849404},
-	{"HammerDaddy69",121943600},
-	{"ScentedPotter",18965281},
-	{"random123",216820},
-	{"Huginn5",56778561},
-	{"Kakorot02",129159629},
-	{"BrexitToTheKnees",99453545},
-	{"SweetPlumbus",99453882},
-	{"Server Admin",174796727},
+	{"JulianApost4te",155527062};
+	{"Aur3lian",153219155};
+	{"DAWNBILLA",131037988};
+	{"Ghostofwar1",141884823};
+	{"IM-_-Wassup",104432921};
+	{"trajan5",147111499};
+	{"s0cc3r33",9284553};
+	{"DarkStar7171",114982881};
+	{"BananaGod951",137663665};
+	{"Sonknuck-",63457};
+	{"kingmario11",137601710};
+	{"Coffee_Collie",138075198};
+	{"johnet123",123017343};
+	{"Titan261",130291511};
+	{"Starfall",139981015};
+	{"Z3ro_Chill",137851207};
+	{"Th3_Morr1gan",137714280};
+	{"jakw0lf",127448079};
+	{"M1thras",137579070};
+	{"shibuz_gamer123",134412628};
+	{"PayneInUrAbs",133709045};
+	{"StrongBelwas1",64234321};
+	{"RossThetic",131973478};
+	{"DigitalKitsune",103019313};
+	{"DigitalFox9",103054099};
+	{"FoxesAreCool69",104041189};
+	{"huginn6767",110470958};
+	{"xCuteBunny",119266383};
+	{"random_123",119958356};
+	{"flyingcobra16",121397532};
+	{"CriticalRegret",121698158};
+	{"bipolarcarp",123849404};
+	{"HammerDaddy69",121943600};
+	{"ScentedPotter",18965281};
+	{"random123",216820};
+	{"Huginn5",56778561};
+	{"Kakorot02",129159629};
+	{"BrexitToTheKnees",99453545};
+	{"SweetPlumbus",99453882};
+	{"Server Admin",174796727};
 }
 target_x =
-{"[[[[[[playercountptr]+88]+180]+B0]+1C8]+30]+50","[[[[[[playercountptr]+88]+188]+B0]+1C8]+30]+50"
-,"[[[[[[playercountptr]+88]+190]+B0]+1C8]+30]+50","[[[[[[playercountptr]+88]+198]+B0]+1C8]+30]+50"
-,"[[[[[[playercountptr]+88]+1A0]+B0]+1C8]+30]+50","[[[[[[playercountptr]+88]+1A8]+B0]+1C8]+30]+50"
-,"[[[[[[playercountptr]+88]+1B0]+B0]+1C8]+30]+50","[[[[[[playercountptr]+88]+1B8]+B0]+1C8]+30]+50"
-,"[[[[[[playercountptr]+88]+1C0]+B0]+1C8]+30]+50","[[[[[[playercountptr]+88]+1C8]+B0]+1C8]+30]+50"
-,"[[[[[[playercountptr]+88]+1D0]+B0]+1C8]+30]+50","[[[[[[playercountptr]+88]+1D8]+B0]+1C8]+30]+50"
-,"[[[[[[playercountptr]+88]+1E0]+B0]+1C8]+30]+50","[[[[[[playercountptr]+88]+1E8]+B0]+1C8]+30]+50"
-,"[[[[[[playercountptr]+88]+1F0]+B0]+1C8]+30]+50","[[[[[[playercountptr]+88]+1F8]+B0]+1C8]+30]+50"
-,"[[[[[[playercountptr]+88]+200]+B0]+1C8]+30]+50","[[[[[[playercountptr]+88]+208]+B0]+1C8]+30]+50"
-,"[[[[[[playercountptr]+88]+210]+B0]+1C8]+30]+50","[[[[[[playercountptr]+88]+218]+B0]+1C8]+30]+50"
-,"[[[[[[playercountptr]+88]+220]+B0]+1C8]+30]+50","[[[[[[playercountptr]+88]+228]+B0]+1C8]+30]+50"
-,"[[[[[[playercountptr]+88]+230]+B0]+1C8]+30]+50","[[[[[[playercountptr]+88]+238]+B0]+1C8]+30]+50"
-,"[[[[[[playercountptr]+88]+240]+B0]+1C8]+30]+50","[[[[[[playercountptr]+88]+248]+B0]+1C8]+30]+50"
-,"[[[[[[playercountptr]+88]+250]+B0]+1C8]+30]+50","[[[[[[playercountptr]+88]+258]+B0]+1C8]+30]+50"
-,"[[[[[[playercountptr]+88]+260]+B0]+1C8]+30]+50","[[[[[[playercountptr]+88]+268]+B0]+1C8]+30]+50"
-,"[[[[[[playercountptr]+88]+270]+B0]+1C8]+30]+50"
+{"[[[[[[playercountptr]+88]+180]+A0]+1E8]+30]+50","[[[[[[playercountptr]+88]+188]+A0]+1E8]+30]+50"
+,"[[[[[[playercountptr]+88]+190]+A0]+1E8]+30]+50","[[[[[[playercountptr]+88]+198]+A0]+1E8]+30]+50"
+,"[[[[[[playercountptr]+88]+1A0]+A0]+1E8]+30]+50","[[[[[[playercountptr]+88]+1A8]+A0]+1E8]+30]+50"
+,"[[[[[[playercountptr]+88]+1B0]+A0]+1E8]+30]+50","[[[[[[playercountptr]+88]+1B8]+A0]+1E8]+30]+50"
+,"[[[[[[playercountptr]+88]+1C0]+A0]+1E8]+30]+50","[[[[[[playercountptr]+88]+1C8]+A0]+1E8]+30]+50"
+,"[[[[[[playercountptr]+88]+1D0]+A0]+1E8]+30]+50","[[[[[[playercountptr]+88]+1D8]+A0]+1E8]+30]+50"
+,"[[[[[[playercountptr]+88]+1E0]+A0]+1E8]+30]+50","[[[[[[playercountptr]+88]+1E8]+A0]+1E8]+30]+50"
+,"[[[[[[playercountptr]+88]+1F0]+A0]+1E8]+30]+50","[[[[[[playercountptr]+88]+1F8]+A0]+1E8]+30]+50"
+,"[[[[[[playercountptr]+88]+200]+A0]+1E8]+30]+50","[[[[[[playercountptr]+88]+208]+A0]+1E8]+30]+50"
+,"[[[[[[playercountptr]+88]+210]+A0]+1E8]+30]+50","[[[[[[playercountptr]+88]+218]+A0]+1E8]+30]+50"
+,"[[[[[[playercountptr]+88]+220]+A0]+1E8]+30]+50","[[[[[[playercountptr]+88]+228]+A0]+1E8]+30]+50"
+,"[[[[[[playercountptr]+88]+230]+A0]+1E8]+30]+50","[[[[[[playercountptr]+88]+238]+A0]+1E8]+30]+50"
+,"[[[[[[playercountptr]+88]+240]+A0]+1E8]+30]+50","[[[[[[playercountptr]+88]+248]+A0]+1E8]+30]+50"
+,"[[[[[[playercountptr]+88]+250]+A0]+1E8]+30]+50","[[[[[[playercountptr]+88]+258]+A0]+1E8]+30]+50"
+,"[[[[[[playercountptr]+88]+260]+A0]+1E8]+30]+50","[[[[[[playercountptr]+88]+268]+A0]+1E8]+30]+50"
+,"[[[[[[playercountptr]+88]+270]+A0]+1E8]+30]+50"
 }
 
 target_y =
-{"[[[[[[playercountptr]+88]+180]+B0]+1C8]+30]+54","[[[[[[playercountptr]+88]+188]+B0]+1C8]+30]+54"
-,"[[[[[[playercountptr]+88]+190]+B0]+1C8]+30]+54","[[[[[[playercountptr]+88]+198]+B0]+1C8]+30]+54"
-,"[[[[[[playercountptr]+88]+1A0]+B0]+1C8]+30]+54","[[[[[[playercountptr]+88]+1A8]+B0]+1C8]+30]+54"
-,"[[[[[[playercountptr]+88]+1B0]+B0]+1C8]+30]+54","[[[[[[playercountptr]+88]+1B8]+B0]+1C8]+30]+54"
-,"[[[[[[playercountptr]+88]+1C0]+B0]+1C8]+30]+54","[[[[[[playercountptr]+88]+1C8]+B0]+1C8]+30]+54"
-,"[[[[[[playercountptr]+88]+1D0]+B0]+1C8]+30]+54","[[[[[[playercountptr]+88]+1D8]+B0]+1C8]+30]+54"
-,"[[[[[[playercountptr]+88]+1E0]+B0]+1C8]+30]+54","[[[[[[playercountptr]+88]+1E8]+B0]+1C8]+30]+54"
-,"[[[[[[playercountptr]+88]+1F0]+B0]+1C8]+30]+54","[[[[[[playercountptr]+88]+1F8]+B0]+1C8]+30]+54"
-,"[[[[[[playercountptr]+88]+200]+B0]+1C8]+30]+54","[[[[[[playercountptr]+88]+208]+B0]+1C8]+30]+54"
-,"[[[[[[playercountptr]+88]+210]+B0]+1C8]+30]+54","[[[[[[playercountptr]+88]+218]+B0]+1C8]+30]+54"
-,"[[[[[[playercountptr]+88]+220]+B0]+1C8]+30]+54","[[[[[[playercountptr]+88]+228]+B0]+1C8]+30]+54"
-,"[[[[[[playercountptr]+88]+230]+B0]+1C8]+30]+54","[[[[[[playercountptr]+88]+238]+B0]+1C8]+30]+54"
-,"[[[[[[playercountptr]+88]+240]+B0]+1C8]+30]+54","[[[[[[playercountptr]+88]+248]+B0]+1C8]+30]+54"
-,"[[[[[[playercountptr]+88]+254]+B0]+1C8]+30]+54","[[[[[[playercountptr]+88]+258]+B0]+1C8]+30]+54"
-,"[[[[[[playercountptr]+88]+260]+B0]+1C8]+30]+54","[[[[[[playercountptr]+88]+268]+B0]+1C8]+30]+54"
-,"[[[[[[playercountptr]+88]+270]+B0]+1C8]+30]+54"
+{"[[[[[[playercountptr]+88]+180]+A0]+1E8]+30]+54","[[[[[[playercountptr]+88]+188]+A0]+1E8]+30]+54"
+,"[[[[[[playercountptr]+88]+190]+A0]+1E8]+30]+54","[[[[[[playercountptr]+88]+198]+A0]+1E8]+30]+54"
+,"[[[[[[playercountptr]+88]+1A0]+A0]+1E8]+30]+54","[[[[[[playercountptr]+88]+1A8]+A0]+1E8]+30]+54"
+,"[[[[[[playercountptr]+88]+1B0]+A0]+1E8]+30]+54","[[[[[[playercountptr]+88]+1B8]+A0]+1E8]+30]+54"
+,"[[[[[[playercountptr]+88]+1C0]+A0]+1E8]+30]+54","[[[[[[playercountptr]+88]+1C8]+A0]+1E8]+30]+54"
+,"[[[[[[playercountptr]+88]+1D0]+A0]+1E8]+30]+54","[[[[[[playercountptr]+88]+1D8]+A0]+1E8]+30]+54"
+,"[[[[[[playercountptr]+88]+1E0]+A0]+1E8]+30]+54","[[[[[[playercountptr]+88]+1E8]+A0]+1E8]+30]+54"
+,"[[[[[[playercountptr]+88]+1F0]+A0]+1E8]+30]+54","[[[[[[playercountptr]+88]+1F8]+A0]+1E8]+30]+54"
+,"[[[[[[playercountptr]+88]+200]+A0]+1E8]+30]+54","[[[[[[playercountptr]+88]+208]+A0]+1E8]+30]+54"
+,"[[[[[[playercountptr]+88]+210]+A0]+1E8]+30]+54","[[[[[[playercountptr]+88]+218]+A0]+1E8]+30]+54"
+,"[[[[[[playercountptr]+88]+220]+A0]+1E8]+30]+54","[[[[[[playercountptr]+88]+228]+A0]+1E8]+30]+54"
+,"[[[[[[playercountptr]+88]+230]+A0]+1E8]+30]+54","[[[[[[playercountptr]+88]+238]+A0]+1E8]+30]+54"
+,"[[[[[[playercountptr]+88]+240]+A0]+1E8]+30]+54","[[[[[[playercountptr]+88]+248]+A0]+1E8]+30]+54"
+,"[[[[[[playercountptr]+88]+254]+A0]+1E8]+30]+54","[[[[[[playercountptr]+88]+258]+A0]+1E8]+30]+54"
+,"[[[[[[playercountptr]+88]+260]+A0]+1E8]+30]+54","[[[[[[playercountptr]+88]+268]+A0]+1E8]+30]+54"
+,"[[[[[[playercountptr]+88]+270]+A0]+1E8]+30]+54"
 }
 
 target_z =
-{"[[[[[[playercountptr]+88]+180]+B0]+1C8]+30]+58","[[[[[[playercountptr]+88]+188]+B0]+1C8]+30]+58"
-,"[[[[[[playercountptr]+88]+190]+B0]+1C8]+30]+58","[[[[[[playercountptr]+88]+198]+B0]+1C8]+30]+58"
-,"[[[[[[playercountptr]+88]+1A0]+B0]+1C8]+30]+58","[[[[[[playercountptr]+88]+1A8]+B0]+1C8]+30]+58"
-,"[[[[[[playercountptr]+88]+1B0]+B0]+1C8]+30]+58","[[[[[[playercountptr]+88]+1B8]+B0]+1C8]+30]+58"
-,"[[[[[[playercountptr]+88]+1C0]+B0]+1C8]+30]+58","[[[[[[playercountptr]+88]+1C8]+B0]+1C8]+30]+58"
-,"[[[[[[playercountptr]+88]+1D0]+B0]+1C8]+30]+58","[[[[[[playercountptr]+88]+1D8]+B0]+1C8]+30]+58"
-,"[[[[[[playercountptr]+88]+1E0]+B0]+1C8]+30]+58","[[[[[[playercountptr]+88]+1E8]+B0]+1C8]+30]+58"
-,"[[[[[[playercountptr]+88]+1F0]+B0]+1C8]+30]+58","[[[[[[playercountptr]+88]+1F8]+B0]+1C8]+30]+58"
-,"[[[[[[playercountptr]+88]+200]+B0]+1C8]+30]+58","[[[[[[playercountptr]+88]+208]+B0]+1C8]+30]+58"
-,"[[[[[[playercountptr]+88]+210]+B0]+1C8]+30]+58","[[[[[[playercountptr]+88]+218]+B0]+1C8]+30]+58"
-,"[[[[[[playercountptr]+88]+220]+B0]+1C8]+30]+58","[[[[[[playercountptr]+88]+228]+B0]+1C8]+30]+58"
-,"[[[[[[playercountptr]+88]+230]+B0]+1C8]+30]+58","[[[[[[playercountptr]+88]+238]+B0]+1C8]+30]+58"
-,"[[[[[[playercountptr]+88]+240]+B0]+1C8]+30]+58","[[[[[[playercountptr]+88]+248]+B0]+1C8]+30]+58"
-,"[[[[[[playercountptr]+88]+258]+B0]+1C8]+30]+58","[[[[[[playercountptr]+88]+258]+B0]+1C8]+30]+58"
-,"[[[[[[playercountptr]+88]+260]+B0]+1C8]+30]+58","[[[[[[playercountptr]+88]+268]+B0]+1C8]+30]+58"
-,"[[[[[[playercountptr]+88]+270]+B0]+1C8]+30]+58"
+{"[[[[[[playercountptr]+88]+180]+A0]+1E8]+30]+58","[[[[[[playercountptr]+88]+188]+A0]+1E8]+30]+58"
+,"[[[[[[playercountptr]+88]+190]+A0]+1E8]+30]+58","[[[[[[playercountptr]+88]+198]+A0]+1E8]+30]+58"
+,"[[[[[[playercountptr]+88]+1A0]+A0]+1E8]+30]+58","[[[[[[playercountptr]+88]+1A8]+A0]+1E8]+30]+58"
+,"[[[[[[playercountptr]+88]+1B0]+A0]+1E8]+30]+58","[[[[[[playercountptr]+88]+1B8]+A0]+1E8]+30]+58"
+,"[[[[[[playercountptr]+88]+1C0]+A0]+1E8]+30]+58","[[[[[[playercountptr]+88]+1C8]+A0]+1E8]+30]+58"
+,"[[[[[[playercountptr]+88]+1D0]+A0]+1E8]+30]+58","[[[[[[playercountptr]+88]+1D8]+A0]+1E8]+30]+58"
+,"[[[[[[playercountptr]+88]+1E0]+A0]+1E8]+30]+58","[[[[[[playercountptr]+88]+1E8]+A0]+1E8]+30]+58"
+,"[[[[[[playercountptr]+88]+1F0]+A0]+1E8]+30]+58","[[[[[[playercountptr]+88]+1F8]+A0]+1E8]+30]+58"
+,"[[[[[[playercountptr]+88]+200]+A0]+1E8]+30]+58","[[[[[[playercountptr]+88]+208]+A0]+1E8]+30]+58"
+,"[[[[[[playercountptr]+88]+210]+A0]+1E8]+30]+58","[[[[[[playercountptr]+88]+218]+A0]+1E8]+30]+58"
+,"[[[[[[playercountptr]+88]+220]+A0]+1E8]+30]+58","[[[[[[playercountptr]+88]+228]+A0]+1E8]+30]+58"
+,"[[[[[[playercountptr]+88]+230]+A0]+1E8]+30]+58","[[[[[[playercountptr]+88]+238]+A0]+1E8]+30]+58"
+,"[[[[[[playercountptr]+88]+240]+A0]+1E8]+30]+58","[[[[[[playercountptr]+88]+248]+A0]+1E8]+30]+58"
+,"[[[[[[playercountptr]+88]+258]+A0]+1E8]+30]+58","[[[[[[playercountptr]+88]+258]+A0]+1E8]+30]+58"
+,"[[[[[[playercountptr]+88]+260]+A0]+1E8]+30]+58","[[[[[[playercountptr]+88]+268]+A0]+1E8]+30]+58"
+,"[[[[[[playercountptr]+88]+270]+A0]+1E8]+30]+58"
 }
 
 PLAYER_HEADINGS = {"[[[WorldPTR]+8]+30]+20","[[[WorldPTR]+8]+30]+24"}
 
 theading_x =
-{"[[[[[[playercountptr]+88]+180]+B0]+1C8]+30]+20","[[[[[[playercountptr]+88]+188]+B0]+1C8]+30]+20"
-,"[[[[[[playercountptr]+88]+190]+B0]+1C8]+30]+20","[[[[[[playercountptr]+88]+198]+B0]+1C8]+30]+20"
-,"[[[[[[playercountptr]+88]+1A0]+B0]+1C8]+30]+20","[[[[[[playercountptr]+88]+1A8]+B0]+1C8]+30]+20"
-,"[[[[[[playercountptr]+88]+1B0]+B0]+1C8]+30]+20","[[[[[[playercountptr]+88]+1B8]+B0]+1C8]+30]+20"
-,"[[[[[[playercountptr]+88]+1C0]+B0]+1C8]+30]+20","[[[[[[playercountptr]+88]+1C8]+B0]+1C8]+30]+20"
-,"[[[[[[playercountptr]+88]+1D0]+B0]+1C8]+30]+20","[[[[[[playercountptr]+88]+1D8]+B0]+1C8]+30]+20"
-,"[[[[[[playercountptr]+88]+1E0]+B0]+1C8]+30]+20","[[[[[[playercountptr]+88]+1E8]+B0]+1C8]+30]+20"
-,"[[[[[[playercountptr]+88]+1F0]+B0]+1C8]+30]+20","[[[[[[playercountptr]+88]+1F8]+B0]+1C8]+30]+20"
-,"[[[[[[playercountptr]+88]+200]+B0]+1C8]+30]+20","[[[[[[playercountptr]+88]+208]+B0]+1C8]+30]+20"
-,"[[[[[[playercountptr]+88]+210]+B0]+1C8]+30]+20","[[[[[[playercountptr]+88]+218]+B0]+1C8]+30]+20"
-,"[[[[[[playercountptr]+88]+220]+B0]+1C8]+30]+20","[[[[[[playercountptr]+88]+228]+B0]+1C8]+30]+20"
-,"[[[[[[playercountptr]+88]+230]+B0]+1C8]+30]+20","[[[[[[playercountptr]+88]+238]+B0]+1C8]+30]+20"
-,"[[[[[[playercountptr]+88]+240]+B0]+1C8]+30]+20","[[[[[[playercountptr]+88]+248]+B0]+1C8]+30]+20"
-,"[[[[[[playercountptr]+88]+250]+B0]+1C8]+30]+20","[[[[[[playercountptr]+88]+258]+B0]+1C8]+30]+20"
-,"[[[[[[playercountptr]+88]+260]+B0]+1C8]+30]+20","[[[[[[playercountptr]+88]+268]+B0]+1C8]+30]+20"
-,"[[[[[[playercountptr]+88]+270]+B0]+1C8]+30]+20"
+{"[[[[[[playercountptr]+88]+180]+A0]+1E8]+30]+20","[[[[[[playercountptr]+88]+188]+A0]+1E8]+30]+20"
+,"[[[[[[playercountptr]+88]+190]+A0]+1E8]+30]+20","[[[[[[playercountptr]+88]+198]+A0]+1E8]+30]+20"
+,"[[[[[[playercountptr]+88]+1A0]+A0]+1E8]+30]+20","[[[[[[playercountptr]+88]+1A8]+A0]+1E8]+30]+20"
+,"[[[[[[playercountptr]+88]+1B0]+A0]+1E8]+30]+20","[[[[[[playercountptr]+88]+1B8]+A0]+1E8]+30]+20"
+,"[[[[[[playercountptr]+88]+1C0]+A0]+1E8]+30]+20","[[[[[[playercountptr]+88]+1C8]+A0]+1E8]+30]+20"
+,"[[[[[[playercountptr]+88]+1D0]+A0]+1E8]+30]+20","[[[[[[playercountptr]+88]+1D8]+A0]+1E8]+30]+20"
+,"[[[[[[playercountptr]+88]+1E0]+A0]+1E8]+30]+20","[[[[[[playercountptr]+88]+1E8]+A0]+1E8]+30]+20"
+,"[[[[[[playercountptr]+88]+1F0]+A0]+1E8]+30]+20","[[[[[[playercountptr]+88]+1F8]+A0]+1E8]+30]+20"
+,"[[[[[[playercountptr]+88]+200]+A0]+1E8]+30]+20","[[[[[[playercountptr]+88]+208]+A0]+1E8]+30]+20"
+,"[[[[[[playercountptr]+88]+210]+A0]+1E8]+30]+20","[[[[[[playercountptr]+88]+218]+A0]+1E8]+30]+20"
+,"[[[[[[playercountptr]+88]+220]+A0]+1E8]+30]+20","[[[[[[playercountptr]+88]+228]+A0]+1E8]+30]+20"
+,"[[[[[[playercountptr]+88]+230]+A0]+1E8]+30]+20","[[[[[[playercountptr]+88]+238]+A0]+1E8]+30]+20"
+,"[[[[[[playercountptr]+88]+240]+A0]+1E8]+30]+20","[[[[[[playercountptr]+88]+248]+A0]+1E8]+30]+20"
+,"[[[[[[playercountptr]+88]+250]+A0]+1E8]+30]+20","[[[[[[playercountptr]+88]+258]+A0]+1E8]+30]+20"
+,"[[[[[[playercountptr]+88]+260]+A0]+1E8]+30]+20","[[[[[[playercountptr]+88]+268]+A0]+1E8]+30]+20"
+,"[[[[[[playercountptr]+88]+270]+A0]+1E8]+30]+20"
 }
 
 theading_y =
-{"[[[[[[playercountptr]+88]+180]+B0]+1C8]+30]+24","[[[[[[playercountptr]+88]+188]+B0]+1C8]+30]+24"
-,"[[[[[[playercountptr]+88]+190]+B0]+1C8]+30]+24","[[[[[[playercountptr]+88]+198]+B0]+1C8]+30]+24"
-,"[[[[[[playercountptr]+88]+1A0]+B0]+1C8]+30]+24","[[[[[[playercountptr]+88]+1A8]+B0]+1C8]+30]+24"
-,"[[[[[[playercountptr]+88]+1B0]+B0]+1C8]+30]+24","[[[[[[playercountptr]+88]+1B8]+B0]+1C8]+30]+24"
-,"[[[[[[playercountptr]+88]+1C0]+B0]+1C8]+30]+24","[[[[[[playercountptr]+88]+1C8]+B0]+1C8]+30]+24"
-,"[[[[[[playercountptr]+88]+1D0]+B0]+1C8]+30]+24","[[[[[[playercountptr]+88]+1D8]+B0]+1C8]+30]+24"
-,"[[[[[[playercountptr]+88]+1E0]+B0]+1C8]+30]+24","[[[[[[playercountptr]+88]+1E8]+B0]+1C8]+30]+24"
-,"[[[[[[playercountptr]+88]+1F0]+B0]+1C8]+30]+24","[[[[[[playercountptr]+88]+1F8]+B0]+1C8]+30]+24"
-,"[[[[[[playercountptr]+88]+200]+B0]+1C8]+30]+24","[[[[[[playercountptr]+88]+208]+B0]+1C8]+30]+24"
-,"[[[[[[playercountptr]+88]+210]+B0]+1C8]+30]+24","[[[[[[playercountptr]+88]+218]+B0]+1C8]+30]+24"
-,"[[[[[[playercountptr]+88]+220]+B0]+1C8]+30]+24","[[[[[[playercountptr]+88]+228]+B0]+1C8]+30]+24"
-,"[[[[[[playercountptr]+88]+230]+B0]+1C8]+30]+24","[[[[[[playercountptr]+88]+238]+B0]+1C8]+30]+24"
-,"[[[[[[playercountptr]+88]+240]+B0]+1C8]+30]+24","[[[[[[playercountptr]+88]+248]+B0]+1C8]+30]+24"
-,"[[[[[[playercountptr]+88]+250]+B0]+1C8]+30]+24","[[[[[[playercountptr]+88]+258]+B0]+1C8]+30]+24"
-,"[[[[[[playercountptr]+88]+260]+B0]+1C8]+30]+24","[[[[[[playercountptr]+88]+268]+B0]+1C8]+30]+24"
-,"[[[[[[playercountptr]+88]+270]+B0]+1C8]+30]+24"
+{"[[[[[[playercountptr]+88]+180]+A0]+1E8]+30]+24","[[[[[[playercountptr]+88]+188]+A0]+1E8]+30]+24"
+,"[[[[[[playercountptr]+88]+190]+A0]+1E8]+30]+24","[[[[[[playercountptr]+88]+198]+A0]+1E8]+30]+24"
+,"[[[[[[playercountptr]+88]+1A0]+A0]+1E8]+30]+24","[[[[[[playercountptr]+88]+1A8]+A0]+1E8]+30]+24"
+,"[[[[[[playercountptr]+88]+1B0]+A0]+1E8]+30]+24","[[[[[[playercountptr]+88]+1B8]+A0]+1E8]+30]+24"
+,"[[[[[[playercountptr]+88]+1C0]+A0]+1E8]+30]+24","[[[[[[playercountptr]+88]+1C8]+A0]+1E8]+30]+24"
+,"[[[[[[playercountptr]+88]+1D0]+A0]+1E8]+30]+24","[[[[[[playercountptr]+88]+1D8]+A0]+1E8]+30]+24"
+,"[[[[[[playercountptr]+88]+1E0]+A0]+1E8]+30]+24","[[[[[[playercountptr]+88]+1E8]+A0]+1E8]+30]+24"
+,"[[[[[[playercountptr]+88]+1F0]+A0]+1E8]+30]+24","[[[[[[playercountptr]+88]+1F8]+A0]+1E8]+30]+24"
+,"[[[[[[playercountptr]+88]+200]+A0]+1E8]+30]+24","[[[[[[playercountptr]+88]+208]+A0]+1E8]+30]+24"
+,"[[[[[[playercountptr]+88]+210]+A0]+1E8]+30]+24","[[[[[[playercountptr]+88]+218]+A0]+1E8]+30]+24"
+,"[[[[[[playercountptr]+88]+220]+A0]+1E8]+30]+24","[[[[[[playercountptr]+88]+228]+A0]+1E8]+30]+24"
+,"[[[[[[playercountptr]+88]+230]+A0]+1E8]+30]+24","[[[[[[playercountptr]+88]+238]+A0]+1E8]+30]+24"
+,"[[[[[[playercountptr]+88]+240]+A0]+1E8]+30]+24","[[[[[[playercountptr]+88]+248]+A0]+1E8]+30]+24"
+,"[[[[[[playercountptr]+88]+250]+A0]+1E8]+30]+24","[[[[[[playercountptr]+88]+258]+A0]+1E8]+30]+24"
+,"[[[[[[playercountptr]+88]+260]+A0]+1E8]+30]+24","[[[[[[playercountptr]+88]+268]+A0]+1E8]+30]+24"
+,"[[[[[[playercountptr]+88]+270]+A0]+1E8]+30]+24"
 }
 
 CT = 
 {
-	{"Bypass 1","Bypass"},
-	{"Heal","Heal"},
-	{"Give Max Ammos","Give Ammo"},
-	{"Disable Wanted","Clear Wanted Level"},
-	{"Vault Door Unlock","Vault Casino Unlock"},
-	{"Bunker Trigger Product","Trigger Bunker Product"},
-	{"Bunker Trigger Research","Trigger Research Bunker"},
-	{"Cocain Trigger Product","Trigger Cocain Product"},
-	{"Cash Trigger Product","Trigger Cash Product"},
-	{"Meth Trigger Product","Trigger Meth Product"},
-	{"Weed Trigger Product","Trigger Weed Product"},
-	{"Document Trigger Product","Trigger Document Product"},
-	{"Teleport to Objective 1","Teleport Objective"},
-	{"Teleport to Waypoint 1","Teleport Waypoint"},
-	{"Set Player to PV","Set Player To PV"},
-	{"Gender 1","All Slot Gender Change"},
-	{"Max Popularity Nightclub","Max Popularity Nightclub"},
-	{"Restart PC Submarine","Restart PC Submarine"},
-	{"Bundir","Suicide"},
-	{"Empty Lobby","Empty Lobby"},
+	{"Bypass 1","Bypass"};
+	{"Repair Car With BST","Repair Vehicle"};
+	{"Heal","Heal"};
+	{"Give Max Ammos","Give Ammo"};
+	{"Disable Wanted","Clear Wanted Level"};
+	{"Vault Door Unlock","Vault Casino Unlock"};
+	{"Bunker Trigger Product","Trigger Bunker Product"};
+	{"Bunker Trigger Research","Trigger Research Bunker"};
+	{"Cocain Trigger Product","Trigger Cocain Product"};
+	{"Cash Trigger Product","Trigger Cash Product"};
+	{"Meth Trigger Product","Trigger Meth Product"};
+	{"Weed Trigger Product","Trigger Weed Product"};
+	{"Document Trigger Product","Trigger Document Product"};
+	{"Teleport to Objective 1","Teleport Objective"};
+	{"Teleport to Waypoint 1","Teleport Waypoint"};
+	{"Set Player to PV","Set Player To PV"};
+	{"Gender 1","All Slot Gender Change"};
+	{"Max Popularity Nightclub","Max Popularity Nightclub"};
+	{"Restart PC Submarine","Restart PC Submarine"};
+	{"Bundir","Suicide"};
+	{"Empty Lobby","Empty Lobby"};
 }
 
 CT2 = 
 {
-	{"Anti Kick AFK","Anti AFK"},
-	{"Auto Healing","Auto Heal"},
-	{"Health Regen","HP Regen"},
-	{"Infinites Ammos","Infinite Ammo"},
-	{"God Modes","God Mode"},
-	{"All Mission Lives","Mission Lives"},
-	{"Explosive Ammo 2","Explosive Ammo"},
-	{"Crew Percent to Zero","Crew 0% Casino"},
-	{"Remove Crew Cut","Remove Crew Casino"},
-	{"Perico Life","Cayo Perico Lives"},
-	{"Kill All Enemies","Kill All Enemies"},
-	{"Kill Police","Kill Police"},
-	{"Kill All Ped","Kill All NPC"},
-	{"Pass Through Wall","Pass Through Wall"},
-	{"Burst Script","Weapon Burst"},
-	{"TAKE","Take All"},
-	{"Flaming Ammo 2","Fire Ammo"},
-	{"Super Jump 2","Super Jump"},
-	{"Explosive Fists 2","Explosive Fist"},
-	{"Bulletproof","Infinite HP"},
-	{"Water Scipt","Water Proof"},
-	{"No Ragdoll Script","No Ragdoll"},
-	{"Never Wanted","Never Wanted"},
-	{"Infinites Clips","Freeze Ammo"},
-	{"Remove Supply Cooldown Bunker","Supply Bunker Cooldown"},
-	{"Remove Supply Cooldown MC","Supply MC Cooldown"},
-	{"RP Loop","RP Loop"},
-	{"MW_Heli Backup","Heli Backup"},
-	{"Reveal Player","Reveal Player"},
-	{"Bribe Authority","Bribe Authority"},
-	{"OFF RADAR LESTER","Off Radar"},
-	{"Ghost Organizations","Ghost Organization"},
-	{"Faster timescale","Time Faster"},
-	{"freezes times","Freeze Time"},
-	{"No Clip","No Clip"},
-	--{"RID SPOOF","Instant RID Spoof"},
-	--{"Mati Lampu","Blackout"},
-	{"Invisible Script","Invisible"},
-	{"Ignored By All NPC","Ignore All NPC"},
-	{"Dev Mode","Dev Mode"},
-	{"Special Cargo CD All","Special Cargo Cooldown"},
-	--{"Toggle Rare Item Script","Special Cargo Rare Item"},
-	{"Orbital Cannon Reset","Orbital Cannon Cooldown"},
-	{"Custom Explosives Script","Custom Explosive"},
-	{"Custom Bullet Script","Custom Bullet"},
-	{"OG Bypass","OG Payout Bypass"},
-	{"Doomsday Bypass","DD Payout Bypass"},
-	{"No Spread","No Spread"},
-	{"Infinites Ammos Raw","Infinite Ammo 2"},
-	{"Console Show","Show Console Log"},
+	{"Anti Kick AFK","Anti AFK"};
+	{"Auto Healing","Auto Heal"};
+	{"Health Regen","HP Regen"};
+	{"Infinites Ammos","Infinite Ammo"};
+	{"God Modes","God Mode"};
+	{"All Mission Lives","Mission Lives"};
+	{"Explosive Ammo 2","Explosive Ammo"};
+	{"Crew Percent to Zero","Crew 0% Casino"};
+	{"Remove Crew Cut","Remove Crew Casino"};
+	{"Perico Life","Cayo Perico Lives"};
+	{"Kill All Enemies","Kill All Enemies"};
+	{"Kill Police","Kill Police"};
+	{"Kill All Ped","Kill All NPC"};
+	{"Pass Through Wall","Pass Through Wall"};
+	{"Burst Script","Weapon Burst"};
+	{"TAKE","Take All"};
+	{"Flaming Ammo 2","Fire Ammo"};
+	{"Super Jump 2","Super Jump"};
+	{"Explosive Fists 2","Explosive Fist"};
+	{"Thermal Vision","Thermal Vision"};
+	{"Night Vision","Night Vision"};
+	{"Bulletproof","Infinite HP"};
+	{"Water Scipt","Water Proof"};
+	{"No Ragdoll Script","No Ragdoll"};
+	{"Never Wanted","Never Wanted"};
+	{"Infinites Clips","Freeze Ammo"};
+	{"Remove Supply Cooldown Bunker","Supply Bunker Cooldown"};
+	{"Remove Supply Cooldown MC","Supply MC Cooldown"};
+	{"RP Loop","RP Loop"};
+	{"MW_Heli Backup","Heli Backup"};
+	{"Reveal Player","Reveal Player"};
+	{"Bribe Authority","Bribe Authority"};
+	{"OFF RADAR LESTER","Off Radar"};
+	{"Ghost Organizations","Ghost Organization"};
+	{"Faster timescale","Time Faster"};
+	{"freezes times","Freeze Time"};
+	{"No Clip","No Clip"};
+	--{"RID SPOOF","Instant RID Spoof"};
+	--{"Mati Lampu","Blackout"};
+	{"Invisible Script","Invisible"};
+	{"Ignored By All NPC","Ignore All NPC"};
+	{"Dev Mode","Dev Mode"};
+	{"Special Cargo CD All","Special Cargo Cooldown"};
+	--{"Toggle Rare Item Script","Special Cargo Rare Item"};
+	{"Orbital Cannon Reset","Orbital Cannon Cooldown"};
+	{"Custom Explosives Script","Custom Explosive"};
+	{"Custom Bullet Script","Custom Bullet"};
+	{"OG Bypass","OG Payout Bypass"};
+	{"Doomsday Bypass","DD Payout Bypass"};
+	{"No Spread","No Spread"};
+	{"Infinites Ammos Raw","Infinite Ammo 2"};
+	{"Console Show","Show Console Log"};
 }
 
 CT3 =
 {
-	{"XP Multiplier","GA(262145+1)"},
-	{"AP Multiplier","GA(262145+25209)"},
-	{"Bullet Per Shoot Spread","[[[[WorldPTR]+8]+10D8]+20]+124"},
-	{"Bullet Damage","[[[[WorldPTR]+8]+10D8]+20]+B0"},
-	{"Weapon Range","[[[[WorldPTR]+8]+10D8]+20]+28C"},
-	{"Damage Multiplier","[[[WorldPTR]+8]+10C8]+CEC"},
-	{"Lock-on Range","[[[WorldPTR]+8]+10C8]+CEC"},
-	{"Player Run Speed","PLAYER_RUN_SPD"},
-	{"Player Swim Speed","PLAYER_SWIM_SPD"},
-	{"Player Sneak Speed","PLAYER_SNEAK_SPD"},
-	{"OG Heist MP[E]","GA(262145+8734)"},
-	{"OG Heist MP[N]","GA(262145+8735)"},
-	{"OG Heist[H]","GA(262145+8736)"},
-	{"Doomsday MP[N]","GA(262145+8737)"},
-	{"Doomsday MP[H]","GA(262145+8738)"},
-	{"Super Punch","[[[WorldPTR]+8]+10C8]+CFC"},
-	{"Reload Speed","[[[[WorldPTR]+8]+10D8]+20]+134"},
-	{"Spread","[[[[WorldPTR]+8]+10D8]+20]+74"},
-	{"Recoil","[[[[WorldPTR]+8]+10D8]+20]+2A4"},
-	{"Ped Force","[[[[WorldPTR]+8]+10D8]+20]+DC"},
-	{"Vehicle Force","[[[[WorldPTR]+8]+10D8]+20]+E0"},
-	{"Vehicle Force","[[[[WorldPTR]+8]+10D8]+20]+E0"},
+	{"XP Multiplier","GA(262145+1)"};
+	{"AP Multiplier","GA(262145+25209)"};
+	{"Bullet Per Shoot Spread","[[[[WorldPTR]+8]+10D8]+20]+124"};
+	{"Bullet Damage","[[[[WorldPTR]+8]+10D8]+20]+B0"};
+	{"Weapon Range","[[[[WorldPTR]+8]+10D8]+20]+28C"};
+	{"Melee Multiplier","[[[WorldPTR]+8]+10C8]+D14"};
+	{"Damage Multiplier","[[[WorldPTR]+8]+10C8]+D18"};
+	{"Lock-on Range","[[[[WorldPTR]+8]+10D8]+20]+28C"};
+	{"Spread","[[[[WorldPTR]+8]+10D8]+20]+74"};
+	{"Recoil","[[[[WorldPTR]+8]+10D8]+20]+2A4"};
+	{"Reload Speed","[[[[WorldPTR]+8]+10D8]+20]+134"};
+	{"Rocket Lunch Speed","[[[[[WorldPTR]+8]+10D8]+20]+60]+58"};
+	{"Richocet Tolerance","[[[[[WorldPTR]+8]+10D8]+20]+60]+6C"};
+	{"Player Run Speed","PLAYER_RUN_SPD"};
+	{"Player Swim Speed","PLAYER_SWIM_SPD"};
+	{"Player Sneak Speed","PLAYER_SNEAK_SPD"};
+	{"OG Heist MP[E]","GA(262145+8734)"};
+	{"OG Heist MP[N]","GA(262145+8735)"};
+	{"OG Heist[H]","GA(262145+8736)"};
+	{"Doomsday MP[N]","GA(262145+8737)"};
+	{"Doomsday MP[H]","GA(262145+8738)"};
+	{"Super Punch","SUPER_PUNCH"};
+	{"Reload Speed","[[[[WorldPTR]+8]+10D8]+20]+134"};
+	{"Spread","[[[[WorldPTR]+8]+10D8]+20]+74"};
+	{"Recoil","[[[[WorldPTR]+8]+10D8]+20]+2A4"};
+	{"Ped Force","[[[[WorldPTR]+8]+10D8]+20]+DC"};
+	{"Vehicle Force","[[[[WorldPTR]+8]+10D8]+20]+E0"};
+	{"Vehicle Force","[[[[WorldPTR]+8]+10D8]+20]+E0"};
 	{"Heli Force","[[[[WorldPTR]+8]+10D8]+20]+E4"}
 }
 
@@ -314,31 +337,31 @@ VehOption =
 
 handling_data = 
 {
-	{"Vehicle Missile Lock Range","[[[[WorldPTR]+8]+10D8]+70]+288"},
-	{"Vehicle Lock Time","[[[[[WorldPTR]+8]+10D8]+70]+60]+178"},
-	{"Vehicle Missile Spd","[[[[[WorldPTR]+8]+10D8]+70]+60]+58"},
-	{"Flying Speed","[[[[WorldPTR]+8]+VEH]+938]+338"},
-	{"Acceleration","[[[[WorldPTR]+8]+VEH]+938]+4C"},
-	{"Boost Multiplier Speed","[[[[WorldPTR]+8]+VEH]+938]+120"},
-	{"Boost Fuel Level","[[[WorldPTR]+8]+VEH]+322"},
-	{"Off Road Traction","[[[[WorldPTR]+8]+VEH]+938]+B8"},
-	{"Submarsible Mult","[[[[WorldPTR]+8]+VEH]+938]+358"},
-	{"Traction Curve Min","[[[[WorldPTR]+8]+VEH]+938]+90"},
-	{"Traction Curve Max","[[[[WorldPTR]+8]+VEH]+938]+88"},
-	{"Dirt Level","[[[WorldPTR]+8]+VEH]+9F8"},
-	{"Brake Force","[[[[WorldPTR]+8]+VEH]+938]+6C"},
-	{"Handbrake Force","[[[[WorldPTR]+8]+VEH]+938]+7C"},
-	{"Suspension Height","[[[[WorldPTR]+8]+VEH]+938]+D0"},
-	{"Suspension Force","[[[[WorldPTR]+8]+VEH]+938]+BC"},
-	{"Gravity","[[[WorldPTR]+8]+VEH]+C5C"},
-	{"Helicopter Rotor 1","[[[WorldPTR]+8]+VEH]+1AF0"},
-	{"Helicopter Rotor 3","[[[WorldPTR]+8]+VEH]+1AF8"},
-	{"Helicopter Rotor Speed","[[[WorldPTR]+8]+VEH]+1AE4"},
-	{"Plane Rotor 1","[[[WorldPTR]+8]+VEH]+1CDC"},
-	{"Plane Rotor 2","[[[WorldPTR]+8]+VEH]+1CE0"},
-	{"Plane Rotor 3","[[[WorldPTR]+8]+VEH]+1CE4"},
-	{"Plane Rotor 4","[[[WorldPTR]+8]+VEH]+1CE8"},
-	{"Plane Rotor Speed","[[[WorldPTR]+8]+VEH]+1F54"},
+	{"Vehicle Missile Lock Range","[[[[WorldPTR]+8]+10D8]+70]+288"};
+	{"Vehicle Lock Time","[[[[[WorldPTR]+8]+10D8]+70]+60]+178"};
+	{"Vehicle Missile Spd","[[[[[WorldPTR]+8]+10D8]+70]+60]+58"};
+	{"Flying Speed","[[[[WorldPTR]+8]+VEH]+938]+338"};
+	{"Acceleration","[[[[WorldPTR]+8]+VEH]+938]+4C"};
+	{"Boost Multiplier Speed","[[[[WorldPTR]+8]+VEH]+938]+120"};
+	{"Boost Fuel Level","[[[WorldPTR]+8]+VEH]+322"};
+	{"Off Road Traction","[[[[WorldPTR]+8]+VEH]+938]+B8"};
+	{"Submarsible Mult","[[[[WorldPTR]+8]+VEH]+938]+358"};
+	{"Traction Curve Min","[[[[WorldPTR]+8]+VEH]+938]+90"};
+	{"Traction Curve Max","[[[[WorldPTR]+8]+VEH]+938]+88"};
+	{"Dirt Level","[[[WorldPTR]+8]+VEH]+9F8"};
+	{"Brake Force","[[[[WorldPTR]+8]+VEH]+938]+6C"};
+	{"Handbrake Force","[[[[WorldPTR]+8]+VEH]+938]+7C"};
+	{"Suspension Height","[[[[WorldPTR]+8]+VEH]+938]+D0"};
+	{"Suspension Force","[[[[WorldPTR]+8]+VEH]+938]+BC"};
+	{"Gravity","[[[WorldPTR]+8]+VEH]+C5C"};
+	{"Helicopter Rotor 1","[[[WorldPTR]+8]+VEH]+1AF0"};
+	{"Helicopter Rotor 3","[[[WorldPTR]+8]+VEH]+1AF8"};
+	{"Helicopter Rotor Speed","[[[WorldPTR]+8]+VEH]+1AE4"};
+	{"Plane Rotor 1","[[[WorldPTR]+8]+VEH]+1CDC"};
+	{"Plane Rotor 2","[[[WorldPTR]+8]+VEH]+1CE0"};
+	{"Plane Rotor 3","[[[WorldPTR]+8]+VEH]+1CE4"};
+	{"Plane Rotor 4","[[[WorldPTR]+8]+VEH]+1CE8"};
+	{"Plane Rotor Speed","[[[WorldPTR]+8]+VEH]+1F54"};
 	{"Boost","[[[WorldPTR]+8]+VEH]+320"}
 }
 
@@ -355,210 +378,226 @@ CasinoOption =
 
 Lucky_Wheel = 
 {
-	{"Clothes 1",'casino_lucky_wheel_ptr',268+14,0},
-	{"Clothes 2",'casino_lucky_wheel_ptr',268+14,8},
-	{"Clothes 3",'casino_lucky_wheel_ptr',268+14,12},
-	{"Clothes 4",'casino_lucky_wheel_ptr',268+14,16},
-	{"RP 1",'casino_lucky_wheel_ptr',268+14,1},
-	{"RP 2",'casino_lucky_wheel_ptr',268+14,5},
-	{"RP 3",'casino_lucky_wheel_ptr',268+14,9},
-	{"RP 4",'casino_lucky_wheel_ptr',268+14,13},
-	{"RP 5",'casino_lucky_wheel_ptr',268+14,17},
-	{"Cash 1",'casino_lucky_wheel_ptr',268+14,2},
-	{"Cash 2",'casino_lucky_wheel_ptr',268+14,6},
-	{"Cash 3",'casino_lucky_wheel_ptr',268+14,14},
-	{"Cash 4",'casino_lucky_wheel_ptr',268+14,19},
-	{"Discount",'casino_lucky_wheel_ptr',268+14,4},
-	{"Chips 1",'casino_lucky_wheel_ptr',268+14,3},
-	{"Chips 2",'casino_lucky_wheel_ptr',268+14,7},
-	{"Chips 3",'casino_lucky_wheel_ptr',268+14,10},
-	{"Chips 4",'casino_lucky_wheel_ptr',268+14,15},
-	{"Mystery",'casino_lucky_wheel_ptr',268+14,11},
-	{"Vehicle Podium",'casino_lucky_wheel_ptr',268+14,18},
+	{"Clothes 1",'casino_lucky_wheel_ptr',268+14,0};
+	{"Clothes 2",'casino_lucky_wheel_ptr',268+14,8};
+	{"Clothes 3",'casino_lucky_wheel_ptr',268+14,12};
+	{"Clothes 4",'casino_lucky_wheel_ptr',268+14,16};
+	{"RP 1",'casino_lucky_wheel_ptr',268+14,1};
+	{"RP 2",'casino_lucky_wheel_ptr',268+14,5};
+	{"RP 3",'casino_lucky_wheel_ptr',268+14,9};
+	{"RP 4",'casino_lucky_wheel_ptr',268+14,13};
+	{"RP 5",'casino_lucky_wheel_ptr',268+14,17};
+	{"Cash 1",'casino_lucky_wheel_ptr',268+14,2};
+	{"Cash 2",'casino_lucky_wheel_ptr',268+14,6};
+	{"Cash 3",'casino_lucky_wheel_ptr',268+14,14};
+	{"Cash 4",'casino_lucky_wheel_ptr',268+14,19};
+	{"Discount",'casino_lucky_wheel_ptr',268+14,4};
+	{"Chips 1",'casino_lucky_wheel_ptr',268+14,3};
+	{"Chips 2",'casino_lucky_wheel_ptr',268+14,7};
+	{"Chips 3",'casino_lucky_wheel_ptr',268+14,10};
+	{"Chips 4",'casino_lucky_wheel_ptr',268+14,15};
+	{"Mystery",'casino_lucky_wheel_ptr',268+14,11};
+	{"Vehicle Podium",'casino_lucky_wheel_ptr',268+14,18};
 }
 
 NClub = {
-	{"Sporting Goods",262145+23879},
-	{"American Import",262145+23880},
-	{"Pharmaceutical Research",262145+23881},
-	{"Organic Produce",262145+23882},
-	{"Printing And Copying",262145+23883},
-	{"Cash Creation",262145+23884},
-	{"Shipment and Cargo",262145+23885},
+	{"Sporting Goods",262145+23879};
+	{"American Import",262145+23880};
+	{"Pharmaceutical Research",262145+23881};
+	{"Organic Produce",262145+23882};
+	{"Printing And Copying",262145+23883};
+	{"Cash Creation",262145+23884};
+	{"Shipment and Cargo",262145+23885};
 }
 
 Special_Cargo = 
 {
-	{"1 Create",262145+15337},
-	{"2 Create",262145+15338},
-	{"3 Create",262145+15339},
-	{"4 Create",262145+15340},
-	{"5 Create",262145+15341},
-	{"6 Create",262145+15342},
-	{"7 Create",262145+15343},
-	{"8 Create",262145+15344},
-	{"9 Create",262145+15345},
-	{"10 Create",262145+15346},
-	{"11 Create",262145+15347},
-	{"12 Create",262145+15348},
-	{"13 Create",262145+15349},
-	{"14 Create",262145+15350},
-	{"15 Create",262145+15351},
-	{"16 Create",262145+15352},
-	{"17 Create",262145+15353},
-	{"18 Create",262145+15354},
-	{"19 Create",262145+15355},
-	{"20 Create",262145+15356},
-	{"21 Create",262145+15357},
+	{"1 Create",262145+15337};
+	{"2 Create",262145+15338};
+	{"3 Create",262145+15339};
+	{"4 Create",262145+15340};
+	{"5 Create",262145+15341};
+	{"6 Create",262145+15342};
+	{"7 Create",262145+15343};
+	{"8 Create",262145+15344};
+	{"9 Create",262145+15345};
+	{"10 Create",262145+15346};
+	{"11 Create",262145+15347};
+	{"12 Create",262145+15348};
+	{"13 Create",262145+15349};
+	{"14 Create",262145+15350};
+	{"15 Create",262145+15351};
+	{"16 Create",262145+15352};
+	{"17 Create",262145+15353};
+	{"18 Create",262145+15354};
+	{"19 Create",262145+15355};
+	{"20 Create",262145+15356};
+	{"21 Create",262145+15357};
 }
 
 Vehicle_Cargo = 
 {
-	{"STANDARD RANGE ",262145+18950},
-	{"MID RANGE ",262145+18951},
-	{"HIGH RANGE ",262145+18952},
-	{"UPGRADE COST[Showroom]",262145+18952},
-	{"UPGRADE COST[Specialist Dealer]",262145+18954},
-	{"Price Multiplier[Showroom]",262145+18955},
+	{"STANDARD RANGE ",262145+18950};
+	{"MID RANGE ",262145+18951};
+	{"HIGH RANGE ",262145+18952};
+	{"UPGRADE COST[Showroom]",262145+18952};
+	{"UPGRADE COST[Specialist Dealer]",262145+18954};
+	{"Price Multiplier[Showroom]",262145+18955};
 }
 
 Hangar_Mission = 
 {
-	{-1,"Not In Mission"},
-	{0,"Signal Jammer"},
-	{1,"Maverick"},
-	{2,"Terminal Base"},
-	{3,"Seabreeze Bombing"},
-	{4,"Cargo Plane 1/2"},
-	{5,"Rooftop Bombing"},
-	{7,"Merryweather Jet"},
-	{8,"Titan Rendezvous"},
-	{9,"Cargobob Infiltration"},
-	{10,"Rooftop Crates"},
-	{11,"Salvage Site"},
-	{12,"Epsilon"},
-	{13,"Stunts"},
-	{14,"Air Ambulance"},
-	{15,"Havok (Sell)"},
-	{16,"Seabreeze (Sell)"},
-	{17,"Mogul (Sell)"},
-	{20,"Hunter (Sell)"},
-	{21,"Bombushka (Sell)"},
-	{22,"Alpha-Z1 (Sell)"},
-	{23,"Skylift (Sell)"},
-	{24,"Cargobob (Sell)"},
-	{25,"Ultralight (Sell)"},
+	{-1,"Not In Mission"};
+	{0,"Signal Jammer"};
+	{1,"Maverick"};
+	{2,"Terminal Base"};
+	{3,"Seabreeze Bombing"};
+	{4,"Cargo Plane 1/2"};
+	{5,"Rooftop Bombing"};
+	{7,"Merryweather Jet"};
+	{8,"Titan Rendezvous"};
+	{9,"Cargobob Infiltration"};
+	{10,"Rooftop Crates"};
+	{11,"Salvage Site"};
+	{12,"Epsilon"};
+	{13,"Stunts"};
+	{14,"Air Ambulance"};
+	{15,"Havok (Sell)"};
+	{16,"Seabreeze (Sell)"};
+	{17,"Mogul (Sell)"};
+	{20,"Hunter (Sell)"};
+	{21,"Bombushka (Sell)"};
+	{22,"Alpha-Z1 (Sell)"};
+	{23,"Skylift (Sell)"};
+	{24,"Cargobob (Sell)"};
+	{25,"Ultralight (Sell)"};
 }
 
 MCnBunker = 
 {
-	{'Bunker',262145+21070},
-	{'Cocain',262145+16966},
-	{'Counterfeit Cash',262145+16965},
-	{'Meth Lab',262145+16967},
-	{'Weed Farm',262145+16968},
-	{'Document Forgery',262145+16964},
+	{'Bunker',262145+21070};
+	{'Cocain',262145+16966};
+	{'Counterfeit Cash',262145+16965};
+	{'Meth Lab',262145+16967};
+	{'Weed Farm',262145+16968};
+	{'Document Forgery',262145+16964};
 }
+
 ArenaWars = 
 {
-	{'AP 100',262145+23557},
-	{'AP 150',262145+23558},
-	{'AP 250',262145+23559},
-	{'EXP 1000',262145+23560},
-	{'EXP 2500',262145+23561},
-	{'EXP 5000',262145+23562},
-	{'Money 6000',262145+23563},
-	{'Money 8000',262145+23564},
-	{'Money 10000',262145+23565},
+	{'AP 100',262145+23557};
+	{'AP 150',262145+23558};
+	{'AP 250',262145+23559};
+	{'EXP 1000',262145+23560};
+	{'EXP 2500',262145+23561};
+	{'EXP 5000',262145+23562};
+	{'Money 6000',262145+23563};
+	{'Money 8000',262145+23564};
+	{'Money 10000',262145+23565};
 }
+
+business_controller = {
+	'Extend Jualan Bunker';
+	'Extend Jualan MC';
+	'Extend Timer Hangar';
+	'Special Cargo Extend Timer';
+	'Night Club Selling Cooldown';
+	'Script Special Cargo Selling Cooldown';
+	'Script Special Cargo Buying Cooldown';
+	'NC Timer Production';
+	'Safety AFK in Solo Public';
+	'Set Aim Assisted';
+	'Returning Player';
+	'Atomizer Festive Tint';
+  }
 -----------------------------------------------Cayo Perico Heist-------------------------------------------------------
 MP_Cayo_Approach = 
 {
-	{"Choose Approach","NULL"},
-	{"Submarine Only",65283},
-	{"Alkonost Only",65413},
-	{"Velum Only",65289},
-	{"Stealth Annhiliator Only",65425},
-	{"Patrol Boat Only",65313},
-	{"Longfin Only",65345},
-	{"All Vehicle",65535},
+	{"Choose Approach","NULL"};
+	{"Submarine Only",65283};
+	{"Alkonost Only",65413};
+	{"Velum Only",65289};
+	{"Stealth Annhiliator Only",65425};
+	{"Patrol Boat Only",65313};
+	{"Longfin Only",65345};
+	{"All Vehicle",65535};
 }
 MP_Cayo_Target = 
 {
-	{"Choose Target","NULL"},
-	{"Tequila",0},
-	{"Ruby Necklace",1},
-	{"Bearer Bonds",2},
-	{"Pink Diamond",3},
-	{"Madrazo Files",4},
-	{"Sapphire Panther",5},
+	{"Choose Target","NULL"};
+	{"Tequila",0};
+	{"Ruby Necklace",1};
+	{"Bearer Bonds",2};
+	{"Pink Diamond",3};
+	{"Madrazo Files",4};
+	{"Sapphire Panther",5};
 }
 MP_Cayo_Diff = 
 {
-	{"Choose Difficult","NULL"},
-	{"Normal",126823},
-	{"Hard",131055},
+	{"Choose Difficult","NULL"};
+	{"Normal",126823};
+	{"Hard",131055};
 }
 MP_Cayo_Truck = 
 {
-	{"Choose Truck Location","NULL"},
-	{"Airport",1},
-	{"North Dock",2},
-	{"Main Dock East",3},
-	{"Main Dock Wet",4},
-	{"Inside Compound",5},
+	{"Choose Truck Location","NULL"};
+	{"Airport",1};
+	{"North Dock",2};
+	{"Main Dock East",3};
+	{"Main Dock Wet",4};
+	{"Inside Compound",5};
 }
 MP_Cayo_Disrp =
 {
-	{"Choose Guard Disrp","NULL"},
-	{"Disruption 1",1},
-	{"Disruption 2",2},
-	{"Disruption 3",3},
+	{"Choose Guard Disrp","NULL"};
+	{"Disruption 1",1};
+	{"Disruption 2",2};
+	{"Disruption 3",3};
 }
 MP_Cayo_Weapon = 
 {
-	{"Choose Weapon Set","NULL"},
-	{"Aggressor",1},
-	{"Conspirator",2},
-	{"Crackshot",3},
-	{"Saboteur",4},
-	{"Marksman",5},
+	{"Choose Weapon Set","NULL"};
+	{"Aggressor",1};
+	{"Conspirator",2};
+	{"Crackshot",3};
+	{"Saboteur",4};
+	{"Marksman",5};
 }
 MP_Cayo_Boltcut = 
 {
-	{"Choose Boltcut","NULL"},
-	{"No Boltcut",0},
-	{"Boltcut 1",4641},
-	{"Boltcut 2",16708},
+	{"Choose Boltcut","NULL"};
+	{"No Boltcut",0};
+	{"Boltcut 1",4641};
+	{"Boltcut 2",16708};
 }
 MP_Cayo_Grap = 
 {
-	{"Choose Grappel","NULL"},
-	{"No Grappel",0},
-	{"Grappel 1",33024},
-	{"Grappel 2",33921},
+	{"Choose Grappel","NULL"};
+	{"No Grappel",0};
+	{"Grappel 1",33024};
+	{"Grappel 2",33921};
 }
 MP_Cayo_Uniform = 
 {
-	{"Choose Uniform","NULL"},
-	{"No Uniform",0},
-	{"Uniform 1",16770},
-	{"Uniform 2",16673},
+	{"Choose Uniform","NULL"};
+	{"No Uniform",0};
+	{"Uniform 1",16770};
+	{"Uniform 2",16673};
 }
 MP_Cayp_AI = 
 {
-	{"Choose AI","NULL"},
-	{"No AI",0},
-	{"All AI Used",63},
+	{"Choose AI","NULL"};
+	{"No AI",0};
+	{"All AI Used",63};
 }
 MP_Cayo_Target2 = 
 {
-	{'Choose Target','NULL'},
-    {'Sec Target 1',132,4237464,8934725,32,106,24},
-    {'Sec Target 2',6559764,28,42656,720971,131,48},
-    --{'Sec Target 3',-1,-1,-1,-1,-1,-1},
-    --{'Sec Target 4',259,1283,3331,3843,7939,8192},
-    --{'Sec Target 5',24},
+	{'Choose Target','NULL'};
+    {'Sec Target 1',132,4237464,8934725,32,106,24};
+    {'Sec Target 2',6559764,28,42656,720971,131,48};
+    --{'Sec Target 3',-1,-1,-1,-1,-1,-1};
+    --{'Sec Target 4',259,1283,3331,3843,7939,8192};
+    --{'Sec Target 5',24};
 }
 NULL_ARRAY =
 {
@@ -591,6 +630,7 @@ ReportStat = {
 	{'MPPLY_VOTED_OUT_QUIT',1};
 	{'MPPLY_IS_CHEATER_TIME',1};
 	{'MPPLY_WAS_I_BAD_SPORT',1};
+	{'MPPLY_CHEATER_CLEAR_TIME',1};
 	{'MP'..MPX..'_CHEAT_BITSET',1};
 	{'MP'..MPX..'_BAD_SPORT_BITSET',1};
 }
@@ -705,7 +745,7 @@ MP0_DUGGAN =
 }
 MP1_DUGGAN = 
 {
-	{"Duggan Shipment","Unw"},
+	{"Duggan Shipment","Unw"};
 	{"DUGGAN 0","MP1_H3OPT_DISRUPTSHIP"};
 	{"DUGGAN 1","MP1_H3OPT_DISRUPTSHIP"};
 	{"DUGGAN 2","MP1_H3OPT_DISRUPTSHIP"};
@@ -918,7 +958,7 @@ aggressive_1 = {
 
 
 doomsday_1 = {
-	{'MP1_GANGOPS_FLOW_MISSION_PROG',-1},
+	{'MP1_GANGOPS_FLOW_MISSION_PROG',-1};
 	{'MP1_GANGOPS_FLOW_NOTIFICATIONS',1557}
 }
 
@@ -973,631 +1013,631 @@ Blue =
 }
 
 PRagdoll = {
-	"[[[[[playercountptr]+88]+180]+B0]+1C8]+10B8","[[[[[playercountptr]+88]+188]+B0]+1C8]+10B8"
-,"[[[[[playercountptr]+88]+190]+B0]+1C8]+10B8","[[[[[playercountptr]+88]+198]+B0]+1C8]+10B8"
-,"[[[[[playercountptr]+88]+1A0]+B0]+1C8]+10B8","[[[[[playercountptr]+88]+1A8]+B0]+1C8]+10B8"
-,"[[[[[playercountptr]+88]+1B0]+B0]+1C8]+10B8","[[[[[playercountptr]+88]+1B8]+B0]+1C8]+10B8"
-,"[[[[[playercountptr]+88]+1C0]+B0]+1C8]+10B8","[[[[[playercountptr]+88]+1C8]+B0]+1C8]+10B8"
-,"[[[[[playercountptr]+88]+1D0]+B0]+1C8]+10B8","[[[[[playercountptr]+88]+1D8]+B0]+1C8]+10B8"
-,"[[[[[playercountptr]+88]+1E0]+B0]+1C8]+10B8","[[[[[playercountptr]+88]+1E8]+B0]+1C8]+10B8"
-,"[[[[[playercountptr]+88]+1F0]+B0]+1C8]+10B8","[[[[[playercountptr]+88]+1F8]+B0]+1C8]+10B8"
-,"[[[[[playercountptr]+88]+200]+B0]+1C8]+10B8","[[[[[playercountptr]+88]+208]+B0]+1C8]+10B8"
-,"[[[[[playercountptr]+88]+210]+B0]+1C8]+10B8","[[[[[playercountptr]+88]+218]+B0]+1C8]+10B8"
-,"[[[[[playercountptr]+88]+220]+B0]+1C8]+10B8","[[[[[playercountptr]+88]+228]+B0]+1C8]+10B8"
-,"[[[[[playercountptr]+88]+230]+B0]+1C8]+10B8","[[[[[playercountptr]+88]+238]+B0]+1C8]+10B8"
-,"[[[[[playercountptr]+88]+240]+B0]+1C8]+10B8","[[[[[playercountptr]+88]+248]+B0]+1C8]+10B8"
-,"[[[[[playercountptr]+88]+250]+B0]+1C8]+10B8","[[[[[playercountptr]+88]+258]+B0]+1C8]+10B8"
-,"[[[[[playercountptr]+88]+260]+B0]+1C8]+10B8","[[[[[playercountptr]+88]+268]+B0]+1C8]+10B8"
-,"[[[[[playercountptr]+88]+270]+B0]+1C8]+10B8"
+	"[[[[[playercountptr]+88]+180]+A0]+1E8]+10B8","[[[[[playercountptr]+88]+188]+A0]+1E8]+10B8"
+,"[[[[[playercountptr]+88]+190]+A0]+1E8]+10B8","[[[[[playercountptr]+88]+198]+A0]+1E8]+10B8"
+,"[[[[[playercountptr]+88]+1A0]+A0]+1E8]+10B8","[[[[[playercountptr]+88]+1A8]+A0]+1E8]+10B8"
+,"[[[[[playercountptr]+88]+1B0]+A0]+1E8]+10B8","[[[[[playercountptr]+88]+1B8]+A0]+1E8]+10B8"
+,"[[[[[playercountptr]+88]+1C0]+A0]+1E8]+10B8","[[[[[playercountptr]+88]+1C8]+A0]+1E8]+10B8"
+,"[[[[[playercountptr]+88]+1D0]+A0]+1E8]+10B8","[[[[[playercountptr]+88]+1D8]+A0]+1E8]+10B8"
+,"[[[[[playercountptr]+88]+1E0]+A0]+1E8]+10B8","[[[[[playercountptr]+88]+1E8]+A0]+1E8]+10B8"
+,"[[[[[playercountptr]+88]+1F0]+A0]+1E8]+10B8","[[[[[playercountptr]+88]+1F8]+A0]+1E8]+10B8"
+,"[[[[[playercountptr]+88]+200]+A0]+1E8]+10B8","[[[[[playercountptr]+88]+208]+A0]+1E8]+10B8"
+,"[[[[[playercountptr]+88]+210]+A0]+1E8]+10B8","[[[[[playercountptr]+88]+218]+A0]+1E8]+10B8"
+,"[[[[[playercountptr]+88]+220]+A0]+1E8]+10B8","[[[[[playercountptr]+88]+228]+A0]+1E8]+10B8"
+,"[[[[[playercountptr]+88]+230]+A0]+1E8]+10B8","[[[[[playercountptr]+88]+238]+A0]+1E8]+10B8"
+,"[[[[[playercountptr]+88]+240]+A0]+1E8]+10B8","[[[[[playercountptr]+88]+248]+A0]+1E8]+10B8"
+,"[[[[[playercountptr]+88]+250]+A0]+1E8]+10B8","[[[[[playercountptr]+88]+258]+A0]+1E8]+10B8"
+,"[[[[[playercountptr]+88]+260]+A0]+1E8]+10B8","[[[[[playercountptr]+88]+268]+A0]+1E8]+10B8"
+,"[[[[[playercountptr]+88]+270]+A0]+1E8]+10B8"
 }
 
 
 PLGod = 
 {
-"[[[[[playercountptr]+88]+180]+B0]+1C8]+189","[[[[[playercountptr]+88]+188]+B0]+1C8]+189"
-,"[[[[[playercountptr]+88]+190]+B0]+1C8]+189","[[[[[playercountptr]+88]+198]+B0]+1C8]+189"
-,"[[[[[playercountptr]+88]+1A0]+B0]+1C8]+189","[[[[[playercountptr]+88]+1A8]+B0]+1C8]+189"
-,"[[[[[playercountptr]+88]+1B0]+B0]+1C8]+189","[[[[[playercountptr]+88]+1B8]+B0]+1C8]+189"
-,"[[[[[playercountptr]+88]+1C0]+B0]+1C8]+189","[[[[[playercountptr]+88]+1C8]+B0]+1C8]+189"
-,"[[[[[playercountptr]+88]+1D0]+B0]+1C8]+189","[[[[[playercountptr]+88]+1D8]+B0]+1C8]+189"
-,"[[[[[playercountptr]+88]+1E0]+B0]+1C8]+189","[[[[[playercountptr]+88]+1E8]+B0]+1C8]+189"
-,"[[[[[playercountptr]+88]+1F0]+B0]+1C8]+189","[[[[[playercountptr]+88]+1F8]+B0]+1C8]+189"
-,"[[[[[playercountptr]+88]+200]+B0]+1C8]+189","[[[[[playercountptr]+88]+208]+B0]+1C8]+189"
-,"[[[[[playercountptr]+88]+210]+B0]+1C8]+189","[[[[[playercountptr]+88]+218]+B0]+1C8]+189"
-,"[[[[[playercountptr]+88]+220]+B0]+1C8]+189","[[[[[playercountptr]+88]+228]+B0]+1C8]+189"
-,"[[[[[playercountptr]+88]+230]+B0]+1C8]+189","[[[[[playercountptr]+88]+238]+B0]+1C8]+189"
-,"[[[[[playercountptr]+88]+240]+B0]+1C8]+189","[[[[[playercountptr]+88]+248]+B0]+1C8]+189"
-,"[[[[[playercountptr]+88]+250]+B0]+1C8]+189","[[[[[playercountptr]+88]+258]+B0]+1C8]+189"
-,"[[[[[playercountptr]+88]+260]+B0]+1C8]+189","[[[[[playercountptr]+88]+268]+B0]+1C8]+189"
-,"[[[[[playercountptr]+88]+270]+B0]+1C8]+189","[[[[[playercountptr]+88]+278]+B0]+1C8]+189"
-,"[[[[[playercountptr]+88]+280]+B0]+1C8]+189"
+"[[[[[playercountptr]+88]+180]+A0]+1E8]+189","[[[[[playercountptr]+88]+188]+A0]+1E8]+189"
+,"[[[[[playercountptr]+88]+190]+A0]+1E8]+189","[[[[[playercountptr]+88]+198]+A0]+1E8]+189"
+,"[[[[[playercountptr]+88]+1A0]+A0]+1E8]+189","[[[[[playercountptr]+88]+1A8]+A0]+1E8]+189"
+,"[[[[[playercountptr]+88]+1B0]+A0]+1E8]+189","[[[[[playercountptr]+88]+1B8]+A0]+1E8]+189"
+,"[[[[[playercountptr]+88]+1C0]+A0]+1E8]+189","[[[[[playercountptr]+88]+1C8]+A0]+1E8]+189"
+,"[[[[[playercountptr]+88]+1D0]+A0]+1E8]+189","[[[[[playercountptr]+88]+1D8]+A0]+1E8]+189"
+,"[[[[[playercountptr]+88]+1E0]+A0]+1E8]+189","[[[[[playercountptr]+88]+1E8]+A0]+1E8]+189"
+,"[[[[[playercountptr]+88]+1F0]+A0]+1E8]+189","[[[[[playercountptr]+88]+1F8]+A0]+1E8]+189"
+,"[[[[[playercountptr]+88]+200]+A0]+1E8]+189","[[[[[playercountptr]+88]+208]+A0]+1E8]+189"
+,"[[[[[playercountptr]+88]+210]+A0]+1E8]+189","[[[[[playercountptr]+88]+218]+A0]+1E8]+189"
+,"[[[[[playercountptr]+88]+220]+A0]+1E8]+189","[[[[[playercountptr]+88]+228]+A0]+1E8]+189"
+,"[[[[[playercountptr]+88]+230]+A0]+1E8]+189","[[[[[playercountptr]+88]+238]+A0]+1E8]+189"
+,"[[[[[playercountptr]+88]+240]+A0]+1E8]+189","[[[[[playercountptr]+88]+248]+A0]+1E8]+189"
+,"[[[[[playercountptr]+88]+250]+A0]+1E8]+189","[[[[[playercountptr]+88]+258]+A0]+1E8]+189"
+,"[[[[[playercountptr]+88]+260]+A0]+1E8]+189","[[[[[playercountptr]+88]+268]+A0]+1E8]+189"
+,"[[[[[playercountptr]+88]+270]+A0]+1E8]+189","[[[[[playercountptr]+88]+278]+A0]+1E8]+189"
+,"[[[[[playercountptr]+88]+280]+A0]+1E8]+189"
 }
 
 PLHP = {
 
-	{"[[[[[playercountptr]+88]+180]+B0]+1C8]+280","[[[[[playercountptr]+88]+180]+B0]+1C8]+2A0","[[[[[playercountptr]+88]+180]+B0]+1C8]+14E0"}, 
-	{"[[[[[playercountptr]+88]+188]+B0]+1C8]+280","[[[[[playercountptr]+88]+188]+B0]+1C8]+2A0","[[[[[playercountptr]+88]+188]+B0]+1C8]+14E0"}, 
-	{"[[[[[playercountptr]+88]+190]+B0]+1C8]+280","[[[[[playercountptr]+88]+190]+B0]+1C8]+2A0","[[[[[playercountptr]+88]+190]+B0]+1C8]+14E0"}, 
-	{"[[[[[playercountptr]+88]+198]+B0]+1C8]+280","[[[[[playercountptr]+88]+198]+B0]+1C8]+2A0","[[[[[playercountptr]+88]+198]+B0]+1C8]+14E0"}, 
-	{"[[[[[playercountptr]+88]+1A0]+B0]+1C8]+280","[[[[[playercountptr]+88]+1A0]+B0]+1C8]+2A0","[[[[[playercountptr]+88]+1A0]+B0]+1C8]+14E0"}, 
-	{"[[[[[playercountptr]+88]+1A8]+B0]+1C8]+280","[[[[[playercountptr]+88]+1A8]+B0]+1C8]+2A0","[[[[[playercountptr]+88]+1A8]+B0]+1C8]+14E0"}, 
-	{"[[[[[playercountptr]+88]+1B0]+B0]+1C8]+280","[[[[[playercountptr]+88]+1B0]+B0]+1C8]+2A0","[[[[[playercountptr]+88]+1B0]+B0]+1C8]+14E0"}, 
-	{"[[[[[playercountptr]+88]+1B8]+B0]+1C8]+280","[[[[[playercountptr]+88]+1B8]+B0]+1C8]+2A0","[[[[[playercountptr]+88]+1B8]+B0]+1C8]+14E0"}, 
-	{"[[[[[playercountptr]+88]+1C0]+B0]+1C8]+280","[[[[[playercountptr]+88]+1C0]+B0]+1C8]+2A0","[[[[[playercountptr]+88]+1C0]+B0]+1C8]+14E0"}, 
-	{"[[[[[playercountptr]+88]+1C8]+B0]+1C8]+280","[[[[[playercountptr]+88]+1C8]+B0]+1C8]+2A0","[[[[[playercountptr]+88]+1C8]+B0]+1C8]+14E0"}, 
-	{"[[[[[playercountptr]+88]+1D0]+B0]+1C8]+280","[[[[[playercountptr]+88]+1D0]+B0]+1C8]+2A0","[[[[[playercountptr]+88]+1D0]+B0]+1C8]+14E0"}, 
-	{"[[[[[playercountptr]+88]+1D8]+B0]+1C8]+280","[[[[[playercountptr]+88]+1D8]+B0]+1C8]+2A0","[[[[[playercountptr]+88]+1D8]+B0]+1C8]+14E0"}, 
-	{"[[[[[playercountptr]+88]+1E0]+B0]+1C8]+280","[[[[[playercountptr]+88]+1E0]+B0]+1C8]+2A0","[[[[[playercountptr]+88]+1E0]+B0]+1C8]+14E0"}, 
-	{"[[[[[playercountptr]+88]+1E8]+B0]+1C8]+280","[[[[[playercountptr]+88]+1E8]+B0]+1C8]+2A0","[[[[[playercountptr]+88]+1E8]+B0]+1C8]+14E0"}, 
-	{"[[[[[playercountptr]+88]+1F0]+B0]+1C8]+280","[[[[[playercountptr]+88]+1F0]+B0]+1C8]+2A0","[[[[[playercountptr]+88]+1F0]+B0]+1C8]+14E0"}, 
-	{"[[[[[playercountptr]+88]+1F8]+B0]+1C8]+280","[[[[[playercountptr]+88]+1F8]+B0]+1C8]+2A0","[[[[[playercountptr]+88]+1F8]+B0]+1C8]+14E0"}, 
-	{"[[[[[playercountptr]+88]+200]+B0]+1C8]+280","[[[[[playercountptr]+88]+200]+B0]+1C8]+2A0","[[[[[playercountptr]+88]+200]+B0]+1C8]+14E0"}, 
-	{"[[[[[playercountptr]+88]+208]+B0]+1C8]+280","[[[[[playercountptr]+88]+208]+B0]+1C8]+2A0","[[[[[playercountptr]+88]+208]+B0]+1C8]+14E0"}, 
-	{"[[[[[playercountptr]+88]+210]+B0]+1C8]+280","[[[[[playercountptr]+88]+210]+B0]+1C8]+2A0","[[[[[playercountptr]+88]+210]+B0]+1C8]+14E0"}, 
-	{"[[[[[playercountptr]+88]+218]+B0]+1C8]+280","[[[[[playercountptr]+88]+218]+B0]+1C8]+2A0","[[[[[playercountptr]+88]+218]+B0]+1C8]+14E0"}, 
-	{"[[[[[playercountptr]+88]+220]+B0]+1C8]+280","[[[[[playercountptr]+88]+220]+B0]+1C8]+2A0","[[[[[playercountptr]+88]+220]+B0]+1C8]+14E0"}, 
-	{"[[[[[playercountptr]+88]+228]+B0]+1C8]+280","[[[[[playercountptr]+88]+228]+B0]+1C8]+2A0","[[[[[playercountptr]+88]+228]+B0]+1C8]+14E0"}, 
-	{"[[[[[playercountptr]+88]+230]+B0]+1C8]+280","[[[[[playercountptr]+88]+230]+B0]+1C8]+2A0","[[[[[playercountptr]+88]+230]+B0]+1C8]+14E0"}, 
-	{"[[[[[playercountptr]+88]+238]+B0]+1C8]+280","[[[[[playercountptr]+88]+238]+B0]+1C8]+2A0","[[[[[playercountptr]+88]+238]+B0]+1C8]+14E0"}, 
-	{"[[[[[playercountptr]+88]+240]+B0]+1C8]+280","[[[[[playercountptr]+88]+240]+B0]+1C8]+2A0","[[[[[playercountptr]+88]+240]+B0]+1C8]+14E0"}, 
-	{"[[[[[playercountptr]+88]+248]+B0]+1C8]+280","[[[[[playercountptr]+88]+248]+B0]+1C8]+2A0","[[[[[playercountptr]+88]+248]+B0]+1C8]+14E0"}, 
-	{"[[[[[playercountptr]+88]+250]+B0]+1C8]+280","[[[[[playercountptr]+88]+250]+B0]+1C8]+2A0","[[[[[playercountptr]+88]+250]+B0]+1C8]+14E0"}, 
-	{"[[[[[playercountptr]+88]+258]+B0]+1C8]+280","[[[[[playercountptr]+88]+258]+B0]+1C8]+2A0","[[[[[playercountptr]+88]+258]+B0]+1C8]+14E0"}, 
-	{"[[[[[playercountptr]+88]+260]+B0]+1C8]+280","[[[[[playercountptr]+88]+260]+B0]+1C8]+2A0","[[[[[playercountptr]+88]+260]+B0]+1C8]+14E0"}, 
-	{"[[[[[playercountptr]+88]+268]+B0]+1C8]+280","[[[[[playercountptr]+88]+268]+B0]+1C8]+2A0","[[[[[playercountptr]+88]+268]+B0]+1C8]+14E0"}, 
-	{"[[[[[playercountptr]+88]+270]+B0]+1C8]+280","[[[[[playercountptr]+88]+270]+B0]+1C8]+2A0","[[[[[playercountptr]+88]+270]+B0]+1C8]+14E0"}, 
+	{"[[[[[playercountptr]+88]+180]+A0]+1E8]+280","[[[[[playercountptr]+88]+180]+A0]+1E8]+2A0","[[[[[playercountptr]+88]+180]+A0]+1E8]+14E0"}; 
+	{"[[[[[playercountptr]+88]+188]+A0]+1E8]+280","[[[[[playercountptr]+88]+188]+A0]+1E8]+2A0","[[[[[playercountptr]+88]+188]+A0]+1E8]+14E0"}; 
+	{"[[[[[playercountptr]+88]+190]+A0]+1E8]+280","[[[[[playercountptr]+88]+190]+A0]+1E8]+2A0","[[[[[playercountptr]+88]+190]+A0]+1E8]+14E0"}; 
+	{"[[[[[playercountptr]+88]+198]+A0]+1E8]+280","[[[[[playercountptr]+88]+198]+A0]+1E8]+2A0","[[[[[playercountptr]+88]+198]+A0]+1E8]+14E0"}; 
+	{"[[[[[playercountptr]+88]+1A0]+A0]+1E8]+280","[[[[[playercountptr]+88]+1A0]+A0]+1E8]+2A0","[[[[[playercountptr]+88]+1A0]+A0]+1E8]+14E0"}; 
+	{"[[[[[playercountptr]+88]+1A8]+A0]+1E8]+280","[[[[[playercountptr]+88]+1A8]+A0]+1E8]+2A0","[[[[[playercountptr]+88]+1A8]+A0]+1E8]+14E0"}; 
+	{"[[[[[playercountptr]+88]+1B0]+A0]+1E8]+280","[[[[[playercountptr]+88]+1B0]+A0]+1E8]+2A0","[[[[[playercountptr]+88]+1B0]+A0]+1E8]+14E0"}; 
+	{"[[[[[playercountptr]+88]+1B8]+A0]+1E8]+280","[[[[[playercountptr]+88]+1B8]+A0]+1E8]+2A0","[[[[[playercountptr]+88]+1B8]+A0]+1E8]+14E0"}; 
+	{"[[[[[playercountptr]+88]+1C0]+A0]+1E8]+280","[[[[[playercountptr]+88]+1C0]+A0]+1E8]+2A0","[[[[[playercountptr]+88]+1C0]+A0]+1E8]+14E0"}; 
+	{"[[[[[playercountptr]+88]+1C8]+A0]+1E8]+280","[[[[[playercountptr]+88]+1C8]+A0]+1E8]+2A0","[[[[[playercountptr]+88]+1C8]+A0]+1E8]+14E0"}; 
+	{"[[[[[playercountptr]+88]+1D0]+A0]+1E8]+280","[[[[[playercountptr]+88]+1D0]+A0]+1E8]+2A0","[[[[[playercountptr]+88]+1D0]+A0]+1E8]+14E0"}; 
+	{"[[[[[playercountptr]+88]+1D8]+A0]+1E8]+280","[[[[[playercountptr]+88]+1D8]+A0]+1E8]+2A0","[[[[[playercountptr]+88]+1D8]+A0]+1E8]+14E0"}; 
+	{"[[[[[playercountptr]+88]+1E0]+A0]+1E8]+280","[[[[[playercountptr]+88]+1E0]+A0]+1E8]+2A0","[[[[[playercountptr]+88]+1E0]+A0]+1E8]+14E0"}; 
+	{"[[[[[playercountptr]+88]+1E8]+A0]+1E8]+280","[[[[[playercountptr]+88]+1E8]+A0]+1E8]+2A0","[[[[[playercountptr]+88]+1E8]+A0]+1E8]+14E0"}; 
+	{"[[[[[playercountptr]+88]+1F0]+A0]+1E8]+280","[[[[[playercountptr]+88]+1F0]+A0]+1E8]+2A0","[[[[[playercountptr]+88]+1F0]+A0]+1E8]+14E0"}; 
+	{"[[[[[playercountptr]+88]+1F8]+A0]+1E8]+280","[[[[[playercountptr]+88]+1F8]+A0]+1E8]+2A0","[[[[[playercountptr]+88]+1F8]+A0]+1E8]+14E0"}; 
+	{"[[[[[playercountptr]+88]+200]+A0]+1E8]+280","[[[[[playercountptr]+88]+200]+A0]+1E8]+2A0","[[[[[playercountptr]+88]+200]+A0]+1E8]+14E0"}; 
+	{"[[[[[playercountptr]+88]+208]+A0]+1E8]+280","[[[[[playercountptr]+88]+208]+A0]+1E8]+2A0","[[[[[playercountptr]+88]+208]+A0]+1E8]+14E0"}; 
+	{"[[[[[playercountptr]+88]+210]+A0]+1E8]+280","[[[[[playercountptr]+88]+210]+A0]+1E8]+2A0","[[[[[playercountptr]+88]+210]+A0]+1E8]+14E0"}; 
+	{"[[[[[playercountptr]+88]+218]+A0]+1E8]+280","[[[[[playercountptr]+88]+218]+A0]+1E8]+2A0","[[[[[playercountptr]+88]+218]+A0]+1E8]+14E0"}; 
+	{"[[[[[playercountptr]+88]+220]+A0]+1E8]+280","[[[[[playercountptr]+88]+220]+A0]+1E8]+2A0","[[[[[playercountptr]+88]+220]+A0]+1E8]+14E0"}; 
+	{"[[[[[playercountptr]+88]+228]+A0]+1E8]+280","[[[[[playercountptr]+88]+228]+A0]+1E8]+2A0","[[[[[playercountptr]+88]+228]+A0]+1E8]+14E0"}; 
+	{"[[[[[playercountptr]+88]+230]+A0]+1E8]+280","[[[[[playercountptr]+88]+230]+A0]+1E8]+2A0","[[[[[playercountptr]+88]+230]+A0]+1E8]+14E0"}; 
+	{"[[[[[playercountptr]+88]+238]+A0]+1E8]+280","[[[[[playercountptr]+88]+238]+A0]+1E8]+2A0","[[[[[playercountptr]+88]+238]+A0]+1E8]+14E0"}; 
+	{"[[[[[playercountptr]+88]+240]+A0]+1E8]+280","[[[[[playercountptr]+88]+240]+A0]+1E8]+2A0","[[[[[playercountptr]+88]+240]+A0]+1E8]+14E0"}; 
+	{"[[[[[playercountptr]+88]+248]+A0]+1E8]+280","[[[[[playercountptr]+88]+248]+A0]+1E8]+2A0","[[[[[playercountptr]+88]+248]+A0]+1E8]+14E0"}; 
+	{"[[[[[playercountptr]+88]+250]+A0]+1E8]+280","[[[[[playercountptr]+88]+250]+A0]+1E8]+2A0","[[[[[playercountptr]+88]+250]+A0]+1E8]+14E0"}; 
+	{"[[[[[playercountptr]+88]+258]+A0]+1E8]+280","[[[[[playercountptr]+88]+258]+A0]+1E8]+2A0","[[[[[playercountptr]+88]+258]+A0]+1E8]+14E0"}; 
+	{"[[[[[playercountptr]+88]+260]+A0]+1E8]+280","[[[[[playercountptr]+88]+260]+A0]+1E8]+2A0","[[[[[playercountptr]+88]+260]+A0]+1E8]+14E0"}; 
+	{"[[[[[playercountptr]+88]+268]+A0]+1E8]+280","[[[[[playercountptr]+88]+268]+A0]+1E8]+2A0","[[[[[playercountptr]+88]+268]+A0]+1E8]+14E0"}; 
+	{"[[[[[playercountptr]+88]+270]+A0]+1E8]+280","[[[[[playercountptr]+88]+270]+A0]+1E8]+2A0","[[[[[playercountptr]+88]+270]+A0]+1E8]+14E0"}; 
 	
 }
 
 PLisMAXtHP = {
-	"[[[[[playercountptr]+88]+180]+B0]+1C8]+2A0","[[[[[playercountptr]+88]+188]+B0]+1C8]+2A0"
-,"[[[[[playercountptr]+88]+190]+B0]+1C8]+2A0","[[[[[playercountptr]+88]+198]+B0]+1C8]+2A0"
-,"[[[[[playercountptr]+88]+1A0]+B0]+1C8]+2A0","[[[[[playercountptr]+88]+1A8]+B0]+1C8]+2A0"
-,"[[[[[playercountptr]+88]+1B0]+B0]+1C8]+2A0","[[[[[playercountptr]+88]+1B8]+B0]+1C8]+2A0"
-,"[[[[[playercountptr]+88]+1C0]+B0]+1C8]+2A0","[[[[[playercountptr]+88]+1C8]+B0]+1C8]+2A0"
-,"[[[[[playercountptr]+88]+1D0]+B0]+1C8]+2A0","[[[[[playercountptr]+88]+1D8]+B0]+1C8]+2A0"
-,"[[[[[playercountptr]+88]+1E0]+B0]+1C8]+2A0","[[[[[playercountptr]+88]+1E8]+B0]+1C8]+2A0"
-,"[[[[[playercountptr]+88]+1F0]+B0]+1C8]+2A0","[[[[[playercountptr]+88]+1F8]+B0]+1C8]+2A0"
-,"[[[[[playercountptr]+88]+200]+B0]+1C8]+2A0","[[[[[playercountptr]+88]+208]+B0]+1C8]+2A0"
-,"[[[[[playercountptr]+88]+210]+B0]+1C8]+2A0","[[[[[playercountptr]+88]+218]+B0]+1C8]+2A0"
-,"[[[[[playercountptr]+88]+220]+B0]+1C8]+2A0","[[[[[playercountptr]+88]+228]+B0]+1C8]+2A0"
-,"[[[[[playercountptr]+88]+230]+B0]+1C8]+2A0","[[[[[playercountptr]+88]+238]+B0]+1C8]+2A0"
-,"[[[[[playercountptr]+88]+240]+B0]+1C8]+2A0","[[[[[playercountptr]+88]+248]+B0]+1C8]+2A0"
-,"[[[[[playercountptr]+88]+250]+B0]+1C8]+2A0","[[[[[playercountptr]+88]+258]+B0]+1C8]+2A0"
-,"[[[[[playercountptr]+88]+260]+B0]+1C8]+2A0","[[[[[playercountptr]+88]+268]+B0]+1C8]+2A0"
-,"[[[[[playercountptr]+88]+270]+B0]+1C8]+2A0"
+	"[[[[[playercountptr]+88]+180]+A0]+1E8]+2A0","[[[[[playercountptr]+88]+188]+A0]+1E8]+2A0"
+,"[[[[[playercountptr]+88]+190]+A0]+1E8]+2A0","[[[[[playercountptr]+88]+198]+A0]+1E8]+2A0"
+,"[[[[[playercountptr]+88]+1A0]+A0]+1E8]+2A0","[[[[[playercountptr]+88]+1A8]+A0]+1E8]+2A0"
+,"[[[[[playercountptr]+88]+1B0]+A0]+1E8]+2A0","[[[[[playercountptr]+88]+1B8]+A0]+1E8]+2A0"
+,"[[[[[playercountptr]+88]+1C0]+A0]+1E8]+2A0","[[[[[playercountptr]+88]+1C8]+A0]+1E8]+2A0"
+,"[[[[[playercountptr]+88]+1D0]+A0]+1E8]+2A0","[[[[[playercountptr]+88]+1D8]+A0]+1E8]+2A0"
+,"[[[[[playercountptr]+88]+1E0]+A0]+1E8]+2A0","[[[[[playercountptr]+88]+1E8]+A0]+1E8]+2A0"
+,"[[[[[playercountptr]+88]+1F0]+A0]+1E8]+2A0","[[[[[playercountptr]+88]+1F8]+A0]+1E8]+2A0"
+,"[[[[[playercountptr]+88]+200]+A0]+1E8]+2A0","[[[[[playercountptr]+88]+208]+A0]+1E8]+2A0"
+,"[[[[[playercountptr]+88]+210]+A0]+1E8]+2A0","[[[[[playercountptr]+88]+218]+A0]+1E8]+2A0"
+,"[[[[[playercountptr]+88]+220]+A0]+1E8]+2A0","[[[[[playercountptr]+88]+228]+A0]+1E8]+2A0"
+,"[[[[[playercountptr]+88]+230]+A0]+1E8]+2A0","[[[[[playercountptr]+88]+238]+A0]+1E8]+2A0"
+,"[[[[[playercountptr]+88]+240]+A0]+1E8]+2A0","[[[[[playercountptr]+88]+248]+A0]+1E8]+2A0"
+,"[[[[[playercountptr]+88]+250]+A0]+1E8]+2A0","[[[[[playercountptr]+88]+258]+A0]+1E8]+2A0"
+,"[[[[[playercountptr]+88]+260]+A0]+1E8]+2A0","[[[[[playercountptr]+88]+268]+A0]+1E8]+2A0"
+,"[[[[[playercountptr]+88]+270]+A0]+1E8]+2A0"
 }
 
 PListHP = {
-	"[[[[[playercountptr]+88]+180]+B0]+1C8]+280","[[[[[playercountptr]+88]+188]+B0]+1C8]+280"
-,"[[[[[playercountptr]+88]+190]+B0]+1C8]+280","[[[[[playercountptr]+88]+198]+B0]+1C8]+280"
-,"[[[[[playercountptr]+88]+1A0]+B0]+1C8]+280","[[[[[playercountptr]+88]+1A8]+B0]+1C8]+280"
-,"[[[[[playercountptr]+88]+1B0]+B0]+1C8]+280","[[[[[playercountptr]+88]+1B8]+B0]+1C8]+280"
-,"[[[[[playercountptr]+88]+1C0]+B0]+1C8]+280","[[[[[playercountptr]+88]+1C8]+B0]+1C8]+280"
-,"[[[[[playercountptr]+88]+1D0]+B0]+1C8]+280","[[[[[playercountptr]+88]+1D8]+B0]+1C8]+280"
-,"[[[[[playercountptr]+88]+1E0]+B0]+1C8]+280","[[[[[playercountptr]+88]+1E8]+B0]+1C8]+280"
-,"[[[[[playercountptr]+88]+1F0]+B0]+1C8]+280","[[[[[playercountptr]+88]+1F8]+B0]+1C8]+280"
-,"[[[[[playercountptr]+88]+200]+B0]+1C8]+280","[[[[[playercountptr]+88]+208]+B0]+1C8]+280"
-,"[[[[[playercountptr]+88]+210]+B0]+1C8]+280","[[[[[playercountptr]+88]+218]+B0]+1C8]+280"
-,"[[[[[playercountptr]+88]+220]+B0]+1C8]+280","[[[[[playercountptr]+88]+228]+B0]+1C8]+280"
-,"[[[[[playercountptr]+88]+230]+B0]+1C8]+280","[[[[[playercountptr]+88]+238]+B0]+1C8]+280"
-,"[[[[[playercountptr]+88]+240]+B0]+1C8]+280","[[[[[playercountptr]+88]+248]+B0]+1C8]+280"
-,"[[[[[playercountptr]+88]+250]+B0]+1C8]+280","[[[[[playercountptr]+88]+258]+B0]+1C8]+280"
-,"[[[[[playercountptr]+88]+260]+B0]+1C8]+280","[[[[[playercountptr]+88]+268]+B0]+1C8]+280"
-,"[[[[[playercountptr]+88]+270]+B0]+1C8]+280"
+	"[[[[[playercountptr]+88]+180]+A0]+1E8]+280","[[[[[playercountptr]+88]+188]+A0]+1E8]+280"
+,"[[[[[playercountptr]+88]+190]+A0]+1E8]+280","[[[[[playercountptr]+88]+198]+A0]+1E8]+280"
+,"[[[[[playercountptr]+88]+1A0]+A0]+1E8]+280","[[[[[playercountptr]+88]+1A8]+A0]+1E8]+280"
+,"[[[[[playercountptr]+88]+1B0]+A0]+1E8]+280","[[[[[playercountptr]+88]+1B8]+A0]+1E8]+280"
+,"[[[[[playercountptr]+88]+1C0]+A0]+1E8]+280","[[[[[playercountptr]+88]+1C8]+A0]+1E8]+280"
+,"[[[[[playercountptr]+88]+1D0]+A0]+1E8]+280","[[[[[playercountptr]+88]+1D8]+A0]+1E8]+280"
+,"[[[[[playercountptr]+88]+1E0]+A0]+1E8]+280","[[[[[playercountptr]+88]+1E8]+A0]+1E8]+280"
+,"[[[[[playercountptr]+88]+1F0]+A0]+1E8]+280","[[[[[playercountptr]+88]+1F8]+A0]+1E8]+280"
+,"[[[[[playercountptr]+88]+200]+A0]+1E8]+280","[[[[[playercountptr]+88]+208]+A0]+1E8]+280"
+,"[[[[[playercountptr]+88]+210]+A0]+1E8]+280","[[[[[playercountptr]+88]+218]+A0]+1E8]+280"
+,"[[[[[playercountptr]+88]+220]+A0]+1E8]+280","[[[[[playercountptr]+88]+228]+A0]+1E8]+280"
+,"[[[[[playercountptr]+88]+230]+A0]+1E8]+280","[[[[[playercountptr]+88]+238]+A0]+1E8]+280"
+,"[[[[[playercountptr]+88]+240]+A0]+1E8]+280","[[[[[playercountptr]+88]+248]+A0]+1E8]+280"
+,"[[[[[playercountptr]+88]+250]+A0]+1E8]+280","[[[[[playercountptr]+88]+258]+A0]+1E8]+280"
+,"[[[[[playercountptr]+88]+260]+A0]+1E8]+280","[[[[[playercountptr]+88]+268]+A0]+1E8]+280"
+,"[[[[[playercountptr]+88]+270]+A0]+1E8]+280"
 }
 
 PListArmor = {
-	"[[[[[playercountptr]+88]+180]+B0]+1C8]+14E0","[[[[[playercountptr]+88]+188]+B0]+1C8]+14E0"
-,"[[[[[playercountptr]+88]+190]+B0]+1C8]+14E0","[[[[[playercountptr]+88]+198]+B0]+1C8]+14E0"
-,"[[[[[playercountptr]+88]+1A0]+B0]+1C8]+14E0","[[[[[playercountptr]+88]+1A8]+B0]+1C8]+14E0"
-,"[[[[[playercountptr]+88]+1B0]+B0]+1C8]+14E0","[[[[[playercountptr]+88]+1B8]+B0]+1C8]+14E0"
-,"[[[[[playercountptr]+88]+1C0]+B0]+1C8]+14E0","[[[[[playercountptr]+88]+1C8]+B0]+1C8]+14E0"
-,"[[[[[playercountptr]+88]+1D0]+B0]+1C8]+14E0","[[[[[playercountptr]+88]+1D8]+B0]+1C8]+14E0"
-,"[[[[[playercountptr]+88]+1E0]+B0]+1C8]+14E0","[[[[[playercountptr]+88]+1E8]+B0]+1C8]+14E0"
-,"[[[[[playercountptr]+88]+1F0]+B0]+1C8]+14E0","[[[[[playercountptr]+88]+1F8]+B0]+1C8]+14E0"
-,"[[[[[playercountptr]+88]+200]+B0]+1C8]+14E0","[[[[[playercountptr]+88]+208]+B0]+1C8]+14E0"
-,"[[[[[playercountptr]+88]+210]+B0]+1C8]+14E0","[[[[[playercountptr]+88]+218]+B0]+1C8]+14E0"
-,"[[[[[playercountptr]+88]+220]+B0]+1C8]+14E0","[[[[[playercountptr]+88]+228]+B0]+1C8]+14E0"
-,"[[[[[playercountptr]+88]+230]+B0]+1C8]+14E0","[[[[[playercountptr]+88]+238]+B0]+1C8]+14E0"
-,"[[[[[playercountptr]+88]+240]+B0]+1C8]+14E0","[[[[[playercountptr]+88]+248]+B0]+1C8]+14E0"
-,"[[[[[playercountptr]+88]+250]+B0]+1C8]+14E0","[[[[[playercountptr]+88]+258]+B0]+1C8]+14E0"
-,"[[[[[playercountptr]+88]+260]+B0]+1C8]+14E0","[[[[[playercountptr]+88]+268]+B0]+1C8]+14E0"
-,"[[[[[playercountptr]+88]+270]+B0]+1C8]+14E0"
+	"[[[[[playercountptr]+88]+180]+A0]+1E8]+14E0","[[[[[playercountptr]+88]+188]+A0]+1E8]+14E0"
+,"[[[[[playercountptr]+88]+190]+A0]+1E8]+14E0","[[[[[playercountptr]+88]+198]+A0]+1E8]+14E0"
+,"[[[[[playercountptr]+88]+1A0]+A0]+1E8]+14E0","[[[[[playercountptr]+88]+1A8]+A0]+1E8]+14E0"
+,"[[[[[playercountptr]+88]+1B0]+A0]+1E8]+14E0","[[[[[playercountptr]+88]+1B8]+A0]+1E8]+14E0"
+,"[[[[[playercountptr]+88]+1C0]+A0]+1E8]+14E0","[[[[[playercountptr]+88]+1C8]+A0]+1E8]+14E0"
+,"[[[[[playercountptr]+88]+1D0]+A0]+1E8]+14E0","[[[[[playercountptr]+88]+1D8]+A0]+1E8]+14E0"
+,"[[[[[playercountptr]+88]+1E0]+A0]+1E8]+14E0","[[[[[playercountptr]+88]+1E8]+A0]+1E8]+14E0"
+,"[[[[[playercountptr]+88]+1F0]+A0]+1E8]+14E0","[[[[[playercountptr]+88]+1F8]+A0]+1E8]+14E0"
+,"[[[[[playercountptr]+88]+200]+A0]+1E8]+14E0","[[[[[playercountptr]+88]+208]+A0]+1E8]+14E0"
+,"[[[[[playercountptr]+88]+210]+A0]+1E8]+14E0","[[[[[playercountptr]+88]+218]+A0]+1E8]+14E0"
+,"[[[[[playercountptr]+88]+220]+A0]+1E8]+14E0","[[[[[playercountptr]+88]+228]+A0]+1E8]+14E0"
+,"[[[[[playercountptr]+88]+230]+A0]+1E8]+14E0","[[[[[playercountptr]+88]+238]+A0]+1E8]+14E0"
+,"[[[[[playercountptr]+88]+240]+A0]+1E8]+14E0","[[[[[playercountptr]+88]+248]+A0]+1E8]+14E0"
+,"[[[[[playercountptr]+88]+250]+A0]+1E8]+14E0","[[[[[playercountptr]+88]+258]+A0]+1E8]+14E0"
+,"[[[[[playercountptr]+88]+260]+A0]+1E8]+14E0","[[[[[playercountptr]+88]+268]+A0]+1E8]+14E0"
+,"[[[[[playercountptr]+88]+270]+A0]+1E8]+14E0"
 }
 
 PVehGod = {
-	"[[[[[[playercountptr]+88]+180]+B0]+1C8]+D30]+189","[[[[[[playercountptr]+88]+188]+B0]+1C8]+D30]+189"
-,"[[[[[[playercountptr]+88]+190]+B0]+1C8]+D30]+189","[[[[[[playercountptr]+88]+198]+B0]+1C8]+D30]+189"
-,"[[[[[[playercountptr]+88]+1A0]+B0]+1C8]+D30]+189","[[[[[[playercountptr]+88]+1A8]+B0]+1C8]+D30]+189"
-,"[[[[[[playercountptr]+88]+1B0]+B0]+1C8]+D30]+189","[[[[[[playercountptr]+88]+1B8]+B0]+1C8]+D30]+189"
-,"[[[[[[playercountptr]+88]+1C0]+B0]+1C8]+D30]+189","[[[[[[playercountptr]+88]+1C8]+B0]+1C8]+D30]+189"
-,"[[[[[[playercountptr]+88]+1D0]+B0]+1C8]+D30]+189","[[[[[[playercountptr]+88]+1D8]+B0]+1C8]+D30]+189"
-,"[[[[[[playercountptr]+88]+1E0]+B0]+1C8]+D30]+189","[[[[[[playercountptr]+88]+1E8]+B0]+1C8]+D30]+189"
-,"[[[[[[playercountptr]+88]+1F0]+B0]+1C8]+D30]+189","[[[[[[playercountptr]+88]+1F8]+B0]+1C8]+D30]+189"
-,"[[[[[[playercountptr]+88]+200]+B0]+1C8]+D30]+189","[[[[[[playercountptr]+88]+208]+B0]+1C8]+D30]+189"
-,"[[[[[[playercountptr]+88]+210]+B0]+1C8]+D30]+189","[[[[[[playercountptr]+88]+218]+B0]+1C8]+D30]+189"
-,"[[[[[[playercountptr]+88]+220]+B0]+1C8]+D30]+189","[[[[[[playercountptr]+88]+228]+B0]+1C8]+D30]+189"
-,"[[[[[[playercountptr]+88]+230]+B0]+1C8]+D30]+189","[[[[[[playercountptr]+88]+238]+B0]+1C8]+D30]+189"
-,"[[[[[[playercountptr]+88]+240]+B0]+1C8]+D30]+189","[[[[[[playercountptr]+88]+248]+B0]+1C8]+D30]+189"
-,"[[[[[[playercountptr]+88]+250]+B0]+1C8]+D30]+189","[[[[[[playercountptr]+88]+258]+B0]+1C8]+D30]+189"
-,"[[[[[[playercountptr]+88]+260]+B0]+1C8]+D30]+189","[[[[[[playercountptr]+88]+268]+B0]+1C8]+D30]+189"
-,"[[[[[[playercountptr]+88]+270]+B0]+1C8]+D30]+189"
+	"[[[[[[playercountptr]+88]+180]+A0]+1E8]+D30]+189","[[[[[[playercountptr]+88]+188]+A0]+1E8]+D30]+189"
+,"[[[[[[playercountptr]+88]+190]+A0]+1E8]+D30]+189","[[[[[[playercountptr]+88]+198]+A0]+1E8]+D30]+189"
+,"[[[[[[playercountptr]+88]+1A0]+A0]+1E8]+D30]+189","[[[[[[playercountptr]+88]+1A8]+A0]+1E8]+D30]+189"
+,"[[[[[[playercountptr]+88]+1B0]+A0]+1E8]+D30]+189","[[[[[[playercountptr]+88]+1B8]+A0]+1E8]+D30]+189"
+,"[[[[[[playercountptr]+88]+1C0]+A0]+1E8]+D30]+189","[[[[[[playercountptr]+88]+1C8]+A0]+1E8]+D30]+189"
+,"[[[[[[playercountptr]+88]+1D0]+A0]+1E8]+D30]+189","[[[[[[playercountptr]+88]+1D8]+A0]+1E8]+D30]+189"
+,"[[[[[[playercountptr]+88]+1E0]+A0]+1E8]+D30]+189","[[[[[[playercountptr]+88]+1E8]+A0]+1E8]+D30]+189"
+,"[[[[[[playercountptr]+88]+1F0]+A0]+1E8]+D30]+189","[[[[[[playercountptr]+88]+1F8]+A0]+1E8]+D30]+189"
+,"[[[[[[playercountptr]+88]+200]+A0]+1E8]+D30]+189","[[[[[[playercountptr]+88]+208]+A0]+1E8]+D30]+189"
+,"[[[[[[playercountptr]+88]+210]+A0]+1E8]+D30]+189","[[[[[[playercountptr]+88]+218]+A0]+1E8]+D30]+189"
+,"[[[[[[playercountptr]+88]+220]+A0]+1E8]+D30]+189","[[[[[[playercountptr]+88]+228]+A0]+1E8]+D30]+189"
+,"[[[[[[playercountptr]+88]+230]+A0]+1E8]+D30]+189","[[[[[[playercountptr]+88]+238]+A0]+1E8]+D30]+189"
+,"[[[[[[playercountptr]+88]+240]+A0]+1E8]+D30]+189","[[[[[[playercountptr]+88]+248]+A0]+1E8]+D30]+189"
+,"[[[[[[playercountptr]+88]+250]+A0]+1E8]+D30]+189","[[[[[[playercountptr]+88]+258]+A0]+1E8]+D30]+189"
+,"[[[[[[playercountptr]+88]+260]+A0]+1E8]+D30]+189","[[[[[[playercountptr]+88]+268]+A0]+1E8]+D30]+189"
+,"[[[[[[playercountptr]+88]+270]+A0]+1E8]+D30]+189"
 }
 
 PCurVeh = {
-	"[[[[[[[playercountptr]+88]+180]+B0]+1C8]+D30]+20]+18","[[[[[[[playercountptr]+88]+188]+B0]+1C8]+D30]+20]+18"
-,"[[[[[[[playercountptr]+88]+190]+B0]+1C8]+D30]+20]+18","[[[[[[[playercountptr]+88]+198]+B0]+1C8]+D30]+20]+18"
-,"[[[[[[[playercountptr]+88]+1A0]+B0]+1C8]+D30]+20]+18","[[[[[[[playercountptr]+88]+1A8]+B0]+1C8]+D30]+20]+18"
-,"[[[[[[[playercountptr]+88]+1B0]+B0]+1C8]+D30]+20]+18","[[[[[[[playercountptr]+88]+1B8]+B0]+1C8]+D30]+20]+18"
-,"[[[[[[[playercountptr]+88]+1C0]+B0]+1C8]+D30]+20]+18","[[[[[[[playercountptr]+88]+1C8]+B0]+1C8]+D30]+20]+18"
-,"[[[[[[[playercountptr]+88]+1D0]+B0]+1C8]+D30]+20]+18","[[[[[[[playercountptr]+88]+1D8]+B0]+1C8]+D30]+20]+18"
-,"[[[[[[[playercountptr]+88]+1E0]+B0]+1C8]+D30]+20]+18","[[[[[[[playercountptr]+88]+1E8]+B0]+1C8]+D30]+20]+18"
-,"[[[[[[[playercountptr]+88]+1F0]+B0]+1C8]+D30]+20]+18","[[[[[[[playercountptr]+88]+1F8]+B0]+1C8]+D30]+20]+18"
-,"[[[[[[[playercountptr]+88]+200]+B0]+1C8]+D30]+20]+18","[[[[[[[playercountptr]+88]+208]+B0]+1C8]+D30]+20]+18"
-,"[[[[[[[playercountptr]+88]+210]+B0]+1C8]+D30]+20]+18","[[[[[[[playercountptr]+88]+218]+B0]+1C8]+D30]+20]+18"
-,"[[[[[[[playercountptr]+88]+220]+B0]+1C8]+D30]+20]+18","[[[[[[[playercountptr]+88]+228]+B0]+1C8]+D30]+20]+18"
-,"[[[[[[[playercountptr]+88]+230]+B0]+1C8]+D30]+20]+18","[[[[[[[playercountptr]+88]+238]+B0]+1C8]+D30]+20]+18"
-,"[[[[[[[playercountptr]+88]+240]+B0]+1C8]+D30]+20]+18","[[[[[[[playercountptr]+88]+248]+B0]+1C8]+D30]+20]+18"
-,"[[[[[[[playercountptr]+88]+250]+B0]+1C8]+D30]+20]+18","[[[[[[[playercountptr]+88]+258]+B0]+1C8]+D30]+20]+18"
-,"[[[[[[[playercountptr]+88]+260]+B0]+1C8]+D30]+20]+18","[[[[[[[playercountptr]+88]+268]+B0]+1C8]+D30]+20]+18"
-,"[[[[[[[playercountptr]+88]+270]+B0]+1C8]+D30]+20]+18"
+	"[[[[[[[playercountptr]+88]+180]+A0]+1E8]+D30]+20]+18","[[[[[[[playercountptr]+88]+188]+A0]+1E8]+D30]+20]+18"
+,"[[[[[[[playercountptr]+88]+190]+A0]+1E8]+D30]+20]+18","[[[[[[[playercountptr]+88]+198]+A0]+1E8]+D30]+20]+18"
+,"[[[[[[[playercountptr]+88]+1A0]+A0]+1E8]+D30]+20]+18","[[[[[[[playercountptr]+88]+1A8]+A0]+1E8]+D30]+20]+18"
+,"[[[[[[[playercountptr]+88]+1B0]+A0]+1E8]+D30]+20]+18","[[[[[[[playercountptr]+88]+1B8]+A0]+1E8]+D30]+20]+18"
+,"[[[[[[[playercountptr]+88]+1C0]+A0]+1E8]+D30]+20]+18","[[[[[[[playercountptr]+88]+1C8]+A0]+1E8]+D30]+20]+18"
+,"[[[[[[[playercountptr]+88]+1D0]+A0]+1E8]+D30]+20]+18","[[[[[[[playercountptr]+88]+1D8]+A0]+1E8]+D30]+20]+18"
+,"[[[[[[[playercountptr]+88]+1E0]+A0]+1E8]+D30]+20]+18","[[[[[[[playercountptr]+88]+1E8]+A0]+1E8]+D30]+20]+18"
+,"[[[[[[[playercountptr]+88]+1F0]+A0]+1E8]+D30]+20]+18","[[[[[[[playercountptr]+88]+1F8]+A0]+1E8]+D30]+20]+18"
+,"[[[[[[[playercountptr]+88]+200]+A0]+1E8]+D30]+20]+18","[[[[[[[playercountptr]+88]+208]+A0]+1E8]+D30]+20]+18"
+,"[[[[[[[playercountptr]+88]+210]+A0]+1E8]+D30]+20]+18","[[[[[[[playercountptr]+88]+218]+A0]+1E8]+D30]+20]+18"
+,"[[[[[[[playercountptr]+88]+220]+A0]+1E8]+D30]+20]+18","[[[[[[[playercountptr]+88]+228]+A0]+1E8]+D30]+20]+18"
+,"[[[[[[[playercountptr]+88]+230]+A0]+1E8]+D30]+20]+18","[[[[[[[playercountptr]+88]+238]+A0]+1E8]+D30]+20]+18"
+,"[[[[[[[playercountptr]+88]+240]+A0]+1E8]+D30]+20]+18","[[[[[[[playercountptr]+88]+248]+A0]+1E8]+D30]+20]+18"
+,"[[[[[[[playercountptr]+88]+250]+A0]+1E8]+D30]+20]+18","[[[[[[[playercountptr]+88]+258]+A0]+1E8]+D30]+20]+18"
+,"[[[[[[[playercountptr]+88]+260]+A0]+1E8]+D30]+20]+18","[[[[[[[playercountptr]+88]+268]+A0]+1E8]+D30]+20]+18"
+,"[[[[[[[playercountptr]+88]+270]+A0]+1E8]+D30]+20]+18"
 }
 
 PVehName = {
-"[[[[[[[playercountptr]+88]+2980]+B0]+1C8]+D30]+20]+298","[[[[[[[playercountptr]+88]+2988]+B0]+1C8]+D30]+20]+298"
-,"[[[[[[[playercountptr]+88]+190]+B0]+1C8]+D30]+20]+298","[[[[[[[playercountptr]+88]+198]+B0]+1C8]+D30]+20]+298"
-,"[[[[[[[playercountptr]+88]+1A0]+B0]+1C8]+D30]+20]+298","[[[[[[[playercountptr]+88]+1A8]+B0]+1C8]+D30]+20]+298"
-,"[[[[[[[playercountptr]+88]+1B0]+B0]+1C8]+D30]+20]+298","[[[[[[[playercountptr]+88]+1B8]+B0]+1C8]+D30]+20]+298"
-,"[[[[[[[playercountptr]+88]+1C0]+B0]+1C8]+D30]+20]+298","[[[[[[[playercountptr]+88]+1C8]+B0]+1C8]+D30]+20]+298"
-,"[[[[[[[playercountptr]+88]+1D0]+B0]+1C8]+D30]+20]+298","[[[[[[[playercountptr]+88]+1D8]+B0]+1C8]+D30]+20]+298"
-,"[[[[[[[playercountptr]+88]+1E0]+B0]+1C8]+D30]+20]+298","[[[[[[[playercountptr]+88]+1E8]+B0]+1C8]+D30]+20]+298"
-,"[[[[[[[playercountptr]+88]+1F0]+B0]+1C8]+D30]+20]+298","[[[[[[[playercountptr]+88]+1F8]+B0]+1C8]+D30]+20]+298"
-,"[[[[[[[playercountptr]+88]+200]+B0]+1C8]+D30]+20]+298","[[[[[[[playercountptr]+88]+208]+B0]+1C8]+D30]+20]+298"
-,"[[[[[[[playercountptr]+88]+210]+B0]+1C8]+D30]+20]+298","[[[[[[[playercountptr]+88]+218]+B0]+1C8]+D30]+20]+298"
-,"[[[[[[[playercountptr]+88]+220]+B0]+1C8]+D30]+20]+298","[[[[[[[playercountptr]+88]+228]+B0]+1C8]+D30]+20]+298"
-,"[[[[[[[playercountptr]+88]+230]+B0]+1C8]+D30]+20]+298","[[[[[[[playercountptr]+88]+238]+B0]+1C8]+D30]+20]+298"
-,"[[[[[[[playercountptr]+88]+240]+B0]+1C8]+D30]+20]+298","[[[[[[[playercountptr]+88]+248]+B0]+1C8]+D30]+20]+298"
-,"[[[[[[[playercountptr]+88]+250]+B0]+1C8]+D30]+20]+298","[[[[[[[playercountptr]+88]+258]+B0]+1C8]+D30]+20]+298"
-,"[[[[[[[playercountptr]+88]+260]+B0]+1C8]+D30]+20]+298","[[[[[[[playercountptr]+88]+268]+B0]+1C8]+D30]+20]+298"
-,"[[[[[[[playercountptr]+88]+270]+B0]+1C8]+D30]+20]+298"
+"[[[[[[[playercountptr]+88]+2980]+A0]+1E8]+D30]+20]+298","[[[[[[[playercountptr]+88]+2988]+A0]+1E8]+D30]+20]+298"
+,"[[[[[[[playercountptr]+88]+190]+A0]+1E8]+D30]+20]+298","[[[[[[[playercountptr]+88]+198]+A0]+1E8]+D30]+20]+298"
+,"[[[[[[[playercountptr]+88]+1A0]+A0]+1E8]+D30]+20]+298","[[[[[[[playercountptr]+88]+1A8]+A0]+1E8]+D30]+20]+298"
+,"[[[[[[[playercountptr]+88]+1B0]+A0]+1E8]+D30]+20]+298","[[[[[[[playercountptr]+88]+1B8]+A0]+1E8]+D30]+20]+298"
+,"[[[[[[[playercountptr]+88]+1C0]+A0]+1E8]+D30]+20]+298","[[[[[[[playercountptr]+88]+1C8]+A0]+1E8]+D30]+20]+298"
+,"[[[[[[[playercountptr]+88]+1D0]+A0]+1E8]+D30]+20]+298","[[[[[[[playercountptr]+88]+1D8]+A0]+1E8]+D30]+20]+298"
+,"[[[[[[[playercountptr]+88]+1E0]+A0]+1E8]+D30]+20]+298","[[[[[[[playercountptr]+88]+1E8]+A0]+1E8]+D30]+20]+298"
+,"[[[[[[[playercountptr]+88]+1F0]+A0]+1E8]+D30]+20]+298","[[[[[[[playercountptr]+88]+1F8]+A0]+1E8]+D30]+20]+298"
+,"[[[[[[[playercountptr]+88]+200]+A0]+1E8]+D30]+20]+298","[[[[[[[playercountptr]+88]+208]+A0]+1E8]+D30]+20]+298"
+,"[[[[[[[playercountptr]+88]+210]+A0]+1E8]+D30]+20]+298","[[[[[[[playercountptr]+88]+218]+A0]+1E8]+D30]+20]+298"
+,"[[[[[[[playercountptr]+88]+220]+A0]+1E8]+D30]+20]+298","[[[[[[[playercountptr]+88]+228]+A0]+1E8]+D30]+20]+298"
+,"[[[[[[[playercountptr]+88]+230]+A0]+1E8]+D30]+20]+298","[[[[[[[playercountptr]+88]+238]+A0]+1E8]+D30]+20]+298"
+,"[[[[[[[playercountptr]+88]+240]+A0]+1E8]+D30]+20]+298","[[[[[[[playercountptr]+88]+248]+A0]+1E8]+D30]+20]+298"
+,"[[[[[[[playercountptr]+88]+250]+A0]+1E8]+D30]+20]+298","[[[[[[[playercountptr]+88]+258]+A0]+1E8]+D30]+20]+298"
+,"[[[[[[[playercountptr]+88]+260]+A0]+1E8]+D30]+20]+298","[[[[[[[playercountptr]+88]+268]+A0]+1E8]+D30]+20]+298"
+,"[[[[[[[playercountptr]+88]+270]+A0]+1E8]+D30]+20]+298"
 }
 
 PVehMaker = {
-"[[[[[[[playercountptr]+88]+2A40]+B0]+1C8]+D30]+20]+2A4","[[[[[[[playercountptr]+88]+2A48]+B0]+1C8]+D30]+20]+2A4"
-,"[[[[[[[playercountptr]+88]+190]+B0]+1C8]+D30]+20]+2A4","[[[[[[[playercountptr]+88]+198]+B0]+1C8]+D30]+20]+2A4"
-,"[[[[[[[playercountptr]+88]+1A0]+B0]+1C8]+D30]+20]+2A4","[[[[[[[playercountptr]+88]+1A8]+B0]+1C8]+D30]+20]+2A4"
-,"[[[[[[[playercountptr]+88]+1B0]+B0]+1C8]+D30]+20]+2A4","[[[[[[[playercountptr]+88]+1B8]+B0]+1C8]+D30]+20]+2A4"
-,"[[[[[[[playercountptr]+88]+1C0]+B0]+1C8]+D30]+20]+2A4","[[[[[[[playercountptr]+88]+1C8]+B0]+1C8]+D30]+20]+2A4"
-,"[[[[[[[playercountptr]+88]+1D0]+B0]+1C8]+D30]+20]+2A4","[[[[[[[playercountptr]+88]+1D8]+B0]+1C8]+D30]+20]+2A4"
-,"[[[[[[[playercountptr]+88]+1E0]+B0]+1C8]+D30]+20]+2A4","[[[[[[[playercountptr]+88]+1E8]+B0]+1C8]+D30]+20]+2A4"
-,"[[[[[[[playercountptr]+88]+1F0]+B0]+1C8]+D30]+20]+2A4","[[[[[[[playercountptr]+88]+1F8]+B0]+1C8]+D30]+20]+2A4"
-,"[[[[[[[playercountptr]+88]+200]+B0]+1C8]+D30]+20]+2A4","[[[[[[[playercountptr]+88]+208]+B0]+1C8]+D30]+20]+2A4"
-,"[[[[[[[playercountptr]+88]+210]+B0]+1C8]+D30]+20]+2A4","[[[[[[[playercountptr]+88]+218]+B0]+1C8]+D30]+20]+2A4"
-,"[[[[[[[playercountptr]+88]+220]+B0]+1C8]+D30]+20]+2A4","[[[[[[[playercountptr]+88]+228]+B0]+1C8]+D30]+20]+2A4"
-,"[[[[[[[playercountptr]+88]+230]+B0]+1C8]+D30]+20]+2A4","[[[[[[[playercountptr]+88]+238]+B0]+1C8]+D30]+20]+2A4"
-,"[[[[[[[playercountptr]+88]+240]+B0]+1C8]+D30]+20]+2A4","[[[[[[[playercountptr]+88]+248]+B0]+1C8]+D30]+20]+2A4"
-,"[[[[[[[playercountptr]+88]+250]+B0]+1C8]+D30]+20]+2A4","[[[[[[[playercountptr]+88]+258]+B0]+1C8]+D30]+20]+2A4"
-,"[[[[[[[playercountptr]+88]+260]+B0]+1C8]+D30]+20]+2A4","[[[[[[[playercountptr]+88]+268]+B0]+1C8]+D30]+20]+2A4"
-,"[[[[[[[playercountptr]+88]+270]+B0]+1C8]+D30]+20]+2A4"
+"[[[[[[[playercountptr]+88]+2A40]+A0]+1E8]+D30]+20]+2A4","[[[[[[[playercountptr]+88]+2A48]+A0]+1E8]+D30]+20]+2A4"
+,"[[[[[[[playercountptr]+88]+190]+A0]+1E8]+D30]+20]+2A4","[[[[[[[playercountptr]+88]+198]+A0]+1E8]+D30]+20]+2A4"
+,"[[[[[[[playercountptr]+88]+1A0]+A0]+1E8]+D30]+20]+2A4","[[[[[[[playercountptr]+88]+1A8]+A0]+1E8]+D30]+20]+2A4"
+,"[[[[[[[playercountptr]+88]+1B0]+A0]+1E8]+D30]+20]+2A4","[[[[[[[playercountptr]+88]+1B8]+A0]+1E8]+D30]+20]+2A4"
+,"[[[[[[[playercountptr]+88]+1C0]+A0]+1E8]+D30]+20]+2A4","[[[[[[[playercountptr]+88]+1C8]+A0]+1E8]+D30]+20]+2A4"
+,"[[[[[[[playercountptr]+88]+1D0]+A0]+1E8]+D30]+20]+2A4","[[[[[[[playercountptr]+88]+1D8]+A0]+1E8]+D30]+20]+2A4"
+,"[[[[[[[playercountptr]+88]+1E0]+A0]+1E8]+D30]+20]+2A4","[[[[[[[playercountptr]+88]+1E8]+A0]+1E8]+D30]+20]+2A4"
+,"[[[[[[[playercountptr]+88]+1F0]+A0]+1E8]+D30]+20]+2A4","[[[[[[[playercountptr]+88]+1F8]+A0]+1E8]+D30]+20]+2A4"
+,"[[[[[[[playercountptr]+88]+200]+A0]+1E8]+D30]+20]+2A4","[[[[[[[playercountptr]+88]+208]+A0]+1E8]+D30]+20]+2A4"
+,"[[[[[[[playercountptr]+88]+210]+A0]+1E8]+D30]+20]+2A4","[[[[[[[playercountptr]+88]+218]+A0]+1E8]+D30]+20]+2A4"
+,"[[[[[[[playercountptr]+88]+220]+A0]+1E8]+D30]+20]+2A4","[[[[[[[playercountptr]+88]+228]+A0]+1E8]+D30]+20]+2A4"
+,"[[[[[[[playercountptr]+88]+230]+A0]+1E8]+D30]+20]+2A4","[[[[[[[playercountptr]+88]+238]+A0]+1E8]+D30]+20]+2A4"
+,"[[[[[[[playercountptr]+88]+240]+A0]+1E8]+D30]+20]+2A4","[[[[[[[playercountptr]+88]+248]+A0]+1E8]+D30]+20]+2A4"
+,"[[[[[[[playercountptr]+88]+250]+A0]+1E8]+D30]+20]+2A4","[[[[[[[playercountptr]+88]+258]+A0]+1E8]+D30]+20]+2A4"
+,"[[[[[[[playercountptr]+88]+260]+A0]+1E8]+D30]+20]+2A4","[[[[[[[playercountptr]+88]+268]+A0]+1E8]+D30]+20]+2A4"
+,"[[[[[[[playercountptr]+88]+270]+A0]+1E8]+D30]+20]+2A4"
 }
 
 PCurWep = {
-"[[[[[[[[playercountptr]+88]+180]+B0]+1C8]+10D8]+20]+5F0]+0","[[[[[[[[playercountptr]+88]+188]+B0]+1C8]+10D8]+20]+5F0]+0"
-,"[[[[[[[[playercountptr]+88]+190]+B0]+1C8]+10D8]+20]+5F0]+0","[[[[[[[[playercountptr]+88]+198]+B0]+1C8]+10D8]+20]+5F0]+0"
-,"[[[[[[[[playercountptr]+88]+1A0]+B0]+1C8]+10D8]+20]+5F0]+0","[[[[[[[[playercountptr]+88]+1A8]+B0]+1C8]+10D8]+20]+5F0]+0"
-,"[[[[[[[[playercountptr]+88]+1B0]+B0]+1C8]+10D8]+20]+5F0]+0","[[[[[[[[playercountptr]+88]+1B8]+B0]+1C8]+10D8]+20]+5F0]+0"
-,"[[[[[[[[playercountptr]+88]+1C0]+B0]+1C8]+10D8]+20]+5F0]+0","[[[[[[[[playercountptr]+88]+1C8]+B0]+1C8]+10D8]+20]+5F0]+0"
-,"[[[[[[[[playercountptr]+88]+1D0]+B0]+1C8]+10D8]+20]+5F0]+0","[[[[[[[[playercountptr]+88]+1D8]+B0]+1C8]+10D8]+20]+5F0]+0"
-,"[[[[[[[[playercountptr]+88]+1E0]+B0]+1C8]+10D8]+20]+5F0]+0","[[[[[[[[playercountptr]+88]+1E8]+B0]+1C8]+10D8]+20]+5F0]+0"
-,"[[[[[[[[playercountptr]+88]+1F0]+B0]+1C8]+10D8]+20]+5F0]+0","[[[[[[[[playercountptr]+88]+1F8]+B0]+1C8]+10D8]+20]+5F0]+0"
-,"[[[[[[[[playercountptr]+88]+200]+B0]+1C8]+10D8]+20]+5F0]+0","[[[[[[[[playercountptr]+88]+208]+B0]+1C8]+10D8]+20]+5F0]+0"
-,"[[[[[[[[playercountptr]+88]+210]+B0]+1C8]+10D8]+20]+5F0]+0","[[[[[[[[playercountptr]+88]+218]+B0]+1C8]+10D8]+20]+5F0]+0"
-,"[[[[[[[[playercountptr]+88]+220]+B0]+1C8]+10D8]+20]+5F0]+0","[[[[[[[[playercountptr]+88]+228]+B0]+1C8]+10D8]+20]+5F0]+0"
-,"[[[[[[[[playercountptr]+88]+230]+B0]+1C8]+10D8]+20]+5F0]+0","[[[[[[[[playercountptr]+88]+238]+B0]+1C8]+10D8]+20]+5F0]+0"
-,"[[[[[[[[playercountptr]+88]+240]+B0]+1C8]+10D8]+20]+5F0]+0","[[[[[[[[playercountptr]+88]+248]+B0]+1C8]+10D8]+20]+5F0]+0"
-,"[[[[[[[[playercountptr]+88]+250]+B0]+1C8]+10D8]+20]+5F0]+0","[[[[[[[[playercountptr]+88]+258]+B0]+1C8]+10D8]+20]+5F0]+0"
-,"[[[[[[[[playercountptr]+88]+260]+B0]+1C8]+10D8]+20]+5F0]+0","[[[[[[[[playercountptr]+88]+268]+B0]+1C8]+10D8]+20]+5F0]+0"
-,"[[[[[[[[playercountptr]+88]+270]+B0]+1C8]+10D8]+20]+5F0]+0"
+"[[[[[[[[playercountptr]+88]+180]+A0]+1E8]+10D8]+20]+5F0]+0","[[[[[[[[playercountptr]+88]+188]+A0]+1E8]+10D8]+20]+5F0]+0"
+,"[[[[[[[[playercountptr]+88]+190]+A0]+1E8]+10D8]+20]+5F0]+0","[[[[[[[[playercountptr]+88]+198]+A0]+1E8]+10D8]+20]+5F0]+0"
+,"[[[[[[[[playercountptr]+88]+1A0]+A0]+1E8]+10D8]+20]+5F0]+0","[[[[[[[[playercountptr]+88]+1A8]+A0]+1E8]+10D8]+20]+5F0]+0"
+,"[[[[[[[[playercountptr]+88]+1B0]+A0]+1E8]+10D8]+20]+5F0]+0","[[[[[[[[playercountptr]+88]+1B8]+A0]+1E8]+10D8]+20]+5F0]+0"
+,"[[[[[[[[playercountptr]+88]+1C0]+A0]+1E8]+10D8]+20]+5F0]+0","[[[[[[[[playercountptr]+88]+1C8]+A0]+1E8]+10D8]+20]+5F0]+0"
+,"[[[[[[[[playercountptr]+88]+1D0]+A0]+1E8]+10D8]+20]+5F0]+0","[[[[[[[[playercountptr]+88]+1D8]+A0]+1E8]+10D8]+20]+5F0]+0"
+,"[[[[[[[[playercountptr]+88]+1E0]+A0]+1E8]+10D8]+20]+5F0]+0","[[[[[[[[playercountptr]+88]+1E8]+A0]+1E8]+10D8]+20]+5F0]+0"
+,"[[[[[[[[playercountptr]+88]+1F0]+A0]+1E8]+10D8]+20]+5F0]+0","[[[[[[[[playercountptr]+88]+1F8]+A0]+1E8]+10D8]+20]+5F0]+0"
+,"[[[[[[[[playercountptr]+88]+200]+A0]+1E8]+10D8]+20]+5F0]+0","[[[[[[[[playercountptr]+88]+208]+A0]+1E8]+10D8]+20]+5F0]+0"
+,"[[[[[[[[playercountptr]+88]+210]+A0]+1E8]+10D8]+20]+5F0]+0","[[[[[[[[playercountptr]+88]+218]+A0]+1E8]+10D8]+20]+5F0]+0"
+,"[[[[[[[[playercountptr]+88]+220]+A0]+1E8]+10D8]+20]+5F0]+0","[[[[[[[[playercountptr]+88]+228]+A0]+1E8]+10D8]+20]+5F0]+0"
+,"[[[[[[[[playercountptr]+88]+230]+A0]+1E8]+10D8]+20]+5F0]+0","[[[[[[[[playercountptr]+88]+238]+A0]+1E8]+10D8]+20]+5F0]+0"
+,"[[[[[[[[playercountptr]+88]+240]+A0]+1E8]+10D8]+20]+5F0]+0","[[[[[[[[playercountptr]+88]+248]+A0]+1E8]+10D8]+20]+5F0]+0"
+,"[[[[[[[[playercountptr]+88]+250]+A0]+1E8]+10D8]+20]+5F0]+0","[[[[[[[[playercountptr]+88]+258]+A0]+1E8]+10D8]+20]+5F0]+0"
+,"[[[[[[[[playercountptr]+88]+260]+A0]+1E8]+10D8]+20]+5F0]+0","[[[[[[[[playercountptr]+88]+268]+A0]+1E8]+10D8]+20]+5F0]+0"
+,"[[[[[[[[playercountptr]+88]+270]+A0]+1E8]+10D8]+20]+5F0]+0"
 }
 
 PCurWepHash = {
-	"[[[[[[[playercountptr]+88]+180]+B0]+1C8]+10D8]+20]+10","[[[[[[[playercountptr]+88]+188]+B0]+1C8]+10D8]+20]+10"
-,"[[[[[[[playercountptr]+88]+190]+B0]+1C8]+10D8]+20]+10","[[[[[[[playercountptr]+88]+198]+B0]+1C8]+10D8]+20]+10"
-,"[[[[[[[playercountptr]+88]+1A0]+B0]+1C8]+10D8]+20]+10","[[[[[[[playercountptr]+88]+1A8]+B0]+1C8]+10D8]+20]+10"
-,"[[[[[[[playercountptr]+88]+1B0]+B0]+1C8]+10D8]+20]+10","[[[[[[[playercountptr]+88]+1B8]+B0]+1C8]+10D8]+20]+10"
-,"[[[[[[[playercountptr]+88]+1C0]+B0]+1C8]+10D8]+20]+10","[[[[[[[playercountptr]+88]+1C8]+B0]+1C8]+10D8]+20]+10"
-,"[[[[[[[playercountptr]+88]+1D0]+B0]+1C8]+10D8]+20]+10","[[[[[[[playercountptr]+88]+1D8]+B0]+1C8]+10D8]+20]+10"
-,"[[[[[[[playercountptr]+88]+1E0]+B0]+1C8]+10D8]+20]+10","[[[[[[[playercountptr]+88]+1E8]+B0]+1C8]+10D8]+20]+10"
-,"[[[[[[[playercountptr]+88]+1F0]+B0]+1C8]+10D8]+20]+10","[[[[[[[playercountptr]+88]+1F8]+B0]+1C8]+10D8]+20]+10"
-,"[[[[[[[playercountptr]+88]+200]+B0]+1C8]+10D8]+20]+10","[[[[[[[playercountptr]+88]+208]+B0]+1C8]+10D8]+20]+10"
-,"[[[[[[[playercountptr]+88]+210]+B0]+1C8]+10D8]+20]+10","[[[[[[[playercountptr]+88]+218]+B0]+1C8]+10D8]+20]+10"
-,"[[[[[[[playercountptr]+88]+220]+B0]+1C8]+10D8]+20]+10","[[[[[[[playercountptr]+88]+228]+B0]+1C8]+10D8]+20]+10"
-,"[[[[[[[playercountptr]+88]+230]+B0]+1C8]+10D8]+20]+10","[[[[[[[playercountptr]+88]+238]+B0]+1C8]+10D8]+20]+10"
-,"[[[[[[[playercountptr]+88]+240]+B0]+1C8]+10D8]+20]+10","[[[[[[[playercountptr]+88]+248]+B0]+1C8]+10D8]+20]+10"
-,"[[[[[[[playercountptr]+88]+250]+B0]+1C8]+10D8]+20]+10","[[[[[[[playercountptr]+88]+258]+B0]+1C8]+10D8]+20]+10"
-,"[[[[[[[playercountptr]+88]+260]+B0]+1C8]+10D8]+20]+10","[[[[[[[playercountptr]+88]+268]+B0]+1C8]+10D8]+20]+10"
-,"[[[[[[[playercountptr]+88]+270]+B0]+1C8]+10D8]+20]+10"
+	"[[[[[[[playercountptr]+88]+180]+A0]+1E8]+10D8]+20]+10","[[[[[[[playercountptr]+88]+188]+A0]+1E8]+10D8]+20]+10"
+,"[[[[[[[playercountptr]+88]+190]+A0]+1E8]+10D8]+20]+10","[[[[[[[playercountptr]+88]+198]+A0]+1E8]+10D8]+20]+10"
+,"[[[[[[[playercountptr]+88]+1A0]+A0]+1E8]+10D8]+20]+10","[[[[[[[playercountptr]+88]+1A8]+A0]+1E8]+10D8]+20]+10"
+,"[[[[[[[playercountptr]+88]+1B0]+A0]+1E8]+10D8]+20]+10","[[[[[[[playercountptr]+88]+1B8]+A0]+1E8]+10D8]+20]+10"
+,"[[[[[[[playercountptr]+88]+1C0]+A0]+1E8]+10D8]+20]+10","[[[[[[[playercountptr]+88]+1C8]+A0]+1E8]+10D8]+20]+10"
+,"[[[[[[[playercountptr]+88]+1D0]+A0]+1E8]+10D8]+20]+10","[[[[[[[playercountptr]+88]+1D8]+A0]+1E8]+10D8]+20]+10"
+,"[[[[[[[playercountptr]+88]+1E0]+A0]+1E8]+10D8]+20]+10","[[[[[[[playercountptr]+88]+1E8]+A0]+1E8]+10D8]+20]+10"
+,"[[[[[[[playercountptr]+88]+1F0]+A0]+1E8]+10D8]+20]+10","[[[[[[[playercountptr]+88]+1F8]+A0]+1E8]+10D8]+20]+10"
+,"[[[[[[[playercountptr]+88]+200]+A0]+1E8]+10D8]+20]+10","[[[[[[[playercountptr]+88]+208]+A0]+1E8]+10D8]+20]+10"
+,"[[[[[[[playercountptr]+88]+210]+A0]+1E8]+10D8]+20]+10","[[[[[[[playercountptr]+88]+218]+A0]+1E8]+10D8]+20]+10"
+,"[[[[[[[playercountptr]+88]+220]+A0]+1E8]+10D8]+20]+10","[[[[[[[playercountptr]+88]+228]+A0]+1E8]+10D8]+20]+10"
+,"[[[[[[[playercountptr]+88]+230]+A0]+1E8]+10D8]+20]+10","[[[[[[[playercountptr]+88]+238]+A0]+1E8]+10D8]+20]+10"
+,"[[[[[[[playercountptr]+88]+240]+A0]+1E8]+10D8]+20]+10","[[[[[[[playercountptr]+88]+248]+A0]+1E8]+10D8]+20]+10"
+,"[[[[[[[playercountptr]+88]+250]+A0]+1E8]+10D8]+20]+10","[[[[[[[playercountptr]+88]+258]+A0]+1E8]+10D8]+20]+10"
+,"[[[[[[[playercountptr]+88]+260]+A0]+1E8]+10D8]+20]+10","[[[[[[[playercountptr]+88]+268]+A0]+1E8]+10D8]+20]+10"
+,"[[[[[[[playercountptr]+88]+270]+A0]+1E8]+10D8]+20]+10"
 }
 
 PCurAmmo = {
- "[[[[[[[[[[playercountptr]+88]+180]+B0]+1C8]+10D8]+20]+60]+8]+0]+18","[[[[[[[[[[playercountptr]+88]+188]+B0]+1C8]+10D8]+20]+60]+8]+0]+18"
-,"[[[[[[[[[[playercountptr]+88]+190]+B0]+1C8]+10D8]+20]+60]+8]+0]+18","[[[[[[[[[[playercountptr]+88]+198]+B0]+1C8]+10D8]+20]+60]+8]+0]+18"
-,"[[[[[[[[[[playercountptr]+88]+1A0]+B0]+1C8]+10D8]+20]+60]+8]+0]+18","[[[[[[[[[[playercountptr]+88]+1A8]+B0]+1C8]+10D8]+20]+60]+8]+0]+18"
-,"[[[[[[[[[[playercountptr]+88]+1B0]+B0]+1C8]+10D8]+20]+60]+8]+0]+18","[[[[[[[[[[playercountptr]+88]+1B8]+B0]+1C8]+10D8]+20]+60]+8]+0]+18"
-,"[[[[[[[[[[playercountptr]+88]+1C0]+B0]+1C8]+10D8]+20]+60]+8]+0]+18","[[[[[[[[[[playercountptr]+88]+1C8]+B0]+1C8]+10D8]+20]+60]+8]+0]+18"
-,"[[[[[[[[[[playercountptr]+88]+1D0]+B0]+1C8]+10D8]+20]+60]+8]+0]+18","[[[[[[[[[[playercountptr]+88]+1D8]+B0]+1C8]+10D8]+20]+60]+8]+0]+18"
-,"[[[[[[[[[[playercountptr]+88]+1E0]+B0]+1C8]+10D8]+20]+60]+8]+0]+18","[[[[[[[[[[playercountptr]+88]+1E8]+B0]+1C8]+10D8]+20]+60]+8]+0]+18"
-,"[[[[[[[[[[playercountptr]+88]+1F0]+B0]+1C8]+10D8]+20]+60]+8]+0]+18","[[[[[[[[[[playercountptr]+88]+1F8]+B0]+1C8]+10D8]+20]+60]+8]+0]+18"
-,"[[[[[[[[[[playercountptr]+88]+200]+B0]+1C8]+10D8]+20]+60]+8]+0]+18","[[[[[[[[[[playercountptr]+88]+208]+B0]+1C8]+10D8]+20]+60]+8]+0]+18"
-,"[[[[[[[[[[playercountptr]+88]+210]+B0]+1C8]+10D8]+20]+60]+8]+0]+18","[[[[[[[[[[playercountptr]+88]+218]+B0]+1C8]+10D8]+20]+60]+8]+0]+18"
-,"[[[[[[[[[[playercountptr]+88]+220]+B0]+1C8]+10D8]+20]+60]+8]+0]+18","[[[[[[[[[[playercountptr]+88]+228]+B0]+1C8]+10D8]+20]+60]+8]+0]+18"
-,"[[[[[[[[[[playercountptr]+88]+230]+B0]+1C8]+10D8]+20]+60]+8]+0]+18","[[[[[[[[[[playercountptr]+88]+238]+B0]+1C8]+10D8]+20]+60]+8]+0]+18"
-,"[[[[[[[[[[playercountptr]+88]+240]+B0]+1C8]+10D8]+20]+60]+8]+0]+18","[[[[[[[[[[playercountptr]+88]+248]+B0]+1C8]+10D8]+20]+60]+8]+0]+18"
-,"[[[[[[[[[[playercountptr]+88]+250]+B0]+1C8]+10D8]+20]+60]+8]+0]+18","[[[[[[[[[[playercountptr]+88]+258]+B0]+1C8]+10D8]+20]+60]+8]+0]+18"
-,"[[[[[[[[[[playercountptr]+88]+260]+B0]+1C8]+10D8]+20]+60]+8]+0]+18","[[[[[[[[[[playercountptr]+88]+268]+B0]+1C8]+10D8]+20]+60]+8]+0]+18"
-,"[[[[[[[[[[playercountptr]+88]+270]+B0]+1C8]+10D8]+20]+60]+8]+0]+18"
+ "[[[[[[[[[[playercountptr]+88]+180]+A0]+1E8]+10D8]+20]+60]+8]+0]+18","[[[[[[[[[[playercountptr]+88]+188]+A0]+1E8]+10D8]+20]+60]+8]+0]+18"
+,"[[[[[[[[[[playercountptr]+88]+190]+A0]+1E8]+10D8]+20]+60]+8]+0]+18","[[[[[[[[[[playercountptr]+88]+198]+A0]+1E8]+10D8]+20]+60]+8]+0]+18"
+,"[[[[[[[[[[playercountptr]+88]+1A0]+A0]+1E8]+10D8]+20]+60]+8]+0]+18","[[[[[[[[[[playercountptr]+88]+1A8]+A0]+1E8]+10D8]+20]+60]+8]+0]+18"
+,"[[[[[[[[[[playercountptr]+88]+1B0]+A0]+1E8]+10D8]+20]+60]+8]+0]+18","[[[[[[[[[[playercountptr]+88]+1B8]+A0]+1E8]+10D8]+20]+60]+8]+0]+18"
+,"[[[[[[[[[[playercountptr]+88]+1C0]+A0]+1E8]+10D8]+20]+60]+8]+0]+18","[[[[[[[[[[playercountptr]+88]+1C8]+A0]+1E8]+10D8]+20]+60]+8]+0]+18"
+,"[[[[[[[[[[playercountptr]+88]+1D0]+A0]+1E8]+10D8]+20]+60]+8]+0]+18","[[[[[[[[[[playercountptr]+88]+1D8]+A0]+1E8]+10D8]+20]+60]+8]+0]+18"
+,"[[[[[[[[[[playercountptr]+88]+1E0]+A0]+1E8]+10D8]+20]+60]+8]+0]+18","[[[[[[[[[[playercountptr]+88]+1E8]+A0]+1E8]+10D8]+20]+60]+8]+0]+18"
+,"[[[[[[[[[[playercountptr]+88]+1F0]+A0]+1E8]+10D8]+20]+60]+8]+0]+18","[[[[[[[[[[playercountptr]+88]+1F8]+A0]+1E8]+10D8]+20]+60]+8]+0]+18"
+,"[[[[[[[[[[playercountptr]+88]+200]+A0]+1E8]+10D8]+20]+60]+8]+0]+18","[[[[[[[[[[playercountptr]+88]+208]+A0]+1E8]+10D8]+20]+60]+8]+0]+18"
+,"[[[[[[[[[[playercountptr]+88]+210]+A0]+1E8]+10D8]+20]+60]+8]+0]+18","[[[[[[[[[[playercountptr]+88]+218]+A0]+1E8]+10D8]+20]+60]+8]+0]+18"
+,"[[[[[[[[[[playercountptr]+88]+220]+A0]+1E8]+10D8]+20]+60]+8]+0]+18","[[[[[[[[[[playercountptr]+88]+228]+A0]+1E8]+10D8]+20]+60]+8]+0]+18"
+,"[[[[[[[[[[playercountptr]+88]+230]+A0]+1E8]+10D8]+20]+60]+8]+0]+18","[[[[[[[[[[playercountptr]+88]+238]+A0]+1E8]+10D8]+20]+60]+8]+0]+18"
+,"[[[[[[[[[[playercountptr]+88]+240]+A0]+1E8]+10D8]+20]+60]+8]+0]+18","[[[[[[[[[[playercountptr]+88]+248]+A0]+1E8]+10D8]+20]+60]+8]+0]+18"
+,"[[[[[[[[[[playercountptr]+88]+250]+A0]+1E8]+10D8]+20]+60]+8]+0]+18","[[[[[[[[[[playercountptr]+88]+258]+A0]+1E8]+10D8]+20]+60]+8]+0]+18"
+,"[[[[[[[[[[playercountptr]+88]+260]+A0]+1E8]+10D8]+20]+60]+8]+0]+18","[[[[[[[[[[playercountptr]+88]+268]+A0]+1E8]+10D8]+20]+60]+8]+0]+18"
+,"[[[[[[[[[[playercountptr]+88]+270]+A0]+1E8]+10D8]+20]+60]+8]+0]+18"
 }
 
 PExplo = {
- "[[[[[[[[[[[playercountptr]+88]+180]+B0]+1C8]+10D8]+20]+60]+8]+8]+0]+18","[[[[[[[[[[[playercountptr]+88]+188]+B0]+1C8]+10D8]+20]+60]+8]+8]+0]+18"
-,"[[[[[[[[[[[playercountptr]+88]+190]+B0]+1C8]+10D8]+20]+60]+8]+8]+0]+18","[[[[[[[[[[[playercountptr]+88]+198]+B0]+1C8]+10D8]+20]+60]+8]+8]+0]+18"
-,"[[[[[[[[[[[playercountptr]+88]+1A0]+B0]+1C8]+10D8]+20]+60]+8]+8]+0]+18","[[[[[[[[[[[playercountptr]+88]+1A8]+B0]+1C8]+10D8]+20]+60]+8]+8]+0]+18"
-,"[[[[[[[[[[[playercountptr]+88]+1B0]+B0]+1C8]+10D8]+20]+60]+8]+8]+0]+18","[[[[[[[[[[[playercountptr]+88]+1B8]+B0]+1C8]+10D8]+20]+60]+8]+8]+0]+18"
-,"[[[[[[[[[[[playercountptr]+88]+1C0]+B0]+1C8]+10D8]+20]+60]+8]+8]+0]+18","[[[[[[[[[[[playercountptr]+88]+1C8]+B0]+1C8]+10D8]+20]+60]+8]+8]+0]+18"
-,"[[[[[[[[[[[playercountptr]+88]+1D0]+B0]+1C8]+10D8]+20]+60]+8]+8]+0]+18","[[[[[[[[[[[playercountptr]+88]+1D8]+B0]+1C8]+10D8]+20]+60]+8]+8]+0]+18"
-,"[[[[[[[[[[[playercountptr]+88]+1E0]+B0]+1C8]+10D8]+20]+60]+8]+8]+0]+18","[[[[[[[[[[[playercountptr]+88]+1E8]+B0]+1C8]+10D8]+20]+60]+8]+8]+0]+18"
-,"[[[[[[[[[[[playercountptr]+88]+1F0]+B0]+1C8]+10D8]+20]+60]+8]+8]+0]+18","[[[[[[[[[[[playercountptr]+88]+1F8]+B0]+1C8]+10D8]+20]+60]+8]+8]+0]+18"
-,"[[[[[[[[[[[playercountptr]+88]+200]+B0]+1C8]+10D8]+20]+60]+8]+8]+0]+18","[[[[[[[[[[[playercountptr]+88]+208]+B0]+1C8]+10D8]+20]+60]+8]+8]+0]+18"
-,"[[[[[[[[[[[playercountptr]+88]+210]+B0]+1C8]+10D8]+20]+60]+8]+8]+0]+18","[[[[[[[[[[[playercountptr]+88]+218]+B0]+1C8]+10D8]+20]+60]+8]+8]+0]+18"
-,"[[[[[[[[[[[playercountptr]+88]+220]+B0]+1C8]+10D8]+20]+60]+8]+8]+0]+18","[[[[[[[[[[[playercountptr]+88]+228]+B0]+1C8]+10D8]+20]+60]+8]+8]+0]+18"
-,"[[[[[[[[[[[playercountptr]+88]+230]+B0]+1C8]+10D8]+20]+60]+8]+8]+0]+18","[[[[[[[[[[[playercountptr]+88]+238]+B0]+1C8]+10D8]+20]+60]+8]+8]+0]+18"
-,"[[[[[[[[[[[playercountptr]+88]+240]+B0]+1C8]+10D8]+20]+60]+8]+8]+0]+18","[[[[[[[[[[[playercountptr]+88]+248]+B0]+1C8]+10D8]+20]+60]+8]+8]+0]+18"
-,"[[[[[[[[[[[playercountptr]+88]+250]+B0]+1C8]+10D8]+20]+60]+8]+8]+0]+18","[[[[[[[[[[[playercountptr]+88]+258]+B0]+1C8]+10D8]+20]+60]+8]+8]+0]+18"
-,"[[[[[[[[[[[playercountptr]+88]+260]+B0]+1C8]+10D8]+20]+60]+8]+8]+0]+18","[[[[[[[[[[[playercountptr]+88]+268]+B0]+1C8]+10D8]+20]+60]+8]+8]+0]+18"
-,"[[[[[[[[[[[playercountptr]+88]+270]+B0]+1C8]+10D8]+20]+60]+8]+8]+0]+18"
+ "[[[[[[[[[[[playercountptr]+88]+180]+A0]+1E8]+10D8]+20]+60]+8]+8]+0]+18","[[[[[[[[[[[playercountptr]+88]+188]+A0]+1E8]+10D8]+20]+60]+8]+8]+0]+18"
+,"[[[[[[[[[[[playercountptr]+88]+190]+A0]+1E8]+10D8]+20]+60]+8]+8]+0]+18","[[[[[[[[[[[playercountptr]+88]+198]+A0]+1E8]+10D8]+20]+60]+8]+8]+0]+18"
+,"[[[[[[[[[[[playercountptr]+88]+1A0]+A0]+1E8]+10D8]+20]+60]+8]+8]+0]+18","[[[[[[[[[[[playercountptr]+88]+1A8]+A0]+1E8]+10D8]+20]+60]+8]+8]+0]+18"
+,"[[[[[[[[[[[playercountptr]+88]+1B0]+A0]+1E8]+10D8]+20]+60]+8]+8]+0]+18","[[[[[[[[[[[playercountptr]+88]+1B8]+A0]+1E8]+10D8]+20]+60]+8]+8]+0]+18"
+,"[[[[[[[[[[[playercountptr]+88]+1C0]+A0]+1E8]+10D8]+20]+60]+8]+8]+0]+18","[[[[[[[[[[[playercountptr]+88]+1C8]+A0]+1E8]+10D8]+20]+60]+8]+8]+0]+18"
+,"[[[[[[[[[[[playercountptr]+88]+1D0]+A0]+1E8]+10D8]+20]+60]+8]+8]+0]+18","[[[[[[[[[[[playercountptr]+88]+1D8]+A0]+1E8]+10D8]+20]+60]+8]+8]+0]+18"
+,"[[[[[[[[[[[playercountptr]+88]+1E0]+A0]+1E8]+10D8]+20]+60]+8]+8]+0]+18","[[[[[[[[[[[playercountptr]+88]+1E8]+A0]+1E8]+10D8]+20]+60]+8]+8]+0]+18"
+,"[[[[[[[[[[[playercountptr]+88]+1F0]+A0]+1E8]+10D8]+20]+60]+8]+8]+0]+18","[[[[[[[[[[[playercountptr]+88]+1F8]+A0]+1E8]+10D8]+20]+60]+8]+8]+0]+18"
+,"[[[[[[[[[[[playercountptr]+88]+200]+A0]+1E8]+10D8]+20]+60]+8]+8]+0]+18","[[[[[[[[[[[playercountptr]+88]+208]+A0]+1E8]+10D8]+20]+60]+8]+8]+0]+18"
+,"[[[[[[[[[[[playercountptr]+88]+210]+A0]+1E8]+10D8]+20]+60]+8]+8]+0]+18","[[[[[[[[[[[playercountptr]+88]+218]+A0]+1E8]+10D8]+20]+60]+8]+8]+0]+18"
+,"[[[[[[[[[[[playercountptr]+88]+220]+A0]+1E8]+10D8]+20]+60]+8]+8]+0]+18","[[[[[[[[[[[playercountptr]+88]+228]+A0]+1E8]+10D8]+20]+60]+8]+8]+0]+18"
+,"[[[[[[[[[[[playercountptr]+88]+230]+A0]+1E8]+10D8]+20]+60]+8]+8]+0]+18","[[[[[[[[[[[playercountptr]+88]+238]+A0]+1E8]+10D8]+20]+60]+8]+8]+0]+18"
+,"[[[[[[[[[[[playercountptr]+88]+240]+A0]+1E8]+10D8]+20]+60]+8]+8]+0]+18","[[[[[[[[[[[playercountptr]+88]+248]+A0]+1E8]+10D8]+20]+60]+8]+8]+0]+18"
+,"[[[[[[[[[[[playercountptr]+88]+250]+A0]+1E8]+10D8]+20]+60]+8]+8]+0]+18","[[[[[[[[[[[playercountptr]+88]+258]+A0]+1E8]+10D8]+20]+60]+8]+8]+0]+18"
+,"[[[[[[[[[[[playercountptr]+88]+260]+A0]+1E8]+10D8]+20]+60]+8]+8]+0]+18","[[[[[[[[[[[playercountptr]+88]+268]+A0]+1E8]+10D8]+20]+60]+8]+8]+0]+18"
+,"[[[[[[[[[[[playercountptr]+88]+270]+A0]+1E8]+10D8]+20]+60]+8]+8]+0]+18"
 }
 
 PInfAmmox = {
- "[[[[[[[[[[playercountptr]+88]+180]+B0]+1C8]+10D8]+20]+60]+8]+0]+1C","[[[[[[[[[[playercountptr]+88]+188]+B0]+1C8]+10D8]+20]+60]+8]+0]+1C"
-,"[[[[[[[[[[playercountptr]+88]+190]+B0]+1C8]+10D8]+20]+60]+8]+0]+1C","[[[[[[[[[[playercountptr]+88]+198]+B0]+1C8]+10D8]+20]+60]+8]+0]+1C"
-,"[[[[[[[[[[playercountptr]+88]+1A0]+B0]+1C8]+10D8]+20]+60]+8]+0]+1C","[[[[[[[[[[playercountptr]+88]+1A8]+B0]+1C8]+10D8]+20]+60]+8]+0]+1C"
-,"[[[[[[[[[[playercountptr]+88]+1B0]+B0]+1C8]+10D8]+20]+60]+8]+0]+1C","[[[[[[[[[[playercountptr]+88]+1B8]+B0]+1C8]+10D8]+20]+60]+8]+0]+1C"
-,"[[[[[[[[[[playercountptr]+88]+1C0]+B0]+1C8]+10D8]+20]+60]+8]+0]+1C","[[[[[[[[[[playercountptr]+88]+1C8]+B0]+1C8]+10D8]+20]+60]+8]+0]+1C"
-,"[[[[[[[[[[playercountptr]+88]+1D0]+B0]+1C8]+10D8]+20]+60]+8]+0]+1C","[[[[[[[[[[playercountptr]+88]+1D8]+B0]+1C8]+10D8]+20]+60]+8]+0]+1C"
-,"[[[[[[[[[[playercountptr]+88]+1E0]+B0]+1C8]+10D8]+20]+60]+8]+0]+1C","[[[[[[[[[[playercountptr]+88]+1E8]+B0]+1C8]+10D8]+20]+60]+8]+0]+1C"
-,"[[[[[[[[[[playercountptr]+88]+1F0]+B0]+1C8]+10D8]+20]+60]+8]+0]+1C","[[[[[[[[[[playercountptr]+88]+1F8]+B0]+1C8]+10D8]+20]+60]+8]+0]+1C"
-,"[[[[[[[[[[playercountptr]+88]+200]+B0]+1C8]+10D8]+20]+60]+8]+0]+1C","[[[[[[[[[[playercountptr]+88]+208]+B0]+1C8]+10D8]+20]+60]+8]+0]+1C"
-,"[[[[[[[[[[playercountptr]+88]+210]+B0]+1C8]+10D8]+20]+60]+8]+0]+1C","[[[[[[[[[[playercountptr]+88]+218]+B0]+1C8]+10D8]+20]+60]+8]+0]+1C"
-,"[[[[[[[[[[playercountptr]+88]+220]+B0]+1C8]+10D8]+20]+60]+8]+0]+1C","[[[[[[[[[[playercountptr]+88]+228]+B0]+1C8]+10D8]+20]+60]+8]+0]+1C"
-,"[[[[[[[[[[playercountptr]+88]+230]+B0]+1C8]+10D8]+20]+60]+8]+0]+1C","[[[[[[[[[[playercountptr]+88]+238]+B0]+1C8]+10D8]+20]+60]+8]+0]+1C"
-,"[[[[[[[[[[playercountptr]+88]+240]+B0]+1C8]+10D8]+20]+60]+8]+0]+1C","[[[[[[[[[[playercountptr]+88]+248]+B0]+1C8]+10D8]+20]+60]+8]+0]+1C"
-,"[[[[[[[[[[playercountptr]+88]+250]+B0]+1C8]+10D8]+20]+60]+8]+0]+1C","[[[[[[[[[[playercountptr]+88]+258]+B0]+1C8]+10D8]+20]+60]+8]+0]+1C"
-,"[[[[[[[[[[playercountptr]+88]+260]+B0]+1C8]+10D8]+20]+60]+8]+0]+1C","[[[[[[[[[[playercountptr]+88]+268]+B0]+1C8]+10D8]+20]+60]+8]+0]+1C"
-,"[[[[[[[[[[playercountptr]+88]+270]+B0]+1C8]+10D8]+20]+60]+8]+0]+1C"
+ "[[[[[[[[[[playercountptr]+88]+180]+A0]+1E8]+10D8]+20]+60]+8]+0]+1C","[[[[[[[[[[playercountptr]+88]+188]+A0]+1E8]+10D8]+20]+60]+8]+0]+1C"
+,"[[[[[[[[[[playercountptr]+88]+190]+A0]+1E8]+10D8]+20]+60]+8]+0]+1C","[[[[[[[[[[playercountptr]+88]+198]+A0]+1E8]+10D8]+20]+60]+8]+0]+1C"
+,"[[[[[[[[[[playercountptr]+88]+1A0]+A0]+1E8]+10D8]+20]+60]+8]+0]+1C","[[[[[[[[[[playercountptr]+88]+1A8]+A0]+1E8]+10D8]+20]+60]+8]+0]+1C"
+,"[[[[[[[[[[playercountptr]+88]+1B0]+A0]+1E8]+10D8]+20]+60]+8]+0]+1C","[[[[[[[[[[playercountptr]+88]+1B8]+A0]+1E8]+10D8]+20]+60]+8]+0]+1C"
+,"[[[[[[[[[[playercountptr]+88]+1C0]+A0]+1E8]+10D8]+20]+60]+8]+0]+1C","[[[[[[[[[[playercountptr]+88]+1C8]+A0]+1E8]+10D8]+20]+60]+8]+0]+1C"
+,"[[[[[[[[[[playercountptr]+88]+1D0]+A0]+1E8]+10D8]+20]+60]+8]+0]+1C","[[[[[[[[[[playercountptr]+88]+1D8]+A0]+1E8]+10D8]+20]+60]+8]+0]+1C"
+,"[[[[[[[[[[playercountptr]+88]+1E0]+A0]+1E8]+10D8]+20]+60]+8]+0]+1C","[[[[[[[[[[playercountptr]+88]+1E8]+A0]+1E8]+10D8]+20]+60]+8]+0]+1C"
+,"[[[[[[[[[[playercountptr]+88]+1F0]+A0]+1E8]+10D8]+20]+60]+8]+0]+1C","[[[[[[[[[[playercountptr]+88]+1F8]+A0]+1E8]+10D8]+20]+60]+8]+0]+1C"
+,"[[[[[[[[[[playercountptr]+88]+200]+A0]+1E8]+10D8]+20]+60]+8]+0]+1C","[[[[[[[[[[playercountptr]+88]+208]+A0]+1E8]+10D8]+20]+60]+8]+0]+1C"
+,"[[[[[[[[[[playercountptr]+88]+210]+A0]+1E8]+10D8]+20]+60]+8]+0]+1C","[[[[[[[[[[playercountptr]+88]+218]+A0]+1E8]+10D8]+20]+60]+8]+0]+1C"
+,"[[[[[[[[[[playercountptr]+88]+220]+A0]+1E8]+10D8]+20]+60]+8]+0]+1C","[[[[[[[[[[playercountptr]+88]+228]+A0]+1E8]+10D8]+20]+60]+8]+0]+1C"
+,"[[[[[[[[[[playercountptr]+88]+230]+A0]+1E8]+10D8]+20]+60]+8]+0]+1C","[[[[[[[[[[playercountptr]+88]+238]+A0]+1E8]+10D8]+20]+60]+8]+0]+1C"
+,"[[[[[[[[[[playercountptr]+88]+240]+A0]+1E8]+10D8]+20]+60]+8]+0]+1C","[[[[[[[[[[playercountptr]+88]+248]+A0]+1E8]+10D8]+20]+60]+8]+0]+1C"
+,"[[[[[[[[[[playercountptr]+88]+250]+A0]+1E8]+10D8]+20]+60]+8]+0]+1C","[[[[[[[[[[playercountptr]+88]+258]+A0]+1E8]+10D8]+20]+60]+8]+0]+1C"
+,"[[[[[[[[[[playercountptr]+88]+260]+A0]+1E8]+10D8]+20]+60]+8]+0]+1C","[[[[[[[[[[playercountptr]+88]+268]+A0]+1E8]+10D8]+20]+60]+8]+0]+1C"
+,"[[[[[[[[[[playercountptr]+88]+270]+A0]+1E8]+10D8]+20]+60]+8]+0]+1C"
 }
 
 PWanted = {
-"[[[[[[playercountptr]+88]+180]+B0]+1C8]+10C8]+868","[[[[[[playercountptr]+88]+188]+B0]+1C8]+10C8]+868"
-,"[[[[[[playercountptr]+88]+190]+B0]+1C8]+10C8]+868","[[[[[[playercountptr]+88]+198]+B0]+1C8]+10C8]+868"
-,"[[[[[[playercountptr]+88]+1A0]+B0]+1C8]+10C8]+868","[[[[[[playercountptr]+88]+1A8]+B0]+1C8]+10C8]+868"
-,"[[[[[[playercountptr]+88]+1B0]+B0]+1C8]+10C8]+868","[[[[[[playercountptr]+88]+1B8]+B0]+1C8]+10C8]+868"
-,"[[[[[[playercountptr]+88]+1C0]+B0]+1C8]+10C8]+868","[[[[[[playercountptr]+88]+1C8]+B0]+1C8]+10C8]+868"
-,"[[[[[[playercountptr]+88]+1D0]+B0]+1C8]+10C8]+868","[[[[[[playercountptr]+88]+1D8]+B0]+1C8]+10C8]+868"
-,"[[[[[[playercountptr]+88]+1E0]+B0]+1C8]+10C8]+868","[[[[[[playercountptr]+88]+1E8]+B0]+1C8]+10C8]+868"
-,"[[[[[[playercountptr]+88]+1F0]+B0]+1C8]+10C8]+868","[[[[[[playercountptr]+88]+1F8]+B0]+1C8]+10C8]+868"
-,"[[[[[[playercountptr]+88]+200]+B0]+1C8]+10C8]+868","[[[[[[playercountptr]+88]+208]+B0]+1C8]+10C8]+868"
-,"[[[[[[playercountptr]+88]+210]+B0]+1C8]+10C8]+868","[[[[[[playercountptr]+88]+218]+B0]+1C8]+10C8]+868"
-,"[[[[[[playercountptr]+88]+220]+B0]+1C8]+10C8]+868","[[[[[[playercountptr]+88]+228]+B0]+1C8]+10C8]+868"
-,"[[[[[[playercountptr]+88]+230]+B0]+1C8]+10C8]+868","[[[[[[playercountptr]+88]+238]+B0]+1C8]+10C8]+868"
-,"[[[[[[playercountptr]+88]+240]+B0]+1C8]+10C8]+868","[[[[[[playercountptr]+88]+248]+B0]+1C8]+10C8]+868"
-,"[[[[[[playercountptr]+88]+250]+B0]+1C8]+10C8]+868","[[[[[[playercountptr]+88]+258]+B0]+1C8]+10C8]+868"
-,"[[[[[[playercountptr]+88]+260]+B0]+1C8]+10C8]+868","[[[[[[playercountptr]+88]+268]+B0]+1C8]+10C8]+868"
-,"[[[[[[playercountptr]+88]+270]+B0]+1C8]+10C8]+868"
+"[[[[[[playercountptr]+88]+180]+A0]+1E8]+10C8]+888","[[[[[[playercountptr]+88]+188]+A0]+1E8]+10C8]+888"
+,"[[[[[[playercountptr]+88]+190]+A0]+1E8]+10C8]+888","[[[[[[playercountptr]+88]+198]+A0]+1E8]+10C8]+888"
+,"[[[[[[playercountptr]+88]+1A0]+A0]+1E8]+10C8]+888","[[[[[[playercountptr]+88]+1A8]+A0]+1E8]+10C8]+888"
+,"[[[[[[playercountptr]+88]+1B0]+A0]+1E8]+10C8]+888","[[[[[[playercountptr]+88]+1B8]+A0]+1E8]+10C8]+888"
+,"[[[[[[playercountptr]+88]+1C0]+A0]+1E8]+10C8]+888","[[[[[[playercountptr]+88]+1C8]+A0]+1E8]+10C8]+888"
+,"[[[[[[playercountptr]+88]+1D0]+A0]+1E8]+10C8]+888","[[[[[[playercountptr]+88]+1D8]+A0]+1E8]+10C8]+888"
+,"[[[[[[playercountptr]+88]+1E0]+A0]+1E8]+10C8]+888","[[[[[[playercountptr]+88]+1E8]+A0]+1E8]+10C8]+888"
+,"[[[[[[playercountptr]+88]+1F0]+A0]+1E8]+10C8]+888","[[[[[[playercountptr]+88]+1F8]+A0]+1E8]+10C8]+888"
+,"[[[[[[playercountptr]+88]+200]+A0]+1E8]+10C8]+888","[[[[[[playercountptr]+88]+208]+A0]+1E8]+10C8]+888"
+,"[[[[[[playercountptr]+88]+210]+A0]+1E8]+10C8]+888","[[[[[[playercountptr]+88]+218]+A0]+1E8]+10C8]+888"
+,"[[[[[[playercountptr]+88]+220]+A0]+1E8]+10C8]+888","[[[[[[playercountptr]+88]+228]+A0]+1E8]+10C8]+888"
+,"[[[[[[playercountptr]+88]+230]+A0]+1E8]+10C8]+888","[[[[[[playercountptr]+88]+238]+A0]+1E8]+10C8]+888"
+,"[[[[[[playercountptr]+88]+240]+A0]+1E8]+10C8]+888","[[[[[[playercountptr]+88]+248]+A0]+1E8]+10C8]+888"
+,"[[[[[[playercountptr]+88]+250]+A0]+1E8]+10C8]+888","[[[[[[playercountptr]+88]+258]+A0]+1E8]+10C8]+888"
+,"[[[[[[playercountptr]+88]+260]+A0]+1E8]+10C8]+888","[[[[[[playercountptr]+88]+268]+A0]+1E8]+10C8]+888"
+,"[[[[[[playercountptr]+88]+270]+A0]+1E8]+10C8]+888"
 }
 CPLAYER_NAME = {
-"[[[[playercountptr]+88]+180]+B0]+84","[[[[playercountptr]+88]+188]+B0]+84"
-,"[[[[playercountptr]+88]+190]+B0]+84","[[[[playercountptr]+88]+198]+B0]+84"
-,"[[[[playercountptr]+88]+1A0]+B0]+84","[[[[playercountptr]+88]+1A8]+B0]+84"
-,"[[[[playercountptr]+88]+1B0]+B0]+84","[[[[playercountptr]+88]+1B8]+B0]+84"
-,"[[[[playercountptr]+88]+1C0]+B0]+84","[[[[playercountptr]+88]+1C8]+B0]+84"
-,"[[[[playercountptr]+88]+1D0]+B0]+84","[[[[playercountptr]+88]+1D8]+B0]+84"
-,"[[[[playercountptr]+88]+1E0]+B0]+84","[[[[playercountptr]+88]+1E8]+B0]+84"
-,"[[[[playercountptr]+88]+1F0]+B0]+84","[[[[playercountptr]+88]+1F8]+B0]+84"
-,"[[[[playercountptr]+88]+200]+B0]+84","[[[[playercountptr]+88]+208]+B0]+84"
-,"[[[[playercountptr]+88]+210]+B0]+84","[[[[playercountptr]+88]+218]+B0]+84"
-,"[[[[playercountptr]+88]+220]+B0]+84","[[[[playercountptr]+88]+228]+B0]+84"
-,"[[[[playercountptr]+88]+230]+B0]+84","[[[[playercountptr]+88]+238]+B0]+84"
-,"[[[[playercountptr]+88]+240]+B0]+84","[[[[playercountptr]+88]+248]+B0]+84"
-,"[[[[playercountptr]+88]+250]+B0]+84","[[[[playercountptr]+88]+258]+B0]+84"
-,"[[[[playercountptr]+88]+260]+B0]+84","[[[[playercountptr]+88]+268]+B0]+84"
-,"[[[[playercountptr]+88]+270]+B0]+84","[[[[playercountptr]+88]+278]+B0]+84"
-,"[[[[playercountptr]+88]+280]+B0]+84"
+"[[[[playercountptr]+88]+180]+A0]+A4","[[[[playercountptr]+88]+188]+A0]+A4"
+,"[[[[playercountptr]+88]+190]+A0]+A4","[[[[playercountptr]+88]+198]+A0]+A4"
+,"[[[[playercountptr]+88]+1A0]+A0]+A4","[[[[playercountptr]+88]+1A8]+A0]+A4"
+,"[[[[playercountptr]+88]+1B0]+A0]+A4","[[[[playercountptr]+88]+1B8]+A0]+A4"
+,"[[[[playercountptr]+88]+1C0]+A0]+A4","[[[[playercountptr]+88]+1C8]+A0]+A4"
+,"[[[[playercountptr]+88]+1D0]+A0]+A4","[[[[playercountptr]+88]+1D8]+A0]+A4"
+,"[[[[playercountptr]+88]+1E0]+A0]+A4","[[[[playercountptr]+88]+1E8]+A0]+A4"
+,"[[[[playercountptr]+88]+1F0]+A0]+A4","[[[[playercountptr]+88]+1F8]+A0]+A4"
+,"[[[[playercountptr]+88]+200]+A0]+A4","[[[[playercountptr]+88]+208]+A0]+A4"
+,"[[[[playercountptr]+88]+210]+A0]+A4","[[[[playercountptr]+88]+218]+A0]+A4"
+,"[[[[playercountptr]+88]+220]+A0]+A4","[[[[playercountptr]+88]+228]+A0]+A4"
+,"[[[[playercountptr]+88]+230]+A0]+A4","[[[[playercountptr]+88]+238]+A0]+A4"
+,"[[[[playercountptr]+88]+240]+A0]+A4","[[[[playercountptr]+88]+248]+A0]+A4"
+,"[[[[playercountptr]+88]+250]+A0]+A4","[[[[playercountptr]+88]+258]+A0]+A4"
+,"[[[[playercountptr]+88]+260]+A0]+A4","[[[[playercountptr]+88]+268]+A0]+A4"
+,"[[[[playercountptr]+88]+270]+A0]+A4","[[[[playercountptr]+88]+278]+A0]+A4"
+,"[[[[playercountptr]+88]+280]+A0]+A4"
 }
 
 RID_LIST = {
-"[[[[playercountptr]+88]+180]+B0]+70","[[[[playercountptr]+88]+188]+B0]+70"
-,"[[[[playercountptr]+88]+190]+B0]+70","[[[[playercountptr]+88]+198]+B0]+70"
-,"[[[[playercountptr]+88]+1A0]+B0]+70","[[[[playercountptr]+88]+1A8]+B0]+70"
-,"[[[[playercountptr]+88]+1B0]+B0]+70","[[[[playercountptr]+88]+1B8]+B0]+70"
-,"[[[[playercountptr]+88]+1C0]+B0]+70","[[[[playercountptr]+88]+1C8]+B0]+70"
-,"[[[[playercountptr]+88]+1D0]+B0]+70","[[[[playercountptr]+88]+1D8]+B0]+70"
-,"[[[[playercountptr]+88]+1E0]+B0]+70","[[[[playercountptr]+88]+1E8]+B0]+70"
-,"[[[[playercountptr]+88]+1F0]+B0]+70","[[[[playercountptr]+88]+1F8]+B0]+70"
-,"[[[[playercountptr]+88]+200]+B0]+70","[[[[playercountptr]+88]+208]+B0]+70"
-,"[[[[playercountptr]+88]+210]+B0]+70","[[[[playercountptr]+88]+218]+B0]+70"
-,"[[[[playercountptr]+88]+220]+B0]+70","[[[[playercountptr]+88]+228]+B0]+70"
-,"[[[[playercountptr]+88]+230]+B0]+70","[[[[playercountptr]+88]+238]+B0]+70"
-,"[[[[playercountptr]+88]+240]+B0]+70","[[[[playercountptr]+88]+248]+B0]+70"
-,"[[[[playercountptr]+88]+250]+B0]+70","[[[[playercountptr]+88]+258]+B0]+70"
-,"[[[[playercountptr]+88]+260]+B0]+70","[[[[playercountptr]+88]+268]+B0]+70"
-,"[[[[playercountptr]+88]+270]+B0]+70"
+"[[[[playercountptr]+88]+180]+A0]+90","[[[[playercountptr]+88]+188]+A0]+90"
+,"[[[[playercountptr]+88]+190]+A0]+90","[[[[playercountptr]+88]+198]+A0]+90"
+,"[[[[playercountptr]+88]+1A0]+A0]+90","[[[[playercountptr]+88]+1A8]+A0]+90"
+,"[[[[playercountptr]+88]+1B0]+A0]+90","[[[[playercountptr]+88]+1B8]+A0]+90"
+,"[[[[playercountptr]+88]+1C0]+A0]+90","[[[[playercountptr]+88]+1C8]+A0]+90"
+,"[[[[playercountptr]+88]+1D0]+A0]+90","[[[[playercountptr]+88]+1D8]+A0]+90"
+,"[[[[playercountptr]+88]+1E0]+A0]+90","[[[[playercountptr]+88]+1E8]+A0]+90"
+,"[[[[playercountptr]+88]+1F0]+A0]+90","[[[[playercountptr]+88]+1F8]+A0]+90"
+,"[[[[playercountptr]+88]+200]+A0]+90","[[[[playercountptr]+88]+208]+A0]+90"
+,"[[[[playercountptr]+88]+210]+A0]+90","[[[[playercountptr]+88]+218]+A0]+90"
+,"[[[[playercountptr]+88]+220]+A0]+90","[[[[playercountptr]+88]+228]+A0]+90"
+,"[[[[playercountptr]+88]+230]+A0]+90","[[[[playercountptr]+88]+238]+A0]+90"
+,"[[[[playercountptr]+88]+240]+A0]+90","[[[[playercountptr]+88]+248]+A0]+90"
+,"[[[[playercountptr]+88]+250]+A0]+90","[[[[playercountptr]+88]+258]+A0]+90"
+,"[[[[playercountptr]+88]+260]+A0]+90","[[[[playercountptr]+88]+268]+A0]+90"
+,"[[[[playercountptr]+88]+270]+A0]+90"
 }
 CPLAYER_INDEX = {
-{"[[[[playercountptr]+88]+180]+B0]+84","[[[[playercountptr]+88]+180]+B0]+70"},
-{"[[[[playercountptr]+88]+188]+B0]+84","[[[[playercountptr]+88]+188]+B0]+70"},
-{"[[[[playercountptr]+88]+190]+B0]+84","[[[[playercountptr]+88]+190]+B0]+70"},
-{"[[[[playercountptr]+88]+198]+B0]+84","[[[[playercountptr]+88]+198]+B0]+70"},
-{"[[[[playercountptr]+88]+1A0]+B0]+84","[[[[playercountptr]+88]+1A0]+B0]+70"},
-{"[[[[playercountptr]+88]+1A8]+B0]+84","[[[[playercountptr]+88]+1A8]+B0]+70"},
-{"[[[[playercountptr]+88]+1B0]+B0]+84","[[[[playercountptr]+88]+1B0]+B0]+70"},
-{"[[[[playercountptr]+88]+1B8]+B0]+84","[[[[playercountptr]+88]+1B8]+B0]+70"},
-{"[[[[playercountptr]+88]+1C0]+B0]+84","[[[[playercountptr]+88]+1C0]+B0]+70"},
-{"[[[[playercountptr]+88]+1C8]+B0]+84","[[[[playercountptr]+88]+1C8]+B0]+70"},
-{"[[[[playercountptr]+88]+1D0]+B0]+84","[[[[playercountptr]+88]+1D0]+B0]+70"},
-{"[[[[playercountptr]+88]+1D8]+B0]+84","[[[[playercountptr]+88]+1D8]+B0]+70"},
-{"[[[[playercountptr]+88]+1E0]+B0]+84","[[[[playercountptr]+88]+1E0]+B0]+70"},
-{"[[[[playercountptr]+88]+1E8]+B0]+84","[[[[playercountptr]+88]+1E8]+B0]+70"},
-{"[[[[playercountptr]+88]+1F0]+B0]+84","[[[[playercountptr]+88]+1F0]+B0]+70"},
-{"[[[[playercountptr]+88]+1F8]+B0]+84","[[[[playercountptr]+88]+1F8]+B0]+70"},
-{"[[[[playercountptr]+88]+200]+B0]+84","[[[[playercountptr]+88]+200]+B0]+70"},
-{"[[[[playercountptr]+88]+208]+B0]+84","[[[[playercountptr]+88]+208]+B0]+70"},
-{"[[[[playercountptr]+88]+210]+B0]+84","[[[[playercountptr]+88]+210]+B0]+70"},
-{"[[[[playercountptr]+88]+218]+B0]+84","[[[[playercountptr]+88]+218]+B0]+70"},
-{"[[[[playercountptr]+88]+220]+B0]+84","[[[[playercountptr]+88]+220]+B0]+70"},
-{"[[[[playercountptr]+88]+228]+B0]+84","[[[[playercountptr]+88]+228]+B0]+70"},
-{"[[[[playercountptr]+88]+230]+B0]+84","[[[[playercountptr]+88]+230]+B0]+70"},
-{"[[[[playercountptr]+88]+238]+B0]+84","[[[[playercountptr]+88]+238]+B0]+70"},
-{"[[[[playercountptr]+88]+240]+B0]+84","[[[[playercountptr]+88]+240]+B0]+70"},
-{"[[[[playercountptr]+88]+248]+B0]+84","[[[[playercountptr]+88]+248]+B0]+70"},
-{"[[[[playercountptr]+88]+250]+B0]+84","[[[[playercountptr]+88]+250]+B0]+70"},
-{"[[[[playercountptr]+88]+258]+B0]+84","[[[[playercountptr]+88]+258]+B0]+70"},
-{"[[[[playercountptr]+88]+260]+B0]+84","[[[[playercountptr]+88]+260]+B0]+70"},
-{"[[[[playercountptr]+88]+268]+B0]+84","[[[[playercountptr]+88]+268]+B0]+70"},
-{"[[[[playercountptr]+88]+270]+B0]+84","[[[[playercountptr]+88]+270]+B0]+70"},
-{"[[[[playercountptr]+88]+278]+B0]+84","[[[[playercountptr]+88]+278]+B0]+70"},
-{"[[[[playercountptr]+88]+280]+B0]+84","[[[[playercountptr]+88]+280]+B0]+70"},
+{"[[[[playercountptr]+88]+180]+A0]+A4","[[[[playercountptr]+88]+180]+A0]+90"};
+{"[[[[playercountptr]+88]+188]+A0]+A4","[[[[playercountptr]+88]+188]+A0]+90"};
+{"[[[[playercountptr]+88]+190]+A0]+A4","[[[[playercountptr]+88]+190]+A0]+90"};
+{"[[[[playercountptr]+88]+198]+A0]+A4","[[[[playercountptr]+88]+198]+A0]+90"};
+{"[[[[playercountptr]+88]+1A0]+A0]+A4","[[[[playercountptr]+88]+1A0]+A0]+90"};
+{"[[[[playercountptr]+88]+1A8]+A0]+A4","[[[[playercountptr]+88]+1A8]+A0]+90"};
+{"[[[[playercountptr]+88]+1B0]+A0]+A4","[[[[playercountptr]+88]+1B0]+A0]+90"};
+{"[[[[playercountptr]+88]+1B8]+A0]+A4","[[[[playercountptr]+88]+1B8]+A0]+90"};
+{"[[[[playercountptr]+88]+1C0]+A0]+A4","[[[[playercountptr]+88]+1C0]+A0]+90"};
+{"[[[[playercountptr]+88]+1C8]+A0]+A4","[[[[playercountptr]+88]+1C8]+A0]+90"};
+{"[[[[playercountptr]+88]+1D0]+A0]+A4","[[[[playercountptr]+88]+1D0]+A0]+90"};
+{"[[[[playercountptr]+88]+1D8]+A0]+A4","[[[[playercountptr]+88]+1D8]+A0]+90"};
+{"[[[[playercountptr]+88]+1E0]+A0]+A4","[[[[playercountptr]+88]+1E0]+A0]+90"};
+{"[[[[playercountptr]+88]+1E8]+A0]+A4","[[[[playercountptr]+88]+1E8]+A0]+90"};
+{"[[[[playercountptr]+88]+1F0]+A0]+A4","[[[[playercountptr]+88]+1F0]+A0]+90"};
+{"[[[[playercountptr]+88]+1F8]+A0]+A4","[[[[playercountptr]+88]+1F8]+A0]+90"};
+{"[[[[playercountptr]+88]+200]+A0]+A4","[[[[playercountptr]+88]+200]+A0]+90"};
+{"[[[[playercountptr]+88]+208]+A0]+A4","[[[[playercountptr]+88]+208]+A0]+90"};
+{"[[[[playercountptr]+88]+210]+A0]+A4","[[[[playercountptr]+88]+210]+A0]+90"};
+{"[[[[playercountptr]+88]+218]+A0]+A4","[[[[playercountptr]+88]+218]+A0]+90"};
+{"[[[[playercountptr]+88]+220]+A0]+A4","[[[[playercountptr]+88]+220]+A0]+90"};
+{"[[[[playercountptr]+88]+228]+A0]+A4","[[[[playercountptr]+88]+228]+A0]+90"};
+{"[[[[playercountptr]+88]+230]+A0]+A4","[[[[playercountptr]+88]+230]+A0]+90"};
+{"[[[[playercountptr]+88]+238]+A0]+A4","[[[[playercountptr]+88]+238]+A0]+90"};
+{"[[[[playercountptr]+88]+240]+A0]+A4","[[[[playercountptr]+88]+240]+A0]+90"};
+{"[[[[playercountptr]+88]+248]+A0]+A4","[[[[playercountptr]+88]+248]+A0]+90"};
+{"[[[[playercountptr]+88]+250]+A0]+A4","[[[[playercountptr]+88]+250]+A0]+90"};
+{"[[[[playercountptr]+88]+258]+A0]+A4","[[[[playercountptr]+88]+258]+A0]+90"};
+{"[[[[playercountptr]+88]+260]+A0]+A4","[[[[playercountptr]+88]+260]+A0]+90"};
+{"[[[[playercountptr]+88]+268]+A0]+A4","[[[[playercountptr]+88]+268]+A0]+90"};
+{"[[[[playercountptr]+88]+270]+A0]+A4","[[[[playercountptr]+88]+270]+A0]+90"};
+{"[[[[playercountptr]+88]+278]+A0]+A4","[[[[playercountptr]+88]+278]+A0]+90"};
+{"[[[[playercountptr]+88]+280]+A0]+A4","[[[[playercountptr]+88]+280]+A0]+90"};
 }
 IPs1 = {
-	"[[[[playercountptr]+88]+180]+B0]+44","[[[[playercountptr]+88]+188]+B0]+44"
-,"[[[[playercountptr]+88]+190]+B0]+44","[[[[playercountptr]+88]+198]+B0]+44"
-,"[[[[playercountptr]+88]+1A0]+B0]+44","[[[[playercountptr]+88]+1A8]+B0]+44"
-,"[[[[playercountptr]+88]+1B0]+B0]+44","[[[[playercountptr]+88]+1B8]+B0]+44"
-,"[[[[playercountptr]+88]+1C0]+B0]+44","[[[[playercountptr]+88]+1C8]+B0]+44"
-,"[[[[playercountptr]+88]+1D0]+B0]+44","[[[[playercountptr]+88]+1D8]+B0]+44"
-,"[[[[playercountptr]+88]+1E0]+B0]+44","[[[[playercountptr]+88]+1E8]+B0]+44"
-,"[[[[playercountptr]+88]+1F0]+B0]+44","[[[[playercountptr]+88]+1F8]+B0]+44"
-,"[[[[playercountptr]+88]+200]+B0]+44","[[[[playercountptr]+88]+208]+B0]+44"
-,"[[[[playercountptr]+88]+210]+B0]+44","[[[[playercountptr]+88]+218]+B0]+44"
-,"[[[[playercountptr]+88]+220]+B0]+44","[[[[playercountptr]+88]+228]+B0]+44"
-,"[[[[playercountptr]+88]+230]+B0]+44","[[[[playercountptr]+88]+238]+B0]+44"
-,"[[[[playercountptr]+88]+240]+B0]+44","[[[[playercountptr]+88]+248]+B0]+44"
-,"[[[[playercountptr]+88]+250]+B0]+44","[[[[playercountptr]+88]+258]+B0]+44"
-,"[[[[playercountptr]+88]+260]+B0]+44","[[[[playercountptr]+88]+268]+B0]+44"
-,"[[[[playercountptr]+88]+270]+B0]+44"
+	"[[[[playercountptr]+88]+180]+A0]+6C","[[[[playercountptr]+88]+188]+A0]+6C"
+,"[[[[playercountptr]+88]+190]+A0]+6C","[[[[playercountptr]+88]+198]+A0]+6C"
+,"[[[[playercountptr]+88]+1A0]+A0]+6C","[[[[playercountptr]+88]+1A8]+A0]+6C"
+,"[[[[playercountptr]+88]+1B0]+A0]+6C","[[[[playercountptr]+88]+1B8]+A0]+6C"
+,"[[[[playercountptr]+88]+1C0]+A0]+6C","[[[[playercountptr]+88]+1C8]+A0]+6C"
+,"[[[[playercountptr]+88]+1D0]+A0]+6C","[[[[playercountptr]+88]+1D8]+A0]+6C"
+,"[[[[playercountptr]+88]+1E0]+A0]+6C","[[[[playercountptr]+88]+1E8]+A0]+6C"
+,"[[[[playercountptr]+88]+1F0]+A0]+6C","[[[[playercountptr]+88]+1F8]+A0]+6C"
+,"[[[[playercountptr]+88]+200]+A0]+6C","[[[[playercountptr]+88]+208]+A0]+6C"
+,"[[[[playercountptr]+88]+210]+A0]+6C","[[[[playercountptr]+88]+218]+A0]+6C"
+,"[[[[playercountptr]+88]+220]+A0]+6C","[[[[playercountptr]+88]+228]+A0]+6C"
+,"[[[[playercountptr]+88]+230]+A0]+6C","[[[[playercountptr]+88]+238]+A0]+6C"
+,"[[[[playercountptr]+88]+240]+A0]+6C","[[[[playercountptr]+88]+248]+A0]+6C"
+,"[[[[playercountptr]+88]+250]+A0]+6C","[[[[playercountptr]+88]+258]+A0]+6C"
+,"[[[[playercountptr]+88]+260]+A0]+6C","[[[[playercountptr]+88]+268]+A0]+6C"
+,"[[[[playercountptr]+88]+270]+A0]+6C"
 }
 
 IPs2 = {
-	"[[[[playercountptr]+88]+180]+B0]+45","[[[[playercountptr]+88]+188]+B0]+45"
-,"[[[[playercountptr]+88]+190]+B0]+45","[[[[playercountptr]+88]+198]+B0]+45"
-,"[[[[playercountptr]+88]+1A0]+B0]+45","[[[[playercountptr]+88]+1A8]+B0]+45"
-,"[[[[playercountptr]+88]+1B0]+B0]+45","[[[[playercountptr]+88]+1B8]+B0]+45"
-,"[[[[playercountptr]+88]+1C0]+B0]+45","[[[[playercountptr]+88]+1C8]+B0]+45"
-,"[[[[playercountptr]+88]+1D0]+B0]+45","[[[[playercountptr]+88]+1D8]+B0]+45"
-,"[[[[playercountptr]+88]+1E0]+B0]+45","[[[[playercountptr]+88]+1E8]+B0]+45"
-,"[[[[playercountptr]+88]+1F0]+B0]+45","[[[[playercountptr]+88]+1F8]+B0]+45"
-,"[[[[playercountptr]+88]+200]+B0]+45","[[[[playercountptr]+88]+208]+B0]+45"
-,"[[[[playercountptr]+88]+210]+B0]+45","[[[[playercountptr]+88]+218]+B0]+45"
-,"[[[[playercountptr]+88]+220]+B0]+45","[[[[playercountptr]+88]+228]+B0]+45"
-,"[[[[playercountptr]+88]+230]+B0]+45","[[[[playercountptr]+88]+238]+B0]+45"
-,"[[[[playercountptr]+88]+240]+B0]+45","[[[[playercountptr]+88]+248]+B0]+45"
-,"[[[[playercountptr]+88]+250]+B0]+45","[[[[playercountptr]+88]+258]+B0]+45"
-,"[[[[playercountptr]+88]+260]+B0]+45","[[[[playercountptr]+88]+268]+B0]+45"
-,"[[[[playercountptr]+88]+270]+B0]+45"
+	"[[[[playercountptr]+88]+180]+A0]+6D","[[[[playercountptr]+88]+188]+A0]+6D"
+,"[[[[playercountptr]+88]+190]+A0]+6D","[[[[playercountptr]+88]+198]+A0]+6D"
+,"[[[[playercountptr]+88]+1A0]+A0]+6D","[[[[playercountptr]+88]+1A8]+A0]+6D"
+,"[[[[playercountptr]+88]+1B0]+A0]+6D","[[[[playercountptr]+88]+1B8]+A0]+6D"
+,"[[[[playercountptr]+88]+1C0]+A0]+6D","[[[[playercountptr]+88]+1C8]+A0]+6D"
+,"[[[[playercountptr]+88]+1D0]+A0]+6D","[[[[playercountptr]+88]+1D8]+A0]+6D"
+,"[[[[playercountptr]+88]+1E0]+A0]+6D","[[[[playercountptr]+88]+1E8]+A0]+6D"
+,"[[[[playercountptr]+88]+1F0]+A0]+6D","[[[[playercountptr]+88]+1F8]+A0]+6D"
+,"[[[[playercountptr]+88]+200]+A0]+6D","[[[[playercountptr]+88]+208]+A0]+6D"
+,"[[[[playercountptr]+88]+210]+A0]+6D","[[[[playercountptr]+88]+218]+A0]+6D"
+,"[[[[playercountptr]+88]+220]+A0]+6D","[[[[playercountptr]+88]+228]+A0]+6D"
+,"[[[[playercountptr]+88]+230]+A0]+6D","[[[[playercountptr]+88]+238]+A0]+6D"
+,"[[[[playercountptr]+88]+240]+A0]+6D","[[[[playercountptr]+88]+248]+A0]+6D"
+,"[[[[playercountptr]+88]+250]+A0]+6D","[[[[playercountptr]+88]+258]+A0]+6D"
+,"[[[[playercountptr]+88]+260]+A0]+6D","[[[[playercountptr]+88]+268]+A0]+6D"
+,"[[[[playercountptr]+88]+270]+A0]+6D"
 }
 
 IPs3 = {
-	"[[[[playercountptr]+88]+180]+B0]+46","[[[[playercountptr]+88]+188]+B0]+46"
-,"[[[[playercountptr]+88]+190]+B0]+46","[[[[playercountptr]+88]+198]+B0]+46"
-,"[[[[playercountptr]+88]+1A0]+B0]+46","[[[[playercountptr]+88]+1A8]+B0]+46"
-,"[[[[playercountptr]+88]+1B0]+B0]+46","[[[[playercountptr]+88]+1B8]+B0]+46"
-,"[[[[playercountptr]+88]+1C0]+B0]+46","[[[[playercountptr]+88]+1C8]+B0]+46"
-,"[[[[playercountptr]+88]+1D0]+B0]+46","[[[[playercountptr]+88]+1D8]+B0]+46"
-,"[[[[playercountptr]+88]+1E0]+B0]+46","[[[[playercountptr]+88]+1E8]+B0]+46"
-,"[[[[playercountptr]+88]+1F0]+B0]+46","[[[[playercountptr]+88]+1F8]+B0]+46"
-,"[[[[playercountptr]+88]+200]+B0]+46","[[[[playercountptr]+88]+208]+B0]+46"
-,"[[[[playercountptr]+88]+210]+B0]+46","[[[[playercountptr]+88]+218]+B0]+46"
-,"[[[[playercountptr]+88]+220]+B0]+46","[[[[playercountptr]+88]+228]+B0]+46"
-,"[[[[playercountptr]+88]+230]+B0]+46","[[[[playercountptr]+88]+238]+B0]+46"
-,"[[[[playercountptr]+88]+240]+B0]+46","[[[[playercountptr]+88]+248]+B0]+46"
-,"[[[[playercountptr]+88]+250]+B0]+46","[[[[playercountptr]+88]+258]+B0]+46"
-,"[[[[playercountptr]+88]+260]+B0]+46","[[[[playercountptr]+88]+268]+B0]+46"
-,"[[[[playercountptr]+88]+270]+B0]+46"
+	"[[[[playercountptr]+88]+180]+A0]+6E","[[[[playercountptr]+88]+188]+A0]+6E"
+,"[[[[playercountptr]+88]+190]+A0]+6E","[[[[playercountptr]+88]+198]+A0]+6E"
+,"[[[[playercountptr]+88]+1A0]+A0]+6E","[[[[playercountptr]+88]+1A8]+A0]+6E"
+,"[[[[playercountptr]+88]+1B0]+A0]+6E","[[[[playercountptr]+88]+1B8]+A0]+6E"
+,"[[[[playercountptr]+88]+1C0]+A0]+6E","[[[[playercountptr]+88]+1C8]+A0]+6E"
+,"[[[[playercountptr]+88]+1D0]+A0]+6E","[[[[playercountptr]+88]+1D8]+A0]+6E"
+,"[[[[playercountptr]+88]+1E0]+A0]+6E","[[[[playercountptr]+88]+1E8]+A0]+6E"
+,"[[[[playercountptr]+88]+1F0]+A0]+6E","[[[[playercountptr]+88]+1F8]+A0]+6E"
+,"[[[[playercountptr]+88]+200]+A0]+6E","[[[[playercountptr]+88]+208]+A0]+6E"
+,"[[[[playercountptr]+88]+210]+A0]+6E","[[[[playercountptr]+88]+218]+A0]+6E"
+,"[[[[playercountptr]+88]+220]+A0]+6E","[[[[playercountptr]+88]+228]+A0]+6E"
+,"[[[[playercountptr]+88]+230]+A0]+6E","[[[[playercountptr]+88]+238]+A0]+6E"
+,"[[[[playercountptr]+88]+240]+A0]+6E","[[[[playercountptr]+88]+248]+A0]+6E"
+,"[[[[playercountptr]+88]+250]+A0]+6E","[[[[playercountptr]+88]+258]+A0]+6E"
+,"[[[[playercountptr]+88]+260]+A0]+6E","[[[[playercountptr]+88]+268]+A0]+6E"
+,"[[[[playercountptr]+88]+270]+A0]+6E"
 }
 
 IPs4 = {
 
-	"[[[[playercountptr]+88]+180]+B0]+47","[[[[playercountptr]+88]+188]+B0]+47"
-,"[[[[playercountptr]+88]+190]+B0]+47","[[[[playercountptr]+88]+198]+B0]+47"
-,"[[[[playercountptr]+88]+1A0]+B0]+47","[[[[playercountptr]+88]+1A8]+B0]+47"
-,"[[[[playercountptr]+88]+1B0]+B0]+47","[[[[playercountptr]+88]+1B8]+B0]+47"
-,"[[[[playercountptr]+88]+1C0]+B0]+47","[[[[playercountptr]+88]+1C8]+B0]+47"
-,"[[[[playercountptr]+88]+1D0]+B0]+47","[[[[playercountptr]+88]+1D8]+B0]+47"
-,"[[[[playercountptr]+88]+1E0]+B0]+47","[[[[playercountptr]+88]+1E8]+B0]+47"
-,"[[[[playercountptr]+88]+1F0]+B0]+47","[[[[playercountptr]+88]+1F8]+B0]+47"
-,"[[[[playercountptr]+88]+200]+B0]+47","[[[[playercountptr]+88]+208]+B0]+47"
-,"[[[[playercountptr]+88]+210]+B0]+47","[[[[playercountptr]+88]+218]+B0]+47"
-,"[[[[playercountptr]+88]+220]+B0]+47","[[[[playercountptr]+88]+228]+B0]+47"
-,"[[[[playercountptr]+88]+230]+B0]+47","[[[[playercountptr]+88]+238]+B0]+47"
-,"[[[[playercountptr]+88]+240]+B0]+47","[[[[playercountptr]+88]+248]+B0]+47"
-,"[[[[playercountptr]+88]+250]+B0]+47","[[[[playercountptr]+88]+258]+B0]+47"
-,"[[[[playercountptr]+88]+260]+B0]+47","[[[[playercountptr]+88]+268]+B0]+47"
-,"[[[[playercountptr]+88]+270]+B0]+47"
+	"[[[[playercountptr]+88]+180]+A0]+6F","[[[[playercountptr]+88]+188]+A0]+6F"
+,"[[[[playercountptr]+88]+190]+A0]+6F","[[[[playercountptr]+88]+198]+A0]+6F"
+,"[[[[playercountptr]+88]+1A0]+A0]+6F","[[[[playercountptr]+88]+1A8]+A0]+6F"
+,"[[[[playercountptr]+88]+1B0]+A0]+6F","[[[[playercountptr]+88]+1B8]+A0]+6F"
+,"[[[[playercountptr]+88]+1C0]+A0]+6F","[[[[playercountptr]+88]+1C8]+A0]+6F"
+,"[[[[playercountptr]+88]+1D0]+A0]+6F","[[[[playercountptr]+88]+1D8]+A0]+6F"
+,"[[[[playercountptr]+88]+1E0]+A0]+6F","[[[[playercountptr]+88]+1E8]+A0]+6F"
+,"[[[[playercountptr]+88]+1F0]+A0]+6F","[[[[playercountptr]+88]+1F8]+A0]+6F"
+,"[[[[playercountptr]+88]+200]+A0]+6F","[[[[playercountptr]+88]+208]+A0]+6F"
+,"[[[[playercountptr]+88]+210]+A0]+6F","[[[[playercountptr]+88]+218]+A0]+6F"
+,"[[[[playercountptr]+88]+220]+A0]+6F","[[[[playercountptr]+88]+228]+A0]+6F"
+,"[[[[playercountptr]+88]+230]+A0]+6F","[[[[playercountptr]+88]+238]+A0]+6F"
+,"[[[[playercountptr]+88]+240]+A0]+6F","[[[[playercountptr]+88]+248]+A0]+6F"
+,"[[[[playercountptr]+88]+250]+A0]+6F","[[[[playercountptr]+88]+258]+A0]+6F"
+,"[[[[playercountptr]+88]+260]+A0]+6F","[[[[playercountptr]+88]+268]+A0]+6F"
+,"[[[[playercountptr]+88]+270]+A0]+6F"
 }
 
 IPz1 = {
-	"[[[[playercountptr]+88]+180]+B0]+34","[[[[playercountptr]+88]+188]+B0]+34"
-,"[[[[playercountptr]+88]+190]+B0]+34","[[[[playercountptr]+88]+198]+B0]+34"
-,"[[[[playercountptr]+88]+1A0]+B0]+34","[[[[playercountptr]+88]+1A8]+B0]+34"
-,"[[[[playercountptr]+88]+1B0]+B0]+34","[[[[playercountptr]+88]+1B8]+B0]+34"
-,"[[[[playercountptr]+88]+1C0]+B0]+34","[[[[playercountptr]+88]+1C8]+B0]+34"
-,"[[[[playercountptr]+88]+1D0]+B0]+34","[[[[playercountptr]+88]+1D8]+B0]+34"
-,"[[[[playercountptr]+88]+1E0]+B0]+34","[[[[playercountptr]+88]+1E8]+B0]+34"
-,"[[[[playercountptr]+88]+1F0]+B0]+34","[[[[playercountptr]+88]+1F8]+B0]+34"
-,"[[[[playercountptr]+88]+200]+B0]+34","[[[[playercountptr]+88]+208]+B0]+34"
-,"[[[[playercountptr]+88]+210]+B0]+34","[[[[playercountptr]+88]+218]+B0]+34"
-,"[[[[playercountptr]+88]+220]+B0]+34","[[[[playercountptr]+88]+228]+B0]+34"
-,"[[[[playercountptr]+88]+230]+B0]+34","[[[[playercountptr]+88]+238]+B0]+34"
-,"[[[[playercountptr]+88]+240]+B0]+34","[[[[playercountptr]+88]+248]+B0]+34"
-,"[[[[playercountptr]+88]+250]+B0]+34","[[[[playercountptr]+88]+258]+B0]+34"
-,"[[[[playercountptr]+88]+260]+B0]+34","[[[[playercountptr]+88]+268]+B0]+34"
-,"[[[[playercountptr]+88]+270]+B0]+34"
+	"[[[[playercountptr]+88]+180]+A0]+74","[[[[playercountptr]+88]+188]+A0]+74"
+,"[[[[playercountptr]+88]+190]+A0]+74","[[[[playercountptr]+88]+198]+A0]+74"
+,"[[[[playercountptr]+88]+1A0]+A0]+74","[[[[playercountptr]+88]+1A8]+A0]+74"
+,"[[[[playercountptr]+88]+1B0]+A0]+74","[[[[playercountptr]+88]+1B8]+A0]+74"
+,"[[[[playercountptr]+88]+1C0]+A0]+74","[[[[playercountptr]+88]+1C8]+A0]+74"
+,"[[[[playercountptr]+88]+1D0]+A0]+74","[[[[playercountptr]+88]+1D8]+A0]+74"
+,"[[[[playercountptr]+88]+1E0]+A0]+74","[[[[playercountptr]+88]+1E8]+A0]+74"
+,"[[[[playercountptr]+88]+1F0]+A0]+74","[[[[playercountptr]+88]+1F8]+A0]+74"
+,"[[[[playercountptr]+88]+200]+A0]+74","[[[[playercountptr]+88]+208]+A0]+74"
+,"[[[[playercountptr]+88]+210]+A0]+74","[[[[playercountptr]+88]+218]+A0]+74"
+,"[[[[playercountptr]+88]+220]+A0]+74","[[[[playercountptr]+88]+228]+A0]+74"
+,"[[[[playercountptr]+88]+230]+A0]+74","[[[[playercountptr]+88]+238]+A0]+74"
+,"[[[[playercountptr]+88]+240]+A0]+74","[[[[playercountptr]+88]+248]+A0]+74"
+,"[[[[playercountptr]+88]+250]+A0]+74","[[[[playercountptr]+88]+258]+A0]+74"
+,"[[[[playercountptr]+88]+260]+A0]+74","[[[[playercountptr]+88]+268]+A0]+74"
+,"[[[[playercountptr]+88]+270]+A0]+74"
 }
 
 IPz2 = {
-	"[[[[playercountptr]+88]+180]+B0]+35","[[[[playercountptr]+88]+188]+B0]+35"
-,"[[[[playercountptr]+88]+190]+B0]+35","[[[[playercountptr]+88]+198]+B0]+35"
-,"[[[[playercountptr]+88]+1A0]+B0]+35","[[[[playercountptr]+88]+1A8]+B0]+35"
-,"[[[[playercountptr]+88]+1B0]+B0]+35","[[[[playercountptr]+88]+1B8]+B0]+35"
-,"[[[[playercountptr]+88]+1C0]+B0]+35","[[[[playercountptr]+88]+1C8]+B0]+35"
-,"[[[[playercountptr]+88]+1D0]+B0]+35","[[[[playercountptr]+88]+1D8]+B0]+35"
-,"[[[[playercountptr]+88]+1E0]+B0]+35","[[[[playercountptr]+88]+1E8]+B0]+35"
-,"[[[[playercountptr]+88]+1F0]+B0]+35","[[[[playercountptr]+88]+1F8]+B0]+35"
-,"[[[[playercountptr]+88]+200]+B0]+35","[[[[playercountptr]+88]+208]+B0]+35"
-,"[[[[playercountptr]+88]+210]+B0]+35","[[[[playercountptr]+88]+218]+B0]+35"
-,"[[[[playercountptr]+88]+220]+B0]+35","[[[[playercountptr]+88]+228]+B0]+35"
-,"[[[[playercountptr]+88]+230]+B0]+35","[[[[playercountptr]+88]+238]+B0]+35"
-,"[[[[playercountptr]+88]+240]+B0]+35","[[[[playercountptr]+88]+248]+B0]+35"
-,"[[[[playercountptr]+88]+250]+B0]+35","[[[[playercountptr]+88]+258]+B0]+35"
-,"[[[[playercountptr]+88]+260]+B0]+35","[[[[playercountptr]+88]+268]+B0]+35"
-,"[[[[playercountptr]+88]+270]+B0]+35"
+	"[[[[playercountptr]+88]+180]+A0]+75","[[[[playercountptr]+88]+188]+A0]+75"
+,"[[[[playercountptr]+88]+190]+A0]+75","[[[[playercountptr]+88]+198]+A0]+75"
+,"[[[[playercountptr]+88]+1A0]+A0]+75","[[[[playercountptr]+88]+1A8]+A0]+75"
+,"[[[[playercountptr]+88]+1B0]+A0]+75","[[[[playercountptr]+88]+1B8]+A0]+75"
+,"[[[[playercountptr]+88]+1C0]+A0]+75","[[[[playercountptr]+88]+1C8]+A0]+75"
+,"[[[[playercountptr]+88]+1D0]+A0]+75","[[[[playercountptr]+88]+1D8]+A0]+75"
+,"[[[[playercountptr]+88]+1E0]+A0]+75","[[[[playercountptr]+88]+1E8]+A0]+75"
+,"[[[[playercountptr]+88]+1F0]+A0]+75","[[[[playercountptr]+88]+1F8]+A0]+75"
+,"[[[[playercountptr]+88]+200]+A0]+75","[[[[playercountptr]+88]+208]+A0]+75"
+,"[[[[playercountptr]+88]+210]+A0]+75","[[[[playercountptr]+88]+218]+A0]+75"
+,"[[[[playercountptr]+88]+220]+A0]+75","[[[[playercountptr]+88]+228]+A0]+75"
+,"[[[[playercountptr]+88]+230]+A0]+75","[[[[playercountptr]+88]+238]+A0]+75"
+,"[[[[playercountptr]+88]+240]+A0]+75","[[[[playercountptr]+88]+248]+A0]+75"
+,"[[[[playercountptr]+88]+250]+A0]+75","[[[[playercountptr]+88]+258]+A0]+75"
+,"[[[[playercountptr]+88]+260]+A0]+75","[[[[playercountptr]+88]+268]+A0]+75"
+,"[[[[playercountptr]+88]+270]+A0]+75"
 }
 
 IPz3 = {
-	"[[[[playercountptr]+88]+180]+B0]+36","[[[[playercountptr]+88]+188]+B0]+36"
-,"[[[[playercountptr]+88]+190]+B0]+36","[[[[playercountptr]+88]+198]+B0]+36"
-,"[[[[playercountptr]+88]+1A0]+B0]+36","[[[[playercountptr]+88]+1A8]+B0]+36"
-,"[[[[playercountptr]+88]+1B0]+B0]+36","[[[[playercountptr]+88]+1B8]+B0]+36"
-,"[[[[playercountptr]+88]+1C0]+B0]+36","[[[[playercountptr]+88]+1C8]+B0]+36"
-,"[[[[playercountptr]+88]+1D0]+B0]+36","[[[[playercountptr]+88]+1D8]+B0]+36"
-,"[[[[playercountptr]+88]+1E0]+B0]+36","[[[[playercountptr]+88]+1E8]+B0]+36"
-,"[[[[playercountptr]+88]+1F0]+B0]+36","[[[[playercountptr]+88]+1F8]+B0]+36"
-,"[[[[playercountptr]+88]+200]+B0]+36","[[[[playercountptr]+88]+208]+B0]+36"
-,"[[[[playercountptr]+88]+210]+B0]+36","[[[[playercountptr]+88]+218]+B0]+36"
-,"[[[[playercountptr]+88]+220]+B0]+36","[[[[playercountptr]+88]+228]+B0]+36"
-,"[[[[playercountptr]+88]+230]+B0]+36","[[[[playercountptr]+88]+238]+B0]+36"
-,"[[[[playercountptr]+88]+240]+B0]+36","[[[[playercountptr]+88]+248]+B0]+36"
-,"[[[[playercountptr]+88]+250]+B0]+36","[[[[playercountptr]+88]+258]+B0]+36"
-,"[[[[playercountptr]+88]+260]+B0]+36","[[[[playercountptr]+88]+268]+B0]+36"
-,"[[[[playercountptr]+88]+270]+B0]+36"
+	"[[[[playercountptr]+88]+180]+A0]+76","[[[[playercountptr]+88]+188]+A0]+76"
+,"[[[[playercountptr]+88]+190]+A0]+76","[[[[playercountptr]+88]+198]+A0]+76"
+,"[[[[playercountptr]+88]+1A0]+A0]+76","[[[[playercountptr]+88]+1A8]+A0]+76"
+,"[[[[playercountptr]+88]+1B0]+A0]+76","[[[[playercountptr]+88]+1B8]+A0]+76"
+,"[[[[playercountptr]+88]+1C0]+A0]+76","[[[[playercountptr]+88]+1C8]+A0]+76"
+,"[[[[playercountptr]+88]+1D0]+A0]+76","[[[[playercountptr]+88]+1D8]+A0]+76"
+,"[[[[playercountptr]+88]+1E0]+A0]+76","[[[[playercountptr]+88]+1E8]+A0]+76"
+,"[[[[playercountptr]+88]+1F0]+A0]+76","[[[[playercountptr]+88]+1F8]+A0]+76"
+,"[[[[playercountptr]+88]+200]+A0]+76","[[[[playercountptr]+88]+208]+A0]+76"
+,"[[[[playercountptr]+88]+210]+A0]+76","[[[[playercountptr]+88]+218]+A0]+76"
+,"[[[[playercountptr]+88]+220]+A0]+76","[[[[playercountptr]+88]+228]+A0]+76"
+,"[[[[playercountptr]+88]+230]+A0]+76","[[[[playercountptr]+88]+238]+A0]+76"
+,"[[[[playercountptr]+88]+240]+A0]+76","[[[[playercountptr]+88]+248]+A0]+76"
+,"[[[[playercountptr]+88]+250]+A0]+76","[[[[playercountptr]+88]+258]+A0]+76"
+,"[[[[playercountptr]+88]+260]+A0]+76","[[[[playercountptr]+88]+268]+A0]+76"
+,"[[[[playercountptr]+88]+270]+A0]+76"
 }
 
 IPz4 = {
 
-	"[[[[playercountptr]+88]+180]+B0]+37","[[[[playercountptr]+88]+188]+B0]+37"
-,"[[[[playercountptr]+88]+190]+B0]+37","[[[[playercountptr]+88]+198]+B0]+37"
-,"[[[[playercountptr]+88]+1A0]+B0]+37","[[[[playercountptr]+88]+1A8]+B0]+37"
-,"[[[[playercountptr]+88]+1B0]+B0]+37","[[[[playercountptr]+88]+1B8]+B0]+37"
-,"[[[[playercountptr]+88]+1C0]+B0]+37","[[[[playercountptr]+88]+1C8]+B0]+37"
-,"[[[[playercountptr]+88]+1D0]+B0]+37","[[[[playercountptr]+88]+1D8]+B0]+37"
-,"[[[[playercountptr]+88]+1E0]+B0]+37","[[[[playercountptr]+88]+1E8]+B0]+37"
-,"[[[[playercountptr]+88]+1F0]+B0]+37","[[[[playercountptr]+88]+1F8]+B0]+37"
-,"[[[[playercountptr]+88]+200]+B0]+37","[[[[playercountptr]+88]+208]+B0]+37"
-,"[[[[playercountptr]+88]+210]+B0]+37","[[[[playercountptr]+88]+218]+B0]+37"
-,"[[[[playercountptr]+88]+220]+B0]+37","[[[[playercountptr]+88]+228]+B0]+37"
-,"[[[[playercountptr]+88]+230]+B0]+37","[[[[playercountptr]+88]+238]+B0]+37"
-,"[[[[playercountptr]+88]+240]+B0]+37","[[[[playercountptr]+88]+248]+B0]+37"
-,"[[[[playercountptr]+88]+250]+B0]+37","[[[[playercountptr]+88]+258]+B0]+37"
-,"[[[[playercountptr]+88]+260]+B0]+37","[[[[playercountptr]+88]+268]+B0]+37"
-,"[[[[playercountptr]+88]+270]+B0]+37"
+	"[[[[playercountptr]+88]+180]+A0]+77","[[[[playercountptr]+88]+188]+A0]+77"
+,"[[[[playercountptr]+88]+190]+A0]+77","[[[[playercountptr]+88]+198]+A0]+77"
+,"[[[[playercountptr]+88]+1A0]+A0]+77","[[[[playercountptr]+88]+1A8]+A0]+77"
+,"[[[[playercountptr]+88]+1B0]+A0]+77","[[[[playercountptr]+88]+1B8]+A0]+77"
+,"[[[[playercountptr]+88]+1C0]+A0]+77","[[[[playercountptr]+88]+1C8]+A0]+77"
+,"[[[[playercountptr]+88]+1D0]+A0]+77","[[[[playercountptr]+88]+1D8]+A0]+77"
+,"[[[[playercountptr]+88]+1E0]+A0]+77","[[[[playercountptr]+88]+1E8]+A0]+77"
+,"[[[[playercountptr]+88]+1F0]+A0]+77","[[[[playercountptr]+88]+1F8]+A0]+77"
+,"[[[[playercountptr]+88]+200]+A0]+77","[[[[playercountptr]+88]+208]+A0]+77"
+,"[[[[playercountptr]+88]+210]+A0]+77","[[[[playercountptr]+88]+218]+A0]+77"
+,"[[[[playercountptr]+88]+220]+A0]+77","[[[[playercountptr]+88]+228]+A0]+77"
+,"[[[[playercountptr]+88]+230]+A0]+77","[[[[playercountptr]+88]+238]+A0]+77"
+,"[[[[playercountptr]+88]+240]+A0]+77","[[[[playercountptr]+88]+248]+A0]+77"
+,"[[[[playercountptr]+88]+250]+A0]+77","[[[[playercountptr]+88]+258]+A0]+77"
+,"[[[[playercountptr]+88]+260]+A0]+77","[[[[playercountptr]+88]+268]+A0]+77"
+,"[[[[playercountptr]+88]+270]+A0]+77"
 }
 
 
 ListPort = {
-	"[[[[playercountptr]+88]+180]+B0]+38","[[[[playercountptr]+88]+188]+B0]+38"
-,"[[[[playercountptr]+88]+190]+B0]+38","[[[[playercountptr]+88]+198]+B0]+38"
-,"[[[[playercountptr]+88]+1A0]+B0]+38","[[[[playercountptr]+88]+1A8]+B0]+38"
-,"[[[[playercountptr]+88]+1B0]+B0]+38","[[[[playercountptr]+88]+1B8]+B0]+38"
-,"[[[[playercountptr]+88]+1C0]+B0]+38","[[[[playercountptr]+88]+1C8]+B0]+38"
-,"[[[[playercountptr]+88]+1D0]+B0]+38","[[[[playercountptr]+88]+1D8]+B0]+38"
-,"[[[[playercountptr]+88]+1E0]+B0]+38","[[[[playercountptr]+88]+1E8]+B0]+38"
-,"[[[[playercountptr]+88]+1F0]+B0]+38","[[[[playercountptr]+88]+1F8]+B0]+38"
-,"[[[[playercountptr]+88]+200]+B0]+38","[[[[playercountptr]+88]+208]+B0]+38"
-,"[[[[playercountptr]+88]+210]+B0]+38","[[[[playercountptr]+88]+218]+B0]+38"
-,"[[[[playercountptr]+88]+220]+B0]+38","[[[[playercountptr]+88]+228]+B0]+38"
-,"[[[[playercountptr]+88]+230]+B0]+38","[[[[playercountptr]+88]+238]+B0]+38"
-,"[[[[playercountptr]+88]+240]+B0]+38","[[[[playercountptr]+88]+248]+B0]+38"
-,"[[[[playercountptr]+88]+250]+B0]+38","[[[[playercountptr]+88]+258]+B0]+38"
-,"[[[[playercountptr]+88]+260]+B0]+38","[[[[playercountptr]+88]+268]+B0]+38"
-,"[[[[playercountptr]+88]+270]+B0]+38"
+	"[[[[playercountptr]+88]+180]+A0]+38","[[[[playercountptr]+88]+188]+A0]+38"
+,"[[[[playercountptr]+88]+190]+A0]+38","[[[[playercountptr]+88]+198]+A0]+38"
+,"[[[[playercountptr]+88]+1A0]+A0]+38","[[[[playercountptr]+88]+1A8]+A0]+38"
+,"[[[[playercountptr]+88]+1B0]+A0]+38","[[[[playercountptr]+88]+1B8]+A0]+38"
+,"[[[[playercountptr]+88]+1C0]+A0]+38","[[[[playercountptr]+88]+1C8]+A0]+38"
+,"[[[[playercountptr]+88]+1D0]+A0]+38","[[[[playercountptr]+88]+1D8]+A0]+38"
+,"[[[[playercountptr]+88]+1E0]+A0]+38","[[[[playercountptr]+88]+1E8]+A0]+38"
+,"[[[[playercountptr]+88]+1F0]+A0]+38","[[[[playercountptr]+88]+1F8]+A0]+38"
+,"[[[[playercountptr]+88]+200]+A0]+38","[[[[playercountptr]+88]+208]+A0]+38"
+,"[[[[playercountptr]+88]+210]+A0]+38","[[[[playercountptr]+88]+218]+A0]+38"
+,"[[[[playercountptr]+88]+220]+A0]+38","[[[[playercountptr]+88]+228]+A0]+38"
+,"[[[[playercountptr]+88]+230]+A0]+38","[[[[playercountptr]+88]+238]+A0]+38"
+,"[[[[playercountptr]+88]+240]+A0]+38","[[[[playercountptr]+88]+248]+A0]+38"
+,"[[[[playercountptr]+88]+250]+A0]+38","[[[[playercountptr]+88]+258]+A0]+38"
+,"[[[[playercountptr]+88]+260]+A0]+38","[[[[playercountptr]+88]+268]+A0]+38"
+,"[[[[playercountptr]+88]+270]+A0]+38"
 }
 
 ListLPort = {
-	"[[[[playercountptr]+88]+180]+B0]+48","[[[[playercountptr]+88]+188]+B0]+48"
-,"[[[[playercountptr]+88]+190]+B0]+48","[[[[playercountptr]+88]+198]+B0]+48"
-,"[[[[playercountptr]+88]+1A0]+B0]+48","[[[[playercountptr]+88]+1A8]+B0]+48"
-,"[[[[playercountptr]+88]+1B0]+B0]+48","[[[[playercountptr]+88]+1B8]+B0]+48"
-,"[[[[playercountptr]+88]+1C0]+B0]+48","[[[[playercountptr]+88]+1C8]+B0]+48"
-,"[[[[playercountptr]+88]+1D0]+B0]+48","[[[[playercountptr]+88]+1D8]+B0]+48"
-,"[[[[playercountptr]+88]+1E0]+B0]+48","[[[[playercountptr]+88]+1E8]+B0]+48"
-,"[[[[playercountptr]+88]+1F0]+B0]+48","[[[[playercountptr]+88]+1F8]+B0]+48"
-,"[[[[playercountptr]+88]+200]+B0]+48","[[[[playercountptr]+88]+208]+B0]+48"
-,"[[[[playercountptr]+88]+210]+B0]+48","[[[[playercountptr]+88]+218]+B0]+48"
-,"[[[[playercountptr]+88]+220]+B0]+48","[[[[playercountptr]+88]+228]+B0]+48"
-,"[[[[playercountptr]+88]+230]+B0]+48","[[[[playercountptr]+88]+238]+B0]+48"
-,"[[[[playercountptr]+88]+240]+B0]+48","[[[[playercountptr]+88]+248]+B0]+48"
-,"[[[[playercountptr]+88]+250]+B0]+48","[[[[playercountptr]+88]+258]+B0]+48"
-,"[[[[playercountptr]+88]+260]+B0]+48","[[[[playercountptr]+88]+268]+B0]+48"
-,"[[[[playercountptr]+88]+270]+B0]+48"
+	"[[[[playercountptr]+88]+180]+A0]+48","[[[[playercountptr]+88]+188]+A0]+48"
+,"[[[[playercountptr]+88]+190]+A0]+48","[[[[playercountptr]+88]+198]+A0]+48"
+,"[[[[playercountptr]+88]+1A0]+A0]+48","[[[[playercountptr]+88]+1A8]+A0]+48"
+,"[[[[playercountptr]+88]+1B0]+A0]+48","[[[[playercountptr]+88]+1B8]+A0]+48"
+,"[[[[playercountptr]+88]+1C0]+A0]+48","[[[[playercountptr]+88]+1C8]+A0]+48"
+,"[[[[playercountptr]+88]+1D0]+A0]+48","[[[[playercountptr]+88]+1D8]+A0]+48"
+,"[[[[playercountptr]+88]+1E0]+A0]+48","[[[[playercountptr]+88]+1E8]+A0]+48"
+,"[[[[playercountptr]+88]+1F0]+A0]+48","[[[[playercountptr]+88]+1F8]+A0]+48"
+,"[[[[playercountptr]+88]+200]+A0]+48","[[[[playercountptr]+88]+208]+A0]+48"
+,"[[[[playercountptr]+88]+210]+A0]+48","[[[[playercountptr]+88]+218]+A0]+48"
+,"[[[[playercountptr]+88]+220]+A0]+48","[[[[playercountptr]+88]+228]+A0]+48"
+,"[[[[playercountptr]+88]+230]+A0]+48","[[[[playercountptr]+88]+238]+A0]+48"
+,"[[[[playercountptr]+88]+240]+A0]+48","[[[[playercountptr]+88]+248]+A0]+48"
+,"[[[[playercountptr]+88]+250]+A0]+48","[[[[playercountptr]+88]+258]+A0]+48"
+,"[[[[playercountptr]+88]+260]+A0]+48","[[[[playercountptr]+88]+268]+A0]+48"
+,"[[[[playercountptr]+88]+270]+A0]+48"
 }
 
 PInVeh ={
-	"[[[[[playercountptr]+88]+180]+B0]+1C8]+E52","[[[[[playercountptr]+88]+188]+B0]+1C8]+E52"
-,"[[[[[playercountptr]+88]+190]+B0]+1C8]+E52","[[[[[playercountptr]+88]+198]+B0]+1C8]+E52"
-,"[[[[[playercountptr]+88]+1A0]+B0]+1C8]+E52","[[[[[playercountptr]+88]+1A8]+B0]+1C8]+E52"
-,"[[[[[playercountptr]+88]+1B0]+B0]+1C8]+E52","[[[[[playercountptr]+88]+1B8]+B0]+1C8]+E52"
-,"[[[[[playercountptr]+88]+1C0]+B0]+1C8]+E52","[[[[[playercountptr]+88]+1C8]+B0]+1C8]+E52"
-,"[[[[[playercountptr]+88]+1D0]+B0]+1C8]+E52","[[[[[playercountptr]+88]+1D8]+B0]+1C8]+E52"
-,"[[[[[playercountptr]+88]+1E0]+B0]+1C8]+E52","[[[[[playercountptr]+88]+1E8]+B0]+1C8]+E52"
-,"[[[[[playercountptr]+88]+1F0]+B0]+1C8]+E52","[[[[[playercountptr]+88]+1F8]+B0]+1C8]+E52"
-,"[[[[[playercountptr]+88]+200]+B0]+1C8]+E52","[[[[[playercountptr]+88]+208]+B0]+1C8]+E52"
-,"[[[[[playercountptr]+88]+210]+B0]+1C8]+E52","[[[[[playercountptr]+88]+218]+B0]+1C8]+E52"
-,"[[[[[playercountptr]+88]+220]+B0]+1C8]+E52","[[[[[playercountptr]+88]+228]+B0]+1C8]+E52"
-,"[[[[[playercountptr]+88]+230]+B0]+1C8]+E52","[[[[[playercountptr]+88]+238]+B0]+1C8]+E52"
-,"[[[[[playercountptr]+88]+240]+B0]+1C8]+E52","[[[[[playercountptr]+88]+248]+B0]+1C8]+E52"
-,"[[[[[playercountptr]+88]+250]+B0]+1C8]+E52","[[[[[playercountptr]+88]+258]+B0]+1C8]+E52"
-,"[[[[[playercountptr]+88]+260]+B0]+1C8]+E52","[[[[[playercountptr]+88]+268]+B0]+1C8]+E52"
-,"[[[[[playercountptr]+88]+270]+B0]+1C8]+E52"
+	"[[[[[playercountptr]+88]+180]+A0]+1E8]+E52","[[[[[playercountptr]+88]+188]+A0]+1E8]+E52"
+,"[[[[[playercountptr]+88]+190]+A0]+1E8]+E52","[[[[[playercountptr]+88]+198]+A0]+1E8]+E52"
+,"[[[[[playercountptr]+88]+1A0]+A0]+1E8]+E52","[[[[[playercountptr]+88]+1A8]+A0]+1E8]+E52"
+,"[[[[[playercountptr]+88]+1B0]+A0]+1E8]+E52","[[[[[playercountptr]+88]+1B8]+A0]+1E8]+E52"
+,"[[[[[playercountptr]+88]+1C0]+A0]+1E8]+E52","[[[[[playercountptr]+88]+1C8]+A0]+1E8]+E52"
+,"[[[[[playercountptr]+88]+1D0]+A0]+1E8]+E52","[[[[[playercountptr]+88]+1D8]+A0]+1E8]+E52"
+,"[[[[[playercountptr]+88]+1E0]+A0]+1E8]+E52","[[[[[playercountptr]+88]+1E8]+A0]+1E8]+E52"
+,"[[[[[playercountptr]+88]+1F0]+A0]+1E8]+E52","[[[[[playercountptr]+88]+1F8]+A0]+1E8]+E52"
+,"[[[[[playercountptr]+88]+200]+A0]+1E8]+E52","[[[[[playercountptr]+88]+208]+A0]+1E8]+E52"
+,"[[[[[playercountptr]+88]+210]+A0]+1E8]+E52","[[[[[playercountptr]+88]+218]+A0]+1E8]+E52"
+,"[[[[[playercountptr]+88]+220]+A0]+1E8]+E52","[[[[[playercountptr]+88]+228]+A0]+1E8]+E52"
+,"[[[[[playercountptr]+88]+230]+A0]+1E8]+E52","[[[[[playercountptr]+88]+238]+A0]+1E8]+E52"
+,"[[[[[playercountptr]+88]+240]+A0]+1E8]+E52","[[[[[playercountptr]+88]+248]+A0]+1E8]+E52"
+,"[[[[[playercountptr]+88]+250]+A0]+1E8]+E52","[[[[[playercountptr]+88]+258]+A0]+1E8]+E52"
+,"[[[[[playercountptr]+88]+260]+A0]+1E8]+E52","[[[[[playercountptr]+88]+268]+A0]+1E8]+E52"
+,"[[[[[playercountptr]+88]+270]+A0]+1E8]+E52"
 }
 
 
 PHost = {
-	"[[[[playercountptr]+88]+180]+B0]+60","[[[[playercountptr]+88]+188]+B0]+60"
-,"[[[[playercountptr]+88]+190]+B0]+60","[[[[playercountptr]+88]+198]+B0]+60"
-,"[[[[playercountptr]+88]+1A0]+B0]+60","[[[[playercountptr]+88]+1A8]+B0]+60"
-,"[[[[playercountptr]+88]+1B0]+B0]+60","[[[[playercountptr]+88]+1B8]+B0]+60"
-,"[[[[playercountptr]+88]+1C0]+B0]+60","[[[[playercountptr]+88]+1C8]+B0]+60"
-,"[[[[playercountptr]+88]+1D0]+B0]+60","[[[[playercountptr]+88]+1D8]+B0]+60"
-,"[[[[playercountptr]+88]+1E0]+B0]+60","[[[[playercountptr]+88]+1E8]+B0]+60"
-,"[[[[playercountptr]+88]+1F0]+B0]+60","[[[[playercountptr]+88]+1F8]+B0]+60"
-,"[[[[playercountptr]+88]+200]+B0]+60","[[[[playercountptr]+88]+208]+B0]+60"
-,"[[[[playercountptr]+88]+210]+B0]+60","[[[[playercountptr]+88]+218]+B0]+60"
-,"[[[[playercountptr]+88]+220]+B0]+60","[[[[playercountptr]+88]+228]+B0]+60"
-,"[[[[playercountptr]+88]+230]+B0]+60","[[[[playercountptr]+88]+238]+B0]+60"
-,"[[[[playercountptr]+88]+240]+B0]+60","[[[[playercountptr]+88]+248]+B0]+60"
-,"[[[[playercountptr]+88]+250]+B0]+60","[[[[playercountptr]+88]+258]+B0]+60"
-,"[[[[playercountptr]+88]+260]+B0]+60","[[[[playercountptr]+88]+268]+B0]+60"
-,"[[[[playercountptr]+88]+270]+B0]+60"
+	"[[[[playercountptr]+88]+180]+A0]+60","[[[[playercountptr]+88]+188]+A0]+60"
+,"[[[[playercountptr]+88]+190]+A0]+60","[[[[playercountptr]+88]+198]+A0]+60"
+,"[[[[playercountptr]+88]+1A0]+A0]+60","[[[[playercountptr]+88]+1A8]+A0]+60"
+,"[[[[playercountptr]+88]+1B0]+A0]+60","[[[[playercountptr]+88]+1B8]+A0]+60"
+,"[[[[playercountptr]+88]+1C0]+A0]+60","[[[[playercountptr]+88]+1C8]+A0]+60"
+,"[[[[playercountptr]+88]+1D0]+A0]+60","[[[[playercountptr]+88]+1D8]+A0]+60"
+,"[[[[playercountptr]+88]+1E0]+A0]+60","[[[[playercountptr]+88]+1E8]+A0]+60"
+,"[[[[playercountptr]+88]+1F0]+A0]+60","[[[[playercountptr]+88]+1F8]+A0]+60"
+,"[[[[playercountptr]+88]+200]+A0]+60","[[[[playercountptr]+88]+208]+A0]+60"
+,"[[[[playercountptr]+88]+210]+A0]+60","[[[[playercountptr]+88]+218]+A0]+60"
+,"[[[[playercountptr]+88]+220]+A0]+60","[[[[playercountptr]+88]+228]+A0]+60"
+,"[[[[playercountptr]+88]+230]+A0]+60","[[[[playercountptr]+88]+238]+A0]+60"
+,"[[[[playercountptr]+88]+240]+A0]+60","[[[[playercountptr]+88]+248]+A0]+60"
+,"[[[[playercountptr]+88]+250]+A0]+60","[[[[playercountptr]+88]+258]+A0]+60"
+,"[[[[playercountptr]+88]+260]+A0]+60","[[[[playercountptr]+88]+268]+A0]+60"
+,"[[[[playercountptr]+88]+270]+A0]+60"
 }
 
 tbl_Properties={ }; 

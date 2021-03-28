@@ -68,18 +68,21 @@ end
 ---------------------------------------------------Pointer Struct-------------------------------------------------------
 function Ptr_class()
   local ptr = readPointer
-  BaseModelPTR = ptr(ptr("ModelHashPTR") + 0x0)
-  ModelHash = ptr(BaseModelPTR + 0x2640)
+  -- BaseModelPTR = ptr(ptr("ModelHashPTR") + 0x0)
+  -- ModelHash = ptr(BaseModelPTR + 0x2640)
   CPlayer     = ptr(ptr("WorldPTR") + 0x8)
   CPlayerInfo = ptr(CPlayer + 0x10C8)
   CPlayerPos  = ptr(CPlayer + 0x30)
   CVehicle    = ptr(CPlayer + 0xD30)
   CUpgrade    = ptr(CVehicle + 0x48)
+  CVehiclePos = ptr(CVehicle + 0x30)
   CHandling   = ptr(CVehicle + 0x938)
   CWeapon     = ptr(CPlayer + 0x10D8)
   CInventory  = ptr(CPlayer + 0x10D0)
   CPInventory = ptr(CInventory + 0x48)
   CAmmoType   = ptr(CWeapon + 0x20)
+  GetGlobal   = ptr("GlobalPTR-128")
+  Indicators  = ptr(ptr("GlobalPTR-128") + 0x1180)
 end
 Ptr_class()
 --auto_add()

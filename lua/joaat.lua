@@ -7,27 +7,52 @@ function Int32(num)
   return 0 ~= (n & 0x80000000) and n - 0x100000000 or n;
 end
 
-function Int64(num)
+function Signed32bit(num)
   return num | 0xffffffff00000000 
+end
+
+function Int64(num)
+  local n = num & 0xFFFFFFFFFFFFFFFF;
+  return 0 ~= (n & 0x8000000000000000) and n - 0x10000000000000000 or n;
 end
 
 function UInt8(num)
 	return num & 0xff
 end
 
+function Int8(num)
+  local n = num & 0xFF;
+  return 0 ~= (n & 0x80) and n - 0x100 or n;
+end
+
 function UInt16(num)
 	return num & 0xffff
+end
+
+function Int16(num)
+  local n = num & 0xFFFF;
+  return 0 ~= (n & 0x8000) and n - 0x10000 or n;
 end
 
 function UInt64(num)
   return num & 0xFFFFFFFFFFFFFFFF;
 end
 
-function char(chr)
-  c = string.byte(chr)
-  return c
+function Boolean_To_Num(var)
+  return var and 1 or 0
 end
 
+function char(chr)
+  return string.byte(chr)
+end
+--[[
+  if (c >= char('A') and c <= char('Z')) then
+    c = c + (char('a') - char('A'));
+  else 
+    c = c;
+  end
+  return c;
+]]
 
 --[[private static int joaat_to_lower(char c) {
 return (c >= 'A' && c <= 'Z') ? c + ('a' - 'A') : c;
@@ -40,13 +65,9 @@ shifting : x = x * 2 ^ y
 		--return (c >= 'A' && c <= 'Z') ? c + ('a' - 'A') : c;
 	--}
 --case insensitive for joaat hasher
+
 function tolower(c)
-  if (c >= char('A') and c <= char('Z')) then
-    c = c + (char('a') - char('A'));
-  else 
-    c = c;
-  end
-  return c;
+  return (c >= char('A') and c <= char('Z')) and c + (char('a') - char('A')) or c
 end
 --Usage:joaat("Hash Name")
 function joaat(str)
@@ -67,12 +88,7 @@ end
 			--return c >= 'a' && c <= 'z' ? static_cast<char>(c + ('A' - 'a')) : static_cast<char>(c);
 		--};
 function toupper(c)
-  if (c >= char('a') and c <= char('z')) then
-    c = c + (char('A') - char('a'));
-  else 
-    c = c;
-  end
-  return c;
+  return (c >= char('a') and c <= char('z')) and c + (char('A') - char('a')) or c
 end
 --Usage:RAGE_JOAAT("Hash Name")
 --define RAGE_JOAAT(str) (std::integral_constant<rage::joaat_t, RAGE_JOAAT_IMPL(str)>::value)
@@ -118,7 +134,7 @@ GAMEPLAY =
           hash = hash ~ (UInt32(hash) >> 6)
       end
       return hash & uint32_t;
-  end,
+  end;
 
   GetHashKeyFinalize = function(str, initialHash)
       local uint32_t = 0xffffffff
@@ -128,7 +144,7 @@ GAMEPLAY =
       hash = hash ~ (UInt32(hash) >> 11);
       hash = hash + (hash << 15);
       return UInt32(hash)
-  end,
+  end;
   ---usage GAMEPLAY.GET_HASH_KEY("hash here")
   GET_HASH_KEY = function(str, concat, initialHash)
       local hash = initialHash or 0;
@@ -137,7 +153,7 @@ GAMEPLAY =
       else
           return GAMEPLAY.GetHashKeyFinalize(str, initialHash);
       end
-  end
+  end;
 };
 
 local xlat = {
@@ -197,8 +213,6 @@ function reverse_joaat(hash)
   hash = hash * 0xC00FFC01
   return UInt32(hash)
 end
-
-
 
 
 

@@ -876,9 +876,9 @@ elseif id == 2 then
       )
   elseif id == 3 then
         if id2==-1 or id2==0 then return end
-        set.global(int,2540384+962,tbl_GSV[id2][1])
-        set.global(int,2540384+959,1)
-        Sleep(700)
+        set.global(int,2540612+962,tbl_GSV[id2][1])
+        set.global(int,2540612+959,1)
+        SYSTEM.WAIT(700)
         set.global(int,2409291+8,1)
   end
 end
@@ -890,34 +890,34 @@ end
 function ExhaustSelect(sender)
   local id = VehicleTab.Exhaust.ItemIndex
   if id == nil then id = MAX_UINT end
-  set.global(int,2462286+27+14,id)
+  set.global(int,2462514+27+14,id)
 end
 
 function VentSelect(sender)
   local id = VehicleTab.Vent.ItemIndex
   if id == nil then id = MAX_UINT end
-  set.global(int,2462286+27+17,id)
+  set.global(int,2462514+27+17,id)
 end
 
 function SideSkirtSelect()
   local id = VehicleTab.SideSkirt.ItemIndex
   if id == nil then id = MAX_UINT end
-  set.global(int,2462286+27+13,id)
+  set.global(int,2462514+27+13,id)
 end
 
 function RearBumperSelect()
   local id = VehicleTab.BackBumper.ItemIndex
   if id == nil then id = MAX_UINT end
-  set.global(int,2462286+27+12,id)
+  set.global(int,2462514+27+12,id)
 end
 
 function SpawnerXenon()
   local colour_id = {255,3,4,5,6,7,8,9,10,11,12,13,14}
   local xenon_id = combobox_getItemIndex(VehicleTab.XenonSpawn) + 1;
   if xenon_id == nil then 
-    set.global(int,2462286+27+32,255)
+    set.global(int,2462514+27+32,255)
   else
-    set.global(int,2462286+27+32,colour_id[xenon_id])
+    set.global(int,2462514+27+32,colour_id[xenon_id])
   end
 end
 spoiler_spawner = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ,11, 12, 13, 14, 15, 16, 17, 18
@@ -1225,19 +1225,19 @@ end
   local ListAmmo = get.Int(PCurAmmo[index])
   local ListExpl = get.Short(PExplo[index])]]
 function PlayerCord()
-  local ip1 = get.Byte(CPlayerInfo + 0x44)
-  local ip2 = get.Byte(CPlayerInfo + 0x45)
-  local ip3 = get.Byte(CPlayerInfo + 0x46)
-  local ip4 = get.Byte(CPlayerInfo + 0x47)
-  local ipl1 = get.Byte(CPlayerInfo + 0x34)
-  local ipl2 = get.Byte(CPlayerInfo + 0x35)
-  local ipl3 = get.Byte(CPlayerInfo + 0x36)
-  local ipl4 = get.Byte(CPlayerInfo + 0x37)
+  local ip1 = get.Byte(CPlayerInfo + 0x6C)
+  local ip2 = get.Byte(CPlayerInfo + 0x6D)
+  local ip3 = get.Byte(CPlayerInfo + 0x6E)
+  local ip4 = get.Byte(CPlayerInfo + 0x6F)
+  local ipl1 = get.Byte(CPlayerInfo + 0x74)
+  local ipl2 = get.Byte(CPlayerInfo + 0x75)
+  local ipl3 = get.Byte(CPlayerInfo + 0x76)
+  local ipl4 = get.Byte(CPlayerInfo + 0x77)
   local pPosX = get.Float(target_x[selected_player])
   local pPosY = get.Float(target_y[selected_player])
   local pPosZ = get.Float(target_z[selected_player])
 
-  local Session_Status = get.Global(int,2425869+PLAYER_ID()*443+1)
+  local Session_Status = get.Global(int,2426097+PLAYER_ID()*443+1)
   MPX = get.Global(int,1312763)
   MPx = tostring('MP'..MPX..'_')
   local PlayerCash = get.Global(int,1590682+1+PLAYER_ID()*883+211+3)
@@ -1264,7 +1264,8 @@ function PlayerCord()
   local TotalPlayer = NETWORK.NETWORK_GET_NUM_CONNECTED_PLAYERS()
   local PlayerJoin = NETWORK.NETWORK_GET_NUM_CONNECTED_PLAYERS()+1
   local Public = NETWORK.NETWORK_SESSION_IS_PRIVATE()
-  SelectedApproach = get.Global(int,1701666+1+PLAYER_ID()*68+22)
+  local Opcodes = get.Opcode("RIDJoinerPTR")
+  SelectedApproach = get.Global(int,1701669+1+PLAYER.PLAYER_ID()*68+22)
   TheGlobal = Protection_GlobalEditor.Text
   player_pos_x.Text = ENTITY.f_Round(get.Float("PLAYER_CORDX"),5)
   player_pos_y.Text = ENTITY.f_Round(get.Float("PLAYER_CORDY"),5)
@@ -1273,11 +1274,12 @@ function PlayerCord()
   CurrentPlayerLevel.TextHint = 'Level Spoof'
   CurrentVehicleNames.Text = get.String("GTA5.exe+24ECC80")
   PlayerIndicator1.Text = string.format('Region : %s | Location : %s | Vehicle : %s | Bank : $ %s | MP%s | Level : %s',get.String("GTA5.exe+24EC5BB"),get.String("GTA5.exe+24E9300"),get.String("GTA5.exe+24E4C30"),Banca,Slots,PlayerLevel)
-  PlayerIndicator2.Text = string.format('IP : %s.%s.%s.%s:%s | IP LAN : %s.%s.%s.%s:%s | Name : %s | Cash : $ %s',ip4,ip3,ip2,ip1,PlayerPort,ipl4,ipl3,ipl2,ipl1,PlayerPort,get.String(CPlayerInfo + 0x84),get.Global(int,1590682+1+PLAYER_ID()*883+211+3))
+  PlayerIndicator2.Text = string.format('IP : %s.%s.%s.%s:%s | IP LAN : %s.%s.%s.%s:%s | Name : %s | Cash : $ %s',ip4,ip3,ip2,ip1,PlayerPort,ipl4,ipl3,ipl2,ipl1,PlayerPort,get.String(CPlayerInfo + 0xA4),get.Global(int,1590682+1+PLAYER_ID()*883+211+3))
   PlayerCEONames.Text = get.Global(str,1630317+1+PLAYER_ID()*595+11+104)
-  TotalPlayerInSession.Text = string.format('Total Player : %s | Join : %s',TotalPlayer,PlayerJoin)
+  TotalPlayerInSession.Text = string.format('Total Player : %s',TotalPlayer)
+  MainTab.MemoryStatus.Text = string.format('%s',Opcodes)
 
-  ReadStat.Text = get.Global(int,2551832-12)
+  ReadStat.Text = get.Global(int,2551772+276)
   HashIndicator.Text = get.Global(int,1388013+4)
   ValueStat.Text = get.Global(int,939452+5526)
   Player.DateAndTime.Text = os.date();
@@ -1338,8 +1340,8 @@ function PlayerList()
   for key,tabel in ipairs(CPLAYER_INDEX) do
     local GET_PLAYER_INDEX = indexing.Add()
     local host = get.Global(int,1630317+1+(iVar0[key]*595)+10)
-    local TransitionStatus = get.Global(int,2425869+1+iVar0[key]*443+198)
-    local PLG  = get.Short(PLGod[key])
+    local JoinStatus = get.Global(int,2426097+iVar0[key]*443+1)
+    local PLG  = get.Bool(PLGod[key])
     local RID = get.Long(tabel[2])
     local SCID = tostring(RID)
     local NAME = get.String(tabel[1])
@@ -1350,13 +1352,21 @@ function PlayerList()
     --print(id_param.."/"..key)
     if key == id_param then ped_id = "[S]" else ped_id = "" end
     if PLG == nil then PLG = 0 end
-    if PLG >= 16385 and NAME ~= nil and PLG ~=nil then PLG = "[G]" else PLG = "" end
+    if PLG == true and NAME ~= nil and PLG ~=nil then PLG = "[G]" else PLG = "" end
     if host == 1 and NAME ~= nil then host = "[H]" else host = "" end
-    if TransitionStatus ~= 1 and NAME ~= nil then TransitionStatus = "[T]" else TransitionStatus = "" end
+    if JoinStatus == 0 and NAME ~= nil then 
+      JoinStatus = "[T]" 
+    elseif JoinStatus == 10 and NAME ~= nil then
+      JoinStatus = "[T]"
+    elseif JoinStatus == 4 and NAME ~= nil then
+      JoinStatus = ""
+    else
+      JoinStatus = ""
+    end
     if ID == "nil" then ID = "" end
     if RID == nil then SCID = "" end
     if NAME == nil then id = "" end
-    GET_PLAYER_INDEX.Caption = string.format('%s%s%s%s%s%s',id,ID,host,PLG,ped_id,TransitionStatus)
+    GET_PLAYER_INDEX.Caption = string.format('%s%s%s%s%s%s',id,ID,host,PLG,ped_id,JoinStatus)
     GET_PLAYER_INDEX.SubItems.text = SCID
   end
 end
@@ -1391,25 +1401,25 @@ function Player_List_Info()
   local Player_Selected_Gunman = VSpawn_HeistGunman
   local Player_Board_Status = VSpawn_HeistBitset
 
-  selected_approach = get.Global(int,1701666+1+iVar0[selected_player]*68+22)
-  selected_target = get.Global(int,1701666+1+iVar0[selected_player]*68+18+7)
-  selected_hacker = get.Global(int,1701666+1+iVar0[selected_player]*68+18+14)
-  selected_driver = get.Global(int,1701666+1+iVar0[selected_player]*68+18+12)
-  selected_gunman = get.Global(int,1701666+1+iVar0[selected_player]*68+18+10)
-  board_status = get.Global(int,1701666+1+iVar0[selected_player]*68+18+1)
-  security_pass = get.Global(int,1701666+1+iVar0[selected_player]*68+18+15)
-  duggan_level = get.Global(int,1701666+1+iVar0[selected_player]*68+18+8)
+  selected_approach = get.Global(int,1701669+1+iVar0[selected_player]*68+22)
+  selected_target = get.Global(int,1701669+1+iVar0[selected_player]*68+18+7)
+  selected_hacker = get.Global(int,1701669+1+iVar0[selected_player]*68+18+14)
+  selected_driver = get.Global(int,1701669+1+iVar0[selected_player]*68+18+12)
+  selected_gunman = get.Global(int,1701669+1+iVar0[selected_player]*68+18+10)
+  board_status = get.Global(int,1701669+1+iVar0[selected_player]*68+18+1)
+  security_pass = get.Global(int,1701669+1+iVar0[selected_player]*68+18+15)
+  duggan_level = get.Global(int,1701669+1+iVar0[selected_player]*68+18+8)
 
-  local IPR1 = readBytes(IPs1[selected_player])
-  local IPR2 = readBytes(IPs2[selected_player])
-  local IPR3 = readBytes(IPs3[selected_player])
-  local IPR4 = readBytes(IPs4[selected_player])
-  local IPRL1 = readBytes(IPz1[selected_player])
-  local IPRL2 = readBytes(IPz2[selected_player])
-  local IPRL3 = readBytes(IPz3[selected_player])
-  local IPRL4 = readBytes(IPz4[selected_player])
-  local PLG  = readBytes(PLGod[selected_player])
-  local PVG = readBytes(PVehGod[selected_player])
+  local IPR1 = get.Byte(IPs1[selected_player])
+  local IPR2 = get.Byte(IPs2[selected_player])
+  local IPR3 = get.Byte(IPs3[selected_player])
+  local IPR4 = get.Byte(IPs4[selected_player])
+  local IPRL1 = get.Byte(IPz1[selected_player])
+  local IPRL2 = get.Byte(IPz2[selected_player])
+  local IPRL3 = get.Byte(IPz3[selected_player])
+  local IPRL4 = get.Byte(IPz4[selected_player])
+  local PLG  = get.Byte(PLGod[selected_player])
+  local PVG = get.Byte(PVehGod[selected_player])
   local host_id = get.Int("[GTA5.exe+028D6A50]+150")
   local ListInVeh = get.Bool(PInVeh[selected_player])
   local CurVeh= get.Int(PCurVeh[selected_player])
@@ -1431,7 +1441,7 @@ function Player_List_Info()
   local Armor = get.Float(PListArmor[selected_player])
   local Ragdoll = get.Byte(PRagdoll[selected_player])
   local SCID = get.Long(RID_LIST[selected_player])
-  local biset0 = get.Global(int,1701666+1+iVar0[selected_player]*68+18)
+  local biset0 = get.Global(int,1701669+1+iVar0[selected_player]*68+18)
   local Max_HP = get.Float(PLisMAXtHP[selected_player])
   local BunkerLocation = get.Global(int,1590682+1+(iVar0[selected_player]*883)+274+183+1+(5*12))
   local CurrentVehicle = get.String(PVehName[selected_player])
@@ -1445,34 +1455,34 @@ function Player_List_Info()
   local RaceLost = get.Global(int,1590682+1+iVar0[selected_player]*883+211+16)
   local DMWin = get.Global(int,1590682+1+iVar0[selected_player]*883+211+20)
   local DMlost = get.Global(int,1590682+1+iVar0[selected_player]*883+211+21)
-  local JoinStatus = get.Global(int,2425869+iVar0[selected_player]*443+1)
-  local TransitionStatus = get.Global(int,2425869+1+iVar0[selected_player]*443+198)
-  local SecondaryLootPaint = get.Global(int,1706028+1+iVar0[selected_player]*53+10+23)
-  local SecondaryLootCashI = get.Global(int,1706028+1+iVar0[selected_player]*53+10+10)
-  local SecondaryLootWeed = get.Global(int,1706028+1+iVar0[selected_player]*53+10+11)
-  local SecondaryLootCoke = get.Global(int,1706028+1+iVar0[selected_player]*53+10+12)
-  local SecondaryLootGoldI = get.Global(int,1706028+1+iVar0[selected_player]*53+10+13)
-  local SecondaryLootCashC = get.Global(int,1706028+1+iVar0[selected_player]*53+10+18)
-  local SecondaryLootWeedC = get.Global(int,1706028+1+iVar0[selected_player]*53+10+19)
-  local SecondaryLootCokeC = get.Global(int,1706028+1+iVar0[selected_player]*53+10+20)
-  local SecondaryLootGoldC = get.Global(int,1706028+1+iVar0[selected_player]*53+10+21)
-  local PrimaryLoot = get.Global(int,1706028+1+iVar0[selected_player]*53+10+4)
-  local ValueLootCash = get.Global(int,1706028+1+iVar0[selected_player]*53+5+10+19)
-  local ValueLootWeed = get.Global(int,1706028+1+iVar0[selected_player]*53+5+10+20)
-  local ValueLootCoke = get.Global(int,1706028+1+iVar0[selected_player]*53+5+10+21)
-  local ValueLootGold = get.Global(int,1706028+1+iVar0[selected_player]*53+5+10+22)
-  local ValueLootPaint = get.Global(int,1706028+1+iVar0[selected_player]*53+5+10+23)
-  local CayoWeapon = get.Global(int,1706028+1+iVar0[selected_player]*53+5+35)
-  local Grapple = get.Global(int,1706028+1+(iVar0[selected_player]*53)+5+3)
-  local Uniform = get.Global(int,1706028+1+(iVar0[selected_player]*53)+5+4)
-  local Boltcut = get.Global(int,1706028+1+(iVar0[selected_player]*53)+5+5)
-  local DisruptWep = get.Global(int,1706028+1+iVar0[selected_player]*53+10+1)
-  local DisruptArm = get.Global(int,1706028+1+iVar0[selected_player]*53+10+2)
-  local DisruptHel = get.Global(int,1706028+1+iVar0[selected_player]*53+10+3)
-  local Entrance = get.Global(int,1706028+1+iVar0[selected_player]*53+5+2)
-  local MissionStatus = get.Global(int,1706028+1+iVar0[selected_player]*53+2)
-  local MissionProgress = get.Global(int,1706028+1+iVar0[selected_player]*53+1)
-  local TotalPOI = get.Global(int,1706028+1+iVar0[selected_player]*53+5)
+  local JoinStatus = get.Global(int,2426097+iVar0[selected_player]*443+1)
+  local TransitionStatus = get.Global(int,2426097+1+iVar0[selected_player]*443+198) --2425869
+  local SecondaryLootPaint = get.Global(int,1706031+1+iVar0[selected_player]*53+10+23)
+  local SecondaryLootCashI = get.Global(int,1706031+1+iVar0[selected_player]*53+10+10)
+  local SecondaryLootWeed = get.Global(int,1706031+1+iVar0[selected_player]*53+10+11)
+  local SecondaryLootCoke = get.Global(int,1706031+1+iVar0[selected_player]*53+10+12)
+  local SecondaryLootGoldI = get.Global(int,1706031+1+iVar0[selected_player]*53+10+13)
+  local SecondaryLootCashC = get.Global(int,1706031+1+iVar0[selected_player]*53+10+18)
+  local SecondaryLootWeedC = get.Global(int,1706031+1+iVar0[selected_player]*53+10+19)
+  local SecondaryLootCokeC = get.Global(int,1706031+1+iVar0[selected_player]*53+10+20)
+  local SecondaryLootGoldC = get.Global(int,1706031+1+iVar0[selected_player]*53+10+21)
+  local PrimaryLoot = get.Global(int,1706031+1+iVar0[selected_player]*53+10+4)
+  local ValueLootCash = get.Global(int,1706031+1+iVar0[selected_player]*53+5+10+19)
+  local ValueLootWeed = get.Global(int,1706031+1+iVar0[selected_player]*53+5+10+20)
+  local ValueLootCoke = get.Global(int,1706031+1+iVar0[selected_player]*53+5+10+21)
+  local ValueLootGold = get.Global(int,1706031+1+iVar0[selected_player]*53+5+10+22)
+  local ValueLootPaint = get.Global(int,1706031+1+iVar0[selected_player]*53+5+10+23)
+  local CayoWeapon = get.Global(int,1706031+1+iVar0[selected_player]*53+5+35)
+  local Grapple = get.Global(int,1706031+1+(iVar0[selected_player]*53)+5+3)
+  local Uniform = get.Global(int,1706031+1+(iVar0[selected_player]*53)+5+4)
+  local Boltcut = get.Global(int,1706031+1+(iVar0[selected_player]*53)+5+5)
+  local DisruptWep = get.Global(int,1706031+1+iVar0[selected_player]*53+10+1)
+  local DisruptArm = get.Global(int,1706031+1+iVar0[selected_player]*53+10+2)
+  local DisruptHel = get.Global(int,1706031+1+iVar0[selected_player]*53+10+3)
+  local Entrance = get.Global(int,1706031+1+iVar0[selected_player]*53+5+2)
+  local MissionStatus = get.Global(int,1706031+1+iVar0[selected_player]*53+2)
+  local MissionProgress = get.Global(int,1706031+1+iVar0[selected_player]*53+1)
+  local TotalPOI = get.Global(int,1706031+1+iVar0[selected_player]*53+5)
   local PrepPrimary = PrepWajib(selected_player)
   local PrepOptional = PrepOptional(selected_player)
   local PrimaryTarget = "NULL"
@@ -1766,7 +1776,13 @@ function Player_List_Info()
     elseif (PLG == 1) and (PVG == nil) then PLG,PVG = 'True','Not In Vehicle'
     elseif (PLG == 0) and (PVG == nil) then PLG,PVG = 'False','Not In Vehicle'
     elseif (PLG == nil) and (PVG == nil) then PLG,PVG = 'No Data','Not In Vehicle'
-    else PLG,PVG = 'Inside Building','Inside Building'
+    elseif (PLG == 9) and (PVG == 1) then PLG,PVG = 'True',"True"
+    elseif (PLG == 8) and (PVG == 1) then PLG,PVG = 'Inside Building','Inside Building'
+    elseif (PLG == 9) and (PVG == 0) then PLG,PVG = 'True',"False"
+    elseif (PLG == 8) and (PVG == 0) then PLG,PVG = 'Inside Building','False'
+    elseif (PLG == 9) and (PVG == nil) then PLG,PVG = 'True',"Not In Vehicle"
+    elseif (PLG == 8) and (PVG == nil) then PLG,PVG = 'Inside Building','Not In Vehicle'
+    else PLG,PVG = 'True','True'
   end
 
   --[[for _,v in pairs(tbl_Vehicles) do
@@ -1831,8 +1847,8 @@ Cash Location : ID %s
 Document Location : ID %s
 =========CASINO HEIST STAT==========
 Casino Heist Primary Prep : %s
-Primary Prep : %i/%s
-Optional Prep : %i/%s
+Primary Prep : %s/%s
+Optional Prep : %s/%s
 Casino Heist Gunman : %s
 Casino Heist Driver : %s
 Casino Heist Hacker : %s
@@ -1897,135 +1913,96 @@ function Playerlist_Manipulator(sender)
   local id2 = combobox_getItemIndex(PlaylistTab.VehList) + 1
   local idc = PlaylistTab.ActionToPlayer.ItemIndex
   local id_prop = combobox_getItemIndex(PlaylistTab.prop_changer);
+  local Intervals = tonumber(PlaylistTab.IntervalValue.Text)
   switch(idc,{
     [0] = function()
       LuaEngineLog(PlaylistTab.PlayerInfo.Lines.Text)
       Player_List_Info()
       ShowPlayerAvatar(selected_player,0)
       PlaylistTab.HashIndicator.Text = 'Selected Index'.." ["..selected_player.."] Name : "..get.String(CPLAYER_NAME[selected_player])
-    end,
+    end;
     [1] = function()
       Player_List_Info()
-      LuaEngineLog(string.format("Player Index [%i] | Player Name : %s | Memory Address 0x%X",selected_player,get.String(CPLAYER_NAME[selected_player]),get.Memory(CPLAYER_NAME[selected_player])))
+      LuaEngineLog(string.format("Player Index [%s] | Player Name : %s | Memory Address 0x%X",selected_player,get.String(CPLAYER_NAME[selected_player]),get.Memory(CPLAYER_NAME[selected_player])))
       ShowPlayerAvatar(selected_player,0)
       PlaylistTab.HashIndicator.Text = 'Teleport To '.." ["..selected_player.."] "..get.String(CPLAYER_NAME[selected_player])
       teleport_to_player(target_x[selected_player],target_y[selected_player],target_z[selected_player])
-    end,
+    end;
     [2] = function()
       Player_List_Info()
-      LuaEngineLog(string.format("Player Index [%i] | Player Name : %s | Memory Address 0x%X | Vehicle : 0x%X ",selected_player,get.String(CPLAYER_NAME[selected_player]),get.Memory(CPLAYER_NAME[selected_player]),tbl_Vehicles[id2][2]))
+      LuaEngineLog(string.format("Player Index [%s] | Player Name : %s | Memory Address 0x%X | Vehicle : 0x%X ",selected_player,get.String(CPLAYER_NAME[selected_player]),get.Memory(CPLAYER_NAME[selected_player]),tbl_Vehicles[id2][2]))
       ShowPlayerAvatar(selected_player,0)
       PlaylistTab.HashIndicator.Text = 'Spawn Vehicle To '.." ["..selected_player.."] "..get.Int(VEH_HANDLER).." "..get.String(CPLAYER_NAME[selected_player])
       VEHICLE.CREATE_VEHICLE(tonumber(VehicleTab.Dist.Text),target_x[selected_player],target_y[selected_player],target_z[selected_player],theading_x[selected_player],theading_y[selected_player],deactivate,tbl_Vehicles[id2][1])
-    end,
+    end;
     [3] = function()
       Player_List_Info()
-      LuaEngineLog(string.format("Player Index [%i] | Player Name : %s | Memory Address 0x%X",selected_player,get.String(CPLAYER_NAME[selected_player]),get.Memory(CPLAYER_NAME[selected_player])))
+      LuaEngineLog(string.format("Player Index [%s] | Player Name : %s | Memory Address 0x%X",selected_player,get.String(CPLAYER_NAME[selected_player]),get.Memory(CPLAYER_NAME[selected_player])))
       ShowPlayerAvatar(selected_player,0)
       PlaylistTab.HashIndicator.Text = 'Spawn Pickup To '.." ["..selected_player.."] "..' '..get.String(CPLAYER_NAME[selected_player])
       OBJECT.CREATE_AMBIENT_PICKUP(tbl_pickup_hash[IDHash],data_prop[id_prop],9999,target_x[selected_player],target_y[selected_player],target_z[selected_player],theading_x[selected_player],theading_y[selected_player],tonumber(PlaylistTab.Dist.Text),tonumber(PlaylistTab.Tinggi.Text))
-    end,
+    end;
     [4] = function()
       Player_List_Info()
       ShowPlayerAvatar(selected_player,0)
-      give_all_weapon_var = true
-      local start = function()
-        for _,v in pairs(all_weapon_dropper)
-        do
-          PlaylistTab.HashIndicator.Text = 'Spawn All Weapon To '.." ["..selected_player.."] "..v[1]..' '..get.String(CPLAYER_NAME[selected_player])
-          LuaEngineLog(string.format("Player Index [%i]\nPlayer Name : %s\nMemory Address 0x%X\nHash : 0x%X\nWeapon : 0x%X",selected_player,get.String(CPLAYER_NAME[selected_player]),get.Memory(CPLAYER_NAME[selected_player]),v[1],v[2]))
-          OBJECT.CREATE_AMBIENT_PICKUP(v[1],v[2],9999,target_x[selected_player],target_y[selected_player],target_z[selected_player],theading_x[selected_player],theading_y[selected_player],tonumber(PlaylistTab.Dist.Text),tonumber(PlaylistTab.Tinggi.Text))
-          if give_all_weapon_var == false then break end
-          SYSTEM.WAIT(300)
-        end
-      end
-      ExecuteThread(start)
-    end,
+      DropWeaponInQueue(selected_player,Intervals)
+    end;
     [5] = function()
       Player_List_Info()
-      LuaEngineLog(string.format("Player Index [%i] | Player Name : %s | Memory Address 0x%X",selected_player,get.String(CPLAYER_NAME[selected_player]),get.Memory(CPLAYER_NAME[selected_player])))
+      LuaEngineLog(string.format("Player Index [%s] | Player Name : %s | Memory Address 0x%X",selected_player,get.String(CPLAYER_NAME[selected_player]),get.Memory(CPLAYER_NAME[selected_player])))
       ShowPlayerAvatar(selected_player,0)
       PlaylistTab.HashIndicator.Text = 'Spawn Auto Health True To '.." ["..selected_player.."] "..get.String(CPLAYER_NAME[selected_player])
       AutoHealthPack(true,1000,selected_player)
       VSpawn.CEListView1.MultiSelect = true
-    end,
+    end;
     [6] = function()
       Player_List_Info()
-      LuaEngineLog(string.format("Player Index [%i] | Player Name : %s | Memory Address 0x%X",selected_player,get.String(CPLAYER_NAME[selected_player]),get.Memory(CPLAYER_NAME[selected_player])))
+      LuaEngineLog(string.format("Player Index [%s] | Player Name : %s | Memory Address 0x%X",selected_player,get.String(CPLAYER_NAME[selected_player]),get.Memory(CPLAYER_NAME[selected_player])))
       ShowPlayerAvatar(selected_player,0)
       PlaylistTab.HashIndicator.Text = 'Spawn Auto Health False To '.." ["..selected_player.."] "..get.String(CPLAYER_NAME[selected_player])
       AutoHealthPack(false,1000,selected_player)
       VSpawn.CEListView1.MultiSelect = false
-    end,
+    end;
     [7] = function()
       Player_List_Info()
-      LuaEngineLog(string.format("Player Index [%i] | Player Name : %s | Memory Address 0x%X",selected_player,get.String(CPLAYER_NAME[selected_player]),get.Memory(CPLAYER_NAME[selected_player])))
+      LuaEngineLog(string.format("Player Index [%s] | Player Name : %s | Memory Address 0x%X",selected_player,get.String(CPLAYER_NAME[selected_player]),get.Memory(CPLAYER_NAME[selected_player])))
       ShowPlayerAvatar(selected_player,0)
       PlaylistTab.HashIndicator.Text = 'Teleport Ped To '.." ["..selected_player.."] "..get.String(CPLAYER_NAME[selected_player])
       PED.SET_PED_COORD(pos_x,pos_y,pos_z,PLAYER.PLAYER_INDEX_ID(selected_player))
-    end,
+    end;
     [8] = function()
-      LuaEngineLog(string.format("Player Index [%i] | Player Name : %s | Memory Address 0x%X",selected_player,get.String(CPLAYER_NAME[selected_player]),get.Memory(CPLAYER_NAME[selected_player])))
+      LuaEngineLog(string.format("Player Index [%s] | Player Name : %s | Memory Address 0x%X",selected_player,get.String(CPLAYER_NAME[selected_player]),get.Memory(CPLAYER_NAME[selected_player])))
       PlaylistTab.HashIndicator.Text = 'Spawn Object Loop To True'.." ["..selected_player.."] "..' '..get.String(CPLAYER_NAME[selected_player])
       Player_List_Info()
       ShowPlayerAvatar(selected_player,0)
-      local hwal_loop = true
-      hwal=1
-      function hwal()
-        while (hwal_loop) do
-          set.global(int,262145+167,10000)
-          OBJECT.CREATE_AMBIENT_PICKUP(tbl_pickup_hash[IDHash],data_prop[id_prop],1,target_x[selected_player],target_y[selected_player],target_z[selected_player],theading_x[selected_player],theading_y[selected_player],tonumber(PlaylistTab.Dist.Text),tonumber(PlaylistTab.Tinggi.Text))
-          if hwal==0 or CheckPickups() == true then
-            hwal_loop = false
-            break
-          return true
-          end
-          Async();
-        end
-      end
-      AsyncStart(hwal,1000)
-    end,
+      DropItemLoop(selected_player,true,Intervals,IDHash,id_prop)
+    end;
     [9] = function()
       PlaylistTab.HashIndicator.Text = 'Spawn Object Loop To False'.." ["..selected_player.."]"..get.String(CPLAYER_NAME[selected_player])
       Player_List_Info()
-      LuaEngineLog(string.format("Player Index [%i] | Player Name : %s | Memory Address 0x%X",selected_player,get.String(CPLAYER_NAME[selected_player]),get.Memory(CPLAYER_NAME[selected_player])))
+      LuaEngineLog(string.format("Player Index [%s] | Player Name : %s | Memory Address 0x%X",selected_player,get.String(CPLAYER_NAME[selected_player]),get.Memory(CPLAYER_NAME[selected_player])))
       ShowPlayerAvatar(selected_player,0)
-      hwal=0
-      hwal_loop = false
-    end,
+      DropItemLoop(selected_player,false,Intervals,IDHash,id_prop)
+    end;
     [10] = function()
       Player_List_Info()
-      LuaEngineLog(string.format("Player Index [%i] | Player Name : %s | Memory Address 0x%X",selected_player,get.String(CPLAYER_NAME[selected_player]),get.Memory(CPLAYER_NAME[selected_player])))
+      LuaEngineLog(string.format("Player Index [%s] | Player Name : %s | Memory Address 0x%X",selected_player,get.String(CPLAYER_NAME[selected_player]),get.Memory(CPLAYER_NAME[selected_player])))
       ShowPlayerAvatar(selected_player,0)
-      local spwnveh_loop = true
-      spwnveh=1
-      function spwnveh()
-        while (spwnveh_loop) do
-          sleep (1000)
-          PlaylistTab.HashIndicator.Text = 'Spawn Vehicle Loop To True'.." ["..selected_player.."] "..get.Int(VEH_HANDLER).." "..get.String(CPLAYER_NAME[selected_player])
-          VEHICLE.CREATE_VEHICLE(tonumber(VehicleTab.Dist.Text),target_x[selected_player],target_y[selected_player],target_z[selected_player],theading_x[selected_player],theading_y[selected_player],deactivate,tbl_Vehicles[id2][1])
-          if spwnveh==0 then
-            spwnveh_loop = false
-          return true
-          end
-        end
-      end
-      ExecuteThread(spwnveh);
-    end,
+      VehicleSpammer(selected_player,true,Intervals,tbl_Vehicles[id2][1])
+    end;
     [11] = function()
-      LuaEngineLog(string.format("Player Index [%i] | Player Name : %s | Memory Address 0x%X",selected_player,get.String(CPLAYER_NAME[selected_player]),get.Memory(CPLAYER_NAME[selected_player])))
+      LuaEngineLog(string.format("Player Index [%s] | Player Name : %s | Memory Address 0x%X",selected_player,get.String(CPLAYER_NAME[selected_player]),get.Memory(CPLAYER_NAME[selected_player])))
       PlaylistTab.HashIndicator.Text = 'Spawn Vehicle Loop To False'.." ["..selected_player.."]"..get.String(CPLAYER_NAME[selected_player])
       Player_List_Info()
       ShowPlayerAvatar(selected_player,0)
-      spwnveh=0
-      spwnveh_loop = false
-      end,
+      VehicleSpammer(selected_player,false,Intervals,tbl_Vehicles[id2][1])
+    end;
   }
 )
 end
 
-function panik()
-  give_all_weapon_var = false
+function Panik()
+  RIDJoiner(0,false)
 end
 
 function InceaseX()
@@ -2033,9 +2010,9 @@ function InceaseX()
   set.float(PLAYER_CORDX,cord_x+1)
   set.float(PLAYER_VECX,cord_x+1)
   local p = get.Ptr(get.Ptr(get.Memory("WorldPTR")) + 0x8)
-  if (2 == get.Int(p + 0x148C)) then
-    set.float(("[[[[WorldPTR]+8]+VEH]+30]+50"),cord_x+1)
-    set.float(("[[[WorldPTR]+8]+VEH]+90"),cord_x+1)
+  if PED.IS_PED_IN_ANY_VEHICLE() then
+    set.float(CVehiclePos + 0x50,cord_x+1)
+    set.float(CVehicle + 0x90,cord_x+1)
   end
 end
 
@@ -2044,9 +2021,9 @@ function DecreaseX()
   set.float(PLAYER_CORDX,cord_x-1)
   set.float(PLAYER_VECX,cord_x-1)
   local p = get.Ptr(get.Ptr(get.Memory("WorldPTR")) + 0x8)
-  if (2 == get.Int(p + 0x148C)) then
-    set.float(("[[[[WorldPTR]+8]+VEH]+30]+50"),cord_x-1)
-    set.float(("[[[WorldPTR]+8]+VEH]+90"),cord_x-1)
+  if PED.IS_PED_IN_ANY_VEHICLE() then
+    set.float(CVehiclePos + 0x50,cord_x-1)
+    set.float(CVehicle + 0x90,cord_x-1)
   end
 end
 
@@ -2056,8 +2033,8 @@ function IncreaseY()
   set.float(PLAYER_VECY,cord_y+1)
   local p = get.Ptr(get.Ptr(get.Memory("WorldPTR")) + 0x8)
   if (2 == get.Int(p + 0x148C)) then
-    set.float(("[[[[WorldPTR]+8]+VEH]+30]+54"),cord_y+1)
-    set.float(("[[[WorldPTR]+8]+VEH]+94"),cord_y+1)
+    set.float(CVehiclePos + 0x54,cord_y+1)
+    set.float(CVehicle + 0x94,cord_y+1)
    end
 end
 
@@ -2067,8 +2044,8 @@ function DecreaseY()
   set.float(PLAYER_VECY,cord_y-1)
   local p = get.Ptr(get.Ptr(get.Memory("WorldPTR")) + 0x8)
   if (2 == get.Int(p + 0x148C)) then
-    set.float(("[[[[WorldPTR]+8]+VEH]+30]+54"),cord_y-1)
-    set.float(("[[[WorldPTR]+8]+VEH]+94"),cord_y-1)
+    set.float(CVehiclePos + 0x54,cord_y-1)
+    set.float(CVehicle + 0x94,cord_y-1)
   end
 end
 
@@ -2078,8 +2055,8 @@ function IncreaseZ()
   set.float(PLAYER_VECZ,cord_z+1)
   local p = get.Ptr(get.Ptr(get.Memory("WorldPTR")) + 0x8)
   if (2 == get.Int(p + 0x148C)) then
-    set.float(("[[[[WorldPTR]+8]+VEH]+30]+58"),cord_z+1)
-    set.float(("[[[WorldPTR]+8]+VEH]+98"),cord_z+1)
+    set.float(CVehiclePos + 0x58,cord_z+1)
+    set.float(CVehicle + 0x98,cord_z+1)
   end
 end
 
@@ -2089,8 +2066,8 @@ function DecreaseZ()
   set.float(PLAYER_VECZ,cord_z-1)
   local p = get.Ptr(get.Ptr(get.Memory("WorldPTR")) + 0x8)
   if (2 == get.Int(p + 0x148C)) then
-    set.float(("[[[[WorldPTR]+8]+VEH]+30]+58"),cord_z-1)
-    set.float(("[[[WorldPTR]+8]+VEH]+98"),cord_z-1)
+    set.float(CVehiclePos + 0x58,cord_z-1)
+    set.float(Cvehicle + 0x98,cord_z-1)
   end
 end
 
@@ -2294,16 +2271,26 @@ function AutoSpoofRID()
   local check = checkbox_getState(PlaylistTab.AutoSpoofer)
   if check == cbChecked then
     SetList('RID SPOOF',true)
-    LuaEngineLog(string.format("Activate SCID Spoof : %s",get.TListA("RID SPOOF")))
+    LuaEngineLog(string.format("Activate SCID Spoof : %s",get.Scripts("RID SPOOF")))
   elseif check == cbUnchecked then
     SetList('RID SPOOF',false)
-    LuaEngineLog(string.format("Deactivate SCID Spoof : %s",get.TListA("RID SPOOF")))
+    LuaEngineLog(string.format("Deactivate SCID Spoof : %s",get.Scripts("RID SPOOF")))
   end
 end
 
 function RID_Spoofer_Manual(sender)
-  set.long(RID,tonumber(PlaylistTab.CEEdit8.Text))
---RIDTimer.Enabled = true
+  local NewThread = function()
+    if not RIDJoinerScriptStatus then
+      RIDJoiner(tonumber(PlaylistTab.CEEdit8.Text),true)
+      LoadSession(12)
+    elseif RIDJoinerScriptStatus then
+      RIDJoiner(tonumber(PlaylistTab.CEEdit8.Text),false)
+      SYSTEM.WAIT(1500)
+      RIDJoiner(tonumber(PlaylistTab.CEEdit8.Text),true)
+      LoadSession(12)
+    end
+  end
+  ExecuteThread(NewThread)
 end
 
 NEON_CR = {255,255,0,0,255,0,255}
@@ -2860,7 +2847,7 @@ function HeistDistruptionLevel()
         {'MP'..MPX..'_H4CNF_HEL_DISRP',MP_Cayo_Disrp[did2][2]},
         {'MP'..MPX..'_H4CNF_ARM_DISRP',MP_Cayo_Disrp[did2][2]},
       }
-    STATS.STAT_LOOP_INT(disrupted)
+    STATS.STAT_FAST_INT(disrupted)
   end
 end
 
@@ -2942,7 +2929,7 @@ function HeistWeaponSet()
     {'MP'..MPX..'_H4LOOT_GOLD_C_SCOPED',MP_Cayo_Target2[idws2][6]},
     {'MP'..MPX..'_H4LOOT_PAINT_SCOPED',MP_Cayo_Target2[idws2][7]},
   }
-    STATS.STAT_LOOP_INT(secondary_target)
+    STATS.STAT_FAST_INT(secondary_target)
   end
 end
 
@@ -2970,7 +2957,7 @@ function HeistSet2()
   }  
 )
   elseif mp_id == 2 then
-    STATS.STAT_LOOP_INT(cayo_set)
+    STATS.STAT_FAST_INT(cayo_set)
   end
 end
 
@@ -2993,23 +2980,25 @@ function HeistReset2()
   if mp_id == 1 then
     STATS.STAT_SET_INT('MP'..MPX..'_H3OPT_BITSET0',0)
   elseif mp_id == 2 then
-    STATS.STAT_LOOP_INT(cayo_set)
+    STATS.STAT_FAST_INT(cayo_set)
   end
 end
 
 function StatEditingOption()
   local types_stat = combobox_getItemIndex(StatTab.CEComboBox13) + 1;
+  StatInputToString = tostring(Protection.joaat.Text)
+  StatInput = string.lower(StatInputToString)
   if types_stat == 2 then
     StatTab.CEButton9.Caption = 'Set Integer'
-    STATS.STAT_SET_INT(tostring(Protection.joaat.Text),tonumber(Protection.stat_value.Text))
-    LuaEngineLog(string.format("Stat : %s | Value : %i | [Hash : 0x%X]",Protection.joaat.Text,Protection.stat_value.Text,joaat(tostring(Protection.joaat.Text))))
+    STATS.STAT_SET_INT(StatInput,tonumber(Protection.stat_value.Text))
+    LuaEngineLog(string.format("Stat : %s | Value : %s | [Hash : 0x%X]",Protection.joaat.Text,Protection.stat_value.Text,joaat(tostring(Protection.joaat.Text))))
   elseif types_stat == 3 then
     StatTab.CEButton9.Caption = 'Set Boolean'
-    STATS.STAT_SET_BOOL(tostring(Protection.joaat.Text),tonumber(Protection.stat_value.Text))
-    (string.format("Stat : %s | Value : %i | [Hash : 0x%X]",Protection.joaat.Text,Protection.stat_value.Text,joaat(tostring(Protection.joaat.Text))))
+    STATS.STAT_SET_BOOL(StatInput,tonumber(Protection.stat_value.Text))
+    LuaEngineLog(string.format("Stat : %s | Value : %s | [Hash : 0x%X]",Protection.joaat.Text,Protection.stat_value.Text,joaat(tostring(Protection.joaat.Text))))
   elseif types_stat == 4 then
-      STATS.STAT_GET_INT(tostring(Protection.joaat.Text))
-    LuaEngineLog(string.format("Stat : %s | Value : %i | [Hash : 0x%X]",Protection.joaat.Text,Protection.stat_value.Text,joaat(tostring(Protection.joaat.Text))))
+    STATS.STAT_GET_INT(StatInput)
+    LuaEngineLog(string.format("Stat : %s | [Hash : 0x%X]",Protection.joaat.Text,joaat(tostring(Protection.joaat.Text))))
      StatTab.CEButton9.Caption = 'Get Value'
   elseif types_stat == 5 then
      StatTab.CEButton9.Caption = 'Import Int'
@@ -3141,32 +3130,37 @@ function InstantHeistSetupOption()
       [1] = function ()
       local MPX = tostring(get.Global(int,1312763))
       local MPx = tostring('MP'..MPX..'_')
-      STATS.STAT_LOOP_INT(silent)
+      STATS.STAT_FAST_INT(silent)
       end,
       [2] = function ()
         local MPX = tostring(get.Global(int,1312763))
         local MPx = tostring('MP'..MPX..'_')
-        STATS.STAT_LOOP_INT(bigcon)
+        STATS.STAT_FAST_INT(bigcon)
       end,
       [3] = function ()
         local MPX = tostring(get.Global(int,1312763))
         local MPx = tostring('MP'..MPX..'_')
-        STATS.STAT_LOOP_INT(aggressive)
+        STATS.STAT_FAST_INT(aggressive)
       end,
       [4] = function ()
         local MPX = tostring(get.Global(int,1312763))
         local MPx = tostring('MP'..MPX..'_')
-        STATS.STAT_LOOP_INT(doomsday)
+        STATS.STAT_FAST_INT(doomsday)
       end,
       [5] = function ()
         local MPX = tostring(get.Global(int,1312763))
         local MPx = tostring('MP'..MPX..'_')
-        STATS.STAT_LOOP_INT(apartment)
+        STATS.STAT_FAST_INT(apartment)
       end,
       [6] = function ()
         local MPX = tostring(get.Global(int,1312763))
         local MPx = tostring('MP'..MPX..'_')
-        STATS.STAT_LOOP_INT(CPHeist)
+        STATS.STAT_FAST_INT(CPHeist)
+      end,
+      [7] = function ()
+        local MPX = tostring(get.Global(int,1312763))
+        local MPx = tostring('MP'..MPX..'_')
+        STATS.STAT_FAST_INT(CPHeist2)
       end,
     }
   ) 
@@ -3207,7 +3201,7 @@ function CasOption()
 end
 
 function PlatLisence(sender)
-  set.global(str,2462286+27+1,tostring(VehicleTab.Plat.Text))
+  set.global(str,2462514+27+1,tostring(VehicleTab.Plat.Text))
 end
 
 function CEONameChanger()
@@ -3512,38 +3506,26 @@ end
 function SC_RareItem()
   page_id = combobox_getItemIndex(PlayerData.CEComboBox1);
   if page_id == 1 then
-    set.global(int,1677992,2)
-    set.global(bool,1678146,1)
+    set.global(int,1677993,2)
+    set.global(bool,1678147,1)
   elseif page_id == 2 then
-    set.global(int,1677992,4)
-    set.global(bool,1678146,1)
+    set.global(int,1677993,4)
+    set.global(bool,1678147,1)
   elseif page_id == 3 then
-    set.global(int,1677992,6)
-    set.global(bool,1678146,1)
+    set.global(int,1677993,6)
+    set.global(bool,1678147,1)
   elseif page_id == 4 then
-    set.global(int,1677992,7)
-    set.global(bool,1678146,1)
+    set.global(int,1677993,7)
+    set.global(bool,1678147,1)
   elseif page_id == 5 then
-    set.global(int,1677992,8)
-    set.global(bool,1678146,1)
+    set.global(int,1677993,8)
+    set.global(bool,1678147,1)
   elseif page_id == 6 then
-    set.global(int,1677992,9)
-    set.global(bool,1678146,1)
+    set.global(int,1677993,9)
+    set.global(bool,1678147,1)
   end
 end
 
-business_controller = {
-  'Extend Jualan Bunker',
-  'Extend Jualan MC',
-  'Extend Timer Hangar',
-  'Special Cargo Extend Timer',
-  'Night Club Selling Cooldown',
-  'Script Special Cargo Selling Cooldown',
-  'Script Special Cargo Buying Cooldown',
-  'NC Timer Production',
-  'Safety AFK in Solo Public',
-  'Set Aim Assisted'
-}
 function PlayerData_BusinessActClickCheck(sender)
   local id = listbox_getItemIndex(ManualTab.BusinessAct) + 1;
   if ReadAct(business_controller[id])==false then 
@@ -3575,7 +3557,7 @@ end
 bag_value = {1800,3600,5600,6400,7400,8400,MAX_INT}
 function BagLimit(sender)
   local id = combobox_getItemIndex(MainTab.BagLimit);
-  set.global(int,262145+28999,bag_value[id])
+  set.global(int,262145+29000,bag_value[id])
 end
 
 function ImportFile(sender)
@@ -3585,28 +3567,24 @@ end
 function IPSpoof() --Spoofing IP from CPlayerInfo
   local player_ip_index = combobox_getItemIndex(Player_IPSpoofer);
   if player_ip_index == 1 then 
-    writeBytes(CPlayerInfo + 0x44,89,122,111,180)
-    writeBytes(CPlayerInfo + 0x34,89,122,111,180)
+    writeBytes(CPlayerInfo + 0x6C,89,122,111,180)
+    writeBytes(CPlayerInfo + 0x74,89,122,111,180)
   elseif player_ip_index == 2 then 
-    writeBytes(CPlayerInfo + 0x44,69,131,222,82)
-    writeBytes(CPlayerInfo + 0x34,69,131,222,82)
+    writeBytes(CPlayerInfo + 0x6C,69,131,222,82)
+    writeBytes(CPlayerInfo + 0x74,69,131,222,82)
   elseif player_ip_index == 3 then 
-    writeBytes(CPlayerInfo + 0x44,69,69,69,69)
-    writeBytes(CPlayerInfo + 0x34,69,69,69,69)
+    writeBytes(CPlayerInfo + 0x6C,69,69,69,69)
+    writeBytes(CPlayerInfo + 0x74,69,69,69,69)
   elseif player_ip_index == 4 then 
-    writeBytes(CPlayerInfo + 0x44,0,0,0,0)
-    writeBytes(CPlayerInfo + 0x34,0,0,0,0)
+    writeBytes(CPlayerInfo + 0x6C,0,0,0,0)
+    writeBytes(CPlayerInfo + 0x74,0,0,0,0)
   elseif player_ip_index == 5 then 
-    writeBytes(CPlayerInfo + 0x44,255,255,255,255)
-    writeBytes(CPlayerInfo + 0x34,255,255,255,255)
+    writeBytes(CPlayerInfo + 0x6C,255,255,255,255)
+    writeBytes(CPlayerInfo + 0x74,255,255,255,255)
   elseif player_ip_index == 6 then 
-    writeBytes(CPlayerInfo + 0x44,30,162,211,74)
-    writeBytes(CPlayerInfo + 0x34,30,162,211,74)
+    writeBytes(CPlayerInfo + 0x6C,30,162,211,74)
+    writeBytes(CPlayerInfo + 0x74,30,162,211,74)
   end
-end
-
-function HostKeyChanger(Token) --HostKeyChanger(Host Token) to set as session host
-  set.int(CPlayerInfo + 0x60,Token)
 end
 
 function SpawnVehicleManual()
@@ -3637,11 +3615,11 @@ end
 function SpawnerPrimaryColour()
   local colour_id = combobox_getItemIndex(VehicleTab.SpawnPrimColour) + 1;
   if colour_id == nil then
-    set.global(int,2462286+27+5, 255)
-    set.global(int,2462286+27+6, 255)
+    set.global(int,2462514+27+5, 255)
+    set.global(int,2462514+27+6, 255)
   else
-    set.global(int,2462286+27+5, tbl_Colors[colour_id][2])
-    set.global(int,2462286+27+6, tbl_Colors[colour_id][2])
+    set.global(int,2462514+27+5, tbl_Colors[colour_id][2])
+    set.global(int,2462514+27+6, tbl_Colors[colour_id][2])
   end
 end
 
@@ -3687,7 +3665,7 @@ function WheelSelection()
   local b = VehicleTab.WheelDesign.itemIndex
   local type_id = combobox_getItemIndex(VehicleTab.S_WheelType);
   if b > 0 then b=VehicleTab.WheelDesign.Items[b]:match("([^,]+):") end
-  set.global(int,2462286+27+33,id+b)
+  set.global(int,2462514+27+33,id+b)
 end
 
 local function TotalScriptRunning()
@@ -3719,10 +3697,11 @@ TRY_CLAUSE {
       end
     end)
     AsyncStart(start,5);
-  end,
+    local Error = "On lines 3725 "
+  end;
   EXCEPT_CLAUSE {
-    function(start)
-      LuaEngineLog('caught error: '..start)
+    function(Error)
+      LuaEngineLog('caught error: '..Error)
     end
   }
 }
@@ -3731,7 +3710,7 @@ local function LoopForever()
   local start = Asynchronous(function()
       while (true) do
           local id = VehicleTab.S_WheelType.itemIndex-1;
-          set.global(int,2462286+27+69,id)
+          set.global(int,2462514+27+69,id)
           WheelSelection()
           SpawnerPrimaryColour()
           SpawnerXenon()
@@ -3746,7 +3725,7 @@ local function LoopForever()
 end
 LoopForever()
 
------------------------------------------------------NON STOP LOOP END-------------------------------------------------
+--------------------------------------------------NON STOP LOOP END-------------------------------------------------
 
 function AutoClick()
   local check = checkbox_getState(MainTab.AutoClick)
@@ -3778,3 +3757,4 @@ function SendCommandConsole(sender)
     ExecuteThread(loadlocals)
   end
 end
+---------------------------------------------SCRIPT END-------------------------------------------------------------------
