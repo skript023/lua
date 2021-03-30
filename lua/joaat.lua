@@ -42,6 +42,14 @@ function Boolean_To_Num(var)
   return var and 1 or 0
 end
 
+function MAKEWORD(a,b)
+  return (a & 0xff | b & 0xff) << 8
+end
+
+function MAKELONG(a,b)
+  return (a & 0xffff | b & 0xffff) << 16
+end
+
 function char(chr)
   return string.byte(chr)
 end
@@ -65,10 +73,10 @@ shifting : x = x * 2 ^ y
 		--return (c >= 'A' && c <= 'Z') ? c + ('a' - 'A') : c;
 	--}
 --case insensitive for joaat hasher
-
 function tolower(c)
   return (c >= char('A') and c <= char('Z')) and c + (char('a') - char('A')) or c
 end
+
 --Usage:joaat("Hash Name")
 function joaat(str)
   hash, str = 0 or InitialHash, str or ''
@@ -180,7 +188,7 @@ function joaat_t(str, hash, XLAT, finishing)
   finishing = finishing~= false and true
   if type(str)=='table'then
     local ok, s = pcall(byteTableToString,str)
-    if ok and #s == #str then str = s  else return nil,"can't convert byte table to str."end
+    if ok and #s == #str then str = s  else return nil,"can't convert byte table to str." end
   end
   hash, str = hash or 0, str or ''
   if XLAT then

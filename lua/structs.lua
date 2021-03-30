@@ -645,235 +645,234 @@ function VehicleSpawner()
 if id == 1 then
   switch(id3,
         {
-          [1] = function()
-          VEHICLE.CREATE_VEHICLE(tonumber(VehicleTab.Dist.Text),PLAYER_CORDX,PLAYER_CORDY,PLAYER_CORDZ,PLAYER_HEADINGS[1],PLAYER_HEADINGS[2],deactivate,super[id2][2])
-        end,
+      [1] = function()
+        VEHICLE.CREATE_VEHICLE(tonumber(VehicleTab.Dist.Text),PLAYER_CORDX,PLAYER_CORDY,PLAYER_CORDZ,PLAYER_HEADINGS[1],PLAYER_HEADINGS[2],deactivate,super[id2][2])
+      end,
 
-          [2] = function()
-          VEHICLE.CREATE_VEHICLE(tonumber(VehicleTab.Dist.Text),PLAYER_CORDX,PLAYER_CORDY,PLAYER_CORDZ,PLAYER_HEADINGS[1],PLAYER_HEADINGS[2],deactivate,sport[id2][2])
-        end,
+      [2] = function()
+        VEHICLE.CREATE_VEHICLE(tonumber(VehicleTab.Dist.Text),PLAYER_CORDX,PLAYER_CORDY,PLAYER_CORDZ,PLAYER_HEADINGS[1],PLAYER_HEADINGS[2],deactivate,sport[id2][2])
+      end,
 
-          [3] = function()
-          VEHICLE.CREATE_VEHICLE(tonumber(VehicleTab.Dist.Text),PLAYER_CORDX,PLAYER_CORDY,PLAYER_CORDZ,PLAYER_HEADINGS[1],PLAYER_HEADINGS[2],deactivate,sport_classic[id2][2])
-        end,
+      [3] = function()
+        VEHICLE.CREATE_VEHICLE(tonumber(VehicleTab.Dist.Text),PLAYER_CORDX,PLAYER_CORDY,PLAYER_CORDZ,PLAYER_HEADINGS[1],PLAYER_HEADINGS[2],deactivate,sport_classic[id2][2])
+      end,
 
-          [4] = function()
-          VEHICLE.CREATE_VEHICLE(tonumber(VehicleTab.Dist.Text),PLAYER_CORDX,PLAYER_CORDY,PLAYER_CORDZ,PLAYER_HEADINGS[1],PLAYER_HEADINGS[2],deactivate,summer_update[id2][2])
-        end,
+      [4] = function()
+        VEHICLE.CREATE_VEHICLE(tonumber(VehicleTab.Dist.Text),PLAYER_CORDX,PLAYER_CORDY,PLAYER_CORDZ,PLAYER_HEADINGS[1],PLAYER_HEADINGS[2],deactivate,summer_update[id2][2])
+      end,
 
-          [5] = function()
-          VEHICLE.CREATE_VEHICLE(tonumber(VehicleTab.Dist.Text),PLAYER_CORDX,PLAYER_CORDY,PLAYER_CORDZ,PLAYER_HEADINGS[1],PLAYER_HEADINGS[2],deactivate,sedan[id2][2])
-        end,
+      [5] = function()
+        VEHICLE.CREATE_VEHICLE(tonumber(VehicleTab.Dist.Text),PLAYER_CORDX,PLAYER_CORDY,PLAYER_CORDZ,PLAYER_HEADINGS[1],PLAYER_HEADINGS[2],deactivate,sedan[id2][2])
+      end,
 
-          [6] = function()
-          VEHICLE.CREATE_VEHICLE(tonumber(VehicleTab.Dist.Text),PLAYER_CORDX,PLAYER_CORDY,PLAYER_CORDZ,PLAYER_HEADINGS[1],PLAYER_HEADINGS[2],deactivate,service[id2][2])
-        end,
+      [6] = function()
+        VEHICLE.CREATE_VEHICLE(tonumber(VehicleTab.Dist.Text),PLAYER_CORDX,PLAYER_CORDY,PLAYER_CORDZ,PLAYER_HEADINGS[1],PLAYER_HEADINGS[2],deactivate,service[id2][2])
+      end,
 
-          [7] = function()
-          VEHICLE.CREATE_VEHICLE(tonumber(VehicleTab.Dist.Text),PLAYER_CORDX,PLAYER_CORDY,PLAYER_CORDZ,PLAYER_HEADINGS[1],PLAYER_HEADINGS[2],deactivate,SUV[id2][2])
-        end,
+      [7] = function()
+        VEHICLE.CREATE_VEHICLE(tonumber(VehicleTab.Dist.Text),PLAYER_CORDX,PLAYER_CORDY,PLAYER_CORDZ,PLAYER_HEADINGS[1],PLAYER_HEADINGS[2],deactivate,SUV[id2][2])
+      end,
 
-          [8] = function()
-          VEHICLE.CREATE_VEHICLE(tonumber(VehicleTab.Dist.Text),PLAYER_CORDX,PLAYER_CORDY,PLAYER_CORDZ,PLAYER_HEADINGS[1],PLAYER_HEADINGS[2],deactivate,plane[id2][2])
-        end,
+      [8] = function()
+        VEHICLE.CREATE_VEHICLE(tonumber(VehicleTab.Dist.Text),PLAYER_CORDX,PLAYER_CORDY,PLAYER_CORDZ,PLAYER_HEADINGS[1],PLAYER_HEADINGS[2],deactivate,plane[id2][2])
+      end,
 
-          [9] = function()
-          VEHICLE.CREATE_VEHICLE(tonumber(VehicleTab.Dist.Text),PLAYER_CORDX,PLAYER_CORDY,PLAYER_CORDZ,PLAYER_HEADINGS[1],PLAYER_HEADINGS[2],deactivate,helicopter[id2][2])
-        end,
+      [9] = function()
+        VEHICLE.CREATE_VEHICLE(tonumber(VehicleTab.Dist.Text),PLAYER_CORDX,PLAYER_CORDY,PLAYER_CORDZ,PLAYER_HEADINGS[1],PLAYER_HEADINGS[2],deactivate,helicopter[id2][2])
+      end,
 
-          [10] = function()
-          VEHICLE.CREATE_VEHICLE(tonumber(VehicleTab.Dist.Text),PLAYER_CORDX,PLAYER_CORDY,PLAYER_CORDZ,PLAYER_HEADINGS[1],PLAYER_HEADINGS[2],deactivate,off_road[id2][2])
-        end,
+      [10] = function()
+        VEHICLE.CREATE_VEHICLE(tonumber(VehicleTab.Dist.Text),PLAYER_CORDX,PLAYER_CORDY,PLAYER_CORDZ,PLAYER_HEADINGS[1],PLAYER_HEADINGS[2],deactivate,off_road[id2][2])
+      end,
 
-          [11] = function()
-          VEHICLE.CREATE_VEHICLE(tonumber(VehicleTab.Dist.Text),PLAYER_CORDX,PLAYER_CORDY,PLAYER_CORDZ,PLAYER_HEADINGS[1],PLAYER_HEADINGS[2],deactivate,muscle[id2][2])
-        end,
+      [11] = function()
+        VEHICLE.CREATE_VEHICLE(tonumber(VehicleTab.Dist.Text),PLAYER_CORDX,PLAYER_CORDY,PLAYER_CORDZ,PLAYER_HEADINGS[1],PLAYER_HEADINGS[2],deactivate,muscle[id2][2])
+      end,
 
-          [12] = function()
-          VEHICLE.CREATE_VEHICLE(tonumber(VehicleTab.Dist.Text),PLAYER_CORDX,PLAYER_CORDY,PLAYER_CORDZ,PLAYER_HEADINGS[1],PLAYER_HEADINGS[2],deactivate,motorcycle[id2][2])
-        end,
+      [12] = function()
+        VEHICLE.CREATE_VEHICLE(tonumber(VehicleTab.Dist.Text),PLAYER_CORDX,PLAYER_CORDY,PLAYER_CORDZ,PLAYER_HEADINGS[1],PLAYER_HEADINGS[2],deactivate,motorcycle[id2][2])
+      end,
 
-          [13] = function()
-          VEHICLE.CREATE_VEHICLE(tonumber(VehicleTab.Dist.Text),PLAYER_CORDX,PLAYER_CORDY,PLAYER_CORDZ,PLAYER_HEADINGS[1],PLAYER_HEADINGS[2],deactivate,military[id2][2])
-        end,
+      [13] = function()
+        VEHICLE.CREATE_VEHICLE(tonumber(VehicleTab.Dist.Text),PLAYER_CORDX,PLAYER_CORDY,PLAYER_CORDZ,PLAYER_HEADINGS[1],PLAYER_HEADINGS[2],deactivate,military[id2][2])
+      end,
 
-          [14] = function()
-          VEHICLE.CREATE_VEHICLE(tonumber(VehicleTab.Dist.Text),PLAYER_CORDX,PLAYER_CORDY,PLAYER_CORDZ,PLAYER_HEADINGS[1],PLAYER_HEADINGS[2],deactivate,trailer[id2][2])
-        end,
+      [14] = function()
+        VEHICLE.CREATE_VEHICLE(tonumber(VehicleTab.Dist.Text),PLAYER_CORDX,PLAYER_CORDY,PLAYER_CORDZ,PLAYER_HEADINGS[1],PLAYER_HEADINGS[2],deactivate,trailer[id2][2])
+      end,
 
-          [15] = function()
-          VEHICLE.CREATE_VEHICLE(tonumber(VehicleTab.Dist.Text),PLAYER_CORDX,PLAYER_CORDY,PLAYER_CORDZ,PLAYER_HEADINGS[1],PLAYER_HEADINGS[2],deactivate,train[id2][2])
-        end,
+      [15] = function()
+        VEHICLE.CREATE_VEHICLE(tonumber(VehicleTab.Dist.Text),PLAYER_CORDX,PLAYER_CORDY,PLAYER_CORDZ,PLAYER_HEADINGS[1],PLAYER_HEADINGS[2],deactivate,train[id2][2])
+      end,
 
-          [16] = function()
-          VEHICLE.CREATE_VEHICLE(tonumber(VehicleTab.Dist.Text),PLAYER_CORDX,PLAYER_CORDY,PLAYER_CORDZ,PLAYER_HEADINGS[1],PLAYER_HEADINGS[2],deactivate,utility[id2][2])
-        end,
+      [16] = function()
+        VEHICLE.CREATE_VEHICLE(tonumber(VehicleTab.Dist.Text),PLAYER_CORDX,PLAYER_CORDY,PLAYER_CORDZ,PLAYER_HEADINGS[1],PLAYER_HEADINGS[2],deactivate,utility[id2][2])
+      end,
 
-          [17] = function()
-          VEHICLE.CREATE_VEHICLE(tonumber(VehicleTab.Dist.Text),PLAYER_CORDX,PLAYER_CORDY,PLAYER_CORDZ,PLAYER_HEADINGS[1],PLAYER_HEADINGS[2],deactivate,van[id2][2])
-        end,
+      [17] = function()
+        VEHICLE.CREATE_VEHICLE(tonumber(VehicleTab.Dist.Text),PLAYER_CORDX,PLAYER_CORDY,PLAYER_CORDZ,PLAYER_HEADINGS[1],PLAYER_HEADINGS[2],deactivate,van[id2][2])
+      end,
 
-          [18] = function()
-          VEHICLE.CREATE_VEHICLE(tonumber(VehicleTab.Dist.Text),PLAYER_CORDX,PLAYER_CORDY,PLAYER_CORDZ,PLAYER_HEADINGS[1],PLAYER_HEADINGS[2],deactivate,arena_war[id2][2])
-        end,
+      [18] = function()
+        VEHICLE.CREATE_VEHICLE(tonumber(VehicleTab.Dist.Text),PLAYER_CORDX,PLAYER_CORDY,PLAYER_CORDZ,PLAYER_HEADINGS[1],PLAYER_HEADINGS[2],deactivate,arena_war[id2][2])
+      end,
 
-          [19] = function()
-          VEHICLE.CREATE_VEHICLE(tonumber(VehicleTab.Dist.Text),PLAYER_CORDX,PLAYER_CORDY,PLAYER_CORDZ,PLAYER_HEADINGS[1],PLAYER_HEADINGS[2],deactivate,casino1[id2][2])
-        end,
+      [19] = function()
+        VEHICLE.CREATE_VEHICLE(tonumber(VehicleTab.Dist.Text),PLAYER_CORDX,PLAYER_CORDY,PLAYER_CORDZ,PLAYER_HEADINGS[1],PLAYER_HEADINGS[2],deactivate,casino1[id2][2])
+      end,
 
-          [20] = function()
-          VEHICLE.CREATE_VEHICLE(tonumber(VehicleTab.Dist.Text),PLAYER_CORDX,PLAYER_CORDY,PLAYER_CORDZ,PLAYER_HEADINGS[1],PLAYER_HEADINGS[2],deactivate,casino2[id2][2])
-        end,
+      [20] = function()
+        VEHICLE.CREATE_VEHICLE(tonumber(VehicleTab.Dist.Text),PLAYER_CORDX,PLAYER_CORDY,PLAYER_CORDZ,PLAYER_HEADINGS[1],PLAYER_HEADINGS[2],deactivate,casino2[id2][2])
+      end,
 
-          [21] = function()
-          VEHICLE.CREATE_VEHICLE(tonumber(VehicleTab.Dist.Text),PLAYER_CORDX,PLAYER_CORDY,PLAYER_CORDZ,PLAYER_HEADINGS[1],PLAYER_HEADINGS[2],deactivate,emergency[id2][2])
-        end,
+      [21] = function()
+        VEHICLE.CREATE_VEHICLE(tonumber(VehicleTab.Dist.Text),PLAYER_CORDX,PLAYER_CORDY,PLAYER_CORDZ,PLAYER_HEADINGS[1],PLAYER_HEADINGS[2],deactivate,emergency[id2][2])
+      end,
 
-          [22] = function()
-          VEHICLE.CREATE_VEHICLE(tonumber(VehicleTab.Dist.Text),PLAYER_CORDX,PLAYER_CORDY,PLAYER_CORDZ,PLAYER_HEADINGS[1],PLAYER_HEADINGS[2],deactivate,industrial[id2][2])
-        end,
+      [22] = function()
+        VEHICLE.CREATE_VEHICLE(tonumber(VehicleTab.Dist.Text),PLAYER_CORDX,PLAYER_CORDY,PLAYER_CORDZ,PLAYER_HEADINGS[1],PLAYER_HEADINGS[2],deactivate,industrial[id2][2])
+      end,
 
-          [23] = function()
-          VEHICLE.CREATE_VEHICLE(tonumber(VehicleTab.Dist.Text),PLAYER_CORDX,PLAYER_CORDY,PLAYER_CORDZ,PLAYER_HEADINGS[1],PLAYER_HEADINGS[2],deactivate,coupes[id2][2])
-        end,
+      [23] = function()
+        VEHICLE.CREATE_VEHICLE(tonumber(VehicleTab.Dist.Text),PLAYER_CORDX,PLAYER_CORDY,PLAYER_CORDZ,PLAYER_HEADINGS[1],PLAYER_HEADINGS[2],deactivate,coupes[id2][2])
+      end,
 
-          [24] = function()
-          VEHICLE.CREATE_VEHICLE(tonumber(VehicleTab.Dist.Text),PLAYER_CORDX,PLAYER_CORDY,PLAYER_CORDZ,PLAYER_HEADINGS[1],PLAYER_HEADINGS[2],deactivate,compact[id2][2])
-        end,
+      [24] = function()
+        VEHICLE.CREATE_VEHICLE(tonumber(VehicleTab.Dist.Text),PLAYER_CORDX,PLAYER_CORDY,PLAYER_CORDZ,PLAYER_HEADINGS[1],PLAYER_HEADINGS[2],deactivate,compact[id2][2])
+      end,
 
-          [25] = function()
-          VEHICLE.CREATE_VEHICLE(tonumber(VehicleTab.Dist.Text),PLAYER_CORDX,PLAYER_CORDY,PLAYER_CORDZ,PLAYER_HEADINGS[1],PLAYER_HEADINGS[2],deactivate,c_boat[id2][2])
-        end,
+      [25] = function()
+        VEHICLE.CREATE_VEHICLE(tonumber(VehicleTab.Dist.Text),PLAYER_CORDX,PLAYER_CORDY,PLAYER_CORDZ,PLAYER_HEADINGS[1],PLAYER_HEADINGS[2],deactivate,c_boat[id2][2])
+      end,
 
-          [26] = function()
-          VEHICLE.CREATE_VEHICLE(tonumber(VehicleTab.Dist.Text),PLAYER_CORDX,PLAYER_CORDY,PLAYER_CORDZ,PLAYER_HEADINGS[1],PLAYER_HEADINGS[2],deactivate,bikes[id2][2])
-        end,
+      [26] = function()
+        VEHICLE.CREATE_VEHICLE(tonumber(VehicleTab.Dist.Text),PLAYER_CORDX,PLAYER_CORDY,PLAYER_CORDZ,PLAYER_HEADINGS[1],PLAYER_HEADINGS[2],deactivate,bikes[id2][2])
+      end,
 
-          [27] = function()
-          VEHICLE.CREATE_VEHICLE(tonumber(VehicleTab.Dist.Text),PLAYER_CORDX,PLAYER_CORDY,PLAYER_CORDZ,PLAYER_HEADINGS[1],PLAYER_HEADINGS[2],deactivate,commericals[id2][2])
-        end,
+      [27] = function()
+        VEHICLE.CREATE_VEHICLE(tonumber(VehicleTab.Dist.Text),PLAYER_CORDX,PLAYER_CORDY,PLAYER_CORDZ,PLAYER_HEADINGS[1],PLAYER_HEADINGS[2],deactivate,commericals[id2][2])
+      end,
 
-          [28] = function()
-          VEHICLE.CREATE_VEHICLE(tonumber(VehicleTab.Dist.Text),PLAYER_CORDX,PLAYER_CORDY,PLAYER_CORDZ,PLAYER_HEADINGS[1],PLAYER_HEADINGS[2],deactivate,cayo_perico[id2][2])
-        end
-        }
-      )
+      [28] = function()
+        VEHICLE.CREATE_VEHICLE(tonumber(VehicleTab.Dist.Text),PLAYER_CORDX,PLAYER_CORDY,PLAYER_CORDZ,PLAYER_HEADINGS[1],PLAYER_HEADINGS[2],deactivate,cayo_perico[id2][2])
+      end
+    }
+  )
 elseif id == 2 then
-  switch(id3,
-        {
-          [1] = function()
-          VEHICLE.CREATE_VEHICLE(tonumber(VehicleTab.Dist.Text),PLAYER_CORDX,PLAYER_CORDY,PLAYER_CORDZ,PLAYER_HEADINGS[1],PLAYER_HEADINGS[2],TRUE,super[id2][2])
-        end,
+  switch(id3,{
+      [1] = function()
+        VEHICLE.CREATE_VEHICLE(tonumber(VehicleTab.Dist.Text),PLAYER_CORDX,PLAYER_CORDY,PLAYER_CORDZ,PLAYER_HEADINGS[1],PLAYER_HEADINGS[2],TRUE,super[id2][2])
+      end,
 
-          [2] = function()
-          VEHICLE.CREATE_VEHICLE(tonumber(VehicleTab.Dist.Text),PLAYER_CORDX,PLAYER_CORDY,PLAYER_CORDZ,PLAYER_HEADINGS[1],PLAYER_HEADINGS[2],TRUE,sport[id2][2])
-        end,
+      [2] = function()
+        VEHICLE.CREATE_VEHICLE(tonumber(VehicleTab.Dist.Text),PLAYER_CORDX,PLAYER_CORDY,PLAYER_CORDZ,PLAYER_HEADINGS[1],PLAYER_HEADINGS[2],TRUE,sport[id2][2])
+      end,
 
-          [3] = function()
-          VEHICLE.CREATE_VEHICLE(tonumber(VehicleTab.Dist.Text),PLAYER_CORDX,PLAYER_CORDY,PLAYER_CORDZ,PLAYER_HEADINGS[1],PLAYER_HEADINGS[2],TRUE,sport_classic[id2][2])
-        end,
+      [3] = function()
+        VEHICLE.CREATE_VEHICLE(tonumber(VehicleTab.Dist.Text),PLAYER_CORDX,PLAYER_CORDY,PLAYER_CORDZ,PLAYER_HEADINGS[1],PLAYER_HEADINGS[2],TRUE,sport_classic[id2][2])
+      end,
 
-          [4] = function()
-          VEHICLE.CREATE_VEHICLE(tonumber(VehicleTab.Dist.Text),PLAYER_CORDX,PLAYER_CORDY,PLAYER_CORDZ,PLAYER_HEADINGS[1],PLAYER_HEADINGS[2],TRUE,summer_update[id2][2])
-        end,
+      [4] = function()
+        VEHICLE.CREATE_VEHICLE(tonumber(VehicleTab.Dist.Text),PLAYER_CORDX,PLAYER_CORDY,PLAYER_CORDZ,PLAYER_HEADINGS[1],PLAYER_HEADINGS[2],TRUE,summer_update[id2][2])
+      end,
 
-          [5] = function()
-          VEHICLE.CREATE_VEHICLE(tonumber(VehicleTab.Dist.Text),PLAYER_CORDX,PLAYER_CORDY,PLAYER_CORDZ,PLAYER_HEADINGS[1],PLAYER_HEADINGS[2],TRUE,sedan[id2][2])
-        end,
+      [5] = function()
+        VEHICLE.CREATE_VEHICLE(tonumber(VehicleTab.Dist.Text),PLAYER_CORDX,PLAYER_CORDY,PLAYER_CORDZ,PLAYER_HEADINGS[1],PLAYER_HEADINGS[2],TRUE,sedan[id2][2])
+      end,
 
-          [6] = function()
-          VEHICLE.CREATE_VEHICLE(tonumber(VehicleTab.Dist.Text),PLAYER_CORDX,PLAYER_CORDY,PLAYER_CORDZ,PLAYER_HEADINGS[1],PLAYER_HEADINGS[2],TRUE,service[id2][2])
-        end,
+      [6] = function()
+        VEHICLE.CREATE_VEHICLE(tonumber(VehicleTab.Dist.Text),PLAYER_CORDX,PLAYER_CORDY,PLAYER_CORDZ,PLAYER_HEADINGS[1],PLAYER_HEADINGS[2],TRUE,service[id2][2])
+      end,
 
-          [7] = function()
-          VEHICLE.CREATE_VEHICLE(tonumber(VehicleTab.Dist.Text),PLAYER_CORDX,PLAYER_CORDY,PLAYER_CORDZ,PLAYER_HEADINGS[1],PLAYER_HEADINGS[2],TRUE,SUV[id2][2])
-        end,
+      [7] = function()
+        VEHICLE.CREATE_VEHICLE(tonumber(VehicleTab.Dist.Text),PLAYER_CORDX,PLAYER_CORDY,PLAYER_CORDZ,PLAYER_HEADINGS[1],PLAYER_HEADINGS[2],TRUE,SUV[id2][2])
+      end,
 
-          [8] = function()
-          VEHICLE.CREATE_VEHICLE(tonumber(VehicleTab.Dist.Text),PLAYER_CORDX,PLAYER_CORDY,PLAYER_CORDZ,PLAYER_HEADINGS[1],PLAYER_HEADINGS[2],TRUE,plane[id2][2])
-        end,
+      [8] = function()
+        VEHICLE.CREATE_VEHICLE(tonumber(VehicleTab.Dist.Text),PLAYER_CORDX,PLAYER_CORDY,PLAYER_CORDZ,PLAYER_HEADINGS[1],PLAYER_HEADINGS[2],TRUE,plane[id2][2])
+      end,
 
-          [9] = function()
-          VEHICLE.CREATE_VEHICLE(tonumber(VehicleTab.Dist.Text),PLAYER_CORDX,PLAYER_CORDY,PLAYER_CORDZ,PLAYER_HEADINGS[1],PLAYER_HEADINGS[2],TRUE,helicopter[id2][2])
-        end,
+      [9] = function()
+        VEHICLE.CREATE_VEHICLE(tonumber(VehicleTab.Dist.Text),PLAYER_CORDX,PLAYER_CORDY,PLAYER_CORDZ,PLAYER_HEADINGS[1],PLAYER_HEADINGS[2],TRUE,helicopter[id2][2])
+      end,
 
-          [10] = function()
-          VEHICLE.CREATE_VEHICLE(tonumber(VehicleTab.Dist.Text),PLAYER_CORDX,PLAYER_CORDY,PLAYER_CORDZ,PLAYER_HEADINGS[1],PLAYER_HEADINGS[2],TRUE,off_road[id2][2])
-        end,
+      [10] = function()
+        VEHICLE.CREATE_VEHICLE(tonumber(VehicleTab.Dist.Text),PLAYER_CORDX,PLAYER_CORDY,PLAYER_CORDZ,PLAYER_HEADINGS[1],PLAYER_HEADINGS[2],TRUE,off_road[id2][2])
+      end,
 
-          [11] = function()
-          VEHICLE.CREATE_VEHICLE(tonumber(VehicleTab.Dist.Text),PLAYER_CORDX,PLAYER_CORDY,PLAYER_CORDZ,PLAYER_HEADINGS[1],PLAYER_HEADINGS[2],TRUE,muscle[id2][2])
-        end,
+      [11] = function()
+        VEHICLE.CREATE_VEHICLE(tonumber(VehicleTab.Dist.Text),PLAYER_CORDX,PLAYER_CORDY,PLAYER_CORDZ,PLAYER_HEADINGS[1],PLAYER_HEADINGS[2],TRUE,muscle[id2][2])
+      end,
 
-          [12] = function()
-          VEHICLE.CREATE_VEHICLE(tonumber(VehicleTab.Dist.Text),PLAYER_CORDX,PLAYER_CORDY,PLAYER_CORDZ,PLAYER_HEADINGS[1],PLAYER_HEADINGS[2],TRUE,motorcycle[id2][2])
-        end,
+      [12] = function()
+        VEHICLE.CREATE_VEHICLE(tonumber(VehicleTab.Dist.Text),PLAYER_CORDX,PLAYER_CORDY,PLAYER_CORDZ,PLAYER_HEADINGS[1],PLAYER_HEADINGS[2],TRUE,motorcycle[id2][2])
+      end,
 
-          [13] = function()
-          VEHICLE.CREATE_VEHICLE(tonumber(VehicleTab.Dist.Text),PLAYER_CORDX,PLAYER_CORDY,PLAYER_CORDZ,PLAYER_HEADINGS[1],PLAYER_HEADINGS[2],TRUE,military[id2][2])
-        end,
+      [13] = function()
+        VEHICLE.CREATE_VEHICLE(tonumber(VehicleTab.Dist.Text),PLAYER_CORDX,PLAYER_CORDY,PLAYER_CORDZ,PLAYER_HEADINGS[1],PLAYER_HEADINGS[2],TRUE,military[id2][2])
+      end,
 
-          [14] = function()
-          VEHICLE.CREATE_VEHICLE(tonumber(VehicleTab.Dist.Text),PLAYER_CORDX,PLAYER_CORDY,PLAYER_CORDZ,PLAYER_HEADINGS[1],PLAYER_HEADINGS[2],TRUE,trailer[id2][2])
-        end,
+      [14] = function()
+        VEHICLE.CREATE_VEHICLE(tonumber(VehicleTab.Dist.Text),PLAYER_CORDX,PLAYER_CORDY,PLAYER_CORDZ,PLAYER_HEADINGS[1],PLAYER_HEADINGS[2],TRUE,trailer[id2][2])
+      end,
 
-          [15] = function()
-          VEHICLE.CREATE_VEHICLE(tonumber(VehicleTab.Dist.Text),PLAYER_CORDX,PLAYER_CORDY,PLAYER_CORDZ,PLAYER_HEADINGS[1],PLAYER_HEADINGS[2],TRUE,train[id2][2])
-        end,
+      [15] = function()
+        VEHICLE.CREATE_VEHICLE(tonumber(VehicleTab.Dist.Text),PLAYER_CORDX,PLAYER_CORDY,PLAYER_CORDZ,PLAYER_HEADINGS[1],PLAYER_HEADINGS[2],TRUE,train[id2][2])
+      end,
 
-          [16] = function()
-          VEHICLE.CREATE_VEHICLE(tonumber(VehicleTab.Dist.Text),PLAYER_CORDX,PLAYER_CORDY,PLAYER_CORDZ,PLAYER_HEADINGS[1],PLAYER_HEADINGS[2],TRUE,utility[id2][2])
-        end,
+      [16] = function()
+        VEHICLE.CREATE_VEHICLE(tonumber(VehicleTab.Dist.Text),PLAYER_CORDX,PLAYER_CORDY,PLAYER_CORDZ,PLAYER_HEADINGS[1],PLAYER_HEADINGS[2],TRUE,utility[id2][2])
+      end,
 
-          [17] = function()
-          VEHICLE.CREATE_VEHICLE(tonumber(VehicleTab.Dist.Text),PLAYER_CORDX,PLAYER_CORDY,PLAYER_CORDZ,PLAYER_HEADINGS[1],PLAYER_HEADINGS[2],TRUE,van[id2][2])
-        end,
+      [17] = function()
+        VEHICLE.CREATE_VEHICLE(tonumber(VehicleTab.Dist.Text),PLAYER_CORDX,PLAYER_CORDY,PLAYER_CORDZ,PLAYER_HEADINGS[1],PLAYER_HEADINGS[2],TRUE,van[id2][2])
+      end,
 
-          [18] = function()
-          VEHICLE.CREATE_VEHICLE(tonumber(VehicleTab.Dist.Text),PLAYER_CORDX,PLAYER_CORDY,PLAYER_CORDZ,PLAYER_HEADINGS[1],PLAYER_HEADINGS[2],TRUE,arena_war[id2][2])
-        end,
+      [18] = function()
+        VEHICLE.CREATE_VEHICLE(tonumber(VehicleTab.Dist.Text),PLAYER_CORDX,PLAYER_CORDY,PLAYER_CORDZ,PLAYER_HEADINGS[1],PLAYER_HEADINGS[2],TRUE,arena_war[id2][2])
+      end,
 
-          [19] = function()
-          VEHICLE.CREATE_VEHICLE(tonumber(VehicleTab.Dist.Text),PLAYER_CORDX,PLAYER_CORDY,PLAYER_CORDZ,PLAYER_HEADINGS[1],PLAYER_HEADINGS[2],TRUE,casino1[id2][2])
-        end,
+      [19] = function()
+        VEHICLE.CREATE_VEHICLE(tonumber(VehicleTab.Dist.Text),PLAYER_CORDX,PLAYER_CORDY,PLAYER_CORDZ,PLAYER_HEADINGS[1],PLAYER_HEADINGS[2],TRUE,casino1[id2][2])
+      end,
 
-          [20] = function()
-          VEHICLE.CREATE_VEHICLE(tonumber(VehicleTab.Dist.Text),PLAYER_CORDX,PLAYER_CORDY,PLAYER_CORDZ,PLAYER_HEADINGS[1],PLAYER_HEADINGS[2],TRUE,casino2[id2][2])
-        end,
+      [20] = function()
+        VEHICLE.CREATE_VEHICLE(tonumber(VehicleTab.Dist.Text),PLAYER_CORDX,PLAYER_CORDY,PLAYER_CORDZ,PLAYER_HEADINGS[1],PLAYER_HEADINGS[2],TRUE,casino2[id2][2])
+      end,
 
-          [21] = function()
-          VEHICLE.CREATE_VEHICLE(tonumber(VehicleTab.Dist.Text),PLAYER_CORDX,PLAYER_CORDY,PLAYER_CORDZ,PLAYER_HEADINGS[1],PLAYER_HEADINGS[2],TRUE,emergency[id2][2])
-        end,
+      [21] = function()
+        VEHICLE.CREATE_VEHICLE(tonumber(VehicleTab.Dist.Text),PLAYER_CORDX,PLAYER_CORDY,PLAYER_CORDZ,PLAYER_HEADINGS[1],PLAYER_HEADINGS[2],TRUE,emergency[id2][2])
+      end,
 
-          [22] = function()
-          VEHICLE.CREATE_VEHICLE(tonumber(VehicleTab.Dist.Text),PLAYER_CORDX,PLAYER_CORDY,PLAYER_CORDZ,PLAYER_HEADINGS[1],PLAYER_HEADINGS[2],TRUE,industrial[id2][2])
-        end,
+      [22] = function()
+        VEHICLE.CREATE_VEHICLE(tonumber(VehicleTab.Dist.Text),PLAYER_CORDX,PLAYER_CORDY,PLAYER_CORDZ,PLAYER_HEADINGS[1],PLAYER_HEADINGS[2],TRUE,industrial[id2][2])
+      end,
 
-          [23] = function()
-          VEHICLE.CREATE_VEHICLE(tonumber(VehicleTab.Dist.Text),PLAYER_CORDX,PLAYER_CORDY,PLAYER_CORDZ,PLAYER_HEADINGS[1],PLAYER_HEADINGS[2],TRUE,coupes[id2][2])
-        end,
+      [23] = function()
+        VEHICLE.CREATE_VEHICLE(tonumber(VehicleTab.Dist.Text),PLAYER_CORDX,PLAYER_CORDY,PLAYER_CORDZ,PLAYER_HEADINGS[1],PLAYER_HEADINGS[2],TRUE,coupes[id2][2])
+      end,
 
-          [24] = function()
-          VEHICLE.CREATE_VEHICLE(tonumber(VehicleTab.Dist.Text),PLAYER_CORDX,PLAYER_CORDY,PLAYER_CORDZ,PLAYER_HEADINGS[1],PLAYER_HEADINGS[2],TRUE,compact[id2][2])
-        end,
+      [24] = function()
+        VEHICLE.CREATE_VEHICLE(tonumber(VehicleTab.Dist.Text),PLAYER_CORDX,PLAYER_CORDY,PLAYER_CORDZ,PLAYER_HEADINGS[1],PLAYER_HEADINGS[2],TRUE,compact[id2][2])
+      end,
 
-          [25] = function()
-          VEHICLE.CREATE_VEHICLE(tonumber(VehicleTab.Dist.Text),PLAYER_CORDX,PLAYER_CORDY,PLAYER_CORDZ,PLAYER_HEADINGS[1],PLAYER_HEADINGS[2],TRUE,c_boat[id2][2])
-        end,
+      [25] = function()
+        VEHICLE.CREATE_VEHICLE(tonumber(VehicleTab.Dist.Text),PLAYER_CORDX,PLAYER_CORDY,PLAYER_CORDZ,PLAYER_HEADINGS[1],PLAYER_HEADINGS[2],TRUE,c_boat[id2][2])
+      end,
 
-          [26] = function()
-          VEHICLE.CREATE_VEHICLE(tonumber(VehicleTab.Dist.Text),PLAYER_CORDX,PLAYER_CORDY,PLAYER_CORDZ,PLAYER_HEADINGS[1],PLAYER_HEADINGS[2],TRUE,bikes[id2][2])
-        end,
+      [26] = function()
+        VEHICLE.CREATE_VEHICLE(tonumber(VehicleTab.Dist.Text),PLAYER_CORDX,PLAYER_CORDY,PLAYER_CORDZ,PLAYER_HEADINGS[1],PLAYER_HEADINGS[2],TRUE,bikes[id2][2])
+      end,
 
-          [27] = function()
-          VEHICLE.CREATE_VEHICLE(tonumber(VehicleTab.Dist.Text),PLAYER_CORDX,PLAYER_CORDY,PLAYER_CORDZ,PLAYER_HEADINGS[1],PLAYER_HEADINGS[2],TRUE,commericals[id2][2])
-        end,
+      [27] = function()
+        VEHICLE.CREATE_VEHICLE(tonumber(VehicleTab.Dist.Text),PLAYER_CORDX,PLAYER_CORDY,PLAYER_CORDZ,PLAYER_HEADINGS[1],PLAYER_HEADINGS[2],TRUE,commericals[id2][2])
+      end,
 
-          [28] = function()
-          VEHICLE.CREATE_VEHICLE(tonumber(VehicleTab.Dist.Text),PLAYER_CORDX,PLAYER_CORDY,PLAYER_CORDZ,PLAYER_HEADINGS[1],PLAYER_HEADINGS[2],TRUE,cayo_perico[id2][2])
-        end
-        }
-      )
+      [28] = function()
+        VEHICLE.CREATE_VEHICLE(tonumber(VehicleTab.Dist.Text),PLAYER_CORDX,PLAYER_CORDY,PLAYER_CORDZ,PLAYER_HEADINGS[1],PLAYER_HEADINGS[2],TRUE,cayo_perico[id2][2])
+      end
+    }
+  )
   elseif id == 3 then
         if id2==-1 or id2==0 then return end
         set.global(int,2540612+962,tbl_GSV[id2][1])
@@ -1812,6 +1811,26 @@ function Player_List_Info()
   else 
     Ragdoll = 'True'
   end
+  
+  if not IPR4 then IPR4 = "0" end
+  if not IPR3 then IPR3 = "0" end
+  if not IPR2 then IPR2 = "0" end
+  if not IPR1 then IPR1 = "0" end
+  if not PPort then PPort = "0" end
+
+  if not IPRL4 then IPRL4 = "0" end
+  if not IPRL3 then IPRL3 = "0" end
+  if not IPRL2 then IPRL2 = "0" end
+  if not IPRL1 then IPRL1 = "0" end
+  if not PPort then PPort = "0" end
+
+  if not PlayerName then PlayerName = "0" end
+  if not SCID then SCID = "0" end
+  if not HP then HP = "0" end
+  if not Max_HP then Max_HP = "0" end
+  if not Armor then Armor = "0" end
+  if not ListWanted then ListWanted = "0" end
+
   PlaylistTab.PlayerInfo.Lines.Text = string.format([[Dynamic IP : %s.%s.%s.%s:%s
 IP Lan : %s.%s.%s.%s:%s
 Nickname : %s
@@ -1834,8 +1853,8 @@ Global EXP : %s
 Level Status : %s
 EXP : %s
 Host : %s
-HP : %d/%d
-Armor : %d/50
+HP : %s/%s
+Armor : %s/50
 Wanted Level : %s
 Total Kill : %s  Total Death : %s Ratio : %s
 =========BUSINESS LOCATION=========
@@ -1914,32 +1933,44 @@ function Playerlist_Manipulator(sender)
   local idc = PlaylistTab.ActionToPlayer.ItemIndex
   local id_prop = combobox_getItemIndex(PlaylistTab.prop_changer);
   local Intervals = tonumber(PlaylistTab.IntervalValue.Text)
+  local PlayerNicknames = get.String(CPLAYER_NAME[selected_player])
+  if not PlayeNicknames then PlayeNicknames = "" end
   switch(idc,{
     [0] = function()
-      LuaEngineLog(PlaylistTab.PlayerInfo.Lines.Text)
-      Player_List_Info()
-      ShowPlayerAvatar(selected_player,0)
-      PlaylistTab.HashIndicator.Text = 'Selected Index'.." ["..selected_player.."] Name : "..get.String(CPLAYER_NAME[selected_player])
+      TRY_CLAUSE {
+        function()
+          LuaEngineLog(PlaylistTab.PlayerInfo.Lines.Text)
+          Player_List_Info()
+          ShowPlayerAvatar(selected_player,0)
+          PlaylistTab.HashIndicator.Text = 'Selected Index'.." ["..selected_player.."] Name : "..PlayerNicknames
+          local Error = "On lines 1947 "
+        end;
+        EXCEPT_CLAUSE {
+          function(Error)
+            LuaEngineLog('caught error: '..Error)
+          end
+        }
+      }
     end;
     [1] = function()
       Player_List_Info()
-      LuaEngineLog(string.format("Player Index [%s] | Player Name : %s | Memory Address 0x%X",selected_player,get.String(CPLAYER_NAME[selected_player]),get.Memory(CPLAYER_NAME[selected_player])))
+      LuaEngineLog(string.format("Player Index [%s] | Player Name : %s | Memory Address 0x%X",selected_player,PlayerNicknames,get.Memory(CPLAYER_NAME[selected_player])))
       ShowPlayerAvatar(selected_player,0)
-      PlaylistTab.HashIndicator.Text = 'Teleport To '.." ["..selected_player.."] "..get.String(CPLAYER_NAME[selected_player])
+      PlaylistTab.HashIndicator.Text = 'Teleport To '.." ["..selected_player.."] "..
       teleport_to_player(target_x[selected_player],target_y[selected_player],target_z[selected_player])
     end;
     [2] = function()
       Player_List_Info()
-      LuaEngineLog(string.format("Player Index [%s] | Player Name : %s | Memory Address 0x%X | Vehicle : 0x%X ",selected_player,get.String(CPLAYER_NAME[selected_player]),get.Memory(CPLAYER_NAME[selected_player]),tbl_Vehicles[id2][2]))
+      LuaEngineLog(string.format("Player Index [%s] | Player Name : %s | Memory Address 0x%X | Vehicle : 0x%X ",selected_player,PlayerNicknames,get.Memory(CPLAYER_NAME[selected_player]),tbl_Vehicles[id2][2]))
       ShowPlayerAvatar(selected_player,0)
-      PlaylistTab.HashIndicator.Text = 'Spawn Vehicle To '.." ["..selected_player.."] "..get.Int(VEH_HANDLER).." "..get.String(CPLAYER_NAME[selected_player])
+      PlaylistTab.HashIndicator.Text = 'Spawn Vehicle To '.." ["..selected_player.."] "..get.Int(VEH_HANDLER).." "..PlayerNicknames
       VEHICLE.CREATE_VEHICLE(tonumber(VehicleTab.Dist.Text),target_x[selected_player],target_y[selected_player],target_z[selected_player],theading_x[selected_player],theading_y[selected_player],deactivate,tbl_Vehicles[id2][1])
     end;
     [3] = function()
       Player_List_Info()
-      LuaEngineLog(string.format("Player Index [%s] | Player Name : %s | Memory Address 0x%X",selected_player,get.String(CPLAYER_NAME[selected_player]),get.Memory(CPLAYER_NAME[selected_player])))
+      LuaEngineLog(string.format("Player Index [%s] | Player Name : %s | Memory Address 0x%X",selected_player,PlayerNicknames,get.Memory(CPLAYER_NAME[selected_player])))
       ShowPlayerAvatar(selected_player,0)
-      PlaylistTab.HashIndicator.Text = 'Spawn Pickup To '.." ["..selected_player.."] "..' '..get.String(CPLAYER_NAME[selected_player])
+      PlaylistTab.HashIndicator.Text = 'Spawn Pickup To '.." ["..selected_player.."] "..' '..PlayerNicknames
       OBJECT.CREATE_AMBIENT_PICKUP(tbl_pickup_hash[IDHash],data_prop[id_prop],9999,target_x[selected_player],target_y[selected_player],target_z[selected_player],theading_x[selected_player],theading_y[selected_player],tonumber(PlaylistTab.Dist.Text),tonumber(PlaylistTab.Tinggi.Text))
     end;
     [4] = function()
@@ -1949,50 +1980,49 @@ function Playerlist_Manipulator(sender)
     end;
     [5] = function()
       Player_List_Info()
-      LuaEngineLog(string.format("Player Index [%s] | Player Name : %s | Memory Address 0x%X",selected_player,get.String(CPLAYER_NAME[selected_player]),get.Memory(CPLAYER_NAME[selected_player])))
+      LuaEngineLog(string.format("Player Index [%s] | Player Name : %s | Memory Address 0x%X",selected_player,PlayerNicknames,get.Memory(CPLAYER_NAME[selected_player])))
       ShowPlayerAvatar(selected_player,0)
-      PlaylistTab.HashIndicator.Text = 'Spawn Auto Health True To '.." ["..selected_player.."] "..get.String(CPLAYER_NAME[selected_player])
-      AutoHealthPack(true,1000,selected_player)
+      PlaylistTab.HashIndicator.Text = 'Spawn Auto Health True To '.." ["..selected_player.."] "..PlayerNicknames
+      AutoHealthPack(true,Intervals,selected_player)
       VSpawn.CEListView1.MultiSelect = true
     end;
     [6] = function()
       Player_List_Info()
-      LuaEngineLog(string.format("Player Index [%s] | Player Name : %s | Memory Address 0x%X",selected_player,get.String(CPLAYER_NAME[selected_player]),get.Memory(CPLAYER_NAME[selected_player])))
+      LuaEngineLog(string.format("Player Index [%s] | Player Name : %s | Memory Address 0x%X",selected_player,PlayerNicknames,get.Memory(CPLAYER_NAME[selected_player])))
       ShowPlayerAvatar(selected_player,0)
-      PlaylistTab.HashIndicator.Text = 'Spawn Auto Health False To '.." ["..selected_player.."] "..get.String(CPLAYER_NAME[selected_player])
-      AutoHealthPack(false,1000,selected_player)
+      PlaylistTab.HashIndicator.Text = 'Spawn Auto Health False To '.." ["..selected_player.."] "..PlayerNicknames
+      AutoHealthPack(false,Intervals,selected_player)
       VSpawn.CEListView1.MultiSelect = false
     end;
     [7] = function()
       Player_List_Info()
-      LuaEngineLog(string.format("Player Index [%s] | Player Name : %s | Memory Address 0x%X",selected_player,get.String(CPLAYER_NAME[selected_player]),get.Memory(CPLAYER_NAME[selected_player])))
+      LuaEngineLog(string.format("Player Index [%s] | Player Name : %s | Memory Address 0x%X",selected_player,PlayerNicknames,get.Memory(CPLAYER_NAME[selected_player])))
       ShowPlayerAvatar(selected_player,0)
-      PlaylistTab.HashIndicator.Text = 'Teleport Ped To '.." ["..selected_player.."] "..get.String(CPLAYER_NAME[selected_player])
+      PlaylistTab.HashIndicator.Text = 'Teleport Ped To '.." ["..selected_player.."] "..PlayerNicknames
       PED.SET_PED_COORD(pos_x,pos_y,pos_z,PLAYER.PLAYER_INDEX_ID(selected_player))
     end;
     [8] = function()
-      LuaEngineLog(string.format("Player Index [%s] | Player Name : %s | Memory Address 0x%X",selected_player,get.String(CPLAYER_NAME[selected_player]),get.Memory(CPLAYER_NAME[selected_player])))
-      PlaylistTab.HashIndicator.Text = 'Spawn Object Loop To True'.." ["..selected_player.."] "..' '..get.String(CPLAYER_NAME[selected_player])
+      LuaEngineLog(string.format("Player Index [%s] | Player Name : %s | Memory Address 0x%X",selected_player,PlayerNicknames,get.Memory(CPLAYER_NAME[selected_player])))
+      PlaylistTab.HashIndicator.Text = 'Spawn Object Loop To True'.." ["..selected_player.."] "..' '..PlayerNicknames
       Player_List_Info()
       ShowPlayerAvatar(selected_player,0)
       DropItemLoop(selected_player,true,Intervals,IDHash,id_prop)
     end;
     [9] = function()
-      PlaylistTab.HashIndicator.Text = 'Spawn Object Loop To False'.." ["..selected_player.."]"..get.String(CPLAYER_NAME[selected_player])
+      PlaylistTab.HashIndicator.Text = 'Spawn Object Loop To False'.." ["..selected_player.."]"..PlayerNicknames
       Player_List_Info()
-      LuaEngineLog(string.format("Player Index [%s] | Player Name : %s | Memory Address 0x%X",selected_player,get.String(CPLAYER_NAME[selected_player]),get.Memory(CPLAYER_NAME[selected_player])))
+      LuaEngineLog(string.format("Player Index [%s] | Player Name : %s | Memory Address 0x%X",selected_player,PlayerNicknames,get.Memory(CPLAYER_NAME[selected_player])))
       ShowPlayerAvatar(selected_player,0)
       DropItemLoop(selected_player,false,Intervals,IDHash,id_prop)
     end;
     [10] = function()
       Player_List_Info()
-      LuaEngineLog(string.format("Player Index [%s] | Player Name : %s | Memory Address 0x%X",selected_player,get.String(CPLAYER_NAME[selected_player]),get.Memory(CPLAYER_NAME[selected_player])))
+      LuaEngineLog(string.format("Player Index [%s] | Player Name : %s | Memory Address 0x%X",selected_player,PlayerNicknames,get.Memory(CPLAYER_NAME[selected_player])))
       ShowPlayerAvatar(selected_player,0)
       VehicleSpammer(selected_player,true,Intervals,tbl_Vehicles[id2][1])
     end;
     [11] = function()
-      LuaEngineLog(string.format("Player Index [%s] | Player Name : %s | Memory Address 0x%X",selected_player,get.String(CPLAYER_NAME[selected_player]),get.Memory(CPLAYER_NAME[selected_player])))
-      PlaylistTab.HashIndicator.Text = 'Spawn Vehicle Loop To False'.." ["..selected_player.."]"..get.String(CPLAYER_NAME[selected_player])
+      LuaEngineLog(string.format("Player Index [%s] | Player Name : %s | Memory Address 0x%X",selected_player,PlayerNicknames,get.Memory(CPLAYER_NAME[selected_player])))       
       Player_List_Info()
       ShowPlayerAvatar(selected_player,0)
       VehicleSpammer(selected_player,false,Intervals,tbl_Vehicles[id2][1])
@@ -3215,7 +3245,15 @@ end
 
 function GlobalEditor()
   local id = combobox_getItemIndex(StatTab.GlobalType);
-  AddressEditor(Global_Type[id],'GA('..tostring(StatTab.GlobalEditor.Text)..')')
+  local GlobalVar = StatTab.GlobalEditor.Text
+  if GlobalVar:match(".f_([^,]+)") then 
+    local GlobalVariable = GlobalVar:match("_([^,]+).f_")
+    local GlobalIndex = GlobalVar:match(".f_([^,]+)")
+    GlobalVar = GlobalVariable.."+"..GlobalIndex
+    AddressEditor(Global_Type[id],'GA('..GlobalVar..')')
+  else
+    AddressEditor(Global_Type[id],'GA('..tostring(StatTab.GlobalEditor.Text)..')')
+  end
   GlobalReader()
 end
 
@@ -3390,7 +3428,7 @@ function SetTeleport()
         ENTITY.SET_ENTITY_COORD(tbl_Locations[id2][2],tbl_Locations[id2][3],tbl_Locations[id2][4])
       end,
       [2] = function ()
-        ENTITY.SET_CORD('i',Property_ID[id2][2])
+        ENTITY.SET_ENTITY_COORD(UI.GET_BLIP_COORD(Property_ID[id2][2]))
       end,
       [3] = function ()
         ENTITY.SET_ENTITY_COORD(coord[id2][2],coord[id2][3],coord[id2][4])
@@ -3702,6 +3740,7 @@ TRY_CLAUSE {
   EXCEPT_CLAUSE {
     function(Error)
       LuaEngineLog('caught error: '..Error)
+      error("Was Caught an Error on Line 3744")
     end
   }
 }

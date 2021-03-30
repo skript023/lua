@@ -236,7 +236,7 @@ CT2 =
 	{"Explosive Ammo 2","Explosive Ammo"};
 	{"Crew Percent to Zero","Crew 0% Casino"};
 	{"Remove Crew Cut","Remove Crew Casino"};
-	{"Perico Life","Cayo Perico Lives"};
+	--{"Perico Life","Cayo Perico Lives"};
 	{"Kill All Enemies","Kill All Enemies"};
 	{"Kill Police","Kill Police"};
 	{"Kill All Ped","Kill All NPC"};
