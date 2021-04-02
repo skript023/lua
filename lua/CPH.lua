@@ -123,15 +123,17 @@ set = {
         return Register
     end,
 
-    assembly_script = function(Script, Scriptname, Disableer, Activation)
+    assembly_script = function(Script, Scriptname, Disabler, Activation)
         local function EnableScript()
-            ActivateScript, DeactivateScript = set.assembly(Script)
+            if not Scriptname then
+                Scriptname, Disabler = set.assembly(Script)
+            end
         end
 
         local function DisableScript()
-            if ActivateScript then
-                if set.assembly(Script, DeactivateScript) then
-                    ActivateScript = false
+            if Scriptname then
+                if set.assembly(Script, Disabler) then
+                    Scriptname = false
                 end
             end
         end
@@ -345,16 +347,18 @@ function CPH_Arr()
     {'MP' .. MPX .. '_H4LOOT_GOLD_C', 255}, -- 131
     {'MP' .. MPX .. '_H4LOOT_PAINT_SCOPED', 255}, -- 48
     {'MP' .. MPX .. '_H4LOOT_PAINT', 255}, -- 48
-    {'MP' .. MPX .. '_H4CNF_BS_ENTR', 63}, {'MP' .. MPX .. '_H4CNF_BS_ABIL', 63},
-               {'MP' .. MPX .. '_H4CNF_WEP_DISRP', 3}, {'MP' .. MPX .. '_H4CNF_HEL_DISRP', 3},
-               {'MP' .. MPX .. '_H4CNF_ARM_DISRP', 3}, {'MP' .. MPX .. '_H4CNF_BOLTCUT', 4641},
-               {'MP' .. MPX .. '_H4CNF_GRAPPEL', 33024}, {'MP' .. MPX .. '_H4CNF_UNIFORM', 16770},
-               {'MP' .. MPX .. '_H4CNF_TROJAN', 1}, {'MP' .. MPX .. '_H4CNF_APPROACH', -1},
-               {'MP' .. MPX .. '_H4CNF_VOLTAGE', 3}, {'MP' .. MPX .. '_H4CNF_BS_GEN', 131071},
-               {'MP' .. MPX .. '_H4CNF_WEAPONS', 2}, {'MP' .. MPX .. '_H4CNF_TARGET', 5},
-               {'MP' .. MPX .. '_H4_PROGRESS', 130415}, {'MP' .. MPX .. '_H4_MISSIONS', 65535}}
+    {'MP' .. MPX .. '_H4CNF_BS_ENTR', 63}, 
+    {'MP' .. MPX .. '_H4CNF_BS_ABIL', 63},
+    {'MP' .. MPX .. '_H4CNF_WEP_DISRP', 3}, {'MP' .. MPX .. '_H4CNF_HEL_DISRP', 3},
+    {'MP' .. MPX .. '_H4CNF_ARM_DISRP', 3}, {'MP' .. MPX .. '_H4CNF_BOLTCUT', 4641},
+    {'MP' .. MPX .. '_H4CNF_GRAPPEL', 33024}, {'MP' .. MPX .. '_H4CNF_UNIFORM', 16770},
+    {'MP' .. MPX .. '_H4CNF_TROJAN', 1}, {'MP' .. MPX .. '_H4CNF_APPROACH', -1},
+    {'MP' .. MPX .. '_H4CNF_VOLTAGE', 3}, {'MP' .. MPX .. '_H4CNF_BS_GEN', 131071},
+    {'MP' .. MPX .. '_H4CNF_WEAPONS', 2}, {'MP' .. MPX .. '_H4CNF_TARGET', 5},
+    {'MP' .. MPX .. '_H4_PROGRESS', 130415}, {'MP' .. MPX .. '_H4_MISSIONS', 65535}}
 
-    CPHeist2 = {{'MP' .. MPX .. '_H4LOOT_CASH_I', 139329}, -- [139329]
+    CPHeist2 = {
+    {'MP' .. MPX .. '_H4LOOT_CASH_I', 139329}, -- [139329]
     {'MP' .. MPX .. '_H4LOOT_CASH_I_SCOPED', 139329}, -- [139329]
     {'MP' .. MPX .. '_H4LOOT_CASH_C', 0}, -- 28
     {'MP' .. MPX .. '_H4LOOT_CASH_C_SCOPED', 0}, -- 28
@@ -367,18 +371,27 @@ function CPH_Arr()
     {'MP' .. MPX .. '_H4LOOT_COKE_C', 0}, -- 720971 --16777215
     {'MP' .. MPX .. '_H4LOOT_COKE_C_SCOPED', 0}, -- 720971 --16777215
     {'MP' .. MPX .. '_H4LOOT_GOLD_I_SCOPED', 1114632}, -- [1114632]
-    {'MP' .. MPX .. '_H4LOOT_GOLD_I', 1114632}, {'MP' .. MPX .. '_H4LOOT_GOLD_C_SCOPED', 255}, -- 131
+    {'MP' .. MPX .. '_H4LOOT_GOLD_I', 1114632}, 
+    {'MP' .. MPX .. '_H4LOOT_GOLD_C_SCOPED', 255}, -- 131
     {'MP' .. MPX .. '_H4LOOT_GOLD_C', 255}, -- 131
     {'MP' .. MPX .. '_H4LOOT_PAINT_SCOPED', 255}, -- 48
     {'MP' .. MPX .. '_H4LOOT_PAINT', 255}, -- 48
-    {'MP' .. MPX .. '_H4CNF_BS_ENTR', 63}, {'MP' .. MPX .. '_H4CNF_BS_ABIL', 63},
-                {'MP' .. MPX .. '_H4CNF_WEP_DISRP', 3}, {'MP' .. MPX .. '_H4CNF_HEL_DISRP', 3},
-                {'MP' .. MPX .. '_H4CNF_ARM_DISRP', 3}, {'MP' .. MPX .. '_H4CNF_BOLTCUT', 4641},
-                {'MP' .. MPX .. '_H4CNF_GRAPPEL', 33024}, {'MP' .. MPX .. '_H4CNF_UNIFORM', 16770},
-                {'MP' .. MPX .. '_H4CNF_TROJAN', 1}, {'MP' .. MPX .. '_H4CNF_APPROACH', -1},
-                {'MP' .. MPX .. '_H4CNF_VOLTAGE', 3}, {'MP' .. MPX .. '_H4CNF_BS_GEN', 131071},
-                {'MP' .. MPX .. '_H4CNF_WEAPONS', 2}, {'MP' .. MPX .. '_H4CNF_TARGET', 5},
-                {'MP' .. MPX .. '_H4_PROGRESS', 130415}, {'MP' .. MPX .. '_H4_MISSIONS', 65535}}
+    {'MP' .. MPX .. '_H4CNF_BS_ENTR', 63}, 
+    {'MP' .. MPX .. '_H4CNF_BS_ABIL', 63},
+    {'MP' .. MPX .. '_H4CNF_WEP_DISRP', 3}, 
+    {'MP' .. MPX .. '_H4CNF_HEL_DISRP', 3},
+    {'MP' .. MPX .. '_H4CNF_ARM_DISRP', 3}, 
+    {'MP' .. MPX .. '_H4CNF_BOLTCUT', 4641},
+    {'MP' .. MPX .. '_H4CNF_GRAPPEL', 33024}, 
+    {'MP' .. MPX .. '_H4CNF_UNIFORM', 16770},
+    {'MP' .. MPX .. '_H4CNF_TROJAN', 1}, 
+    {'MP' .. MPX .. '_H4CNF_APPROACH', -1},
+    {'MP' .. MPX .. '_H4CNF_VOLTAGE', 3}, 
+    {'MP' .. MPX .. '_H4CNF_BS_GEN', 131071},
+    {'MP' .. MPX .. '_H4CNF_WEAPONS', 2}, 
+    {'MP' .. MPX .. '_H4CNF_TARGET', 5},
+    {'MP' .. MPX .. '_H4_PROGRESS', 130415}, 
+    {'MP' .. MPX .. '_H4_MISSIONS', 65535}}
 
     Cayo_Perico_Award_Int = {{'MP' .. MPX .. '_AWD_LOSTANDFOUND', 500000}, {'MP' .. MPX .. '_AWD_SUNSET', 1800000},
                              {'MP' .. MPX .. '_AWD_TREASURE_HUNTER', 1000000},

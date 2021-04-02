@@ -134,18 +134,16 @@ GAMEPLAY =
 {
 
   GetHashKeySubString = function(str, initialHash)
-      local uint32_t = 0xffffffff
       local hash = initialHash or 0;
       for i = 1, str:len() do
           hash = hash + tolower(str:byte(i));
           hash = hash + (hash << 10);
           hash = hash ~ (UInt32(hash) >> 6)
       end
-      return hash & uint32_t;
+      return UInt32(hash)
   end;
 
   GetHashKeyFinalize = function(str, initialHash)
-      local uint32_t = 0xffffffff
       local hash = initialHash or 0;
       local  hash = GAMEPLAY.GetHashKeySubString(str, initialHash);
       hash = hash + (hash << 3);

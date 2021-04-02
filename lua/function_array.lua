@@ -45,16 +45,7 @@ end
 function CheckTypes(Name)
     return AddressList.getMemoryRecordByDescription(Name).Type
 end
-MISC = {
-    SET_BIT = function(Address, Offset)
-        local set_bit = Address | 1 << Offset
-    end,
 
-    IS_BIT_SET = function(Address, Offset)
-        local is_set = (Address >> Offset) & 1
-        return is_set
-    end
-}
 ----------------------------Function------------------------------------------------------------------
 function teleport_to_waypoint()
     local a = get.Memory("BlipPTR")
@@ -1387,9 +1378,11 @@ function NotificationPopUpTop(Text)
     writeZeroBytes(Address_LabelText_ATTK_ILLICIT, 599)
     writeString(Address_LabelText_ATTK_ILLICIT, Text)
     -- Memory.Set_Bit(GA(2540384+5188+7+1+1),23)
-    set.global(int, 2540384 + 5188 + 7 + 1 + 1, 23)
+    --set.global(int, 2540384 + 5188 + 7 + 1 + 1, 23)
+    MEMORY.SET_BIT(GA(2540384 + 5188 + 7 + 1 + 1), 23)
     -- Memory.Clear_Bit(GA(2540384+1798),5)
-    set.global(int, 2540384 + 1798, 5)
+    MEMORY.CLEAR_BIT(GA(2540384+1798), 5)
+    --set.global(int, 2540384 + 1798, 5)
     local t = createTimer(nil, true)
     t.Interval = 12000
     t.OnTimer = function()
@@ -1480,35 +1473,89 @@ function CheckPickups()
 end
 
 function RepairVehicle()
-    local NewThread = function()
-        set.global(int, 2540612 + 879, 1)
-        SYSTEM.WAIT(400)
-        local FixVehValue = get.Int("[PickupDataPTR]+220") -- pFixVeh = 0x220
-        local BSTValue = get.Int("[PickupDataPTR]+160") -- pBST = 0x160
+    local QueueJob = Asynchronous(function()
+        if PED.IS_PED_IN_ANY_VEHICLE() then
+            if ReadAct('Veh Godmodes') == true then LuaEngineLog("Godmode Must Be Deactivated") end
+            if get.Global(int, 2540612 + 879) == 0 then
+                set.global(int, 2540612 + 879, 1)
+                VEHICLE.SET_VEHICLE_ENGINE_HEALTH(999)
+                Async()
+                local FixVehValue = get.Int("[PickupDataPTR]+220") -- pFixVeh = 0x220
+                local BSTValue = get.Int("[PickupDataPTR]+160") -- pBST = 0x160
 
-        local CPickupInterface = get.Ptr("ReplayInterfacePTR") + 0x20
-        local PickupCount = get.Int(get.Ptr(CPickupInterface) + 0x110)
-        local PickupList = get.Ptr(CPickupInterface) + 0X100
-        if not PickupList then
-            return
-        end
-        for i = 0, PickupCount, 1 do
-            local p = get.Ptr(PickupList) + (i * 0x10)
-            if not p then
-                goto continue
-            end
+                local CPickupInterface = get.Ptr("ReplayInterfacePTR") + 0x20
+                local PickupCount = get.Int(get.Ptr(CPickupInterface) + 0x110)
+                local PickupList = get.Ptr(CPickupInterface) + 0X100
+                if not PickupList then
+                    return
+                end
+                for i = 0, PickupCount, 1 do
+                    local p = get.Ptr(PickupList) + (i * 0x10)
+                    if not p then
+                        goto continue
+                    end
+                    local PickupValue = get.Int(get.Ptr(p) + 0x490) -- pDroppedPickupData = 0x490
+                    if not PickupValue then
+                        goto continue
+                    end
+                    if (PickupValue == BSTValue) then
+                        set.int(get.Ptr(p) + 0x490, FixVehValue)
+                    end
+                    local x = get.Float(CVehicle + 0x90)
+                    local y = get.Float(CVehicle + 0x94)
+                    local z = get.Float(CVehicle + 0x98)
+                    set.float(get.Ptr(p) + 0x90, x)
+                    set.float(get.Ptr(p) + 0x94, y)
+                    set.float(get.Ptr(p) + 0x98, z)
+                    set.float("[[[WorldPTR]+8]+D30]+9F8" ,0)
+                    Async()
+                    if ReadMem('Veh Godmodes') then LuaEngineLog("Your Godmode is Not Active") end
+                    if (get.Int("[GlobalPTR+0x48]+A5FD8") ~= 0) then 
+                        set.int("[GlobalPTR+0x48]+A5FD8", -1) 
+                    end
+                end
+            else
+                local FixVehValue = get.Int("[PickupDataPTR]+220") -- pFixVeh = 0x220
+                local BSTValue = get.Int("[PickupDataPTR]+160") -- pBST = 0x160
 
-            local PickupValue = get.Int(get.Ptr(p) + 0x490) -- pDroppedPickupData = 0x490
-            if not PickupValue then
-                goto continue
+                local CPickupInterface = get.Ptr("ReplayInterfacePTR") + 0x20
+                local PickupCount = get.Int(get.Ptr(CPickupInterface) + 0x110)
+                local PickupList = get.Ptr(CPickupInterface) + 0X100
+                if not PickupList then
+                    return
+                end
+                for i = 0, PickupCount, 1 do
+                    local p = get.Ptr(PickupList) + (i * 0x10)
+                    if not p then
+                        goto continue
+                    end
+                    local PickupValue = get.Int(get.Ptr(p) + 0x490) -- pDroppedPickupData = 0x490
+                    if not PickupValue then
+                        goto continue
+                    end
+                    if (PickupValue == BSTValue) then
+                        set.int(get.Ptr(p) + 0x490, FixVehValue)
+                    end
+                    local x = get.Float(CVehicle + 0x90)
+                    local y = get.Float(CVehicle + 0x94)
+                    local z = get.Float(CVehicle + 0x98)
+                    set.float(get.Ptr(p) + 0x90, x)
+                    set.float(get.Ptr(p) + 0x94, y)
+                    set.float(get.Ptr(p) + 0x98, z)
+                    set.float("[[[WorldPTR]+8]+D30]+9F8" ,0)
+                    Async()
+                    if ReadMem('Veh Godmodes') then SetList('Veh Godmodes', true) end
+                    if (get.Int("[GlobalPTR+0x48]+A5FD8") ~= 0) then 
+                        set.int("[GlobalPTR+0x48]+A5FD8", -1) 
+                    end
+                end
             end
-            if (PickupValue == BSTValue) then
-                set.int(get.Ptr(p) + 0x490, FixVehValue)
-            end
+        else
+            LuaEngineLog("You Must Be In Vehicle")
         end
         ::continue::
-    end
-    ExecuteThread(NewThread)
+    end)
+    AsyncStart(QueueJob,1800)
 end
 
 function RepairVehicleDrop()
@@ -1640,6 +1687,12 @@ function Kill_Enemy(health)
     end
 end
 PED = {}
+
+PED.IS_PED_IN_ANY_VEHICLE = function()
+    local IsInsideVehicle = get.Byte(CPlayer + IN_VEH2)
+    return IsInsideVehicle == 1 and true or false
+end
+
 -- PED.SET_PED_HEALTH(Ped pedGroup,Float health)
 -- Ex:PED.SET_PED_HEALTH(enemy,0)
 function PED.SET_PED_HEALTH(pedGroup, health)
@@ -2004,7 +2057,7 @@ function RemoveCrewCutToZero(Bool)
             set.global(int, 262145 + 28108, 0)
             set.global(int, 262145 + 28109, 0)
             -- set.global(int,262145+28073,0)
-            set.global(int, 2452679 + 6480, 85)
+            set.global(int, 2452907 + 6480, 85)
             if not CutToZero then
                 set.global(int, 262145 + 28100, 5)
                 set.global(int, 262145 + 28101, 9)
@@ -2158,7 +2211,7 @@ end
 
 function AllMissionLives(Bool)
     AllMissionLivesLoop = Bool
-    local NewThread = function()
+    local MissionLives = function()
         while AllMissionLivesLoop do
             if SCRIPT.DOES_SCRIPT_EXIST('fm_mission_controller') then
                 set.locals(int, 'fm_mission_controller', 25438 + 1322 + 1, 9999)
@@ -2168,10 +2221,10 @@ function AllMissionLives(Bool)
             if not AllMissionLivesLoop then
                 break
             end
-            SYSTEM.WAIT(1000)
+            SYSTEM.WAIT(1500)
         end
     end
-    ExecuteThread(NewThread)
+    ExecuteThread(MissionLives)
 end
 
 function BLOCK_REPORTS(Bool) -- To Clean Report Automatically
@@ -2205,7 +2258,7 @@ function BLOCK_REPORTS(Bool) -- To Clean Report Automatically
             end
         end
     end)
-    AsyncStart(new, 1000)
+    AsyncStart(new, 1500)
 end
 
 function TotalEXPIndex(id)
@@ -2419,7 +2472,7 @@ function AutoHealPlayer(Bool)
             Async()
             local health = get.Float(PLAYER_HP)
             local Maximum_Health = get.Float(PLAYER_MAX_HP)
-            if health <= 150 then
+            if health >= 1 and health <= 200 then
                 set.float(PLAYER_HP, Maximum_Health)
                 set.float(PLAYER_ARMOR, 50)
                 set.float(DMG_TO_HP, 0.5)
@@ -2507,12 +2560,29 @@ function NightVision(Boolean)
     end
 end
 
-function NoDamage(Bool)
-    if Bool then
-        set.float(CPlayerInfo + HP_DMG, 0)
-    else
-        set.float(CPlayerInfo + HP_DMG, 1)
-    end
+function NoDamageToPlayer(Bool)
+    local MaxHealth = get.Float(CPlayer + 0x2A0)
+    local function Bulletproof()
+        while Bool do
+            set.float(PLAYER_HP, MaxHealth)
+            set.float(PLAYER_ARMOR, 50)
+            set.float(CPlayerInfo + HP_DMG, FALSE)
+            set.float(CPlayerInfo + ARMOR_DMG, FALSE)
+            set.float(PLAYER_RUN_SPD, 1.2)
+            set.float(PLAYER_SWIM_SPD, 1.2)
+            set.float(PLAYER_SNEAK_SPD, 1.2)
+            if not Bool then
+                set.float(CPlayerInfo + HP_DMG, TRUE)
+                set.float(CPlayerInfo + ARMOR_DMG, TRUE)
+                set.float(PLAYER_RUN_SPD, 1)
+                set.float(PLAYER_SWIM_SPD, 1)
+                set.float(PLAYER_SNEAK_SPD, 1)
+                break
+            end
+            SYSTEM.WAIT(2000)
+        end
+    end 
+    ExecuteThread(Bulletproof)
 end
 
 function UnlockAtomizer(Boolean)
@@ -2670,7 +2740,7 @@ function DeveloperMode(Activation)
 
     [DISABLE]
     IS_DLC_PRESENT:
-    db 48 89 5C 24 08
+    mov [rsp+08],rbx
 
     dealloc(Devmode)
     ]]
@@ -2693,5 +2763,87 @@ function DeveloperMode(Activation)
     else
         DisableScript()
     end
+end
+
+function CompactMode(Bool)
+    if Bool then
+        local function cycleFullCompact(sender,force)
+            local state = not(compactmenuitem.Caption == 'Full View Mode'); 
+            if force~=nil then state = not force end; 
+            compactmenuitem.Caption = state and 'Full View Mode' or 'Standard View Mode'; 
+            getMainForm().Splitter1.Visible = state; 
+            getMainForm().Panel4.Visible    = state; 
+            getMainForm().Panel5.Visible    = state; 
+        end; 
+        local function addCompactMenu() 
+            if compactmenualreadyexists then 
+                return 
+            end; 
+            local parent = getMainForm().Menu.Items; 
+            compactmenuitem = createMenuItem(parent); 
+            parent.add(compactmenuitem); 
+            compactmenuitem.Caption = 'Compact View Mode'; 
+            compactmenuitem.OnClick = cycleFullCompact; 
+            compactmenualreadyexists = 'yes'; 
+        end; 
+            addCompactMenu(); 
+            cycleFullCompact(nil,true)
+    else
+        cycleFullCompact(nil, false)
+    end
+end
+
+function DefineReportStat()
+    local function NewThread()
+        MPPLY_EXPLOITS = MEMORY.COPY(ExploitStat, STATS.STAT_GET_INT("MPPLY_EXPLOITS"))
+        SYSTEM.WAIT(1000)
+        MPPLY_GAME_EXPLOITS = MEMORY.COPY(GameExploitStat, STATS.STAT_GET_INT("MPPLY_GAME_EXPLOITS"))
+        SYSTEM.WAIT(1000)
+        MPPLY_GRIEFING = MEMORY.COPY(GriefingStat, STATS.STAT_GET_INT("MPPLY_GRIEFING"))
+        SYSTEM.WAIT(1000)
+        MPPLY_VC_ANNOYINGME = MEMORY.COPY(VCStat, STATS.STAT_GET_INT("MPPLY_VC_ANNOYINGME"))
+        SYSTEM.WAIT(1000)
+        MPPLY_TC_HATE = MEMORY.COPY(TCStat, STATS.STAT_GET_INT("MPPLY_TC_HATE"))
+        SYSTEM.WAIT(1000)
+        MPPLY_OFFENSIVE_LANGUAGE = MEMORY.COPY(OffensiveLangStat, STATS.STAT_GET_INT("MPPLY_OFFENSIVE_LANGUAGE"))
+        SYSTEM.WAIT(1000)
+        MPPLY_OFFENSIVE_TAGPLATE = MEMORY.COPY(OffensiveTagStat, STATS.STAT_GET_INT("MPPLY_OFFENSIVE_TAGPLATE"))
+        SYSTEM.WAIT(1000)
+        MPPLY_OFFENSIVE_UGC = MEMORY.COPY(OffensiveUGCStat, STATS.STAT_GET_INT("MPPLY_OFFENSIVE_UGC"))
+        SYSTEM.WAIT(1000)
+        MPPLY_BAD_CREW_NAME = MEMORY.COPY(CrewName, STATS.STAT_GET_INT("MPPLY_BAD_CREW_NAME"))
+        SYSTEM.WAIT(1000)
+        MPPLY_BAD_CREW_MOTTO = MEMORY.COPY(Motto, STATS.STAT_GET_INT("MPPLY_BAD_CREW_MOTTO"))
+        SYSTEM.WAIT(1000)
+        MPPLY_BAD_CREW_STATUS = MEMORY.COPY(CrewStatus, STATS.STAT_GET_INT("MPPLY_BAD_CREW_STATUS"))
+        SYSTEM.WAIT(1000)
+        MPPLY_BAD_CREW_EMBLEM = MEMORY.COPY(CrewEmblem, STATS.STAT_GET_INT("MPPLY_BAD_CREW_EMBLEM"))
+        SYSTEM.WAIT(1000)
+        MPPLY_BECAME_BADSPORT_NUM = MEMORY.COPY(BadspotNum, STATS.STAT_GET_INT("MPPLY_BECAME_BADSPORT_NUM"))
+        SYSTEM.WAIT(1000)
+        MPPLY_BECAME_CHEATER_NUM = MEMORY.COPY(CheaterNum, STATS.STAT_GET_INT("MPPLY_BECAME_CHEATER_NUM"))
+        SYSTEM.WAIT(1000)
+        MPPLY_DESTROYED_PVEHICLES = MEMORY.COPY(DestroyVeh, STATS.STAT_GET_INT("MPPLY_DESTROYED_PVEHICLES"))
+        SYSTEM.WAIT(1000)
+        MPPLY_BADSPORT_MESSAGE = MEMORY.COPY(BadsportMessage, STATS.STAT_GET_INT("MPPLY_BADSPORT_MESSAGE"))
+        SYSTEM.WAIT(1000)
+        MPPLY_LAST_REPORT_PENALTY = MEMORY.COPY(LastReportPenalty, STATS.STAT_GET_INT("MPPLY_LAST_REPORT_PENALTY"))
+        SYSTEM.WAIT(1000)
+        MPPLY_LAST_REPORT_RESTORE = MEMORY.COPY(ReportRestore, STATS.STAT_GET_INT("MPPLY_LAST_REPORT_RESTORE"))
+        SYSTEM.WAIT(1000)
+        MPPLY_VOTED_OUT = MEMORY.COPY(VotedOut, STATS.STAT_GET_INT("MPPLY_VOTED_OUT"))
+        SYSTEM.WAIT(1000)
+        MPPLY_VOTED_OUT_QUIT = MEMORY.COPY(VotedQuit, STATS.STAT_GET_INT("MPPLY_VOTED_OUT_QUIT"))
+        SYSTEM.WAIT(1000)
+        MPPLY_IS_CHEATER_TIME = MEMORY.COPY(CheaterTime, STATS.STAT_GET_INT("MPPLY_IS_CHEATER_TIME"))
+        SYSTEM.WAIT(1000)
+        MPPLY_WAS_I_BAD_SPORT = MEMORY.COPY(WasIBadsport, STATS.STAT_GET_INT("MPPLY_WAS_I_BAD_SPORT"))
+        SYSTEM.WAIT(1000)
+        MPPLY_CHEATER_CLEAR_TIME = MEMORY.COPY(CheatClearTime, STATS.STAT_GET_INT('MP'..MPX..'_CHEAT_BITSET'))
+        SYSTEM.WAIT(1000)
+        MPPLY_BECAME_BADSPORT_NUM = MEMORY.COPY(BadsportNum, STATS.STAT_GET_INT('MP'..MPX..'_BAD_SPORT_BITSET'))
+        SYSTEM.WAIT(1000)
+    end
+    ExecuteThread(NewThread)
 end
 

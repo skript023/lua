@@ -49,7 +49,7 @@ function SystemLog(Message)
         LogMessage = Message
         if getAppsPath() then
             f = io.open(string.format("%s/Log-System.log", FilePath), "a+")
-            f:write(LogMessage .. " | " .. os.date() .. "\n")
+            f:write("[" .. os.date("%x") .. "]" .. " [" .. os.date("%X") .. "] " .. LogMessage .. "\n")
             f:close()
         end
     end
@@ -61,7 +61,7 @@ function LuaEngineLog(Message) -- console.mOutput.Lines.Text
     DebugController.ConsoleOutput.append(Message)
     if getAppsPath() then
         LuaLogs = io.open(string.format("%s/Lua-Log.log", FilePath), "a+")
-        LuaLogs:write(PlayerInformationLog .. " | " .. os.date() .. "\n")
+        LuaLogs:write("[" .. os.date("%x") .. "]" .. " [" .. os.date("%X") .. "] " .. PlayerInformationLog .. "\n")
         LuaLogs:close()
     end
 end
@@ -116,10 +116,10 @@ function Pointer(options)
                           "Registered Pointer : %s | Address : 0x%X | Scan Method:%s | Sig Offset:%s | Target Offset:%s",
                           options.Name, getAddressSafe(options.Name), options.ScanMethod, options.SigOffset,
                           options.TargetOffset))
-
+            createNativeThread(autoAssemble)
             return _ptr;
         end,
-
+        
         Release = function()
             -- DEBUG: print("Unregistering "..options.Name.." Symbol");
             unregisterSymbol(options.Name);
@@ -399,8 +399,8 @@ ScriptProgramsPTR.Scan();
 ScriptThreadPTR = Pointer({
     Name = 'ScriptThreadPTR',
     Pattern = '45 33 F6 8B E9 85 C9 B8',
-    ScanMethod = 1,
-    SigOffset = -4,
+    ScanMethod = 5,
+    SigOffset = 4,
     TargetOffset = 4 - 8
 });
 ScriptThreadPTR.Scan();
@@ -409,7 +409,7 @@ RunScriptThreadPTR = Pointer({
     Name = 'RunScriptThreadPTR',
     Pattern = '45 33 F6 8B E9 85 C9 B8',
     ScanMethod = 3,
-    SigOffset = -0x1F
+    SigOffset = 0x1F
 });
 RunScriptThreadPTR.Scan();
 
@@ -428,9 +428,20 @@ Global_ = function(index, ...)
     end
     local StringIndex = type(index)
     if StringIndex == "string" then
-        local FirstIndex,SecondIndex = StringIndex:match("Global_([^,]+).f_"),StringIndex:match(".f_([^,]+)")
-        local ConcatIndex = tonumber(FirstIndex) + tonumber(SecondIndex)
-        index = ConcatIndex
+        StringIndex = index
+        local SecondIndex = StringIndex:match("f_([^,]+).f_")
+        local NextIndexFirst = StringIndex:match("f_([^,]+)")
+        local NextIndexSecond = NextIndexFirst:match(".f_([^,]+)")
+        local FirstIndex
+        if not SecondIndex then
+            FirstIndex = StringIndex:match("Global_([^,]+).f_")
+            ConcatIndex = tonumber(FirstIndex) + tonumber(NextIndexFirst)
+            index = ConcatIndex
+        elseif SecondIndex then
+            FirstIndex = StringIndex:match("Global_([^,]+).f_([^,]+).f_")
+            ConcatIndex = tonumber(FirstIndex) + tonumber(SecondIndex) + tonumber(NextIndexSecond)
+            index = ConcatIndex
+        end
     end
     for i = 1, select('#', ...) do
         index = index + select(i, ...);
@@ -438,7 +449,8 @@ Global_ = function(index, ...)
     local Handler = get.Long
     local ScriptHandle = get.Ptr(GlobalScript + (8 * (index >> 0x12 & 0x3F))) + (8 * (index & 0x3FFFF));
     return ScriptHandle, Handler(ScriptHandle);
-end
+end 
+
 
 GA = Global_
 script_handler = Global_
@@ -640,25 +652,29 @@ Get = function(Type, Address)
     end
 end
 
-local protected = {}
-function const(key, value)
+function const(Variable, activation, value)
+    local key = tostring(Variable)
+    local protected = {}
     if _G[key] then
         protected[key] = _G[key]
         _G[key] = nil
     else
         protected[key] = value
     end
-end
-local meta = {
-    __index = protected,
-    __newindex = function(tbl, key, value)
-        if protected[key] then
-            error("attempting to overwrite constant " .. tostring(key) .. " to " .. tostring(value), 2)
+
+    local meta = {
+        __index = protected,
+        __newindex = function(tbl, key, value)
+            if protected[key] and activation then
+                error("attempting to overwrite constant " .. tostring(key) .. " to " .. tostring(value), 2)
+            end
+            rawset(tbl, key, value)
         end
-        rawset(tbl, key, value)
-    end
-}
-setmetatable(_G, meta)
+    }
+    setmetatable(_G, meta)
+end
+
+
 
 ------------------------DATA WRITING CHANGER-----------------------------
 SET_FLOAT = function(Address, Value)
@@ -782,7 +798,7 @@ function PlayerLog(Message)
     PlayerInformationLog = Message
     if getAppsPath() then
         f = io.open(string.format("%s/Log-Player.log", FilePath), "a+")
-        f:write(PlayerInformationLog .. " | " .. os.date() .. "\n")
+        f:write("[" .. os.date("%x") .. "]" .. " [" .. os.date("%X") .. "] " .. PlayerInformationLog .. "\n")
         f:close()
     end
 end
@@ -809,20 +825,58 @@ function Hexadecimal(num)
     return result
 end
 
-function MemoryCopy(MemoryAllocation, Memory)
-    local orig_type = type(Memory)
-    local MemoryAllocation
-    if orig_type == 'table' then
-        MemoryAllocation = {}
-        for orig_key, orig_value in next, Memory, nil do
-            MemoryAllocation[MemoryCopy(orig_key)] = MemoryCopy(orig_value)
+MEMORY = {
+    --    void MEMORY::SET_BIT(int* addr, int bit) {
+    --     *addr |= (1 << (bit + 1));
+    -- }
+    SET_BIT = function(Address, Offset)
+        Address = Address | (1 << (Offset + 1))
+    end,
+
+    IS_BIT_SET = function(Address, Offset)
+        return Address ~= Address | (1 << (Offset + 1))
+    end,
+
+    CLEAR_BIT = function(Address, Offset)
+        Address = Address & ~(1 << (Offset + 1))
+    end,
+
+    COPY = function(MemoryAllocation, Memory)
+        local orig_type = type(Memory)
+        local MemoryAllocation
+        if orig_type == 'table' then
+            MemoryAllocation = {}
+            for orig_key, orig_value in next, Memory, nil do
+                MemoryAllocation[MemoryCopy(orig_key)] = MemoryCopy(orig_value)
+            end
+            setmetatable(MemoryAllocation, MemoryCopy(getmetatable(Memory)))
+        else -- number, string, boolean, etc
+            MemoryAllocation = Memory
         end
-        setmetatable(MemoryAllocation, MemoryCopy(getmetatable(Memory)))
-    else -- number, string, boolean, etc
-        MemoryAllocation = Memory
+        return MemoryAllocation
     end
-    return MemoryAllocation
+}
+
+function wait(milisecond)
+    local waiting = Asynchronous(function()
+    return coroutine.yield()
+    end)
+    AsyncStart(waiting, milisecond)
 end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 function CleanNils(t)
     local ans = {}

@@ -3,30 +3,36 @@ require("CPH")
 require("instant_heist_array")
 
 STATS = {
-    STAT_GET_INT = function(joaat_hash) -- Return value to function
-        set.global(int, 2552060 + 3269, GAMEPLAY.GET_HASH_KEY(joaat_hash))
-        set.global(int, 2552060 + 3270, GAMEPLAY.GET_HASH_KEY(joaat_hash))
+    STAT_GET_INT = function(Hash) -- Return value to function
+        set.global(int, 2552060 + 3269, GAMEPLAY.GET_HASH_KEY(Hash))
+        set.global(int, 2552060 + 3270, GAMEPLAY.GET_HASH_KEY(Hash))
+        SYSTEM.WAIT(110)
         set.global(int, 1377236 + 1136, 15) -- 2551832
+        SYSTEM.WAIT(50)
         return get.Global(int, 2551772 + 276) -- 2551544
     end,
 
-    STAT_GET_BOOL = function(joaat_hash)
-        set.global(int, 2587834 + 617, GAMEPLAY.GET_HASH_KEY(joaat_hash))
-        set.global(int, 2587834 + 618, GAMEPLAY.GET_HASH_KEY(joaat_hash))
+    STAT_GET_BOOL = function(Hash)
+        set.global(int, 2587834 + 617, GAMEPLAY.GET_HASH_KEY(Hash))
+        set.global(int, 2587834 + 618, GAMEPLAY.GET_HASH_KEY(Hash))
         return get.Bool(STAT_BOOL)
     end,
 
-    STAT_SET_INT = function(joaat_hash, value) -- Set Stat From Hash Key As Int
-        set.global(int, 1388013 + 4, GAMEPLAY.GET_HASH_KEY(joaat_hash))
-        set.global(int, 939452 + 5526, value)
-        set.global(int, 1377236 + 1139, 3)
-        set.global(int, 2550376 + 305, 3)
+    STAT_SET_INT = function(Hash, value) -- Set Stat From Hash Key As Int
+        local SetStat = function()
+            set.global(int, 1388013 + 4, GAMEPLAY.GET_HASH_KEY(Hash))
+            SYSTEM.WAIT(100)
+            set.global(int, 1377236 + 1139, 3)
+            set.global(int, 2550376 + 305, 3)
+            set.global(int, 939452 + 5526, value)
+        end
+        ExecuteThread(SetStat)
     end,
 
-    STAT_SET_BOOL = function(joaat_hash, bool) -- Set Stat From Hash Key As Bool
+    STAT_SET_BOOL = function(Hash, bool) -- Set Stat From Hash Key As Bool
         local start = function()
-            set.global(int, 2588062 + 617, GAMEPLAY.GET_HASH_KEY(joaat_hash)) -- 2587834
-            set.global(int, 2588062 + 618, GAMEPLAY.GET_HASH_KEY(joaat_hash))
+            set.global(int, 2588062 + 617, GAMEPLAY.GET_HASH_KEY(Hash)) -- 2587834
+            set.global(int, 2588062 + 618, GAMEPLAY.GET_HASH_KEY(Hash))
             SYSTEM.WAIT(1500)
             set.bool(STAT_BOOL, bool)
         end
@@ -339,12 +345,6 @@ PLAYER = {
     end
 }
 
-PED = {
-    IS_PED_IN_ANY_VEHICLE = function()
-        return get.Bool(CPlayer + IN_VEH2)
-    end
-}
-
 VEHICLE = {
     SET_VEHICLE_ENGINE_HEALTH = function(FLOAT)
         set.float(CVehicle + VEH_HP1, FLOAT)
@@ -424,39 +424,39 @@ VEHICLE = {
     MODIFY_VEHICLE_TOP_SPEED = function(Value)
         Value = tonumber(Value)
         local m = (Value + 100) * 0.01
-        writeFloat('[[[WorldPTR]+8]+D30]+AC0', Value) -- __EngineMultiplier
+        set.float('[[[WorldPTR]+8]+D30]+AC0', Value) -- __EngineMultiplier
 
-        local fInitialDragCoeff = readFloat('[[[[WorldPTR]+8]+D30]+938]+10')
+        local fInitialDragCoeff = get.Float('[[[[WorldPTR]+8]+D30]+938]+10')
         fInitialDragCoeff = fInitialDragCoeff / m
         if fInitialDragCoeff == nil or fInitialDragCoeff == 0.0 then
             return
         end
         fInitialDragCoeff = tonumber(string.format('%.5f', fInitialDragCoeff))
-        writeFloat('[[[WorldPTR]+8]+D30]+A48', fInitialDragCoeff)
+        set.float('[[[WorldPTR]+8]+D30]+A48', fInitialDragCoeff)
 
-        local fInitialDriveForce = readFloat('[[[[WorldPTR]+8]+D30]+938]+60')
+        local fInitialDriveForce = get.Float('[[[[WorldPTR]+8]+D30]+938]+60')
         fInitialDriveForce = fInitialDriveForce * m
         if fInitialDriveForce == nil or fInitialDriveForce == 0.0 then
             return
         end
         fInitialDriveForce = tonumber(string.format('%.5f', fInitialDriveForce))
-        writeFloat('[[[WorldPTR]+8]+D30]+8A4', fInitialDriveForce)
+        set.float('[[[WorldPTR]+8]+D30]+8A4', fInitialDriveForce)
 
-        local fDriveMaxFlatVel = readFloat('[[[[WorldPTR]+8]+D30]+938]+64')
+        local fDriveMaxFlatVel = get.Float('[[[[WorldPTR]+8]+D30]+938]+64')
         fDriveMaxFlatVel = fDriveMaxFlatVel * m
         if fDriveMaxFlatVel == nil or fDriveMaxFlatVel == 0.0 then
             return
         end
         fDriveMaxFlatVel = tonumber(string.format('%.5f', fDriveMaxFlatVel))
-        writeFloat('[[[WorldPTR]+8]+D30]+8AC', fDriveMaxFlatVel)
+        set.float('[[[WorldPTR]+8]+D30]+8AC', fDriveMaxFlatVel)
 
-        local fInitialDriveMaxFlatVel = readFloat('[[[[WorldPTR]+8]+D30]+938]+68')
+        local fInitialDriveMaxFlatVel = get.Float('[[[[WorldPTR]+8]+D30]+938]+68')
         fInitialDriveMaxFlatVel = fInitialDriveMaxFlatVel * m
         if fInitialDriveMaxFlatVel == nil or fInitialDriveMaxFlatVel == 0.0 then
             return
         end
         fInitialDriveMaxFlatVel = tonumber(string.format('%.5f', fInitialDriveMaxFlatVel))
-        writeFloat('[[[WorldPTR]+8]+D30]+8A8', fInitialDriveMaxFlatVel)
+        set.float('[[[WorldPTR]+8]+D30]+8A8', fInitialDriveMaxFlatVel)
     end
 }
 
@@ -660,12 +660,12 @@ THREAD = {
         AsyncStart(co1, interval)
     end
 };
-
+-- local ntime = os.clock() + milisecond / 1000
+        -- repeat
+        -- until os.clock() > ntime
 SYSTEM = {
     WAIT = function(milisecond)
-        local ntime = os.clock() + milisecond / 1000
-        repeat
-        until os.clock() > ntime
+        sleep(milisecond)
     end
 }
 UI = {
@@ -753,7 +753,7 @@ end --[[//print(f_GetCoords(2))]]
 ENTITY.SET_ENTITY_COORD = function(x, y, z)
 
     local CPlayer = get.Ptr(get.Ptr("WorldPTR") + 0x8)
-    if (2 == get.Int(CPlayer + 0x148C)) then
+    if PED.IS_PED_IN_ANY_VEHICLE() then
         CPlayer = get.Ptr(CPlayer + 0xD30)
     end
     local Nav = get.Ptr(CPlayer + 0x30)

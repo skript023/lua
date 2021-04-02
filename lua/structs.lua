@@ -17,6 +17,7 @@ require("setting")
 require("script_editor")
 require("admin_command")
 require("ObjectController")
+require("Assembly")
 json = require("dkjson")
 enum = require("enum")
 
@@ -72,24 +73,30 @@ end
 --dofile([[config/setting.lua]]);
 ------------------------Other------------------------------------------------------------------------------------------------------------------------
 function ShowMenuWhenLoaded()
-if get.Int(JOIN_STATUS) == 0 or get.Int(JOIN_STATUS) == 10 then
-  ShowNotification([[Menu Has Been Loaded To The Game 
+  if get.Int(JOIN_STATUS) == 0 or get.Int(JOIN_STATUS) == 10 and not SCRIPT.DOES_SCRIPT_EXIST('freemode') then
+    ShowNotification([[Menu Has Been Loaded To The Game 
 Press Insert To Show or Hide Menu
 
 -Signed Ellohim]])
-else
-  NotificationPopUpMapRockstar("Ellohim",[[~a~~s~ ~s~Menu Telah Terhubung Dengan Game!]])
-end
-  local new = Asynchronous(function()
-    local Tampil = 10
-    for i = Tampil,0,-1 do
-      print(i)
-      Async()
-      if i == 0 then Notification.destroy() end
-    end
-  end)
-  AsyncStart(new,1000)
-end
+  CompactMode(true)
+  else
+    CompactMode(true)
+    DefineReportStat()
+    NotificationPopUpMapRockstar("Ellohim",[[~a~~s~ ~s~Menu Telah Terhubung Dengan Game!]])
+  end
+    local new = Asynchronous(function()
+      local Tampil = 10
+      for i = Tampil,0,-1 do
+        print(i)
+        Async()
+        if i == 0 then 
+          Notification.destroy() 
+          LoadSession(11)
+        end
+      end
+    end)
+    AsyncStart(new,1000)
+  end
 ShowMenuWhenLoaded()
 --------------------------------------------Timer Disabler-------------------------------------------------------------
 function CheckForUpdate()
@@ -1208,15 +1215,15 @@ function ReportCheck()
         LuaEngineLog(string.format("Stat : %s | Value : %s [Hash : 0x%X]",v[1],STATS.STAT_GET_INT(v[1]),joaat(v[1])))
         Scanner.Text = string.format('%s : %s',v[1],cheating)
         if STATS.STAT_GET_INT(v[1]) >= v[2] then
-          if messageDialog("You Got A Report By "..v[1],mtWarning, mbYes, mbNo) == mrYes then
-            STATS.STAT_SET_INT(v[1],0)
-          else
-            messageDialog("Are You Sure Want Keep Your Report",mtWarning, mbYes, mbNo)
-          end
+          -- if messageDialog("You Got A Report By "..v[1],mtWarning, mbYes, mbNo) == mrYes then
+          --   STATS.STAT_SET_INT(v[1],0)
+          -- else
+          --   messageDialog("Are You Sure Want Keep Your Report",mtWarning, mbYes, mbNo)
+          -- end
         end
       end
   end)
-  AsyncStart(sync,1000)
+  AsyncStart(sync,50)
 end
 
   --[[local ListHP = get.Float(PListHP[index])
@@ -1307,6 +1314,7 @@ function PlayerCord()
   if MainTab.Deliver2.Text == 'MAX_INT' then MainTab.Deliver2.Text = MAX_INT end
   CONVERTION = 'MAX_INT';
   if MAX_INT == 'MAX_INT' then MAX_INT = 2147483647 end
+  if MainTab.MoneySpoof.Text == 'MAX_INT' then MainTab.MoneySpoof.Text = MAX_INT end
 
   MainTab.Transition.Text = 'Not In Transition'
   if NETWORK.NETWORK_IS_IN_TRANSITION() == true then 
@@ -2275,14 +2283,15 @@ function AntiLevelHack()
 end
 
 function LevelSpoofer(sender)
-    local LevelSpoofed = tonumber(MainTab.CEEdit3.Text);
-    set.global(int,1590682+1+PLAYER_ID()*883+211+6,tonumber(MainTab.CEEdit3.Text))
-    set.global(int,1590682+1+PLAYER_ID()*883+211+1,level_data[LevelSpoofed]);
+  LevelTimer.Enabled = false
+  local LevelSpoofed = tonumber(MainTab.CEEdit3.Text);
+  set.global(int,1590682+1+PLAYER_ID()*883+211+6,tonumber(MainTab.CEEdit3.Text))
+  set.global(int,1590682+1+PLAYER_ID()*883+211+1,level_data[LevelSpoofed]);
   LevelTimer.Enabled = true
 end
 if LevelTimer == nil then
    LevelTimer = createTimer(nil, false)
-   LevelTimer.Interval = 1500
+   LevelTimer.Interval = 2100
    LevelTimer.setOnTimer(LevelSpoofer)
 end
 
@@ -2293,7 +2302,7 @@ end
 function MoneySpoof()
   local TotalMoney = get.Global(int,1590682+1+PLAYER_ID()*883+211+56);
   local Action = true
-  THREAD.YIELD(LoopSpoofMoney,Action,tonumber(MainTab.MoneySpoof.Text),1500)
+  THREAD.YIELD(LoopSpoofMoney,Action,tonumber(MainTab.MoneySpoof.Text),2500)
   if TotalMoney >= MAX_INT then Action = false end
 end
 
@@ -2312,12 +2321,10 @@ function RID_Spoofer_Manual(sender)
   local NewThread = function()
     if not RIDJoinerScriptStatus then
       RIDJoiner(tonumber(PlaylistTab.CEEdit8.Text),true)
-      LoadSession(12)
     elseif RIDJoinerScriptStatus then
       RIDJoiner(tonumber(PlaylistTab.CEEdit8.Text),false)
       SYSTEM.WAIT(1500)
       RIDJoiner(tonumber(PlaylistTab.CEEdit8.Text),true)
-      LoadSession(12)
     end
   end
   ExecuteThread(NewThread)
@@ -3734,20 +3741,21 @@ TRY_CLAUSE {
         Async();
       end
     end)
-    AsyncStart(start,5);
+    AsyncStart(start,50);
     local Error = "On lines 3725 "
   end;
   EXCEPT_CLAUSE {
     function(Error)
       LuaEngineLog('caught error: '..Error)
-      error("Was Caught an Error on Line 3744")
+      error("Was Caught an Error on Line 3748")
     end
   }
 }
 
-local function LoopForever()
-  local start = Asynchronous(function()
-      while (true) do
+TRY_CLAUSE {
+  function()
+      local start = Asynchronous(function()
+        while (true) do
           local id = VehicleTab.S_WheelType.itemIndex-1;
           set.global(int,2462514+27+69,id)
           WheelSelection()
@@ -3757,12 +3765,18 @@ local function LoopForever()
           frameFlagsOnTick(t)
           SpectatorCheck()
           AntiSpectate()
-      Async()
-      end
-  end)
-  AsyncStart(start,1000)
-end
-LoopForever()
+        Async()
+        end
+      end)
+      AsyncStart(start,2000)
+  end;
+  EXCEPT_CLAUSE {
+    function(Error)
+      LuaEngineLog('caught error: '..Error)
+      error("Was Caught an Error on Line 3748")
+    end
+  }
+}
 
 --------------------------------------------------NON STOP LOOP END-------------------------------------------------
 
@@ -3794,6 +3808,120 @@ function SendCommandConsole(sender)
       end
     end
     ExecuteThread(loadlocals)
-  end
+  elseif getConsole == 'ReportCheck' then
+    local function ReportChecks()
+      MPPLY_EXPLOITS = MEMORY.COPY(ExploitStat, STATS.STAT_GET_INT("MPPLY_EXPLOITS"))
+      
+      MPPLY_GAME_EXPLOITS = MEMORY.COPY(GameExploitStat, STATS.STAT_GET_INT("MPPLY_GAME_EXPLOITS"))
+      
+      MPPLY_GRIEFING = MEMORY.COPY(GriefingStat, STATS.STAT_GET_INT("MPPLY_GRIEFING"))
+      
+      MPPLY_VC_ANNOYINGME = MEMORY.COPY(VCStat, STATS.STAT_GET_INT("MPPLY_VC_ANNOYINGME"))
+      
+      MPPLY_TC_HATE = MEMORY.COPY(TCStat, STATS.STAT_GET_INT("MPPLY_TC_HATE"))
+      
+      MPPLY_OFFENSIVE_LANGUAGE = MEMORY.COPY(OffensiveLangStat, STATS.STAT_GET_INT("MPPLY_OFFENSIVE_LANGUAGE"))
+      
+      MPPLY_OFFENSIVE_TAGPLATE = MEMORY.COPY(OffensiveTagStat, STATS.STAT_GET_INT("MPPLY_OFFENSIVE_TAGPLATE"))
+      
+      MPPLY_OFFENSIVE_UGC = MEMORY.COPY(OffensiveUGCStat, STATS.STAT_GET_INT("MPPLY_OFFENSIVE_UGC"))
+      
+      MPPLY_BAD_CREW_NAME = MEMORY.COPY(CrewName, STATS.STAT_GET_INT("MPPLY_BAD_CREW_NAME"))
+      
+      MPPLY_BAD_CREW_MOTTO = MEMORY.COPY(Motto, STATS.STAT_GET_INT("MPPLY_BAD_CREW_MOTTO"))
+      
+      MPPLY_BAD_CREW_STATUS = MEMORY.COPY(CrewStatus, STATS.STAT_GET_INT("MPPLY_BAD_CREW_STATUS"))
+      
+      MPPLY_BAD_CREW_EMBLEM = MEMORY.COPY(CrewEmblem, STATS.STAT_GET_INT("MPPLY_BAD_CREW_EMBLEM"))
+      
+      MPPLY_BECAME_BADSPORT_NUM = MEMORY.COPY(BadspotNum, STATS.STAT_GET_INT("MPPLY_BECAME_BADSPORT_NUM"))
+      
+      MPPLY_BECAME_CHEATER_NUM = MEMORY.COPY(CheaterNum, STATS.STAT_GET_INT("MPPLY_BECAME_CHEATER_NUM"))
+      
+      MPPLY_DESTROYED_PVEHICLES = MEMORY.COPY(DestroyVeh, STATS.STAT_GET_INT("MPPLY_DESTROYED_PVEHICLES"))
+      
+      MPPLY_BADSPORT_MESSAGE = MEMORY.COPY(BadsportMessage, STATS.STAT_GET_INT("MPPLY_BADSPORT_MESSAGE"))
+      
+      MPPLY_LAST_REPORT_PENALTY = MEMORY.COPY(LastReportPenalty, STATS.STAT_GET_INT("MPPLY_LAST_REPORT_PENALTY"))
+      
+      MPPLY_LAST_REPORT_RESTORE = MEMORY.COPY(ReportRestore, STATS.STAT_GET_INT("MPPLY_LAST_REPORT_RESTORE"))
+      
+      MPPLY_VOTED_OUT = MEMORY.COPY(VotedOut, STATS.STAT_GET_INT("MPPLY_VOTED_OUT"))
+      
+      MPPLY_VOTED_OUT_QUIT = MEMORY.COPY(VotedQuit, STATS.STAT_GET_INT("MPPLY_VOTED_OUT_QUIT"))
+      
+      MPPLY_IS_CHEATER_TIME = MEMORY.COPY(CheaterTime, STATS.STAT_GET_INT("MPPLY_IS_CHEATER_TIME"))
+      
+      MPPLY_WAS_I_BAD_SPORT = MEMORY.COPY(WasIBadsport, STATS.STAT_GET_INT("MPPLY_WAS_I_BAD_SPORT"))
+      
+      MPPLY_CHEATER_CLEAR_TIME = MEMORY.COPY(CheatClearTime, STATS.STAT_GET_INT('MP' .. MPX .. '_CHEAT_BITSET'))
+      
+      MPPLY_BECAME_BADSPORT_NUM = MEMORY.COPY(BadsportNum, STATS.STAT_GET_INT('MP' .. MPX .. '_BAD_SPORT_BITSET'))
+      
+  LuaEngineLog(string.format([[
+  MPPLY_EXPLOITS : %s
+  MPPLY_GAME_EXPLOITS : %s
+  MPPLY_GRIEFING :%s 
+  MPPLY_VC_ANNOYINGME : %s
+  MPPLY_TC_HATE : %s
+  MPPLY_OFFENSIVE_LANGUAGE : %s
+  MPPLY_OFFENSIVE_TAGPLATE : %s
+  MPPLY_OFFENSIVE_UGC : %s
+  MPPLY_BAD_CREW_NAME : %s
+  MPPLY_BAD_CREW_MOTTO : %s
+  MPPLY_BAD_CREW_STATUS : %s
+  MPPLY_BAD_CREW_EMBLEM : %s
+  MPPLY_BECAME_BADSPORT_NUM : %s
+  MPPLY_BECAME_CHEATER_NUM : %s
+  MPPLY_DESTROYED_PVEHICLES : %s
+  MPPLY_BADSPORT_MESSAGE : %s
+  MPPLY_LAST_REPORT_PENALTY : %s
+  MPPLY_LAST_REPORT_RESTORE : %s
+  MPPLY_VOTED_OUT : %s
+  MPPLY_VOTED_OUT_QUIT : %s
+  MPPLY_IS_CHEATER_TIME : %s
+  MPPLY_WAS_I_BAD_SPORT : %s
+  MPPLY_CHEATER_CLEAR_TIME : %s
+  MPPLY_BECAME_BADSPORT_NUM : %s
+  ]], MPPLY_EXPLOITS, MPPLY_GRIEFING, MPPLY_GAME_EXPLOITS, MPPLY_VC_ANNOYINGME, MPPLY_TC_HATE, MPPLY_OFFENSIVE_LANGUAGE,
+  MPPLY_OFFENSIVE_TAGPLATE, MPPLY_OFFENSIVE_UGC, MPPLY_BAD_CREW_NAME, MPPLY_BAD_CREW_MOTTO, MPPLY_BAD_CREW_STATUS, 
+  MPPLY_BAD_CREW_EMBLEM, MPPLY_BECAME_BADSPORT_NUM, MPPLY_BECAME_CHEATER_NUM, MPPLY_DESTROYED_PVEHICLES, MPPLY_BADSPORT_MESSAGE,
+  MPPLY_LAST_REPORT_PENALTY, MPPLY_LAST_REPORT_RESTORE, MPPLY_VOTED_OUT, MPPLY_VOTED_OUT_QUIT, MPPLY_IS_CHEATER_TIME,
+  MPPLY_WAS_I_BAD_SPORT, MPPLY_CHEATER_CLEAR_TIME, MPPLY_BECAME_BADSPORT_NUM
+  ))
+  PlaylistTab.PlayerInfo.Lines.Text = string.format([[
+  MPPLY_EXPLOITS : %s
+  MPPLY_GAME_EXPLOITS : %s
+  MPPLY_VC_ANNOYINGME : %s
+  MPPLY_TC_HATE : %s
+  MPPLY_OFFENSIVE_LANGUAGE : %s
+  MPPLY_OFFENSIVE_TAGPLATE : %s
+  MPPLY_OFFENSIVE_UGC : %s
+  MPPLY_BAD_CREW_NAME : %s
+  MPPLY_BAD_CREW_MOTTO : %s
+  MPPLY_BAD_CREW_STATUS : %s
+  MPPLY_BAD_CREW_EMBLEM : %s
+  MPPLY_BECAME_BADSPORT_NUM : %s
+  MPPLY_BECAME_CHEATER_NUM : %s
+  MPPLY_DESTROYED_PVEHICLES : %s
+  MPPLY_BADSPORT_MESSAGE : %s
+  MPPLY_LAST_REPORT_PENALTY : %s
+  MPPLY_LAST_REPORT_RESTORE : %s
+  MPPLY_VOTED_OUT : %s
+  MPPLY_VOTED_OUT_QUIT : %s
+  MPPLY_IS_CHEATER_TIME : %s
+  MPPLY_WAS_I_BAD_SPORT : %s
+  MPPLY_CHEATER_CLEAR_TIME : %s
+  MPPLY_BECAME_BADSPORT_NUM : %s
+  ]], MPPLY_EXPLOITS, MPPLY_GRIEFING, MPPLY_GAME_EXPLOITS, MPPLY_GRIEFING, MPPLY_VC_ANNOYINGME, MPPLY_TC_HATE, MPPLY_OFFENSIVE_LANGUAGE,
+  MPPLY_OFFENSIVE_TAGPLATE, MPPLY_OFFENSIVE_UGC, MPPLY_BAD_CREW_NAME, MPPLY_BAD_CREW_MOTTO, MPPLY_BAD_CREW_STATUS, 
+  MPPLY_BAD_CREW_EMBLEM, MPPLY_BECAME_BADSPORT_NUM, MPPLY_BECAME_CHEATER_NUM, MPPLY_DESTROYED_PVEHICLES, MPPLY_BADSPORT_MESSAGE,
+  MPPLY_LAST_REPORT_PENALTY, MPPLY_LAST_REPORT_RESTORE, MPPLY_VOTED_OUT, MPPLY_VOTED_OUT_QUIT, MPPLY_IS_CHEATER_TIME,
+  MPPLY_WAS_I_BAD_SPORT, MPPLY_CHEATER_CLEAR_TIME, MPPLY_BECAME_BADSPORT_NUM
+  )
 end
+ExecuteThread(ReportChecks)
+    end
+end
+
 ---------------------------------------------SCRIPT END-------------------------------------------------------------------

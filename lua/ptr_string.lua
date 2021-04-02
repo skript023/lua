@@ -374,10 +374,11 @@ function ptr_string() -- Pointer or Address To String
     Playername7 = get.Memory("GTA5.exe+2BE24DF")
     Playername8 = get.Memory("GTA5.exe+2BE58AF")
     Playername9 = get.Memory("GTA5.exe+2BE5B44")
-    PublicPlayerID = get.Memory("[GlobalPTR+6*8]+24788+PLAYER_ID()*1B98")
-    PrivatePlayerID = get.Memory("[GlobalPTR+6*8]+00*1B98+24788")
-    CurrentPlayerID = get.Memory("[GlobalPTR+9*8]+9E2A8")
+    PublicPlayerID = get.Memory("[GlobalPTR+0x30]+24788+PLAYER_ID()*1B98")
+    PrivatePlayerID = get.Memory("[GlobalPTR+0x30]+00*1B98+24788")
+    CurrentPlayerID = get.Memory("[GlobalPTR+0x48]+9E2A8")
     Lightning = get.Memory("GTA5.exe+2BA5B48")
+    MatiLampu = get.Memory("GTA5.exe+2256FF8")
 end
 
 ptr_string()

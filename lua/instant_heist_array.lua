@@ -1,8 +1,14 @@
+require("Assembly")
+require("sig_array")
+
 local scid_asli = get.Long("GTA5.exe+29240E8")
+CopyDariRidAsli = MEMORY.COPY(Rid_Asli, scid_asli)
+const(CopyDariRidAsli,true)
+
 DATA_RID = 
 {
 	{"Instant Spoof",0};
-	{"RID Asli",scid_asli};
+	{"RID Asli",CopyDariRidAsli};
 	{"YonataSP",134757642};
 	{"Dea_Fi",118756001};
 	{"swegley",171225995};
@@ -227,31 +233,32 @@ CT =
 
 CT2 = 
 {
-	{"Anti Kick AFK","Anti AFK"};
-	{"Auto Healing","Auto Heal"};
-	{"Health Regen","HP Regen"};
-	{"Infinites Ammos","Infinite Ammo"};
-	{"God Modes","God Mode"};
-	{"All Mission Lives","Mission Lives"};
-	{"Explosive Ammo 2","Explosive Ammo"};
-	{"Crew Percent to Zero","Crew 0% Casino"};
-	{"Remove Crew Cut","Remove Crew Casino"};
+	{"Anti Kick AFK","Anti AFK"}; --
+	{"Auto Healing","Auto Heal"}; --
+	{"Health Regen","HP Regen"}; --
+	{"Infinites Ammos","Infinite Ammo"}; --
+	{"God Modes","God Mode"}; --
+	{"All Mission Lives","Mission Lives"}; --
+	{"Explosive Ammo 2","Explosive Ammo"}; --
+	{"Crew Percent to Zero","Crew 0% Casino"}; --
+	{"Remove Crew Cut","Remove Crew Casino"}; --
 	--{"Perico Life","Cayo Perico Lives"};
 	{"Kill All Enemies","Kill All Enemies"};
 	{"Kill Police","Kill Police"};
 	{"Kill All Ped","Kill All NPC"};
-	{"Pass Through Wall","Pass Through Wall"};
-	{"Burst Script","Weapon Burst"};
+	{"Pass Through Wall","Pass Through Wall"}; --
+	{"Burst Script","Weapon Burst"}; --
 	{"TAKE","Take All"};
-	{"Flaming Ammo 2","Fire Ammo"};
-	{"Super Jump 2","Super Jump"};
-	{"Explosive Fists 2","Explosive Fist"};
+	{"Flaming Ammo 2","Fire Ammo"}; --
+	{"Super Jump 2","Super Jump"}; --
+	{"Explosive Fists 2","Explosive Fist"}; --
 	{"Thermal Vision","Thermal Vision"};
 	{"Night Vision","Night Vision"};
-	{"Bulletproof","Infinite HP"};
-	{"Water Scipt","Water Proof"};
-	{"No Ragdoll Script","No Ragdoll"};
-	{"Never Wanted","Never Wanted"};
+	{"Bulletproof","Infinite HP"}; --
+	{"Mati Lampu", "Blackout"};
+	{"Water Scipt","Water Proof"}; --
+	{"No Ragdoll Script","No Ragdoll"}; --
+	{"Never Wanted","Never Wanted"}; --
 	{"Infinites Clips","Freeze Ammo"};
 	{"Remove Supply Cooldown Bunker","Supply Bunker Cooldown"};
 	{"Remove Supply Cooldown MC","Supply MC Cooldown"};
